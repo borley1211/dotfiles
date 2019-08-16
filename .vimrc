@@ -115,9 +115,5 @@ if &term =~ "xterm"
 endif
 
 
-"[カラースキーマ]
-""  リポジトリを
-""      $VIMRUNTIME/pack/(unique_dirname)/start/
-""  以下に**cdして**クローンすること
-let g:molokai_original=1
-"colorscheme molokai
+let g:molokai_original = 1
+colorscheme molokai
