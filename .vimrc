@@ -32,4 +32,5 @@ inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
 inoremap <silent> ee <Esc>
 
-colorscheme molokai/colors/molokai
+colorscheme molokai
+let g:molokai_original = 1
