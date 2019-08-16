@@ -23,7 +23,7 @@ set whichwrap=b,s,h,l,<,>,[,]
 set hidden
 
 set term=xterm-256color
-syntax on
+syntax enable
 
 inoremap { {}<Left>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
@@ -32,5 +32,5 @@ inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
 inoremap <silent> ee <Esc>
 
-colorscheme molokai
 let g:molokai_original = 1
+colorscheme molokai
