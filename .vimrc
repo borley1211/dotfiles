@@ -22,6 +22,8 @@ set wildmenu
 set whichwrap=b,s,h,l,<,>,[,]
 set hidden
 
+set clipboard=unnamedplus
+
 set term=xterm-256color
 syntax enable
 
