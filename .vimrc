@@ -32,7 +32,14 @@ inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap ( ()<ESC>i
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
-inoremap <silent> ee <Esc>
+inoremap <silent> EE <Esc>
+
+nnoremap <silent>yy :.w !win32yank.exe -i<CR><CR>
+vnoremap <silent>y :w !win32yank.exe -i<CR><CR>
+nnoremap <silent>dd :.w !win32yank.exe -i<CR>dd
+vnoremap <silent>d x:let pos = getpos(".")<CR>GpVG:w !win32yank.exe -i<CR>VGx:call setpos(".", pos)<CR>
+nnoremap <silent>p :r !win32yank.exe -o<CR>
+vnoremap <silent>p :r !win32yank.exe -o<CR>
 
 let g:molokai_original = 1
 colorscheme molokai
