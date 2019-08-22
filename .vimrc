@@ -48,6 +48,7 @@ endif
 
 set autoread
 set noswapfile
+set showmode
 set showcmd
 set wildmenu
 set whichwrap=b,s,h,l,<,>,[,]
