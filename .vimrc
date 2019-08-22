@@ -7,12 +7,16 @@ set fileformats=unix,dos,mac " 改行コードの自動判別(左側優先)
 set ambiwidth=double " 絵文字類が崩れる問題を解決
 
 set title
+
 set showmatch
+source $VIMRUNTIME/macros/matchit.vim " Vimの「%」を拡張
+
 set cursorline
 set cursorcolumn
 set number
 
 set incsearch
+set ignorecase
 set smartcase
 set hlsearch
 
@@ -33,6 +37,8 @@ set showcmd
 set wildmenu
 set whichwrap=b,s,h,l,<,>,[,]
 set hidden
+" バックスペースキーの有効化
+set backspace=indent,eol,start
 
 set clipboard=unnamedplus
 
