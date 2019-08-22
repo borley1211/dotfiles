@@ -10,6 +10,9 @@ set fileformats=unix,dos,mac    " 改行コードの自動判別(左側優先)
 set ambiwidth=double    " 絵文字等が崩れる問題を解決
 
 
+"[dein]
+source ~/.vimrc.dein
+
 "[ステータス表示]
 set title
 set showmode
