@@ -1,0 +1,33 @@
+pcm.!default {
+    type pulse
+}
+
+pcm.pulse {
+    type pulse
+}
+
+ctl.!default {
+    type pulse
+}
+
+ctl.pulse {
+    type pulse
+}
+
+pcm.monitor {
+    type asym
+    capture.pcm {
+        type pulse
+        device output.monitor
+    }
+    playback.pcm "null"
+    hint.description "Monitor for PulseAudio"
+}
+
+ctl.monitor {
+    type pulse
+}
+
+defaults.pcm.rate_converter="speexrate"
+
+# vim:set ft=alsaconf:
