@@ -1,23 +1,33 @@
-"[エディタ上における文字コード設定]
+"[Initial Config for Encoding]
 set encoding=utf-8
 scriptencoding utf-8
+
 
 "[ファイル入出力における文字コード設定]
 set fileencoding=utf-8 " 保存時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読込時の文字コードの自動判別(左側優先)
 set fileformats=unix,dos,mac " 改行コードの自動判別(左側優先)
-set ambiwidth=double " 絵文字類が崩れる問題を解決
+set ambiwidth=double " 絵文字等が崩れる問題を解決
 
-"[タイトルバー表示]
+
+"[ステータス表示]
 set title
+set showmode
+set showcmd
+set wildmenu
+
 
 "[括弧/タグジャンプ]
 set showmatch
 source $VIMRUNTIME/macros/matchit.vim " Vimの「%」を拡張
 
+
+"[カーソル]
+set whichwrap=b,s,h,l,<,>,[,]
 set cursorline
 set cursorcolumn
 set number
+
 
 "[検索設定]
 set incsearch
@@ -26,7 +36,8 @@ set smartcase
 set hlsearch
 nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>  " ESCキー2度押しでハイライトの切り替え
 
-"[インデント関連]
+
+"[インデント/タブ]
 set expandtab
 set autoindent
 set smartindent
@@ -34,6 +45,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set smarttab
+
 
 "[マウス有効化]
 if has('mouse')
@@ -47,16 +59,18 @@ if has('mouse')
     endif
 endif
 
+
+"[ファイル処理]
+set confirm
 set autoread
+set nobackup
 set noswapfile
-set showmode
-set showcmd
-set wildmenu
-set whichwrap=b,s,h,l,<,>,[,]
 set hidden
 
-"[バックスペースキーの有効化]
+
+"[バックスペースキー有効化]
 set backspace=indent,eol,start
+
 
 "[ターミナルカラー設定]
 "" 実行環境がWSLであるか判定
@@ -64,14 +78,18 @@ if filereadable("/proc/sys/fs/binfmt_misc/WSLInterop")
     set term=xterm-256color
 endif
 
+
+"[シンタックスハイライト]
 syntax enable
 
-"[クリップボード]
+
+"[カット/コピー/ペースト]
 set clipboard=unnamedplus
 inoremap { {}<Left>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap ( ()<ESC>i
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
+
 "" 実行環境がWSLであるか判定
 if filereadable("/proc/sys/fs/binfmt_misc/WSLInterop")
     nnoremap <silent>yy :.w !win32yank.exe -i<CR><CR>
@@ -81,7 +99,8 @@ if filereadable("/proc/sys/fs/binfmt_misc/WSLInterop")
     nnoremap <silent>p :r !win32yank.exe -o<CR>
     vnoremap <silent>p :r !win32yank.exe -o<CR>
 endif
-"" ペースト時の自動インデントを防止
+
+"" ペースト時の自動インデント防止
 if &term =~ "xterm"
     let &t_SI .= "\e[?2004h"
     let &t_EI .= "\e[?2004l"
@@ -94,6 +113,7 @@ if &term =~ "xterm"
 
     inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 endif
+
 
 "[カラースキーマ]
 ""  リポジトリを
