@@ -1,1 +1,28 @@
-/home/borley1211/.zaliases
+#!/bin/zsh
+alias dbusinit="sudo service dbus restart"
+alias dockerinit="sudo service docker restart"
+alias alsainit="sudo alsa force-reload"
+alias x11init="sudo service x11-common restart"
+alias anacroninit="sudo service anacron restart"
+alias rtkitinit="sudo rtkitctl --start"
+
+pulseinit () {
+    /bin/zsh -c pulseaudio.sh
+
+    pulseaudio --check
+    if [ $? -eq 0 ];then
+        pulseaudio -v --kill
+        wait
+    fi
+    pulseaudio -v -D
+}
+alias pulseinit
+
+alias killpulsewin="taskkill.exe /IM pulseaudio.exe /F"
+
+alias defaultinit="dbusinit ; dockerinit ; alsainit ; x11init ; anacroninit ; rtkitinit"
+
+alias relogin="exec $SHELL -l"
+alias inodecheck='echo "==== `pwd` ====" ; for i in `ls -a1`;do echo -n "## $i ### " ; echo "(`find ./$i -type f |wc -l`)" ;done | sort -nr'
+
+alias wsl-shutdown="killpulsewin ; wsl.exe --shutdown"
