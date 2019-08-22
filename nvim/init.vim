@@ -50,13 +50,6 @@ set smarttab
 "[マウス有効化]
 if has('mouse')
     set mouse=a
-    if has('mouse_sgr')
-        set ttymouse=sgr
-    elseif v:version > 703 || v:version is 703 && has('patch632')
-        set ttymouse=sgr
-    else
-        set ttymouse=xterm2
-    endif
 endif
 
 
@@ -70,13 +63,6 @@ set hidden
 
 "[バックスペースキー有効化]
 set backspace=indent,eol,start
-
-
-"[ターミナルカラー設定]
-"" 実行環境がWSLであるか判定
-if filereadable("/proc/sys/fs/binfmt_misc/WSLInterop")
-    set term=xterm-256color
-endif
 
 
 "[シンタックスハイライト]
