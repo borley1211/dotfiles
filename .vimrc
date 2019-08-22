@@ -1,13 +1,13 @@
 "[Initial Config for Encoding]
-set encoding = utf-8
+set encoding=utf-8
 scriptencoding utf-8
 
 
 "[ファイル入出力における文字コード設定]
-set fileencoding = utf-8  " 保存時の文字コード
-set fileencodings = ucs-boms,utf-8,euc-jp,cp932   " 読込時の文字コードの自動判別(左側優先)
-set fileformats = unix,dos,mac    " 改行コードの自動判別(左側優先)
-set ambiwidth = double    " 絵文字等が崩れる問題を解決
+set fileencoding=utf-8  " 保存時の文字コード
+set fileencodings=ucs-boms,utf-8,euc-jp,cp932   " 読込時の文字コードの自動判別(左側優先)
+set fileformats=unix,dos,mac    " 改行コードの自動判別(左側優先)
+set ambiwidth=double    " 絵文字等が崩れる問題を解決
 
 
 "[ステータス表示]
@@ -23,7 +23,7 @@ source $VIMRUNTIME/macros/matchit.vim   " Vimの「%」を拡張
 
 
 "[カーソル]
-set whichwrap = b,s,h,l,<,>,[,]
+set whichwrap=b,s,h,l,<,>,[,]
 set cursorline
 set cursorcolumn
 set number
@@ -41,21 +41,21 @@ nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>
 set expandtab
 set autoindent
 set smartindent
-set tabstop = 4
-set softtabstop = 4
-set shiftwidth = 4
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set smarttab
 
 
 "[マウス有効化]
 if has('mouse')
-    set mouse = a
+    set mouse=a
     if has('mouse_sgr')
-        set ttymouse = sgr
+        set ttymouse=sgr
     elseif v:version > 703 || v:version is 703 && has('patch632')
-        set ttymouse = sgr
+        set ttymouse=sgr
     else
-        set ttymouse = xterm2
+        set ttymouse=xterm2
     endif
 endif
 
@@ -69,13 +69,13 @@ set hidden
 
 
 "[バックスペースキー有効化]
-set backspace = indent,eol,start
+set backspace=indent,eol,start
 
 
 "[ターミナルカラー設定]
 "" 実行環境がWSLであるか判定
 if filereadable("/proc/sys/fs/binfmt_misc/WSLInterop")
-    set term = xterm-256color
+    set term=xterm-256color
 endif
 
 
@@ -84,7 +84,7 @@ syntax enable
 
 
 "[カット/コピー/ペースト]
-set clipboard = unnamedplus
+set clipboard=unnamedplus
 inoremap { {}<Left>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap ( ()<ESC>i
@@ -119,5 +119,5 @@ endif
 ""  リポジトリを
 ""      $VIMRUNTIME/pack/(unique_dirname)/start/
 ""  以下に**cdして**クローンすること
-let g:molokai_original = 1
+let g:molokai_original=1
 colorscheme molokai
