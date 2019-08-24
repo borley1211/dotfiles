@@ -7,11 +7,11 @@ scriptencoding utf-8
 set fileencoding=utf-8  " 保存時の文字コード
 set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis,cp932   " 読込時の文字コードの自動判別(左側優先)
 set fileformats=unix,dos,mac    " 改行コードの自動判別(左側優先)
-set ambiwidth=double    " 絵文字等が崩れる問題を解決
+set ambiwidth=single    " 絵文字等が崩れる問題を解決
 
 
 "[dein]
-source ~/.vimrc.dein
+source ~/configs/.deinrc
 
 
 "[ステータス表示]
@@ -83,35 +83,12 @@ syntax enable
 
 
 "[カット/コピー/ペースト]
-set clipboard=unnamedplus
 inoremap { {}<Left>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap ( ()<ESC>i
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
-"" 実行環境がWSLであるか判定
-if filereadable("/proc/sys/fs/binfmt_misc/WSLInterop")
-    nnoremap <silent>yy :.w !win32yank.exe -i<CR><CR>
-    vnoremap <silent>y :w !win32yank.exe -i<CR><CR>
-    nnoremap <silent>dd :.w !win32yank.exe -i<CR>dd
-    vnoremap <silent>d x:let pos = getpos(".")<CR>GpVG:w !win32yank.exe -i<CR>VGx:call setpos(".", pos)<CR>
-    nnoremap <silent>p :r !win32yank.exe -o<CR>
-    vnoremap <silent>p :r !win32yank.exe -o<CR>
-endif
-
-"" ペースト時の自動インデント防止
-if &term =~ "xterm"
-    let &t_SI = "\e[?2004h"
-    let &t_EI = "\e[?2004l"
-    let &pastetoggle = "\e[201~"
-
-    function XTermPasteBegin(ret)
-        set paste
-        return a:ret
-    endfunction
-
-    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
-endif
+set pastetoggle=<C-p>
 
 
 "[IME]
