@@ -30,4 +30,4 @@ ctl.monitor {
 
 defaults.pcm.rate_converter="speexrate"
 
-# vim:set ft=alsaconf:
+# vim:ft=alsaconf

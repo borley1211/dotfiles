@@ -113,8 +113,13 @@ nnoremap <Up>   gk
 
 
 "[カラースキーマ]
-""  リポジトリを
+""  パッケージマネージャがないときは、リポジトリを
 ""      $VIMRUNTIME/pack/(unique_dirname)/start/
-""  以下に**cdして**クローンすること
+""  以下に**cdした上で**クローンすること
 let g:molokai_original=1
 colorscheme molokai
+
+
+"[Kite]
+set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+set laststatus=2  " always display the status line

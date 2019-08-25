@@ -19,3 +19,5 @@ if type 'pipenv' > /dev/null 2>&1; then
 fi
 
 export EDITOR="nvim" ; export VISUAL=$EDITOR
+
+export XDG_RUNTIME_DIR=$HOME

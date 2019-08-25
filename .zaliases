@@ -1,10 +1,11 @@
 #!/bin/zsh
 alias dbusinit="sudo service dbus restart"
 alias dockerinit="sudo service docker restart"
-alias alsainit="sudo alsa force-reload"
+alias alsainit="sudo service alsa-utils restart"
 alias x11init="sudo service x11-common restart"
 alias anacroninit="sudo service anacron restart"
 alias rtkitinit="sudo rtkitctl --start"
+alias jackd2init="sudo jack_control start"
 
 pulseinit () {
     /bin/zsh -c pulseaudio.sh
