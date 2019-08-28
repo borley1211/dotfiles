@@ -43,5 +43,3 @@ ctl.mic {
 }
 
 defaults.pcm.rate_converter="speexrate"
-
-# vim:ft=alsaconf
