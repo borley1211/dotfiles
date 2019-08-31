@@ -6,8 +6,8 @@ pathinit
 alias pathinit
 
 # for char-encoding
-export LANG=ja_JP.UTF-8
-export VTE_CJK_WIDTH=1
+export LANG=ja_JP.UTF-8 ; export LC_ALL=$LANG ; export LANGUAGE=$LANG
+export VTE_CJK_WIDTH=2
 
 source ~/.zaliases
 
@@ -21,3 +21,16 @@ fi
 export EDITOR="nvim" ; export VISUAL=$EDITOR
 
 export XDG_RUNTIME_DIR=$HOME
+
+if [ -e powerline-daemon ];then
+    powerline-daemon -q
+    
+    PYSPKGDIR=("Library/Python/3.7/lib/python/site-packages" ".local/lib/python3.7/site-packages")
+    PWLIN_INIT="powerline/bindings/zsh/powerline.zsh"
+
+    for WKDIR in ${PYSPKGDIR};do
+        if [ -f ${WKDIR} ];then
+            source ${HOME}/${WKDIR}/${PWLIN_INIT}
+        fi
+    done
+fi
