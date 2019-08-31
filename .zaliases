@@ -1,2 +1,43 @@
 #!/bin/zsh
-eval $(cat "${DOTPATH}/init_aliases.sh")
+alias dbusinit="sudo service dbus restart"
+alias dockerinit="sudo service docker restart"
+alias alsainit="sudo service alsa-utils restart"
+alias x11init="sudo service x11-common restart"
+alias anacroninit="sudo service anacron restart"
+alias rtkitinit="sudo rtkitctl --start"
+alias jackd2init="sudo jack_control start"
+
+pulseinit () {
+    /bin/zsh -c pulseaudio.sh
+
+    pulseaudio --check
+    if [ $? -eq 0 ];then
+        pulseaudio -v --kill
+        wait
+    fi
+    pulseaudio -v -D
+}
+alias pulseinit
+
+alias killpulsewin="taskkill.exe /IM pulseaudio.exe /F"
+
+alias stdinit="dbusinit ; dockerinit ; alsainit ; x11init ; anacroninit ; rtkitinit"
+
+alias relogin="exec $SHELL -l"
+alias inodecheck='echo "==== `pwd` ====" ; for i in `ls -a1`;do echo -n "## $i ### " ; echo "(`find ./$i -type f |wc -l`)" ;done | sort -nr'
+
+alias wsl-shutdown="killpulsewin ; wsl.exe --shutdown"
+
+init_on_startup () {
+    while true; do
+        read res\?"Do U wanna setup some standard services?[Y/n]: "
+        case $res in
+            "" | [yY]* ) : ;;
+            [nN]* ) echo "Aborted." ; return 0 ;;
+            * ) continue ;;
+        esac
+        stdinit
+        return $?
+    done
+}
+init_on_startup
