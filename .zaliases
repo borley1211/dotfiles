@@ -24,20 +24,7 @@ alias killpulsewin="taskkill.exe /IM pulseaudio.exe /F"
 alias stdinit="dbusinit ; dockerinit ; alsainit ; x11init ; anacroninit ; rtkitinit"
 
 alias relogin="exec $SHELL -l"
+alias reshell="exec $SHELL"
 alias inodecheck='echo "==== `pwd` ====" ; for i in `ls -a1`;do echo -n "## $i ### " ; echo "(`find ./$i -type f |wc -l`)" ;done | sort -nr'
 
 alias wsl-shutdown="killpulsewin ; wsl.exe --shutdown"
-
-init_on_startup () {
-    while true; do
-        read res\?"Do U wanna setup some standard services?[y/N]: "
-        case $res in
-            [yY]* ) : ;;
-            "" | [nN]* ) echo "Aborted." ; return 0 ;;
-            * ) continue ;;
-        esac
-        stdinit
-        return $?
-    done
-}
-init_on_startup

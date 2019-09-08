@@ -1,6 +1,7 @@
 #!/bin/zsh
 pathinit () {
     export PATH=/bin:/usr/bin:/usr/local/bin:$HOME/bin:$HOME/.local/bin:$PATH
+    export PATH=$HOME/.cargo/bin:$PATH
 }
 pathinit
 alias pathinit
