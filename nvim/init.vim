@@ -7,7 +7,7 @@ scriptencoding utf-8
 set fileencoding=utf-8  " 保存時の文字コード
 set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis,cp932   " 読込時の文字コードの自動判別(左側優先)
 set fileformats=unix,dos,mac    " 改行コードの自動判別(左側優先)
-set ambiwidth=single    " 絵文字等が崩れる問題を解決
+set ambiwidth=double    " 絵文字等が崩れる問題を解決
 
 
 "[dein]
@@ -53,11 +53,11 @@ set shiftwidth=4
 set smarttab
 
 " show break-points
-set showbreak=↪
+set showbreak=↳
 
 " for linewrapping
 set textwidth=0
-set colorcolumn=80  " for PEP8
+set colorcolumn=89  " for PEP8
 
 
 "[マウス有効化]
@@ -118,8 +118,3 @@ nnoremap <Up>   gk
 ""  以下に**cdした上で**クローンすること
 let g:molokai_original=1
 colorscheme molokai
-
-
-"[Kite]
-set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
-set laststatus=2  " always display the status line

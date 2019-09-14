@@ -1,5 +1,13 @@
 # Don't print a new line at the start of the prompt
 add_newline = true
 
+[git_status]
+conflicted = "≠"
+renamed = "*"
+style = "bold magenta"
+
+[jobs]
+symbol = "✪ "
+
 [line_break]
 #disabled = true

@@ -8,7 +8,7 @@ set completeopt=menuone
 
 " rsenseでの自動補完機能を有効化
 let g:rsenseUseOmniFunc = 1
-" let g:rsenseHome = '/usr/local/lib/rsense-0.3'
+" let g:rsenseHome = 'rsense'
 
 " auto-ctagsを使ってファイル保存時にtagsファイルを更新
 let g:auto_ctags = 1
