@@ -170,15 +170,14 @@ prompt_powerline_setup() {
   # POWERLINE_R_SEPARATOR=$'\uE0B2'
   POWERLINE_R_SEPARATOR=""
 
-  POWERLINE_LEFT_A="%K{green}%F{white} %-60<...<%~%<< %k%f%F{green}%K{blue}"$POWERLINE_SEPARATOR
+  POWERLINE_LEFT_A="%K{green}%F{white} %-70<...<%~%<< %k%f%F{green}%K{blue}"$POWERLINE_SEPARATOR
   POWERLINE_LEFT_B="%k%f%F{white}%K{blue} "'${vcs_info_msg_0_}'" %k%f%F{blue}%K{black}"$POWERLINE_SEPARATOR
   POWERLINE_LEFT_C=" %k%f%F{white}%K{black}"'$(git_time_details)'" %k%f%F{black}"$POWERLINE_SEPARATOR"%f "
 
   PROMPT=$POWERLINE_LEFT_A$POWERLINE_LEFT_B$POWERLINE_LEFT_C
 
   # userconfig.start
-  PROMPT_BY_USER_BEFORE="%K{cyan} %F{yellow}$(whoami)%f%F{black}@%f%F{white}$(hostname) %f%k"
-  PROMPT_BY_USER_BEFORE+="%F{cyan}%K{green}"$POWERLINE_SEPARATOR"%f%k"
+  PROMPT_BY_USER_BEFORE="%F{cyan}%K{green}"$POWERLINE_SEPARATOR"%f%k"
   PROMPT=$PROMPT_BY_USER_BEFORE$PROMPT
   # userconfig.end
 

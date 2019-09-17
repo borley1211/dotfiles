@@ -13,7 +13,7 @@ export VTE_CJK_WIDTH=2
 
 source ~/.zaliases
 
-eval "$(pip3.7 completion --zsh)"
+eval "$(python3.7 -m pip completion --zsh)"
 
 export PIPENV_VENV_IN_PROJECT=1
 if type 'pipenv' > /dev/null 2>&1; then
