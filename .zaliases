@@ -3,7 +3,6 @@ alias dbusinit="sudo service dbus restart"
 alias dockerinit="sudo service docker restart"
 alias alsainit="sudo service alsa-utils restart"
 alias x11init="sudo service x11-common restart"
-alias rtkitinit="sudo rtkitctl --start"
 alias jackd2init="sudo jack_control start"
 
 pulseinit () {
@@ -20,7 +19,7 @@ alias pulseinit
 
 alias killpulsewin="taskkill.exe /IM pulseaudio.exe /F"
 
-alias stdinit="dbusinit ; dockerinit ; alsainit ; x11init ; rtkitinit"
+alias stdinit="dbusinit ; dockerinit ; alsainit ; x11init"
 
 alias relogin="exec $SHELL -l"
 alias reshell="exec $SHELL"
