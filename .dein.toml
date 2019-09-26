@@ -15,7 +15,7 @@ repo = 'scrooloose/nerdtree'
 repo = 'tomasr/molokai'
 
 [[plugins]]
-repo = 'scrooloose/syntastic'
+repo = 'vim-syntastic/syntastic'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
