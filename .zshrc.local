@@ -1,21 +1,47 @@
 #!/bin/zsh
 reenv () {
-    export PATH="/bin:/usr/bin:/usr/local/bin:$HOME/bin:$HOME/.local/bin":$PATH
-    export PATH="$HOME/.cargo/bin":$PATH
-    export PATH="$HOME/.gem/ruby/2.5.0/bin":$PATH
+    _paths=("/bin" "/usr/bin" "/usr/local/bin")
+    _paths=(${_paths} "${HOME}/bin" "${HOME}/.local/bin")
+    _paths=(${_paths} "${HOME}/.cargo/bin")
+
+    #[TIPS]
+    # If you want to add /path/to/some_dir to `PATH` envvar,
+    # you can do as below:
+    ##  _paths=(${_paths} "/path/to/some_dir")
+    # or:
+    ##$ reenv "/path/to/some_dir"
+
+    _new_path="$1"
+    _paths=(${_paths} ${_new_path})
+
+    for _p in ${_paths}; do
+        if [ -d ${_p} ]; then
+            export PATH="${PATH}:${_p}"
+        fi
+    done
 }
 reenv
 alias reenv
 
-# for char-encoding
-export LANG=ja_JP.UTF-8 ; export LC_ALL=$LANG ; export LANGUAGE=$LANG
+##[Encoding]
+export LANG=ja_JP.UTF-8 ; export LC_ALL=$LANG
 export VTE_CJK_WIDTH=2
 
+##[Setup aliases]
 source ~/.zaliases
 
 export TMPDIR=/tmp
 
+##[Python]
+export PYTHONPATH=
+
 eval "$(python3.7 -m pip completion --zsh)"
+
+if [ -d "${HOME}/.pyenv" ]; then
+    export PYENV_ROOT="${HOME}/.pyenv"
+    export PATH="${PYENV_ROOT}/bin:${PATH}"
+    eval "$(pyenv init -)"
+fi
 
 export PIPENV_VENV_IN_PROJECT=1
 if type 'pipenv' > /dev/null 2>&1; then
