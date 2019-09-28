@@ -34,6 +34,7 @@ export TMPDIR=/tmp
 
 ##[Python]
 export PYTHONPATH=
+export PIP_DEFAULT_TIMEOUT=600
 
 eval "$(python3.7 -m pip completion --zsh)"
 
@@ -48,6 +49,7 @@ if type 'pipenv' > /dev/null 2>&1; then
     eval "$(pipenv --completion)"
 fi
 export PIPENV_CACHE_DIR=$TMPDIR
+export PIPENV_TIMEOUT=600
 
 export EDITOR="nvim" ; export VISUAL=$EDITOR
 
