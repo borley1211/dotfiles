@@ -23,3 +23,6 @@ init_on_startup () {
 if [[ -o login ]];then
     init_on_startup
 fi
+
+## for LLVM
+export LLVM_CONFIG="/usr/bin/llvm-config-7"
