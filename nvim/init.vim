@@ -21,6 +21,11 @@ set showcmd
 set wildmenu
 set modeline
 
+"" title を vim 起動以前の状態に戻す
+if ! has("patch-8.1.0253")
+  let &t_ti .= "\e[22;0t"
+  let &t_te .= "\e[23;0t"
+endif
 
 "[括弧/タグジャンプ]
 set showmatch
