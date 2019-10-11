@@ -15,7 +15,7 @@ source ~/configs/.deinrc
 
 
 "[ステータス表示]
-set title
+set title titlestring=%<%F%=%l/%L-%P titlelen=70 
 set showmode
 set showcmd
 set wildmenu

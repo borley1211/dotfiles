@@ -18,7 +18,7 @@ pcm.monitor {
     type asym
     capture.pcm {
         type pulse
-        device win_out.monitor
+        device alsa_out.monitor
     }
     playback.pcm "null"
     hint.description "Monitor for PulseAudio"
@@ -32,7 +32,7 @@ pcm.mic {
     type asym
     capture.pcm {
         type pulse
-        device win_in
+        device alsa_in
     }
     playback.pcm "null"
     hint.description "Input from selected Device"
