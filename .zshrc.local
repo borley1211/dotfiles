@@ -3,6 +3,7 @@ reenv () {
     _paths=("/bin" "/usr/bin" "/usr/local/bin")
     _paths=(${_paths} "${HOME}/bin" "${HOME}/.local/bin")
     _paths=(${_paths} "${HOME}/.cargo/bin")
+    _paths=(${_paths} "${HOME}/node_modules/.bin")
 
     #[TIPS]
     # If you want to add /path/to/some_dir to `PATH` envvar,
@@ -55,6 +56,7 @@ export PIPENV_TIMEOUT=600
 export EDITOR="nvim"; export VISUAL=$EDITOR
 
 export XDG_RUNTIME_DIR=$HOME
+export XDG_CONFIG_DIR=${HOME}/.config
 
 if [ -e powerline-daemon ];then
     powerline-daemon -q

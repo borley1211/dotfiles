@@ -24,7 +24,7 @@ set modeline
 
 "[括弧/タグジャンプ]
 set showmatch
-source $VIMRUNTIME/macros/matchit.vim   " Vimの「%」を拡張
+"source $VIMRUNTIME/macros/matchit.vim   " Vimの「%」を拡張
 
 
 "[カーソル]

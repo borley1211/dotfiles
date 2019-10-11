@@ -24,13 +24,12 @@ repo = 'itchyny/lightline.vim'
 repo = 'Yggdroot/indentLine'
 
 [[plugins]]
-repo = 'Shougo/neocomplete'
+repo = 'Shougo/deoplete.vim'
+depend = ['roxma/nvim-yarp', 'roxma/vim-hug-neovim-rpc']
+hook_add = 'let g:deoplete#enable_at_startup = 1'
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
-
-[[plugins]]
-repo = 'Shougo/unite.vim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
@@ -43,4 +42,9 @@ repo = 'tpope/vim-rhubarb'
 
 [[plugins]]
 repo = 'powerline/powerline'
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+merge = 0
+rev = 'release'
 # vim:ft=toml
