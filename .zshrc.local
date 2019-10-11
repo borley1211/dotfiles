@@ -36,14 +36,14 @@ export TMPDIR=/tmp
 export PYTHONPATH=
 export PIP_DEFAULT_TIMEOUT=600
 
-eval "$(python -m pip completion --zsh)"
-
 if [ -d "${HOME}/.pyenv" ]; then
     export PYENV_ROOT="${HOME}/.pyenv"
     export PATH="${PYENV_ROOT}/bin:${PATH}"
     eval "$(pyenv init -)"
     export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"
 fi
+
+eval "$(python -m pip completion --zsh)"
 
 export PIPENV_VENV_IN_PROJECT=1
 if type 'pipenv' > /dev/null 2>&1; then
@@ -52,7 +52,7 @@ fi
 export PIPENV_CACHE_DIR=$TMPDIR
 export PIPENV_TIMEOUT=600
 
-export EDITOR="nvim" ; export VISUAL=$EDITOR
+export EDITOR="nvim"; export VISUAL=$EDITOR
 
 export XDG_RUNTIME_DIR=$HOME
 
@@ -69,8 +69,8 @@ if [ -e powerline-daemon ];then
     done
 fi
 
-PATH="/home/borley1211/perl5/bin${PATH:+:${PATH}}"; export PATH
-PERL5LIB="/home/borley1211/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB
-PERL_LOCAL_LIB_ROOT="/home/borley1211/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT
-PERL_MB_OPT="--install_base \"/home/borley1211/perl5\""; export PERL_MB_OPT
-PERL_MM_OPT="INSTALL_BASE=/home/borley1211/perl5"; export PERL_MM_OPT
+PATH="${HOME}/perl5/bin${PATH:+:${PATH}}"; export PATH
+PERL5LIB="${HOME}/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB
+PERL_LOCAL_LIB_ROOT="${HOME}/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT
+PERL_MB_OPT="--install_base \"${HOME}/perl5\""; export PERL_MB_OPT
+PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5"; export PERL_MM_OPT
