@@ -2,12 +2,18 @@
 add_newline = true
 
 [git_status]
-conflicted = "≠"
-renamed = "*"
+conflicted = "🚨 "
+renamed = "⚝ "
+prefix = ""
+suffix = " "
 style = "bold magenta"
 
-[jobs]
-symbol = "✪ "
+[git_branch]
+symbol = "🐙 "
 
-[line_break]
-#disabled = true
+[python]
+symbol = "🐍 "
+
+[time]
+disabled = false
+format = "🕒 %T"
