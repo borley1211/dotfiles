@@ -78,10 +78,6 @@ set hidden
 set backspace=indent,eol,start
 
 
-"[シンタックスハイライト]
-syntax enable
-
-
 "[カット/コピー/ペースト]
 inoremap { {}<Left>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
