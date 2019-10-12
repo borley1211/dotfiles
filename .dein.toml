@@ -27,6 +27,9 @@ repo = 'Yggdroot/indentLine'
 repo = 'Shougo/deol.nvim'
 
 [[plugins]]
+repo = 'Shougo/denite.nvim'
+
+[[plugins]]
 repo = 'Shougo/deoplete.vim'
 depend = ['roxma/nvim-yarp', 'roxma/vim-hug-neovim-rpc']
 hook_add = 'let g:deoplete#enable_at_startup = 1'
