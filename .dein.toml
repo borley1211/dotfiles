@@ -30,7 +30,7 @@ repo = 'Shougo/deol.nvim'
 repo = 'Shougo/denite.nvim'
 
 [[plugins]]
-repo = 'Shougo/deoplete.vim'
+repo = 'Shougo/deoplete.nvim'
 depend = ['roxma/nvim-yarp', 'roxma/vim-hug-neovim-rpc']
 hook_add = 'let g:deoplete#enable_at_startup = 1'
 
