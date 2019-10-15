@@ -40,8 +40,8 @@ load-module module-switch-on-connect
 ### Load audio drivers statically
 ### (it's probably better to not load these drivers manually, but instead
 ### use module-udev-detect -- see below -- for doing this automatically)
-load-module module-alsa-sink sink_name=alsa_out namereg_fail=0 tsched=0
-#load-module module-alsa-source
+#load-module module-alsa-sink sink_name=alsa_out namereg_fail=0 tsched=0
+load-module module-alsa-source
 #load-module module-oss device="/dev/dsp" sink_name=output source_name=input
 #load-module module-oss-mmap device="/dev/dsp" sink_name=output source_name=input
 load-module module-null-sink sink_name=virtual

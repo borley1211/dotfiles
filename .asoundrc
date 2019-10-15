@@ -1,5 +1,7 @@
 pcm.!default {
-    type pulse
+    pcm "hw:0,0"
+    format S32_LE
+    channels 2
 }
 
 pcm.pulse {
@@ -42,4 +44,7 @@ ctl.mic {
     type pulse
 }
 
+defaults.ctl.card 0
+defaults.pcm.card 0
+defaults.pcm.device 0
 defaults.pcm.rate_converter="speexrate"
