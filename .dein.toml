@@ -35,6 +35,9 @@ depend = ['roxma/nvim-yarp', 'roxma/vim-hug-neovim-rpc']
 hook_add = 'let g:deoplete#enable_at_startup = 1'
 
 [[plugins]]
+repo = 'zchee/deoplete-zsh'
+
+[[plugins]]
 repo = 'Shougo/neomru.vim'
 
 [[plugins]]

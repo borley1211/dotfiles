@@ -1,50 +1,86 @@
 pcm.!default {
-    pcm "hw:0,0"
-    format S32_LE
-    channels 2
+    type asym
+    playback.pcm "out"
+    capture.pcm "dsnooper"
+    hint.description "Default Device for user"
 }
 
-pcm.pulse {
-    type pulse
+pcm.dmixpci {
+    type dmix
+    ipc_key 1024
+    ipc_perm 0666
+    slave {
+        pcm "hw:AudioPCI,0"
+        period_time 0
+        period_size 1024
+        buffer_size 8192
+        channels 2
+        rate 48000
+    }
+    bindings {
+        0 0
+        1 1
+    }
+    hint.description "Mixer for AudioPCI"
 }
 
-ctl.!default {
-    type pulse
+pcm.dmixloop {
+    type dmix
+    ipc_key 2048
+    ipc_perm 0666
+    slave {
+        pcm "hw:Loopback,0,0"
+        period_time 0
+        period_size 1024
+        buffer_size 8192
+        channels 2
+        rate 48000
+    }
+    bindings {
+        0 0
+        1 1
+    }
+    hint.description "Snooper for Loopback"
 }
 
-ctl.pulse {
-    type pulse
+pcm.dsnooper {
+    type dsnoop
+    ipc_key 4096 
+    ipc_perm 0666 
+    slave {
+        pcm "hw:AudioPCI,0"
+        period_time 0
+        period_size 1024
+        buffer_size 8192
+        channels 2
+        rate 48000
+    }
+    bindings {
+        0 0
+        1 1
+    }
+    hint.description "Snooper for AudioPCI"
+}
+
+pcm.out {
+    type plug
+    slave.pcm "dmixpci"
+    hint.description "Plug Device for dmixpci"
 }
 
 pcm.monitor {
-    type asym
-    capture.pcm {
-        type pulse
-        device alsa_out.monitor
-    }
-    playback.pcm "null"
-    hint.description "Monitor for PulseAudio"
-}
-
-ctl.monitor {
     type pulse
+    device output.monitor
+    fallback "sysdefault"
+    hint.description "Monitor for Default Device"
 }
 
-pcm.mic {
-    type asym
-    capture.pcm {
-        type pulse
-        device alsa_in
-    }
-    playback.pcm "null"
-    hint.description "Input from selected Device"
-}
-
-ctl.mic {
+pcm.array {
     type pulse
+    device input
+    fallback "sysdefault"
+    hint.description "Mic-Array"
 }
 
-defaults.ctl.card 0
-defaults.pcm.card 0
-defaults.pcm.device 0
 defaults.pcm.rate_converter="speexrate"
+defaults.pcm.format=S32_LE

@@ -120,4 +120,4 @@ endif
 ""      $VIMRUNTIME/pack/(unique_dirname)/start/
 ""  以下に**cdして**クローンすること
 let g:molokai_original=1
-colorscheme molokai
+"colorscheme molokai
