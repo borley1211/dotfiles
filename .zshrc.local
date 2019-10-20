@@ -44,7 +44,7 @@ if [ -d "${HOME}/.pyenv" ]; then
     export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"
 fi
 
-eval "$(python -m pip completion --zsh)"
+eval "$(python3 -m pip completion --zsh)"
 
 export PIPENV_VENV_IN_PROJECT=1
 if type 'pipenv' > /dev/null 2>&1; then
