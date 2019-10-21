@@ -41,7 +41,7 @@ load-module module-switch-on-connect
 ### (it's probably better to not load these drivers manually, but instead
 ### use module-udev-detect -- see below -- for doing this automatically)
 #load-module module-alsa-sink sink_name=alsa_out namereg_fail=0 tsched=0
-load-module module-alsa-source
+#load-module module-alsa-source
 #load-module module-oss device="/dev/dsp" sink_name=output source_name=input
 #load-module module-oss-mmap device="/dev/dsp" sink_name=output source_name=input
 load-module module-null-sink sink_name=virtual
@@ -64,12 +64,12 @@ load-module module-jackdbus-detect channels=2
 
 ### Automatically load driver modules for Bluetooth hardware
 .ifexists module-bluetooth-policy.so
-#load-module module-bluetooth-policy
+load-module module-bluetooth-policy
 .endif
 
 .ifexists module-bluetooth-discover.so
-#load-module module-bluetooth-discover
-.endif
+load-module module-bluetooth-discover
+endif
 
 ### Load several protocols
 .ifexists module-esound-protocol-unix.so
@@ -116,12 +116,12 @@ load-module module-always-sink
 load-module module-intended-roles
 
 ### Automatically suspend sinks/sources that become idle for too long
-#load-module module-suspend-on-idle
+load-module module-suspend-on-idle
 
 ### If autoexit on idle is enabled we want to make sure we only quit
 ### when no local session needs us anymore.
 .ifexists module-console-kit.so
-#load-module module-console-kit
+load-module module-console-kit
 .endif
 .ifexists module-systemd-login.so
 load-module module-systemd-login
