@@ -1,5 +1,5 @@
 #!/bin/zsh
-reenv () {
+function reenv () {
     _paths=("/bin" "/usr/bin" "/usr/local/bin")
     _paths=(${_paths} "${HOME}/bin" "${HOME}/.local/bin")
     _paths=(${_paths} "${HOME}/.cargo/bin")
@@ -32,6 +32,11 @@ export VTE_CJK_WIDTH=2
 source ~/.zaliases
 
 export TMPDIR=/tmp
+
+if [ -d $HOME/.anyenv ]; then
+    export PATH="$HOME/.anyenv/bin:$PATH"
+    eval "$(anyenv init -)"
+fi
 
 ##[Python]
 export PYTHONPATH=
@@ -76,3 +81,7 @@ PERL5LIB="${HOME}/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB
 PERL_LOCAL_LIB_ROOT="${HOME}/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT
 PERL_MB_OPT="--install_base \"${HOME}/perl5\""; export PERL_MB_OPT
 PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5"; export PERL_MM_OPT
+
+# for zfunc
+fpath=($HOME/.zfunc $fpath)
+autoload -Uz compinit && compinit
