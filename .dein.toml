@@ -16,6 +16,7 @@ repo = 'tomasr/molokai'
 
 [[plugins]]
 repo = 'vim-syntastic/syntastic'
+hook_add = 'let g:syntastic_vim_checkers = ["vint"]'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'

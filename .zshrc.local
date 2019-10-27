@@ -56,7 +56,7 @@ if type 'pipenv' > /dev/null 2>&1; then
     eval "$(pipenv --completion)"
 fi
 export PIPENV_CACHE_DIR=$TMPDIR
-export PIPENV_TIMEOUT=1000
+export PIPENV_TIMEOUT=1200
 
 export EDITOR="nvim"; export VISUAL=$EDITOR
 
@@ -85,3 +85,5 @@ PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5"; export PERL_MM_OPT
 # for zfunc
 fpath=($HOME/.zfunc $fpath)
 autoload -Uz compinit && compinit
+
+export NVIM_COC_LOGFILE="coc.log"
