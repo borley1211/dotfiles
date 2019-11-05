@@ -3,7 +3,7 @@ add_newline = true
 
 [git_status]
 conflicted = "🚨 "
-renamed = "⚝ "
+renamed = "🆕 "
 prefix = ""
 suffix = " "
 style = "bold magenta"
@@ -17,3 +17,8 @@ symbol = "🐍 "
 [time]
 disabled = false
 format = "🕒 %T"
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "⚡"
+discharging_symbol = "💨"

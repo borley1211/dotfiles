@@ -1,9 +1,10 @@
 #!/bin/zsh
 function reenv () {
     _paths=("/bin" "/usr/bin" "/usr/local/bin")
-    _paths=(${_paths} "${HOME}/bin" "${HOME}/.local/bin")
-    _paths=(${_paths} "${HOME}/.cargo/bin")
-    _paths=(${_paths} "${HOME}/node_modules/.bin")
+    _paths=(${_paths} "$HOME/bin" "$HOME/.local/bin")
+    _paths=(${_paths} "$HOME/.cargo/bin")
+    _paths=(${_paths} "$HOME/node_modules/.bin")
+    _paths=(${_paths} "$HOME/go/bin")
 
     #[TIPS]
     # If you want to add /path/to/some_dir to `PATH` envvar,
@@ -12,7 +13,7 @@ function reenv () {
     # or:
     ##$ reenv "/path/to/some_dir"
 
-    _new_path="$1"
+    _new_path="$@"
     _paths=(${_paths} ${_new_path})
 
     for _p in ${_paths}; do
@@ -23,6 +24,9 @@ function reenv () {
 }
 reenv
 alias reenv
+
+export N_PREFIX=$HOME/.n
+reenv "$N_PREFIX/bin"
 
 ##[Encoding]
 export LANG=ja_JP.UTF-8 ; export LC_ALL=$LANG
