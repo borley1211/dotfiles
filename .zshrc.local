@@ -44,7 +44,7 @@ fi
 
 ##[Python]
 export PYTHONPATH=
-export PIP_DEFAULT_TIMEOUT=600
+export PIP_DEFAULT_TIMEOUT=1200
 
 if [ -d "${HOME}/.pyenv" ]; then
     export PYENV_ROOT="${HOME}/.pyenv"
@@ -60,7 +60,8 @@ if type 'pipenv' > /dev/null 2>&1; then
     eval "$(pipenv --completion)"
 fi
 export PIPENV_CACHE_DIR=$TMPDIR
-export PIPENV_TIMEOUT=1200
+export PIPENV_TIMEOUT=1200; export PIPENV_INSTALL_TIMEOUT=$PIPENV_TIMEOUT
+export PIPENV_SKIP_LOCK=1
 
 export EDITOR="nvim"; export VISUAL=$EDITOR
 

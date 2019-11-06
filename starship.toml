@@ -1,6 +1,12 @@
 # Don't print a new line at the start of the prompt
 add_newline = true
 
+[aws]
+symbol = "\uF270"
+
+[golang]
+symbol = "\uE626"
+
 [git_status]
 conflicted = "🚨 "
 renamed = "🆕 "
@@ -9,14 +15,14 @@ suffix = " "
 style = "bold magenta"
 
 [git_branch]
-symbol = "🐙 "
+symbol = "\uF113 "
 
 [python]
-symbol = "🐍 "
+symbol = "\uE73C "
 
 [time]
 disabled = false
-format = "🕒 %T"
+format = "\uF017 %T"
 
 [battery]
 full_symbol = "🔋"
