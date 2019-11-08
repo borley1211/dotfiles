@@ -11,7 +11,7 @@ set ambiwidth=double    " 絵文字等が崩れる問題を解決
 
 
 "[dein]
-source ~/configs/.deinrc
+source ~/.deinrc
 
 
 "[ステータス表示]
