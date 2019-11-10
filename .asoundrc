@@ -1,9 +1,6 @@
 pcm.!default {
     type asym
-    playback.pcm {
-        type plug
-        slave.pcm "dmixpci"
-    }
+    playback.pcm "dmixpci"
     capture.pcm "dsnooper"
     hint.description "Default Device for user"
 }
@@ -32,7 +29,7 @@ pcm.dmixloop {
     ipc_key 2048
     ipc_perm 0666
     slave {
-        pcm "hw:Loopback,0"
+        pcm "hw:Loopback,1"
         period_time 0
         period_size 1024
         buffer_size 8192
@@ -46,17 +43,12 @@ pcm.dmixloop {
     hint.description "Snooper for Loopback"
 }
 
-pcm.pci {
-    type plug
-    slave.pcm "hw:0,0"
-}
-
 pcm.dsnooper {
     type dsnoop
     ipc_key 4096 
     ipc_perm 0666 
     slave {
-        pcm "hw:0,2"
+        pcm "hw:0,1"
         period_time 0
         period_size 1024
         buffer_size 8192
