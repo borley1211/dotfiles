@@ -457,7 +457,7 @@ if [ -z "${DOTPATH:-}" ]; then
     DOTPATH=~/Dotfiles; export DOTPATH
 fi
 
-DOTFILES_GITHUB="https://github.com/borley1211/configs"
+DOTFILES_GITHUB="https://github.com/borley1211/dotfiles"
 export DOTFILES_GITHUB
 
 # shellcheck disable=SC1078,SC1079,SC2016
@@ -552,9 +552,6 @@ dotfiles_initialize() {
             :
         else
             if [ -f Makefile ]; then
-                #DOTPATH="$(dotpath)"
-                #export DOTPATH
-                #bash "$DOTPATH"/etc/init/init.sh
                 make init
             else
                 log_fail "Makefile: not found"
