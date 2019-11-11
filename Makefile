@@ -1,7 +1,7 @@
-DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
-CANDIDATES := $(wildcard .??*)
-EXCLUSIONS := .DS_Store .git .gitmodules .travis.yml .config
-DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
+DOTPATH		:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+CANDIDATES	:= $(wildcard .??*) $(wildcard .config/??*/??*)
+EXCLUSIONS	:= .DS_Store .git .gitmodules .travis.yml .config
+DOTFILES	:= $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
 .DEFAULT_GOAL := help
 
