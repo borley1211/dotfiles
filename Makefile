@@ -3,7 +3,9 @@ CANDIDATES	:= $(wildcard .??*) $(wildcard .config/??*/??*)
 EXCLUSIONS	:= .DS_Store .git .gitmodules .travis.yml .config
 DOTFILES	:= $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
-.DEFAULT_GOAL := help
+INITSCRIPTS	:= $(sort $(wildcard etc/init/??*))
+
+.DEFAULT_GOAL	:= help
 
 all:
 
@@ -17,7 +19,7 @@ deploy: ## Create symlink to home directory
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
 init: ## Setup environment settings
-	@DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/install
+	@$(foreach val, $(INITSCRIPTS), bash $(abspath $(val));)
 
 test: ## Test dotfiles and init scripts
 	@#DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/test/test.sh
