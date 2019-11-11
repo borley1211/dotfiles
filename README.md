@@ -1,4 +1,4 @@
-# configs
+# dotfiles
 configuration files (*dot files*)
 
 ## Install
