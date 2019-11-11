@@ -1,4 +1,6 @@
 #!/bin/bash
+echo ""
+echo "** RUNNING $(basename $0) **"
 
 # install pyenv and plugins
 if [ ! -d "$HOME/.pyenv" ]; then
@@ -18,3 +20,5 @@ fi
 
 # install dependencies for build python
 sudo apt -y install gcc make libssl-dev libbz2-dev libreadline-dev libsqlite3-dev zlib1g-dev
+
+echo "** FINISHED **"

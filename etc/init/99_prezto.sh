@@ -1,4 +1,7 @@
 #!/bin/bash
+echo ""
+echo "** RUNNING $(basename $0) **"
+
 if [ ! "$(command -v zsh)" == "1" ]  # if zsh exists
 then
     # echo "zsh exists!"
@@ -10,3 +13,5 @@ then
 else
     echo "ERROR: You MUST run me again, after installing ZSH."
 fi
+
+echo "** FINISHED **"
