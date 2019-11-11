@@ -63,8 +63,9 @@ pcm.dsnooper {
 }
 
 pcm.speaker {
-    type plug
-    slave.pcm "dmixpci"
+    type asym
+    playback.pcm "dmixpci"
+    capture.pcm "null"
     hint.description "Output Device (with Null Input)"
 }
 
