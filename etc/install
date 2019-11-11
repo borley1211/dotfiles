@@ -278,6 +278,15 @@ has() {
     is_exists "$@"
 }
 
+# run_if_not_exist works if argv[1] is not exists(added by @borley1211)
+run_if_not_exist() {
+    if [ ! is_exists "$1" ]; then
+        "$2"
+    else
+        echo "NOTICE: $1 is already exists."
+    fi
+}
+
 # die returns exit code error and echo error message
 die() {
     e_error "$1" 1>&2

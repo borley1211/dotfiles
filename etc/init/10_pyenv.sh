@@ -1,10 +1,14 @@
 #!/bin/bash
+source $DOTPATH/etc/install
+
 echo ""
 echo "** RUNNING $(basename $0) **"
 
 # install pyenv and plugins
 if [ ! -d "$HOME/.pyenv" ]; then
     curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+else
+    echo "pyenv is already exists."
 fi
 
 # install pyenv-ccache
