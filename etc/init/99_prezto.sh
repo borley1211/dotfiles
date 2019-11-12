@@ -15,3 +15,4 @@ else
 fi
 
 echo "** FINISHED **"
+exit 0
