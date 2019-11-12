@@ -8,8 +8,8 @@ symbol = "\uF270"
 symbol = "\uE626"
 
 [git_status]
-conflicted = "🚨 "
-renamed = "🆕 "
+conflicted = "\u26A0"
+renamed = "\u270E"
 prefix = ""
 suffix = " "
 style = "bold magenta"
