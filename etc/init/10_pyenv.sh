@@ -10,7 +10,7 @@ else
 fi
 
 # install pyenv-ccache
-sudo apt -y install ccache
+#sudo apt -y install ccache
 if [ ! -e "$(pyenv root)/plugins/pyenv-ccache" ]; then
     git clone https://github.com/yyuu/pyenv-ccache.git $(pyenv root)/plugins/pyenv-ccache
 fi
@@ -26,7 +26,7 @@ if [ ! -e "$(pyenv root)/plugins/pyenv-virtualenv" ]; then
 fi
 
 # install dependencies for build python
-sudo apt -y install gcc make libssl-dev libbz2-dev libreadline-dev libsqlite3-dev zlib1g-dev
+#sudo apt -y install gcc make libssl-dev libbz2-dev libreadline-dev libsqlite3-dev zlib1g-dev
 
 echo "** FINISHED **"
 exit 0
