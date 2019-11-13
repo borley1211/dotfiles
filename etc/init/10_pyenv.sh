@@ -4,7 +4,7 @@ echo "** RUNNING $(basename $0) **"
 
 # install pyenv and plugins
 if [ ! -d "$HOME/.pyenv" ]; then
-    curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+    git clone https://github.com/pyenv/pyenv.git $HOME/.pyenv
 else
     echo "pyenv is already exists."
 fi
