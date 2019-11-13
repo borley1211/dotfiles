@@ -469,12 +469,12 @@ dotfiles_logo='
    \__,_|\___/ \__|_| |_|_|\___||___/ 
 
   *** WHAT IS INSIDE? ***
-  1. Download ${DOTFILES_GITHUB}.git
+  1. Download "${DOTFILES_GITHUB}".git
   2. Symlinking dot files to your home directory
   3. Execute all sh files within `etc/init/` (optional)
 
   See the README for documentation.
-  ${DOTFILES_GITHUB}
+  "${DOTFILES_GITHUB}"
 
   Copyright (c) 2014 "BABAROT" aka @b4b4r07.
   Edited by @borley1211 in 2019.
@@ -538,9 +538,7 @@ dotfiles_deploy() {
         :
     else
         make deploy
-    fi &&
-
-        e_newline && e_done "Deploy"
+    fi && e_newline && e_done "Deploy"
 }
 
 dotfiles_initialize() {
@@ -557,9 +555,7 @@ dotfiles_initialize() {
                 log_fail "Makefile: not found"
                 exit 1
             fi
-        fi &&
-
-            e_newline && e_done "Initialize"
+        fi && e_newline && e_done "Initialize"
     fi
 }
 
@@ -584,7 +580,6 @@ if echo "$-" | grep -q "i"; then
     # -> source a.sh
     VITALIZED=1
     export VITALIZED
-
     : return
 else
     # three patterns
