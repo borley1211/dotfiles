@@ -20,9 +20,14 @@ if [ ! -e "$(pyenv root)/plugins/pyenv-pip-migrate" ]; then
     git clone git://github.com/pyenv/pyenv-pip-migrate.git $(pyenv root)/plugins/pyenv-pip-migrate
 fi
 
-#install pyenv-virtualenv
+# install pyenv-virtualenv
 if [ ! -e "$(pyenv root)/plugins/pyenv-virtualenv" ]; then
     git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+fi
+
+# install pyenv-update
+if [ ! -e "$(pyenv root)/plugins/pyenv-update" ]; then
+    git clone https://github.com/pyenv/pyenv-update.git $(pyenv root)/plugins/pyenv-update
 fi
 
 # install dependencies for build python
