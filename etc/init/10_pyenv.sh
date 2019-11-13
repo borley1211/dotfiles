@@ -8,6 +8,7 @@ if [ ! -d "$HOME/.pyenv" ]; then
 else
     echo "pyenv is already exists."
 fi
+eval "$(pyenv init -)"
 
 # install pyenv-ccache
 #sudo apt -y install ccache
