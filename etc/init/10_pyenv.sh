@@ -1,6 +1,4 @@
 #!/bin/bash
-source $DOTPATH/etc/install
-
 echo ""
 echo "** RUNNING $(basename $0) **"
 
@@ -20,6 +18,11 @@ fi
 # install pyenv-pip-migrate
 if [ ! -e "$(pyenv root)/plugins/pyenv-pip-migrate" ]; then
     git clone git://github.com/pyenv/pyenv-pip-migrate.git $(pyenv root)/plugins/pyenv-pip-migrate
+fi
+
+#install pyenv-virtualenv
+if [ ! -e "$(pyenv root)/plugins/pyenv-virtualenv" ]; then
+    git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
 fi
 
 # install dependencies for build python
