@@ -43,7 +43,6 @@ if [ -d $HOME/.anyenv ]; then
 fi
 
 ##[Python]
-export PYTHONPATH=
 export PIP_DEFAULT_TIMEOUT=1200
 
 if [ -d "${HOME}/.pyenv" ]; then
@@ -53,15 +52,15 @@ if [ -d "${HOME}/.pyenv" ]; then
     export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"
 fi
 
-eval "$(python3 -m pip completion --zsh)"
+eval "$(pip completion --zsh)"
 
 export PIPENV_VENV_IN_PROJECT=1
-if type 'pipenv' > /dev/null 2>&1; then
+if [ python -m pipenv > /dev/null 2>&1 ]; then
     eval "$(pipenv --completion)"
+    export PIPENV_CACHE_DIR=$TMPDIR
+    export PIPENV_TIMEOUT=1200; export PIPENV_INSTALL_TIMEOUT=$PIPENV_TIMEOUT
+    export PIPENV_SKIP_LOCK=1
 fi
-export PIPENV_CACHE_DIR=$TMPDIR
-export PIPENV_TIMEOUT=1200; export PIPENV_INSTALL_TIMEOUT=$PIPENV_TIMEOUT
-export PIPENV_SKIP_LOCK=1
 
 export EDITOR="nvim"; export VISUAL=$EDITOR
 
@@ -70,13 +69,17 @@ export XDG_CONFIG_DIR=${HOME}/.config
 
 if [ -e powerline-daemon ];then
     powerline-daemon -q
+
+    while read p;do
+        PYPKGDIR=(${PYPKGDIR:-} ${p})
+    done < <(python -c 'import sys; print("\n".join(p for p in sys.path if "site-packages" in p))')
     
-    PYSPKGDIR=("Library/Python/3.7/lib/python/site-packages" ".local/lib/python3.7/site-packages")
     PWLIN_INIT="powerline/bindings/zsh/powerline.zsh"
 
-    for WKDIR in ${PYSPKGDIR};do
+    for WKDIR in ${PYPKGDIR};do
         if [ -f ${WKDIR} ];then
-            source ${HOME}/${WKDIR}/${PWLIN_INIT}
+            source ${WKDIR}/${PWLIN_INIT}
+            break
         fi
     done
 fi
