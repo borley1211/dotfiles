@@ -11,14 +11,14 @@ INITSCRIPTS	:= $(sort $(wildcard etc/init/??*))
 all:
 
 list: ## Show dot files in this repo
-	@$(foreach val, $(DOTFILES) $(CONFIGDIRS), /bin/ls -dF $(val);)
+	@$(foreach val, $(DOTFILES) $(CONFIGDIRS), ls -dF $(val);)
 
 deploy: ## Create symlink to home directory
 	@echo 'Copyright (c) 2013-2015 BABAROT, 2019 BORLEY All Rights Reserved.'
 	@echo '==> Start to deploy dotfiles to home directory.'
 	@echo ''
-	@$(foreach val, $(CONFIGDIRS), bash -c "mkdir -p $(HOME)/$(val)";)
-	@$(foreach val, $(DOTFILES), bash -c "ln -sfv $(abspath $(val)) $(HOME)/$(val)";)
+	@$(foreach val, $(CONFIGDIRS), mkdir -p $(HOME)/$(val);)
+	@$(foreach val, $(DOTFILES), ln -sfv $(abspath $(val)) $(HOME)/$(val);)
 
 init: ## Setup environment settings
 	@$(foreach val, $(INITSCRIPTS), bash $(abspath $(val));)
