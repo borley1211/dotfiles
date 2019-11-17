@@ -11,7 +11,8 @@ set ambiwidth=double    " 絵文字等が崩れる問題を解決
 
 
 "[dein]
-source $HOME/.deinrc
+let s:deinrc = $DOTPATH . "/deinrc"
+execute '!nvim -S' s:deinrc
 
 
 "[ステータス表示]
