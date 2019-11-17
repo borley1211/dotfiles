@@ -18,7 +18,7 @@ deploy: ## Create symlink to home directory
 	@echo '==> Start to deploy dotfiles to home directory.'
 	@echo ''
 	@$(foreach val, $(CONFIGDIRS), bash -c "mkdir -p $(HOME)/$(val)";)
-	@$(foreach val, $(DOTFILES), bash -c "ln -sfv $(abspath $(val)) $(HOME)/$(val)";)
+	@$(foreach val, $(DOTFILES), bash -c "ln -sfv $(HOME)/$(val)" $(abspath $(val));)
 
 init: ## Setup environment settings
 	@$(foreach val, $(INITSCRIPTS), bash $(abspath $(val));)
