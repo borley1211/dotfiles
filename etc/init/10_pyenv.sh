@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!bash
 echo ""
 echo "** RUNNING $(basename $0) **"
 
