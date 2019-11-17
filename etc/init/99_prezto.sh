@@ -6,7 +6,7 @@ if [ ! "$(command -v zsh)" == "1" ]  # if zsh exists
 then
     # echo "zsh exists!"
     if [ ! -d ${ZDOTDIR:-$HOME}/.zprezto ]; then
-        zsh -c "git clone --recursive https://github.com/sorin-ionescu/prezto.git '${ZDOTDIR:-$HOME}/.zprezto' && setopt EXTENDED_GLOB; for rcfile in '${ZDOTDIR:-$HOME}'/.zprezto/runcoms/^README.md(.N); do; ln -sv '$rcfile' '${ZDOTDIR:-$HOME}/.${rcfile:t}'; done"
+        zsh -c "git clone --recursive https://github.com/sorin-ionescu/prezto.git ${ZDOTDIR:-$HOME}/.zprezto && setopt EXTENDED_GLOB; for rcfile in ${ZDOTDIR:-$HOME}/.zprezto/runcoms/^README.md(.N); do; ln -sv $rcfile ${ZDOTDIR:-$HOME}/.${rcfile:t}; done"
     else
         echo "NOTICE: Prezto is already exists."
     fi
