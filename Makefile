@@ -1,6 +1,6 @@
 DOTPATH		:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
-CANDIDATES	:= $(wildcard .??*) $(shell find .config -type f)
-CONFIGDIRS	:= $(shell find .config -type d)
+CANDIDATES	:= $(wildcard .??*) $(shell bash -c "find .config -type f")
+CONFIGDIRS	:= $(shell bash -c "find .config -type d")
 EXCLUSIONS	:= .DS_Store .git .gitmodules .travis.yml .config
 DOTFILES	:= $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
@@ -17,8 +17,8 @@ deploy: ## Create symlink to home directory
 	@echo 'Copyright (c) 2013-2015 BABAROT, 2019 BORLEY All Rights Reserved.'
 	@echo '==> Start to deploy dotfiles to home directory.'
 	@echo ''
-	@$(foreach val, $(CONFIGDIRS), mkdir -p $(HOME)/$(val);)
-	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
+	@$(foreach val, $(CONFIGDIRS), bash -c "mkdir -p $(HOME)/$(val)";)
+	@$(foreach val, $(DOTFILES), bash -c "ln -sfv $(abspath $(val)) $(HOME)/$(val)";)
 
 init: ## Setup environment settings
 	@$(foreach val, $(INITSCRIPTS), bash $(abspath $(val));)
