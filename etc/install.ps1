@@ -64,9 +64,9 @@ function is_debug {
 }
 
 # Set DOTPATH as default variable
-if ("$DOTPATH" -eq $null) {
-    $DOTPATH = $env:HOME + "/Dotfiles"
-    [System.Environment]::SetEnvironmentVariable("DOTPATH", $DOTPATH, "User")
+if ("$env:DOTPATH" -eq $null) {
+    $env:DOTPATH = $env:HOME + "/Dotfiles"
+    [System.Environment]::SetEnvironmentVariable("DOTPATH", $env:DOTPATH, "User")
 }
 
 $env:DOTFILES_GITHUB = "https://github.com/borley1211/dotfiles"
@@ -92,8 +92,8 @@ $dotfiles_logo = '
 '
 
 function dotfiles_download {
-    if (!(Test-Path "$DOTPATH")) {
-        log_fail "${DOTPATH}: already exists"
+    if (!(Test-Path "$env:DOTPATH")) {
+        log_fail "${env:DOTPATH}: already exists"
         exit 1
     }
 
@@ -129,8 +129,8 @@ function dotfiles_download {
 }
 
 function dotfiles_deploy {
-    if (!(Test-Path "$DOTPATH")) {
-        log_fail "${DOTPATH}: already exists"
+    if (!(Test-Path "$env:DOTPATH")) {
+        log_fail "${env:DOTPATH}: already exists"
         exit 1
     }
 
