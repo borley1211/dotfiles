@@ -1,27 +1,120 @@
-DOTPATH		:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
-CANDIDATES	:= $(wildcard .??*) $(shell bash -c "find .config -type f")
-CONFIGDIRS	:= $(shell bash -c "find .config -type d")
-EXCLUSIONS	:= .DS_Store .git .gitmodules .travis.yml .config
-DOTFILES	:= $(filter-out $(EXCLUSIONS), $(CANDIDATES))
+INITSCRIPTS	:= $(sort $(wildcard etc/init/??*.sh))
+ifeq ($(OS),Windows_NT)
+INITSCRIPTS	:= $(sort $(wildcard etc/init/??*.ps1))
+endif
 
-INITSCRIPTS	:= $(sort $(wildcard etc/init/??*))
+DOTPATH		:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+CANDIDATES	:= $(wildcard .??*) $(wildcard .config/??*.??*)
+CONFIGDIRS	:= $(filter-out .config/%.toml,$(wildcard .config/??*))
+CANDIDATES	:= $(CANDIDATES) $(foreach DIR, $(CONFIGDIRS), $(wildcard $(DIR)/??*))
+EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode
+DOTFILES	:= $(sort $(filter-out $(EXCLUSIONS), $(CANDIDATES)))
+
+#--Define Functions--#
+
+ifeq ($(OS),Windows_NT)
+define set_config_home
+$(subst .config/,AppData/Local/,$1)
+endef
+else
+define set_config_home
+$(subst .config/,$(XDG_CONFIG_HOME)/,$1)
+endef
+endif
+
+#--
+
+ifeq ($(OS),Windows_NT)
+define mkdir_safety
+powershell -NoLogo -Command {New-Item $1 -ItemType Directory}
+
+endef
+else
+define mkdir_safety
+mkdir -p $1
+
+endef
+endif
+
+#--
+
+ifeq ($(OS),Windows_NT)
+define mk_symlink
+cmd /C "mklink $2 $1"
+
+endef
+else
+define mk_symlink
+ln -sfv $1 $2
+
+endef
+endif
+
+#--
+
+ifeq ($(OS),Windows_NT)
+define init
+powershell -NoLogo $1
+
+endef
+else
+define init
+bash $1
+
+endef
+endif
+
+#--
+
+ifeq ($(OS),Windows_NT)
+define rm_recursive
+powershell -Command {Remove-Item $1 -Recurse -Force}
+
+endef
+else
+define rm_recursive
+rm -vrf $1
+
+endef
+endif
+
+#--
+
+define _list
+echo $1
+
+endef
+
+#--Setup all task--#
+
+DEPLOY	= $(foreach val,$(CONFIGDIRS),\
+	$(call mkdir_safety,$(HOME)/$(call set_config_home,$(val))))\
+	$(foreach val,$(DOTFILES),\
+	$(call mk_symlink,$(realpath $(val)),$(HOME)/$(call set_config_home,$(val))))
+
+INIT	= $(foreach val,$(INITSCRIPTS),$(call init,$(abspath $(val))))
+
+CLEAN	= -$(foreach val,$(DOTFILES),\
+	$(call rm_recursive,$(HOME)/$(call set_config_home,$(val)))) \
+	-$(call rm_recursive,$(DOTPATH))
+
+#--
 
 .DEFAULT_GOAL	:= help
 
 all:
 
 list: ## Show dot files in this repo
-	@$(foreach val, $(DOTFILES) $(CONFIGDIRS), ls -dF $(val);)
+	@$(foreach val,"--DOT FILES--" $(DOTFILES) "--CONFIG DIRECTORIES--" $(CONFIGDIRS), $(call _list,$(val)))
 
 deploy: ## Create symlink to home directory
 	@echo 'Copyright (c) 2013-2015 BABAROT, 2019 BORLEY All Rights Reserved.'
 	@echo '==> Start to deploy dotfiles to home directory.'
 	@echo ''
-	@$(foreach val, $(CONFIGDIRS), mkdir -p $(HOME)/$(val);)
-	@$(foreach val, $(DOTFILES), ln -sfv $(abspath $(val)) $(HOME)/;)
+	@$(DEPLOY)
 
 init: ## Setup environment settings
-	@$(foreach val, $(INITSCRIPTS), bash $(abspath $(val));)
+	@$(INIT)
 
 test: ## Test dotfiles and init scripts
 	@#DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/test/test.sh
@@ -38,8 +131,7 @@ install: update deploy init ## Run make update, deploy, init
 
 clean: ## Remove the dot files and this repo
 	@echo 'Remove dot files in your home directory...'
-	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
-	-rm -rf $(DOTPATH)
+	@$(CLEAN)
 
 help: ## Self-documented Makefile
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
