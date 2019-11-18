@@ -26,7 +26,7 @@ endif
 
 ifeq ($(OS),Windows_NT)
 define mkdir_safety
-powershell -NoLogo -Command {New-Item $1 -ItemType Directory}
+cmd /C "setlocal enableextensions & md $(subst /,\,$1) & endlocal"
 
 endef
 else
@@ -40,7 +40,7 @@ endif
 
 ifeq ($(OS),Windows_NT)
 define mk_symlink
-cmd /C "mklink $2 $1"
+cmd /C "mklink $(subst /,\,$2) $(subst /,\,$1)"
 
 endef
 else
@@ -68,7 +68,7 @@ endif
 
 ifeq ($(OS),Windows_NT)
 define rm_recursive
-powershell -Command {Remove-Item $1 -Recurse -Force}
+cmd /C "del $(subst /,\,$1)"
 
 endef
 else
