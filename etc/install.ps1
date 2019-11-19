@@ -1,3 +1,15 @@
+# General Utilities{{{1
+function get_edition {
+    switch ($PSEdition) {
+        "Core" {return "pwsh"}
+        Default {return "powershell"}
+    }
+}
+
+function restart_shell {
+    Invoke-Expression -Command get_edition -NoLogo 
+}
+
 function e_newline {
     Write-Host ""
 }
@@ -62,6 +74,8 @@ function log_fail($text) {
 function is_debug {
     if ("$env:DEBUG") { return 0 } else { return 1 }
 }
+
+# Dotfile {{{1
 
 # Set DOTPATH as default variable
 if ("$env:DOTPATH" -eq $null) {
@@ -186,9 +200,3 @@ dotfiles_install "$@"
 # Restart shell
 e_newline
 e_arrow "Restarting your shell..."
-try {
-    . $profile
-}
-catch {
-    Write-Error $_
-}
