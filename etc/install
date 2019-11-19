@@ -30,6 +30,14 @@ is_interactive() {
     return 1
 }
 
+is_superuser() {
+    [ ${EUID:-${UID}} = 0 ]
+}
+
+can_use_sudo() {
+    [ ! is_superuser ] && is_interactive
+}
+
 is_bash() {
     [ -n "$BASH_VERSION" ]
 }

@@ -1,6 +1,9 @@
-INITSCRIPTS	:= $(sort $(wildcard etc/init/??*.sh))
 ifeq ($(OS),Windows_NT)
 INITSCRIPTS	:= $(sort $(wildcard etc/init/??*.ps1))
+LAZYSCRIPTS	:= $(sort $(wildcard etc/init_lazy/??*.ps1))
+else
+INITSCRIPTS	:= $(sort $(wildcard etc/init/??*.sh))
+LAZYSCRIPTS	:= $(sort $(wildcard etc/init_lazy/??*.sh))
 endif
 
 DOTPATH		:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
@@ -18,7 +21,9 @@ $(subst .config/,AppData/Local/,$1)
 endef
 else
 define set_config_home
+ifdef $(XDG_CONFIG_HOME)
 $(subst .config/,$(XDG_CONFIG_HOME)/,$1)
+endif
 endef
 endif
 
@@ -40,7 +45,7 @@ endif
 
 ifeq ($(OS),Windows_NT)
 define mk_symlink
-cmd /C "mklink $(subst /,\,$2) $(subst /,\,$1)"
+cmd /C mklink $(subst /,\,$2) $(subst /,\,$1)
 
 endef
 else
@@ -92,7 +97,8 @@ DEPLOY	= $(foreach val,$(CONFIGDIRS),\
 	$(foreach val,$(DOTFILES),\
 	$(call mk_symlink,$(realpath $(val)),$(HOME)/$(call set_config_home,$(val))))
 
-INIT	= $(foreach val,$(INITSCRIPTS),$(call init,$(abspath $(val))))
+INIT	:= $(foreach val,$(INITSCRIPTS),$(call init,$(abspath $(val))))
+INIT_LAZY	:= $(foreach val,$(INITSCRIPTS),$(call init,$(abspath $(val))))
 
 CLEAN	= -$(foreach val,$(DOTFILES),\
 	$(call rm_recursive,$(HOME)/$(call set_config_home,$(val)))) \
@@ -127,7 +133,6 @@ update: ## Fetch changes for this repo
 	git submodule foreach git pull origin master
 
 install: update deploy init ## Run make update, deploy, init
-	@#exec $$SHELL
 
 clean: ## Remove the dot files and this repo
 	@echo 'Remove dot files in your home directory...'

@@ -11,8 +11,8 @@ set ambiwidth=double    " 絵文字等が崩れる問題を解決
 
 
 "[dein]
-let s:deinrc = $DOTPATH . "/deinrc"
-execute '!nvim -S' s:deinrc
+let s:deinrc = expand('$DOTPATH/deinrc.vim')
+exe 'source' s:deinrc
 
 
 "[ステータス表示]
@@ -110,8 +110,5 @@ nnoremap <Up>   gk
 
 
 "[カラースキーマ]
-""  パッケージマネージャがないときは、リポジトリを
-""      $VIMRUNTIME/pack/(unique_dirname)/start/
-""  以下に**cdした上で**クローンすること
 let g:molokai_original=1
 colorscheme molokai

@@ -10,13 +10,27 @@ repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'scrooloose/nerdtree'
+hook_add = 'nnoremap :nerd :NERDTreeToggle'
 
 [[plugins]]
 repo = 'tomasr/molokai'
 
 [[plugins]]
 repo = 'vim-syntastic/syntastic'
-hook_add = 'let g:syntastic_vim_checkers = ["vint"]'
+hook_add = '''
+let g:syntastic_vim_checkers = ["vint"]
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=2
+let g:syntastic_mode_map = {'mode': 'passive'}
+augroup AutoSyntastic
+    autocmd!
+    autocmd InsertLeave,TextChanged * call s:syntastic() 
+augroup END
+function! s:syntastic()
+    w
+    SyntasticCheck
+endfunction
+'''
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
@@ -29,6 +43,18 @@ repo = 'Shougo/deol.nvim'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
+hook_add = '''
+" Define mappings
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+endfunction
+'''
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
