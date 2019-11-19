@@ -13,15 +13,19 @@ CANDIDATES	:= $(CANDIDATES) $(foreach DIR, $(CONFIGDIRS), $(wildcard $(DIR)/??*)
 EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode
 DOTFILES	:= $(sort $(filter-out $(EXCLUSIONS), $(CANDIDATES)))
 
+ifndef XDG_CONFIG_HOME
+XDG_CONFIG_HOME	:= ".config"
+
 #--Define Functions--#
 
 ifeq ($(OS),Windows_NT)
+
 define set_config_home
 $(subst .config/,AppData/Local/,$1)
 endef
 else
 define set_config_home
-$(subst .config/,$(XDG_CONFIG_HOME:-".config")/,$1)
+$(subst .config/,$(XDG_CONFIG_HOME)/,$1)
 endef
 endif
 
