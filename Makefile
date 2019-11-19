@@ -15,6 +15,7 @@ DOTFILES	:= $(sort $(filter-out $(EXCLUSIONS), $(CANDIDATES)))
 
 ifndef XDG_CONFIG_HOME
 XDG_CONFIG_HOME	:= ".config"
+endif
 
 #--Define Functions--#
 
