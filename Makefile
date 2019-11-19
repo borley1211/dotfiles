@@ -14,7 +14,7 @@ EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode
 DOTFILES	:= $(sort $(filter-out $(EXCLUSIONS), $(CANDIDATES)))
 
 ifndef XDG_CONFIG_HOME
-XDG_CONFIG_HOME	:= .config/
+XDG_CONFIG_HOME	:= .config
 endif
 
 #--Define Functions--#
