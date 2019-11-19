@@ -21,9 +21,7 @@ $(subst .config/,AppData/Local/,$1)
 endef
 else
 define set_config_home
-ifdef $(XDG_CONFIG_HOME)
-$(subst .config/,$(XDG_CONFIG_HOME)/,$1)
-endif
+$(subst .config/,$(XDG_CONFIG_HOME:-".config")/,$1)
 endef
 endif
 
