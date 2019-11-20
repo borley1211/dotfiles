@@ -1,3 +1,5 @@
+#--Define Variables--#{{{1
+
 ifeq ($(OS),Windows_NT)
 SYSINITSCRIPTS	:= $(sort $(wildcard etc/system/??*.ps1))
 INITSCRIPTS	:= $(sort $(wildcard etc/init/??*.ps1))
@@ -15,7 +17,7 @@ CANDIDATES	:= $(CANDIDATES) $(foreach DIR, $(CONFIGDIRS), $(wildcard $(DIR)/??*)
 EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode
 DOTFILES	:= $(sort $(filter-out $(EXCLUSIONS), $(CANDIDATES)))
 
-#--Define Functions--#
+#--Define Functions--#{{{1
 
 ifeq ($(OS),Windows_NT)
 
@@ -91,7 +93,7 @@ echo $1
 
 endef
 
-#--Setup all task--#
+#--Setup all task--#{{{1
 
 DEPLOY	= $(foreach val,$(CONFIGDIRS),\
 	$(call mkdir_safety,$(HOME)/$(call set_config_home,$(val))))\
@@ -106,7 +108,7 @@ CLEAN	= -$(foreach val,$(DOTFILES),\
 	$(call rm_recursive,$(HOME)/$(call set_config_home,$(val)))) \
 	-$(call rm_recursive,$(DOTPATH))
 
-#--
+#--MAIN--#{{{1
 
 .DEFAULT_GOAL	:= help
 

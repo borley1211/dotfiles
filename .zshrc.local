@@ -1,6 +1,6 @@
 #!/bin/zsh
-zsh "$(cat ${DOTPATH:-${HOME}/Dotfiles}/rc.sh)"
+eval "$(cat ${DOTPATH:-${HOME}/Dotfiles}/rc.sh)"
 
 ##[zfunc]
-fpath=($HOME/.zfunc $fpath)
+fpath=(${HOME}/.zfunc $fpath)
 autoload -Uz compinit && compinit
