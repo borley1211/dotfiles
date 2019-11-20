@@ -8,11 +8,7 @@ install_deps_for_pyenv() {
     # for pyenv-ccache
     DEPENDENCIES=("${DEPENDENCIES}" "ccache")
 
-    if can_use_sudo; then
-        sudo apt-get install "${DEPENDENCIES[@]}" -y
-    else
-        apt-get install "${DEPENDENCIES[@]}" -y
-    fi
+    sudo apt-get install "${DEPENDENCIES[@]}" -y
 }
 
 logexec install_deps_for_pyenv

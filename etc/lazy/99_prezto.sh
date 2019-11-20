@@ -6,6 +6,7 @@ init_prezto() {
         # echo "zsh exists!"
         if [ ! -d ${ZDOTDIR:-$HOME}/.zprezto ]; then
             zsh -c "git clone --recursive https://github.com/sorin-ionescu/prezto.git ${ZDOTDIR:-$HOME}/.zprezto && setopt EXTENDED_GLOB; for rcfile in ${ZDOTDIR:-$HOME}/.zprezto/runcoms/^README.md(.N); do; ln -sv $rcfile ${ZDOTDIR:-$HOME}/.${rcfile:t}; done"
+            echo "source ~/.zaliases" >> ~/.zshrc
         else
             echo "NOTICE: Prezto is already exists."
         fi
