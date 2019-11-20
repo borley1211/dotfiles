@@ -465,7 +465,7 @@ logexec() {
     
     exec "source" "$@"
     
-    logging SUCCESS "FINISHED!"
+    log_pass "FINISHED!"
     exit 0
 }
 
