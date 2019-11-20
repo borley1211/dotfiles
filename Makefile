@@ -120,6 +120,7 @@ deploy: ## Create symlink to home directory
 	@echo '==> Start to deploy dotfiles to home directory.'
 	@echo ''
 	@$(DEPLOY)
+	@echo $(cat $(dirname $0)/bashrc) >> ~/.bashrc
 
 init-head: ## Setup environment settings (HEAD-group)
 	@$(INIT)
