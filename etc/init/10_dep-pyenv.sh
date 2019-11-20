@@ -1,5 +1,5 @@
 #!/bin/bash
-source ${DOTPATH}/etc/install
+source ${DOTPATH:-~/Dotfiles}/etc/install
 
 install_deps_for_pyenv() {
     # for pyenv

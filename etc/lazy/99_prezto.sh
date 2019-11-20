@@ -1,5 +1,5 @@
 #!/bin/bash
-source ${DOTPATH}/etc/install
+source ${DOTPATH:-~/Dotfiles}/etc/install
 
 init_prezto() {
     if [ ! "$(command -v zsh)" == "1" ]; then # if zsh exists

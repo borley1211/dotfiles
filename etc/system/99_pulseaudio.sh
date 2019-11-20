@@ -1,5 +1,5 @@
 #!/bin/bash
-source ${DOTPATH}/etc/install"
+source "${DOTPATH:-~/Dotfiles}/etc/install"
 
 init_pulse() {
     if can_use_sudo; then

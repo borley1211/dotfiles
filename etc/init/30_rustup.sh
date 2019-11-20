@@ -1,5 +1,5 @@
 #!/bin/bash
-source ${DOTPATH}/etc/install
+source ${DOTPATH:-~/Dotfiles}/etc/install
 
 install_rustup() {
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
