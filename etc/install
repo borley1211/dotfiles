@@ -31,11 +31,11 @@ is_interactive() {
 }
 
 is_superuser() {
-    [ ${EUID:-${UID}} -eq 0 ]
+    [[ ${EUID:-${UID}} -eq 0 ]]
 }
 
 can_use_sudo() {
-    [ ! is_superuser ] && is_interactive
+    [ ! is_superuser ]
 }
 
 is_bash() {
