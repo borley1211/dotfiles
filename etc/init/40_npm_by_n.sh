@@ -13,3 +13,5 @@ init_npm_by_n() {
     npm install npm
     npm update
 }
+
+logexec init_npm_by_n
