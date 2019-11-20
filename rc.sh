@@ -22,7 +22,7 @@ function reenv() {
     done
 }
 reenv
-alias reenv
+alias reenv=reenv
 
 #[n and npm]
 export N_PREFIX=$HOME/.n
@@ -46,7 +46,7 @@ if [ -d "${HOME}/.pyenv" ]; then
     export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"
 fi
 
-eval "$(pip completion --${SHELL})"
+eval "$(python -m pip completion --${SHELL})"
 
 export PIPENV_VENV_IN_PROJECT=1
 if [ python -m pipenv ] >/dev/null 2>&1; then
