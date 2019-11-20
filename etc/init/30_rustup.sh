@@ -10,5 +10,3 @@ rustup completions cargo bash > ${COMPLETIONSPATH}/cargo
 mkdir -p ~/.zfunc
 rustup completions zsh > ~/.zfunc/_rustup
 rustup completions cargo zsh > ~/.zfunc/_cargo
-
-exit 0
