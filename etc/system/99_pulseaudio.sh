@@ -2,7 +2,7 @@
 source ${DOTPATH:-~/Dotfiles}/etc/install
 
 init_pulse() {
-    sudo apt-get install libsndfile1-dev libportaudio19-dev -y
+    sudo apt-get install libsndfile1-dev portaudio19-dev -y
     if type "snap" >/dev/null; then
         sudo snap install pulseaudio
         sudo snap connect pulseaudio:home core
