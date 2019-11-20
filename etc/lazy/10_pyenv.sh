@@ -8,7 +8,9 @@ init_pyenv() {
     else
         echo "pyenv is already exists."
     fi
-    exec ${SHELL}
+    export PATH="/home/borley/.pyenv/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
 
     # install pyenv-ccache
     if [ ! -e "$(pyenv root)/plugins/pyenv-ccache" ]; then
