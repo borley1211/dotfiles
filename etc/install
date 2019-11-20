@@ -31,7 +31,7 @@ is_interactive() {
 }
 
 is_superuser() {
-    [ ${EUID:-${UID}} = 0 ]
+    [ ${EUID:-${UID}} -eq 0 ]
 }
 
 can_use_sudo() {
