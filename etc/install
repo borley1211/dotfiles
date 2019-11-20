@@ -458,6 +458,17 @@ path_remove() {
     echo "$path"
 }
 
+# logexec is a wrapper, it runs given (script||command) with simple logs
+logexec() {
+    echo ""
+    e_arrow "RUNNING $@ ..."
+    
+    exec "source" "$@"
+    
+    logging SUCCESS "FINISHED!"
+    exit 0
+}
+
 # Dotfiles {{{1
 
 # Set DOTPATH as default variable
