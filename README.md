@@ -8,10 +8,12 @@ This repo is inspired by [this project](https://github.com/b4b4r07/dotfiles).
 
 ### on Unix
 ```shellscript:
-$ curl -L https://raw.github.com/borley1211/dotfiles/master/etc/install | bash
+# this URL is redirected to https://raw.githubusercontent.com/borley1211/dotfiles/master/etc/install .
+$ curl -L https://git.io/dot.borley1211 | bash
 ```
 
 ### on Windows
 ```powershell:
-> curl -L https://raw.github.com/borley1211/dotfiles/master/etc/install.ps1 | powershell
+# this URL is redirected to https://raw.githubusercontent.com/borley1211/dotfiles/master/etc/install.ps1 .
+> curl -L https://git.io/dot.borley1211.ps1 | powershell -Command -
 ```
