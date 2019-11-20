@@ -1,0 +1,14 @@
+#!bash
+source ./install
+
+logexec() {
+    echo ""
+    logging INFO "** RUNNING $@ **"
+    
+    exec "source" "$@"
+    
+    logging SUCCESS "** FINISHED **"
+    exit 0
+}
+
+logexec "$@"
