@@ -2,11 +2,9 @@
 source ${DOTPATH:-~/Dotfiles}/etc/install
 
 init_ssh() {
-    apt-get install ssh openssh-server -y
-    systemctl daemon-reload
-    systemctl enable --now sshd.service
+    sudo apt-get install ssh openssh-server -y
+    sudo systemctl daemon-reload
+    sudo systemctl enable --now sshd.service
 }
 
-su <<EOSU
 logexec init_ssh
-EOSU
