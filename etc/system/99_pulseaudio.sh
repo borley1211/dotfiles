@@ -1,5 +1,5 @@
 #!/bin/bash
-source "${DOTPATH:-~/Dotfiles}/etc/install"
+source ${DOTPATH:-~/Dotfiles}/etc/install
 
 init_pulse() {
     sudo apt-get install libsndfile1-dev libportaudio19-dev -y

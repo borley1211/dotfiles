@@ -1,5 +1,5 @@
 #!/bin/bash
-source "${DOTPATH:-~/Dotfiles}/etc/install"
+source ${DOTPATH:-~/Dotfiles}/etc/install
 
 init_alsa() {
     sudo apt-get -o APT::Install-Suggests=true install alsa-base alsa-firmware alsa-utils alsamixer libasound2-dev -y
