@@ -1,2 +1,2 @@
 #!/bin/zsh
-eval "$(cat ${DOTPATH:-~/Dotfiles}/init_aliases.sh)"
+eval "$(cat ${DOTPATH:-${HOME}/Dotfiles}/init_aliases.sh)"

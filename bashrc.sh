@@ -1,1 +1,1 @@
-eval "$(cat ${DOTPATH:-~/Dotfiles}/rc.sh)"
+bash "$(cat ${DOTPATH:-${HOME}/Dotfiles}/rc.sh)"
