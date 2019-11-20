@@ -1,3 +1,8 @@
 #!bash
+source ../install
 
-cargo install cargo-update starship
+init_cargo_pkgs() {
+    cargo install cargo-update starship
+}
+
+logexec init_cargo_pkgs
