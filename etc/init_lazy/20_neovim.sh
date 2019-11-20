@@ -1,15 +1,17 @@
 #!bash
-echo ""
-echo "** RUNNING $(basename $0) **"
+source ../install
 
 if ! type "nvim" "nvim.appimage" &>/dev/null; then
-    mkdir -p "${HOME}/.local/bin"
-    curl -o "$HOME/.local/bin/nvim" -LO https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
-    chmod u+x $HOME/.local/bin/nvim
-    echo "Installed nvim(as appimage)!"
+    if is_linux; then
+        mkdir -p "${HOME}/.local/bin"
+        curl -o "${HOME}/.local/bin/nvim" -LO https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+        chmod u+x ${HOME}/.local/bin/nvim
+        log_pass "Installed nvim(as appimage)!"
+    else # is_mac
+        brew install neovim
+        log_pass "Installed nvim!"
+    fi
 else
-    echo "You MUST install neovim manually."
+    log_info "Have you already installed NeoVim?"
+    log_info "If NO, You MUST install NeoVim manually."
 fi
-
-echo "** FINISHED **"
-exit 0
