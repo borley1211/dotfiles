@@ -1,8 +1,4 @@
 #!bash
-source "../install"
-echo ""
-echo "** RUNNING $(basename $0) **"
-
 # install pyenv and plugins
 if [ ! -d "$HOME/.pyenv" ]; then
     curl https://pyenv.run | bash
@@ -20,6 +16,3 @@ fi
 if [ ! -e "$(pyenv root)/plugins/pyenv-pip-migrate" ]; then
     git clone git://github.com/pyenv/pyenv-pip-migrate.git $(pyenv root)/plugins/pyenv-pip-migrate
 fi
-
-echo "** FINISHED **"
-exit 0
