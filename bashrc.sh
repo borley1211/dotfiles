@@ -1,2 +1,2 @@
 #!/bin/bash
-eval "$(cat $(dirname $(readlink $0))/rc.sh)"
+eval "$(cat ${DOTPATH:-~/Dotfiles}/rc.sh)"
