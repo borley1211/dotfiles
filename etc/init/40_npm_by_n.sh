@@ -1,5 +1,5 @@
 #!/bin/bash
-source "../install"
+source ${DOTPATH}/etc/install"
 
 init_npm_by_n() {
     if ! type "n" >/dev/null; then

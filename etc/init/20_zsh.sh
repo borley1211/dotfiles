@@ -1,5 +1,5 @@
 #!/bin/bash
-source ../install
+source ${DOTPATH}/etc/install
 
 install_zsh() {
     if can_use_sudo; then

@@ -1,5 +1,5 @@
 #!/bin/bash
-source ../install
+source ${DOTPATH}/etc/install
 
 install_neovim() {
     if ! type "nvim" "nvim.appimage" &>/dev/null; then

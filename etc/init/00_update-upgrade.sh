@@ -1,5 +1,5 @@
 #!/bin/bash
-source ../install
+source ${DOTPATH}/etc/install
 
 update_and_upgrade() {
     if can_use_sudo; then

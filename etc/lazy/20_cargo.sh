@@ -1,5 +1,5 @@
 #!/bin/bash
-source ../install
+source ${DOTPATH}/etc/install
 
 init_cargo_pkgs() {
     cargo install cargo-update starship
