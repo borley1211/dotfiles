@@ -1,4 +1,4 @@
-#!bash
+#!/usr/bin/bash
 source ../install
 
 install_neovim() {

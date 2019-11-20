@@ -1,4 +1,4 @@
-#!bash
+#!/usr/bin/bash
 source ../install
 
 init_cargo_pkgs() {

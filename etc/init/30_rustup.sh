@@ -1,4 +1,4 @@
-#!bash
+#!/usr/bin/bash
 source ../install
 
 install_rustup() {
@@ -7,12 +7,12 @@ install_rustup() {
 
     COMPLETIONSPATH="~/.local/share/bash-completion/completions"
     mkdir -p ${COMPLETIONSPATH}
-    rustup completions bash > ${COMPLETIONSPATH}/rustup
-    rustup completions cargo bash > ${COMPLETIONSPATH}/cargo
+    rustup completions bash >${COMPLETIONSPATH}/rustup
+    rustup completions cargo bash >${COMPLETIONSPATH}/cargo
 
     mkdir -p ~/.zfunc
-    rustup completions zsh > ~/.zfunc/_rustup
-    rustup completions cargo zsh > ~/.zfunc/_cargo
+    rustup completions zsh >~/.zfunc/_rustup
+    rustup completions cargo zsh >~/.zfunc/_cargo
 }
 
 logexec install_rustup

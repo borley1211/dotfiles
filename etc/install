@@ -1,13 +1,13 @@
-#!bash
-#                                    
-#         _ _        _       _       
-#        (_) |      | |     | |      
-#  __   ___| |_ __ _| |  ___| |__    
-#  \ \ / / | __/ _` | | / __| '_ \   
-#   \ V /| | || (_| | |_\__ \ | | |  
-#    \_/ |_|\__\__,_|_(_)___/_| |_|  
-#                                    
-#                                    
+#!/usr/bin/bash
+#
+#         _ _        _       _
+#        (_) |      | |     | |
+#  __   ___| |_ __ _| |  ___| |__
+#  \ \ / / | __/ _` | | / __| '_ \
+#   \ V /| | || (_| | |_\__ \ | | |
+#    \_/ |_|\__\__,_|_(_)___/_| |_|
+#
+#
 
 # PLATFORM is the environment variable that
 # retrieves the name of the running platform
@@ -62,14 +62,12 @@ is_at_least() {
     version="$(echo ${BASH_VERSION:-0.0.0} | sed -e 's/^\([0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}\).*/\1/' | sed -e 's/\.//g')"
 
     # zero padding
-    while [ ${#atleast} -ne 6 ]
-    do
+    while [ ${#atleast} -ne 6 ]; do
         atleast="${atleast}0"
     done
 
     # zero padding
-    while [ ${#version} -ne 6 ]
-    do
+    while [ ${#version} -ne 6 ]; do
         version="${version}0"
     done
 
@@ -92,10 +90,10 @@ ostype() {
 os_detect() {
     export PLATFORM
     case "$(ostype)" in
-        *'linux'*)  PLATFORM='linux'   ;;
-        *'darwin'*) PLATFORM='osx'     ;;
-        *'bsd'*)    PLATFORM='bsd'     ;;
-        *)          PLATFORM='unknown' ;;
+    *'linux'*) PLATFORM='linux' ;;
+    *'darwin'*) PLATFORM='osx' ;;
+    *'bsd'*) PLATFORM='bsd' ;;
+    *) PLATFORM='unknown' ;;
     esac
 }
 
@@ -165,7 +163,7 @@ e_arrow() {
 }
 
 e_indent() {
-    for ((i=0; i<${1:-4}; i++)); do
+    for ((i = 0; i < ${1:-4}; i++)); do
         echon " "
     done
     if [ -n "$2" ]; then
@@ -209,7 +207,7 @@ ink() {
     if [ "$#" -eq 2 ]; then
         text="$2"
         case "$1" in
-            black | red | green | yellow | blue | purple | cyan | gray | white)
+        black | red | green | yellow | blue | purple | cyan | gray | white)
             eval color="\$$1"
             ;;
         esac
@@ -230,20 +228,21 @@ logging() {
     local text="$2"
 
     case "$1" in
-        TITLE)
-            color=yellow
-            ;;
-        ERROR | WARN)
-            color=red
-            ;;
-        INFO)
-            color=blue
-            ;;
-        SUCCESS)
-            color=green
-            ;;
-        *)
-            text="$1"
+    TITLE)
+        color=yellow
+        ;;
+    ERROR | WARN)
+        color=red
+        ;;
+    INFO)
+        color=blue
+        ;;
+    SUCCESS)
+        color=green
+        ;;
+    *)
+        text="$1"
+        ;;
     esac
 
     timestamp() {
@@ -252,7 +251,9 @@ logging() {
         ink gray "] "
     }
 
-    timestamp; ink "$color" "$text"; echo
+    timestamp
+    ink "$color" "$text"
+    echo
 }
 
 log_pass() {
@@ -408,9 +409,9 @@ contains() {
     string="$1"
     substring="$2"
     if [ "${string#*$substring}" != "$string" ]; then
-        return 0    # $substring is in $string
+        return 0 # $substring is in $string
     else
-        return 1    # $substring is not in $string
+        return 1 # $substring is not in $string
     fi
 }
 
@@ -447,8 +448,7 @@ path_remove() {
 
     path=":$PATH:"
 
-    for arg in "$@"
-    do
+    for arg in "$@"; do
         path="${path//:$arg:/:}"
     done
 
@@ -462,9 +462,9 @@ path_remove() {
 logexec() {
     echo ""
     e_arrow "RUNNING $@ ..."
-    
+
     exec "source" "$@"
-    
+
     log_pass "FINISHED!"
     exit 0
 }
@@ -473,7 +473,8 @@ logexec() {
 
 # Set DOTPATH as default variable
 if [ -z "${DOTPATH:-}" ]; then
-    DOTPATH=~/Dotfiles; export DOTPATH
+    DOTPATH=~/Dotfiles
+    export DOTPATH
 fi
 
 DOTFILES_GITHUB="https://github.com/borley1211/dotfiles"
@@ -586,13 +587,13 @@ dotfiles_install() {
     # Priority: git > curl > wget
     dotfiles_download &&
 
-    # 2. Deploy dotfiles to your home directory
-    # ==> deploying
-    dotfiles_deploy &&
+        # 2. Deploy dotfiles to your home directory
+        # ==> deploying
+        dotfiles_deploy &&
 
-    # 3. Execute all sh files within etc/init/
-    # ==> initializing
-    dotfiles_initialize "$@"
+        # 3. Execute all sh files within etc/init/
+        # ==> initializing
+        dotfiles_initialize "$@"
 }
 
 if echo "$-" | grep -q "i"; then

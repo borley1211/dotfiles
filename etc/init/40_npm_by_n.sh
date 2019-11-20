@@ -1,4 +1,4 @@
-#!bash
+#!/usr/bin/bash
 source "../install"
 
 init_npm_by_n() {

@@ -1,4 +1,4 @@
-#!bash
+#!/usr/bin/bash
 source "../install"
 
 init_pulse() {
@@ -15,6 +15,7 @@ init_pulse() {
             sudo systemctl daemon-reload
             systemctl enable --now pulseaudio
         fi
+    fi
 }
 
 logexec init_pulse
