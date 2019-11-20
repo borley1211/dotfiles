@@ -463,8 +463,9 @@ logexec() {
     echo ""
     e_arrow "RUNNING $@ ..."
 
-    exec "source" "$@"
+    exec "${SHELL}" "$@"
 
+    e_done
     log_pass "FINISHED!"
     exit 0
 }
