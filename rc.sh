@@ -58,8 +58,8 @@ if [ python -m pipenv ] >/dev/null 2>&1; then
 fi
 
 #[RustUp]
-if [ -f "~/.rustup/env" ]; then
-    source ~/.rustup/env
+if [ -f "~/.cargo/env" ]; then
+    source ~/.cargo/env
 fi
 
 #[NeoVim]

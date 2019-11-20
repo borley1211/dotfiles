@@ -1,5 +1,5 @@
 #!/bin/zsh
-eval "$(cat $(dirname $(readlink $0))/rc.sh)"
+eval "$(cat ${DOTPATH:-~/Dotfiles}/rc.sh)"
 
 ##[zfunc]
 fpath=($HOME/.zfunc $fpath)
