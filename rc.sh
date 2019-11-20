@@ -1,4 +1,4 @@
-function reenv () {
+function reenv() {
     _paths=("/bin" "/usr/bin" "/usr/local/bin")
     _paths=(${_paths} "$HOME/bin" "$HOME/.local/bin")
     _paths=(${_paths} "$HOME/.cargo/bin")
@@ -24,13 +24,16 @@ function reenv () {
 reenv
 alias reenv
 
+#[n and npm]
 export N_PREFIX=$HOME/.n
 reenv "$N_PREFIX/bin"
 
 ##[Encoding]
-export LANG=ja_JP.UTF-8 ; export LC_ALL=$LANG
+export LANG=ja_JP.UTF-8
+export LC_ALL=$LANG
 export VTE_CJK_WIDTH=2
 
+#[tmp]
 export TMPDIR=/tmp
 
 ##[Python]
@@ -46,36 +49,45 @@ fi
 eval "$(pip completion --${SHELL})"
 
 export PIPENV_VENV_IN_PROJECT=1
-if [ python -m pipenv > /dev/null 2>&1 ]; then
+if [ python -m pipenv ] >/dev/null 2>&1; then
     eval "$(pipenv --completion)"
     export PIPENV_CACHE_DIR=$TMPDIR
-    export PIPENV_TIMEOUT=1200; export PIPENV_INSTALL_TIMEOUT=$PIPENV_TIMEOUT
+    export PIPENV_TIMEOUT=1200
+    export PIPENV_INSTALL_TIMEOUT=$PIPENV_TIMEOUT
     export PIPENV_SKIP_LOCK=1
 fi
 
-export EDITOR="nvim"; export VISUAL=$EDITOR
+#[RustUp]
+if [ -f "~/.rustup/env" ]; then
+    source ~/.rustup/env
+fi
 
+#[NeoVim]
+export EDITOR="nvim"
+export VISUAL=$EDITOR
+export NVIM_COC_LOGFILE="coc.log"
+
+#[XDG envs]
 export XDG_RUNTIME_DIR=$HOME
 export XDG_CONFIG_DIR=${HOME}/.config
 
-if [ -e powerline-daemon ];then
+#[Powerline]
+if [ -e powerline-daemon ]; then
     powerline-daemon -q
 
-    while read p;do
+    while read p; do
         PYPKGDIR=(${PYPKGDIR:-} ${p})
     done < <(python -c 'import sys; print("\n".join(p for p in sys.path if "site-packages" in p))')
-    
+
     PWLIN_INIT="powerline/bindings/zsh/powerline.zsh"
 
-    for WKDIR in ${PYPKGDIR};do
-        if [ -f ${WKDIR} ];then
+    for WKDIR in ${PYPKGDIR}; do
+        if [ -f ${WKDIR} ]; then
             source ${WKDIR}/${PWLIN_INIT}
             break
         fi
     done
 fi
-
-export NVIM_COC_LOGFILE="coc.log"
 
 ##[LLVM]
 export LLVM_CONFIG="$(ls -dr1 $(find /usr/bin -path '*llvm-config*') | head -n 1)"
