@@ -1,5 +1,6 @@
 # vim:ft=zsh
-export PATH=$HOME/.cargo/bin:$PATH
+source ~/.cargo/env
+
 if [ -x "${HOME}/.cargo/bin/starship" ]; then
     eval "$(starship init zsh)"
 else
