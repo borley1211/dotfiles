@@ -1,9 +1,11 @@
 ifeq ($(OS),Windows_NT)
+SYSINITSCRIPTS	:= $(sort $(wildcard etc/system/??*.ps1))
 INITSCRIPTS	:= $(sort $(wildcard etc/init/??*.ps1))
-LAZYSCRIPTS	:= $(sort $(wildcard etc/init_lazy/??*.ps1))
+LAZYSCRIPTS	:= $(sort $(wildcard etc/lazy/??*.ps1))
 else
+SYSINITSCRIPTS	:= $(sort $(wildcard etc/system/??*.sh))
 INITSCRIPTS	:= $(sort $(wildcard etc/init/??*.sh))
-LAZYSCRIPTS	:= $(sort $(wildcard etc/init_lazy/??*.sh))
+LAZYSCRIPTS	:= $(sort $(wildcard etc/lazy/??*.sh))
 endif
 
 DOTPATH		:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
@@ -96,8 +98,9 @@ DEPLOY	= $(foreach val,$(CONFIGDIRS),\
 	$(foreach val,$(DOTFILES),\
 	$(call mk_symlink,$(realpath $(val)),$(HOME)/$(call set_config_home,$(val))))
 
+SYSINIT := $(foreach val,$(SYSINITSCRIPTS),$(call init,$(abspath $(val))))
 INIT	:= $(foreach val,$(INITSCRIPTS),$(call init,$(abspath $(val))))
-INIT_LAZY	:= $(foreach val,$(INITSCRIPTS),$(call init,$(abspath $(val))))
+INIT_LAZY	:= $(foreach val,$(LAZYSCRIPTS),$(call init,$(abspath $(val))))
 
 CLEAN	= -$(foreach val,$(DOTFILES),\
 	$(call rm_recursive,$(HOME)/$(call set_config_home,$(val)))) \
@@ -118,10 +121,18 @@ deploy: ## Create symlink to home directory
 	@echo ''
 	@$(DEPLOY)
 
-init: ## Setup environment settings
+init-head: ## Setup environment settings (HEAD-group)
 	@$(INIT)
 
-test: ## Test dotfiles and init scripts
+init-lazy: ## Setup environment settings (LASY-group)
+	@$(INIT_LAZY)
+
+init-system: ## Setup environment settings (System-Wide)
+	@$(SYSINIT)
+
+init: init-head init-lazy ## Setup HEAD and LAZY environment settings
+
+test: ## Test dotfiles and init scripts (now DEPRECATED)
 	@#DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/test/test.sh
 	@echo "test is inactive temporarily"
 
