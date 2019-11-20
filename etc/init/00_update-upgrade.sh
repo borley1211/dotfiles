@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 source ../install
 
 update_and_upgrade() {
