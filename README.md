@@ -8,7 +8,7 @@ This repo is inspired by [this project](https://github.com/b4b4r07/dotfiles).
 
 ### on Unix
 ```shellscript:
-$ bash $(curl -L https://raw.github.com/borley1211/dotfiles/master/etc/install)
+$ curl -L https://raw.github.com/borley1211/dotfiles/master/etc/install | bash
 ```
 
 ### on Windows
