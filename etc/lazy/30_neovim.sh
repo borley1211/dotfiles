@@ -19,3 +19,4 @@ install_neovim() {
 }
 
 logexec install_neovim
+exit 0
