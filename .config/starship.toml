@@ -22,7 +22,7 @@ symbol = "\uE73C "
 
 [time]
 disabled = false
-format = "\uF017 %T"
+format = "%T"
 
 [battery]
 full_symbol = "🔋"
