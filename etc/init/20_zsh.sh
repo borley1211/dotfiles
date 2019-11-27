@@ -7,3 +7,4 @@ install_zsh() {
 }
 
 logexec install_zsh
+exit 0
