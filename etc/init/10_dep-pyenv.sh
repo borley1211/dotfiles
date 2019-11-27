@@ -12,3 +12,4 @@ install_deps_for_pyenv() {
 }
 
 logexec install_deps_for_pyenv
+exit 0
