@@ -15,3 +15,4 @@ init_npm_by_n() {
 }
 
 logexec init_npm_by_n
+exit 0
