@@ -20,7 +20,6 @@ DOTFILES	:= $(sort $(filter-out $(EXCLUSIONS), $(CANDIDATES)))
 #--Define Functions--#{{{1
 
 ifeq ($(OS),Windows_NT)
-
 define set_config_home
 $(subst .config/,AppData/Local/,$1)
 endef
@@ -93,7 +92,7 @@ echo $1
 
 endef
 
-#--Setup all task--#{{{1
+#--Setup all tasks--#{{{1
 
 DEPLOY	= $(foreach val,$(CONFIGDIRS),\
 	$(call mkdir_safety,$(HOME)/$(call set_config_home,$(val))))\
