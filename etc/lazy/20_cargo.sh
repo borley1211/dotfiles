@@ -6,3 +6,4 @@ init_cargo_pkgs() {
 }
 
 logexec init_cargo_pkgs
+exit 0
