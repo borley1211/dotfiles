@@ -6,3 +6,4 @@ install_goenv() {
 }
 
 logexec install_goenv
+exit 0
