@@ -16,3 +16,4 @@ init_prezto() {
 }
 
 logexec init_prezto
+exit 0
