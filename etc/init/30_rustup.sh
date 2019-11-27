@@ -16,3 +16,4 @@ install_rustup() {
 }
 
 logexec install_rustup
+exit 0
