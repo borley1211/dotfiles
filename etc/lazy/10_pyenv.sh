@@ -24,3 +24,4 @@ init_pyenv() {
 }
 
 logexec init_pyenv
+exit 0
