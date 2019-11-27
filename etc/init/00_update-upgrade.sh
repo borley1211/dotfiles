@@ -7,3 +7,4 @@ update_and_upgrade() {
 }
 
 logexec update_and_upgrade
+exit 0
