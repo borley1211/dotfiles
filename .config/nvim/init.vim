@@ -112,3 +112,5 @@ nnoremap <Up>   gk
 "[カラースキーマ]
 let g:molokai_original=1
 colorscheme molokai
+
+let g:python3_host_prog = $PYENV_ROOT."/shims/python"

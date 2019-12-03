@@ -1,4 +1,4 @@
-reenv() {
+function reenv() {
     _paths=("/bin" "/usr/bin" "/usr/local/bin")
     _paths=(${_paths} "$HOME/bin" "$HOME/.local/bin")
     _paths=(${_paths} "$HOME/node_modules/.bin")
@@ -59,7 +59,7 @@ fi
 
 #[RustUp]
 if [ -f "~/.cargo/env" ]; then
-    source ~/.cargo/env
+    . ~/.cargo/env
 fi
 
 #[NeoVim]

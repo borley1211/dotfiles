@@ -2,23 +2,46 @@
 add_newline = true
 
 [aws]
-symbol = "\uF270"
+symbol = "\uF270 "
+
+[character]
+symbol = "\u2771 "
+error_symbol = "\u2A2F "
+use_symbol_for_status = true
 
 [golang]
-symbol = "\uE626"
+symbol = "\uE527 "
 
 [git_status]
-conflicted = "\u26A0"
-renamed = "\u270E"
+conflicted = "\u26A0 "
+renamed = "\u270E "
 prefix = ""
 suffix = " "
 style = "bold magenta"
 
 [git_branch]
-symbol = "\uF113 "
+symbol = "\uE709 "
+
+[jobs]
+symbol = "\u271C"
+
+[java]
+symbol = "\uE638 "
+
+[nodejs]
+symbol = "\uE69B "
+
+[package]
+#symbol = "\uF5F3 "
 
 [python]
-symbol = "\uE73C "
+symbol = "\uE63C "
+
+[ruby]
+symbol = "\uE639 "
+
+[rust]
+symbol = "\uE6A8 "
 
 [time]
 disabled = false
