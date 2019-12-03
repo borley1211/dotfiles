@@ -3,7 +3,7 @@ source ${DOTPATH:-~/Dotfiles}/etc/install
 
 install_rustup() {
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-    exec ${SHELL}
+    source ~/.cargo/env
 
     COMPLETIONSPATH="~/.local/share/bash-completion/completions"
     mkdir -p ${COMPLETIONSPATH}
