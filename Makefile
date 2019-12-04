@@ -13,7 +13,7 @@ endif
 DOTPATH		:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES	:= $(wildcard .??*) $(wildcard .config/??*.??*)
 CONFIGDIRS	:= $(filter-out .config/%.toml,$(wildcard .config/??*))
-CANDIDATES	:= $(CANDIDATES) $(foreach DIR, $(CONFIGDIRS), $(wildcard $(DIR)/??*))
+CANDIDATES	:= $(CANDIDATES) $(foreach DIR, $(CONFIGDIRS), $(wildcard $(DIR)/??*)) package.json
 EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode
 DOTFILES	:= $(sort $(filter-out $(EXCLUSIONS), $(CANDIDATES)))
 
@@ -97,7 +97,8 @@ endef
 DEPLOY	= $(foreach val,$(CONFIGDIRS),\
 	$(call mkdir_safety,$(HOME)/$(call set_config_home,$(val))))\
 	$(foreach val,$(DOTFILES),\
-	$(call mk_symlink,$(realpath $(val)),$(HOME)/$(call set_config_home,$(val))))
+	$(call mk_symlink,$(realpath $(val)),$(HOME)/$(call set_config_home,$(val)))) \
+	$(call mk_symlink,$(realpath .config/starship.toml),$(HOME)/.config/starship.toml)
 
 SYSINIT := $(foreach val,$(SYSINITSCRIPTS),$(call init,$(abspath $(val))))
 INIT	:= $(foreach val,$(INITSCRIPTS),$(call init,$(abspath $(val))))
@@ -105,7 +106,8 @@ INIT_LAZY	:= $(foreach val,$(LAZYSCRIPTS),$(call init,$(abspath $(val))))
 
 CLEAN	= -$(foreach val,$(DOTFILES),\
 	$(call rm_recursive,$(HOME)/$(call set_config_home,$(val)))) \
-	-$(call rm_recursive,$(DOTPATH))
+	-$(call rm_recursive,$(DOTPATH)) \
+	-$(call rm_recursive,$(HOME)/.config/starship.toml)
 
 #--MAIN--#{{{1
 
