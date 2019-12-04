@@ -29,7 +29,7 @@ symbol = "\u271C"
 symbol = "\uE638 "
 
 [nodejs]
-symbol = "\uE69B "
+#symbol = "\uE69B "
 
 [package]
 #symbol = "\uF5F3 "
