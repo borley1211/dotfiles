@@ -106,3 +106,6 @@ export PATH="$PATH:$GOPATH/bin"
 [ -f ~/.fzf.${SHELL} ] && source "~/.fzf.${SHELL}"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+
+##[Qt]
+export QT_QPA_PLATFORMTHEME=qt5ct
