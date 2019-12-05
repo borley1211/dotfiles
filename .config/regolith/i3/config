@@ -335,3 +335,9 @@ exec --no-startup-id /usr/bin/unclutter -b
 
 # Refresh wallpaper on screen resolution change
 exec --no-startup-id /usr/bin/xeventbind resolution /usr/bin/wallpaper-refresh
+
+exec --no-startup-id nm-applet
+exec --no-startup-id dunst
+exec --no-startup-id fcitx
+exec --no-startup-id parcellite
+exec --no-startup-id volumeicon
