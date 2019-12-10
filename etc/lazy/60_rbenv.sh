@@ -13,5 +13,5 @@ init_rbenv() {
     fi
 }
 
-log_exec init_rbenv
+logexec init_rbenv
 exit 0

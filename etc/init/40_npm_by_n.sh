@@ -8,6 +8,7 @@ init_npm_by_n() {
         log_info "It seems you've already installed n and npm. Exit."
     fi
     export PATH="${HOME}/n/bin:${PATH}"
+    cd ~
     n lts
     npm --version
     npm install npm
