@@ -1,3 +1,4 @@
+#!${SHELL}
 function reenv() {
     _paths=("/bin" "/usr/bin" "/usr/local/bin")
     _paths=(${_paths} "$HOME/bin" "$HOME/.local/bin")
@@ -112,3 +113,6 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 
 ##[rbenv]
 export PATH="$HOME/.rbenv/bin:$PATH"
+if [ -d "${HOME}/.rbenv" ]; then
+    eval "$(rbenv init -)"
+fi

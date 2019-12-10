@@ -6,7 +6,9 @@ init_rbenv() {
         git clone https://github.com/rbenv/rbenv.git ~/.rbenv
         ~/.rbenv/bin/rbenv init
 
-        source "~/.bashrc"
+        export PATH="$HOME/.rbenv/bin:$PATH"
+        source ~/.bashrc
+
         curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
     else
         log_fail "rbenv is already exists."

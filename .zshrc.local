@@ -1,5 +1,5 @@
 #!/bin/zsh
-eval "$(cat ${DOTPATH:-${HOME}/Dotfiles}/rc.sh)"
+source "${DOTPATH:-${HOME}/Dotfiles}/rc.sh"
 
 ##[zfunc]
 fpath=(${HOME}/.zfunc $fpath)
