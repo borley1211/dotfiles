@@ -2,7 +2,7 @@
 source "${DOTPATH:-~/Dotfiles}/etc/install"
 
 init_rbenv() {
-    if ! [ -d "~/.rbenv" ]; then
+    if ! [ -d "$HOME/.rbenv" ]; then
         git clone https://github.com/rbenv/rbenv.git ~/.rbenv
         ~/.rbenv/bin/rbenv init
 
@@ -12,6 +12,11 @@ init_rbenv() {
         curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
     else
         log_fail "rbenv is already exists."
+    fi
+
+    if [ -d "$HOME/.rbenv/plugins/ruby-build" ]; then
+         mkdir -p "$(rbenv root)"/plugins
+         git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
     fi
 }
 
