@@ -26,7 +26,8 @@ symbol = "\uE709 "
 symbol = "\u271C"
 
 [java]
-symbol = "\uE638 "
+symbol = "\uE738 "
+style = "red"
 
 [nodejs]
 #symbol = "\uE69B "
@@ -35,10 +36,10 @@ symbol = "\uE638 "
 #symbol = "\uF5F3 "
 
 [python]
-symbol = "\uE606 "
+symbol = "\uE73C "
 
 [ruby]
-symbol = "\uE639 "
+symbol = "\uE739 "
 
 [rust]
 symbol = "\uE6A8 "
