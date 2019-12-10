@@ -5,7 +5,7 @@ add_newline = true
 symbol = "\uF270 "
 
 [character]
-symbol = "\u2771 "
+symbol = "\uF054 "
 error_symbol = "\u2A2F "
 use_symbol_for_status = true
 
@@ -15,12 +15,12 @@ symbol = "\uE527 "
 [git_status]
 conflicted = "\u26A0 "
 renamed = "\u270E "
-prefix = ""
-suffix = " "
+prefix = "["
+suffix = "] "
 style = "bold magenta"
 
 [git_branch]
-symbol = "\uE709 "
+symbol = "\uF493 "
 
 [jobs]
 symbol = "\u271C"
@@ -30,10 +30,10 @@ symbol = "\uE738 "
 style = "red"
 
 [nodejs]
-#symbol = "\uE69B "
+symbol = "\uE718 "
 
 [package]
-#symbol = "\uF5F3 "
+symbol = "\uF487 "
 
 [python]
 symbol = "\uE73C "
