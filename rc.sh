@@ -109,3 +109,6 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
 ##[Qt]
 export QT_QPA_PLATFORMTHEME=qt5ct
+
+##[rbenv]
+export PATH="$HOME/.rbenv/bin:$PATH"
