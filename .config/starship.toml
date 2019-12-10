@@ -5,7 +5,8 @@ add_newline = true
 symbol = "\uF270 "
 
 [character]
-symbol = "\uF054 "
+#symbol = "\uF054 "
+symbol = "\u271C "
 error_symbol = "\u2A2F "
 use_symbol_for_status = true
 
