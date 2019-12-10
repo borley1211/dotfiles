@@ -15,12 +15,12 @@ symbol = "\uE527 "
 [git_status]
 conflicted = "\u26A0 "
 renamed = "\u270E "
-prefix = "["
-suffix = "] "
-style = "bold magenta"
+prefix = "at:"
+suffix = " "
+style = "magenta"
 
 [git_branch]
-symbol = "\uF493 "
+symbol = "\uF407 "
 
 [jobs]
 symbol = "\u271C"
