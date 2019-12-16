@@ -13,7 +13,7 @@ endif
 DOTPATH		:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES	:= $(wildcard .??*) $(wildcard .config/??*.??*)
 CONFIGDIRS	:= $(filter-out .config/%.toml,$(wildcard .config/??*))
-CANDIDATES	:= $(CANDIDATES) $(foreach DIR, $(CONFIGDIRS), $(wildcard $(DIR)/??*)) package.json
+CANDIDATES	:= $(CANDIDATES) $(foreach DIR, $(CONFIGDIRS), $(wildcard $(DIR)/??*)) package.json $(wildcard .jupyter/??*.??*)
 EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode
 DOTFILES	:= $(sort $(filter-out $(EXCLUSIONS), $(CANDIDATES)))
 
