@@ -118,7 +118,10 @@ if [ -d "${HOME}/.rbenv" ]; then
 fi
 
 ##[WSL]
-if [ uname -r | grep -i 'microsoft' ]; then
+if [ $(uname -r | grep -i 'microsoft') ]; then
     LOCAL_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
-    export DISPLAY="$LOCAL_IP":0
+    export DISPLAY="$LOCAL_IP:0.0"
+    export XDG_SESSION_TYPE="x11"
+
+    sudo service dbus start ; sudo service x11-common start
 fi
