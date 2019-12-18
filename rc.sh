@@ -116,3 +116,9 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 if [ -d "${HOME}/.rbenv" ]; then
     eval "$(rbenv init -)"
 fi
+
+##[WSL]
+if [ uname -r | grep -i 'microsoft' ]; then
+    LOCAL_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
+    export DISPLAY="$LOCAL_IP":0
+fi
