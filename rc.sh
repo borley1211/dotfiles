@@ -123,5 +123,9 @@ if [ $(uname -r | grep -i 'microsoft') ]; then
     export DISPLAY="$LOCAL_IP:0.0"
     export XDG_SESSION_TYPE="x11"
 
-    sudo service dbus start ; sudo service x11-common start
+    case $- in
+        *i*)
+            sudo service dbus start ; sudo service x11-common start
+            ;;
+    esac
 fi
