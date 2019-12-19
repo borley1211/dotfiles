@@ -26,7 +26,7 @@ alias reenv=reenv
 
 #[n and npm]
 export N_PREFIX="$(find ${HOME} -type d -name 'n' -or -name '.n' -prune -maxdepth 1 2>/dev/null | head -n 1)"
-reenv "$N_PREFIX/bin"
+export PATH="$N_PREFIX/bin:${PATH}"
 
 ##[Encoding]
 export LANG=ja_JP.UTF-8
@@ -123,9 +123,7 @@ if [ $(uname -r | grep -i 'microsoft') ]; then
     export DISPLAY="$LOCAL_IP:0.0"
     export XDG_SESSION_TYPE="x11"
 
-    case $- in
-        *i*)
-            sudo service dbus start ; sudo service x11-common start
-            ;;
-    esac
+    if [[ -o login ]]; then
+        sudo service dbus start ; sudo service x11-common start
+    fi
 fi
