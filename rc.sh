@@ -25,7 +25,7 @@ reenv
 alias reenv=reenv
 
 #[n and npm]
-export N_PREFIX="$(find ${HOME} -type d -name 'n' -or -name '.n' -prune -maxdepth 1 2>/dev/null | head -n 1)"
+export N_PREFIX="${HOME}/n"
 export PATH="$N_PREFIX/bin:${PATH}"
 
 ##[Encoding]
@@ -59,7 +59,7 @@ if [ python -m pipenv ] >/dev/null 2>&1; then
 fi
 
 #[RustUp]
-if [ -f "~/.cargo/env" ]; then
+if [ -f "${HOME}/.cargo/env" ]; then
     . ~/.cargo/env
 fi
 
