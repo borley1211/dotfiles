@@ -1,25 +1,26 @@
-#--Define Variables--#
+##--Define Variables--##
 
-## init-scripts
+# SUFFIX_OF_SCRIPTS
 
-### paths
-MAININITDIR	:= etc/init/main
-SYSINITDIR	:= etc/init/system
-LAZYINITDIR := etc/init/lazy
-
-### suffix of scripts
 ifeq ($(OS),Windows_NT)
 SUFFIX		:= ps1
 else
 SUFFIX		:= sh
 endif
 
-### get items
+# SCRIPTS
+
+## paths
+MAININITDIR	:= etc/init/main
+SYSINITDIR	:= etc/init/system
+LAZYINITDIR := etc/init/lazy
+
+## get items
 SYSINITSCRIPTS	:= $(sort $(wildcard $(SYSINITDIR)/??*.$(SUFFIX)))
 MAININITSCRIPTS	:= $(sort $(wildcard $(MAININITDIR)/??*.$(SUFFIX)))
 LAZYINITSCRIPTS	:= $(sort $(wildcard $(LAZYINITDIR)/??*.$(SUFFIX)))
 
-## dotfiles
+# DOTFILES
 
 DOTPATH		:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES	:= $(wildcard .??*) $(wildcard .config/??*.??*)
@@ -28,6 +29,9 @@ CANDIDATES	:= $(CANDIDATES) $(foreach DIR, $(CONFIGDIRS), $(wildcard $(DIR)/??*)
 EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode
 DOTFILES	:= $(sort $(filter-out $(EXCLUSIONS), $(CANDIDATES)))
 
+## UPDATES
+UPDATESDIR	:= etc/update
+UPDATES		:= $(sort $(wildcard $(UPDATESDIR)/??*.$(SUFFIX)))
 
 #--Define Functions--#
 
@@ -72,12 +76,12 @@ endif
 #--
 
 ifeq ($(OS),Windows_NT)
-define init
+define run
 powershell -NoLogo $1
 
 endef
 else
-define init
+define run
 bash $1
 
 endef
@@ -104,7 +108,8 @@ echo $1
 
 endef
 
-#--Setup all tasks--#{{{1
+
+##--Setup all tasks--##
 
 DEPLOY	= $(foreach val,$(CONFIGDIRS),\
 	$(call mkdir_safety,$(HOME)/$(call set_config_home,$(val))))\
@@ -112,16 +117,19 @@ DEPLOY	= $(foreach val,$(CONFIGDIRS),\
 	$(call mk_symlink,$(realpath $(val)),$(HOME)/$(call set_config_home,$(val)))) \
 	$(call mk_symlink,$(realpath .config/starship.toml),$(HOME)/.config/starship.toml)
 
-SYSINIT := $(foreach val,$(SYSINITSCRIPTS),$(call init,$(abspath $(val))))
-INIT	:= $(foreach val,$(MAININITSCRIPTS),$(call init,$(abspath $(val))))
-INIT_LAZY	:= $(foreach val,$(LAZYINITSCRIPTS),$(call init,$(abspath $(val))))
+SYSINIT := $(foreach val,$(SYSINITSCRIPTS),$(call run,$(abspath $(val))))
+INIT	:= $(foreach val,$(MAININITSCRIPTS),$(call run,$(abspath $(val))))
+INIT_LAZY	:= $(foreach val,$(LAZYINITSCRIPTS),$(call run,$(abspath $(val))))
 
 CLEAN	= -$(foreach val,$(DOTFILES),\
 	$(call rm_recursive,$(HOME)/$(call set_config_home,$(val)))) \
 	-$(call rm_recursive,$(DOTPATH)) \
 	-$(call rm_recursive,$(HOME)/.config/starship.toml)
 
-#--MAIN--#
+UPDATE	:= $(foreach val,$(UPDATES),$(call run,$(abspath $(val))))
+
+
+##--MAIN--##
 
 .DEFAULT_GOAL	:= help
 
@@ -131,7 +139,7 @@ list: ## Show dot files in this repo
 	@$(foreach val,"--DOT FILES--" $(DOTFILES) "--CONFIG DIRECTORIES--" $(CONFIGDIRS), $(call _list,$(val)))
 
 deploy: ## Create symlink to home directory
-	@echo 'Copyright (c) 2013-2015 BABAROT, 2019 BORLEY All Rights Reserved.'
+	@echo 'Copyright (c) 2013-2015 BABAROT, 2019- BORLEY All Rights Reserved.'
 	@echo '==> Start to deploy dotfiles to home directory.'
 	@echo ''
 	@$(DEPLOY)
@@ -151,16 +159,20 @@ test: ## Test dotfiles and init scripts (now DEPRECATED)
 	@#DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/test/test.sh
 	@echo "test is inactive temporarily"
 
-update: ## Fetch changes for this repo
+self-update: ## Fetch changes for this repo
 	git pull origin master
 	git submodule init
 	git submodule update
 	git submodule foreach git pull origin master
 
+update: ## Update all local objects
+	@echo "==> Start to apply UPDATES for all pkgs, plugins, envs, managers, or more..."
+	@$(UPDATE)
+
 install: update deploy init ## Run make update, deploy, init
 
 clean: ## Remove the dot files and this repo
-	@echo 'Remove dot files in your home directory...'
+	@echo '==> Remove dotfiles in your home directory...'
 	@$(CLEAN)
 
 help: ## Self-documented Makefile
