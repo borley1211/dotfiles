@@ -1,14 +1,25 @@
-#--Define Variables--#{{{1
+#--Define Variables--#
 
+## init-scripts
+
+### paths
+MAININITDIR	:= etc/init/main
+SYSINITDIR	:= etc/init/system
+LAZYINITDIR := etc/init/lazy
+
+### suffix of scripts
 ifeq ($(OS),Windows_NT)
-SYSINITSCRIPTS	:= $(sort $(wildcard etc/system/??*.ps1))
-INITSCRIPTS	:= $(sort $(wildcard etc/init/??*.ps1))
-LAZYSCRIPTS	:= $(sort $(wildcard etc/lazy/??*.ps1))
+SUFFIX		:= ps1
 else
-SYSINITSCRIPTS	:= $(sort $(wildcard etc/system/??*.sh))
-INITSCRIPTS	:= $(sort $(wildcard etc/init/??*.sh))
-LAZYSCRIPTS	:= $(sort $(wildcard etc/lazy/??*.sh))
+SUFFIX		:= sh
 endif
+
+### get items
+SYSINITSCRIPTS	:= $(sort $(wildcard $(SYSINITDIR)/??*.$(SUFFIX)))
+MAININITSCRIPTS	:= $(sort $(wildcard $(MAININITDIR)/??*.$(SUFFIX)))
+LAZYINITSCRIPTS	:= $(sort $(wildcard $(LAZYINITDIR)/??*.$(SUFFIX)))
+
+## dotfiles
 
 DOTPATH		:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES	:= $(wildcard .??*) $(wildcard .config/??*.??*)
@@ -17,7 +28,8 @@ CANDIDATES	:= $(CANDIDATES) $(foreach DIR, $(CONFIGDIRS), $(wildcard $(DIR)/??*)
 EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode
 DOTFILES	:= $(sort $(filter-out $(EXCLUSIONS), $(CANDIDATES)))
 
-#--Define Functions--#{{{1
+
+#--Define Functions--#
 
 ifeq ($(OS),Windows_NT)
 define set_config_home
@@ -101,15 +113,15 @@ DEPLOY	= $(foreach val,$(CONFIGDIRS),\
 	$(call mk_symlink,$(realpath .config/starship.toml),$(HOME)/.config/starship.toml)
 
 SYSINIT := $(foreach val,$(SYSINITSCRIPTS),$(call init,$(abspath $(val))))
-INIT	:= $(foreach val,$(INITSCRIPTS),$(call init,$(abspath $(val))))
-INIT_LAZY	:= $(foreach val,$(LAZYSCRIPTS),$(call init,$(abspath $(val))))
+INIT	:= $(foreach val,$(MAININITSCRIPTS),$(call init,$(abspath $(val))))
+INIT_LAZY	:= $(foreach val,$(LAZYINITSCRIPTS),$(call init,$(abspath $(val))))
 
 CLEAN	= -$(foreach val,$(DOTFILES),\
 	$(call rm_recursive,$(HOME)/$(call set_config_home,$(val)))) \
 	-$(call rm_recursive,$(DOTPATH)) \
 	-$(call rm_recursive,$(HOME)/.config/starship.toml)
 
-#--MAIN--#{{{1
+#--MAIN--#
 
 .DEFAULT_GOAL	:= help
 
