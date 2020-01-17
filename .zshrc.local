@@ -3,4 +3,4 @@ source "${DOTPATH:-${HOME}/Dotfiles}/rc.sh"
 
 ##[zfunc]
 fpath=(${HOME}/.zfunc $fpath)
-autoload -Uz compinit && compinit
+autoload -Uz compinit; compinit

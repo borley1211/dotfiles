@@ -25,8 +25,8 @@ reenv
 alias reenv=reenv
 
 #[n and npm]
-export N_PREFIX="$(find ${HOME} -type d -name 'n' -or -name '.n' -prune -maxdepth 1 2>/dev/null | head -n 1)"
-reenv "$N_PREFIX/bin"
+export N_PREFIX="${HOME}/n"
+export PATH="$N_PREFIX/bin:${PATH}"
 
 ##[Encoding]
 export LANG=ja_JP.UTF-8
@@ -59,7 +59,7 @@ if [ python -m pipenv ] >/dev/null 2>&1; then
 fi
 
 #[RustUp]
-if [ -f "~/.cargo/env" ]; then
+if [ -f "${HOME}/.cargo/env" ]; then
     . ~/.cargo/env
 fi
 
@@ -115,4 +115,15 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export PATH="$HOME/.rbenv/bin:$PATH"
 if [ -d "${HOME}/.rbenv" ]; then
     eval "$(rbenv init -)"
+fi
+
+##[WSL]
+if [ $(uname -r | grep -i 'microsoft') ]; then
+    LOCAL_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
+    export DISPLAY="$LOCAL_IP:0.0"
+    export XDG_SESSION_TYPE="x11"
+
+    if [[ -o login ]]; then
+        sudo service dbus start ; sudo service x11-common start
+    fi
 fi
