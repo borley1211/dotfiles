@@ -1,28 +1,18 @@
 #!${SHELL}
-function reenv() {
-    _paths=("/bin" "/usr/bin" "/usr/local/bin")
-    _paths=(${_paths} "$HOME/bin" "$HOME/.local/bin")
-    _paths=(${_paths} "$HOME/node_modules/.bin")
-    _paths=(${_paths} "$HOME/go/bin")
+function pathadd() {
+    _new_path="$*"
 
-    #[TIPS]
-    # If you want to add /path/to/some_dir to `PATH` envvar,
-    # you can do as below:
-    ##  _paths=(${_paths} "/path/to/some_dir")
-    # or:
-    ##$ reenv "/path/to/some_dir"
-
-    _new_path="$@"
-    _paths=(${_paths} ${_new_path})
-
-    for _p in ${_paths}; do
-        if [ -d ${_p} ]; then
-            export PATH="${PATH}:${_p}"
-        fi
-    done
+	if [ 0 -eq $# ]; then
+        echo "  Usage : $ reenv <PATH_TO_ADD> [, ...]"
+	else
+	    for _p in ${_new_path}; do
+	        if [ -d "${_p}" ]; then
+	            export PATH="${PATH}:${_p}"
+	        fi
+	    done
+	fi
 }
-reenv
-alias reenv=reenv
+alias pathadd=pathadd
 
 #[n and npm]
 export N_PREFIX="${HOME}/n"
@@ -50,7 +40,7 @@ fi
 eval "$(python -m pip completion --$(basename ${SHELL}))"
 
 export PIPENV_VENV_IN_PROJECT=1
-if [ python -m pipenv ] >/dev/null 2>&1; then
+if python -m pipenv >/dev/null 2>&1; then
     eval "$(pipenv --completion)"
     export PIPENV_CACHE_DIR=$TMPDIR
     export PIPENV_TIMEOUT=1200
@@ -59,9 +49,7 @@ if [ python -m pipenv ] >/dev/null 2>&1; then
 fi
 
 #[RustUp]
-if [ -f "${HOME}/.cargo/env" ]; then
-    . ~/.cargo/env
-fi
+[ -f "${HOME}/.cargo/env" ] && . ~/.cargo/env
 
 #[NeoVim]
 export EDITOR="nvim"
@@ -76,14 +64,14 @@ export XDG_CONFIG_DIR=${HOME}/.config
 if [ -e powerline-daemon ]; then
     powerline-daemon -q
 
-    while read p; do
-        PYPKGDIR=(${PYPKGDIR:-} ${p})
+    while read -r p; do
+        PYPKGDIR=("${PYPKGDIR:-}" "$p")
     done < <(python -c 'import sys; print("\n".join(p for p in sys.path if "site-packages" in p))')
 
     PWLIN_INIT="powerline/bindings/zsh/powerline.zsh"
 
-    for WKDIR in ${PYPKGDIR}; do
-        if [ -f ${WKDIR} ]; then
+    for WKDIR in $PYPKGDIR; do
+        if [ -f "$WKDIR" ]; then
             source ${WKDIR}/${PWLIN_INIT}
             break
         fi
@@ -95,6 +83,7 @@ export LLVM_CONFIG="$(ls -dr1 $(find /usr/bin -path '*llvm-config*') | head -n 1
 
 ##[Dotfiles]
 export DOTPATH="${HOME}/Dotfiles"
+alias dotutil="make -C ${DOTPATH}"
 
 ##[goenv]
 export GOENV_ROOT="$HOME/.goenv"
@@ -104,7 +93,7 @@ export PATH="$GOROOT/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 
 ##[fzf]
-[ -f ~/.fzf.${SHELL} ] && source "~/.fzf.${SHELL}"
+[ -f "${HOME}/.fzf.${SHELL}" ] && . ~/.fzf.${SHELL}
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
@@ -113,13 +102,11 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 
 ##[rbenv]
 export PATH="$HOME/.rbenv/bin:$PATH"
-if [ -d "${HOME}/.rbenv" ]; then
-    eval "$(rbenv init -)"
-fi
+[ -d "${HOME}/.rbenv" ] && eval "$(rbenv init -)"
 
 ##[WSL]
-if [ $(uname -r | grep -i 'microsoft') ]; then
-    LOCAL_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
+if [ "$(uname -r | grep -i 'microsoft')" ]; then
+    LOCAL_IP=$(cat < /etc/resolv.conf | grep nameserver | awk '{print $2}')
     export DISPLAY="$LOCAL_IP:0.0"
     export XDG_SESSION_TYPE="x11"
 
