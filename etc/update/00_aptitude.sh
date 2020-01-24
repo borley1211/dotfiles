@@ -6,5 +6,4 @@ update_pkgs() {
     sudo aptitude-curses full-upgrade --full-resolver
 }
 
-logexec update_pkgs
-exit 0
+logexec update_pkgs || exit

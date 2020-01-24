@@ -14,6 +14,9 @@ function pathadd() {
 }
 alias pathadd=pathadd
 
+#[Local Binaries]
+pathadd ~/.local/bin
+
 #[n and npm]
 export N_PREFIX="${HOME}/n"
 export PATH="$N_PREFIX/bin:${PATH}"
