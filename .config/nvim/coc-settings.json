@@ -1,6 +1,6 @@
 {
     "languageserver": {
-    "   cquery": {
+        "cquery": {
             "command": "cquery",
             "args": ["--log-file=/tmp/cq.log"],
             "filetypes": ["c", "cpp"],
@@ -9,21 +9,15 @@
                 "cacheDirectory": "/tmp/cquery"
             }
         },
-    "   dockerfile": {
-        "command": "docker-langserver",
-        "filetypes": ["dockerfile"],
-        "args": ["--stdio"]
+        "dockerfile": {
+            "command": "docker-langserver",
+            "filetypes": ["dockerfile"],
+            "args": ["--stdio"]
         },
-    "   efm": {
+        "efm": {
             "command": "efm-langserver",
             "args": [],
             "filetypes": ["vim", "markdown"]
-        },
-        "bash": {
-            "command": "bash-language-server",
-            "args": ["start"],
-            "filetypes": ["sh"],
-            "ignoredRootPaths": ["~"]
         }
     }
 }

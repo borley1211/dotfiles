@@ -23,6 +23,7 @@ set showcmd
 set wildmenu
 set modeline
 
+
 "[括弧/タグジャンプ]
 set showmatch
 "source $VIMRUNTIME/macros/matchit.vim   " Vimの「%」を拡張
@@ -71,6 +72,7 @@ endif
 set confirm
 set autoread
 set nobackup
+set nowritebackup
 set noswapfile
 set hidden
 
@@ -113,4 +115,13 @@ nnoremap <Up>   gk
 let g:molokai_original=1
 colorscheme molokai
 
-let g:python3_host_prog = $PYENV_ROOT."/shims/python"
+
+"[Python(pyenv)]
+let g:python3_host_prog = $PYENV_ROOT.'/shims/python'
+
+
+"[coc.nvim]
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}

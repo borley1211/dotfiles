@@ -11,9 +11,11 @@ init_npm_by_n() {
     cd ~
     n lts
     npm --version
-    npm install npm
+    npm install npm -g
     npm update
+    npm doctor
+    npm dedupe
+    npm audit fix
 }
 
-logexec init_npm_by_n
-exit 0
+logexec init_npm_by_n || exit
