@@ -108,10 +108,11 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 [ -d "${HOME}/.rbenv" ] && eval "$(rbenv init -)"
 
 ##[WSL]
-if [ "$(uname -r | grep -i 'microsoft')" ]; then
+if ( uname -r | grep -iq 'microsoft' ) ; then
     LOCAL_IP=$(cat < /etc/resolv.conf | grep nameserver | awk '{print $2}')
     export DISPLAY="$LOCAL_IP:0.0"
     export XDG_SESSION_TYPE="x11"
+    export DOCKER_HOST="tcp://$LOCAL_IP:2375"
 
     if [[ -o login ]]; then
         sudo service dbus start ; sudo service x11-common start

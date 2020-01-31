@@ -25,6 +25,7 @@ notebook = "*"
 nptyping = "*"
 vim-vint = "*"
 yapf = "*"
+python-language-server = {extras = ["all"],version = "*"}
 
 [packages]
 certifi = "*"
@@ -64,7 +65,7 @@ PySoundFile = "*"
 PyYAML = "*"
 
 [requires]
-python_version = ">=3.8"
+python_version = "3.8.0"
 
 [pipenv]
 allow_prereleases = true
