@@ -23,7 +23,7 @@ export PATH="$N_PREFIX/bin:${PATH}"
 
 ##[Encoding]
 export LANG=ja_JP.UTF-8
-export LC_ALL=${LANG}
+#export LC_ALL=${LANG}
 export VTE_CJK_WIDTH=2
 
 #[tmp]
@@ -62,6 +62,7 @@ export NVIM_COC_LOGFILE="coc.log"
 #[XDG envs]
 export XDG_RUNTIME_DIR=${HOME}
 export XDG_CONFIG_DIR=${HOME}/.config
+export XDG_CONFIG_HOME=$XDG_CONFIG_DIR
 
 #[Powerline]
 if [ -e powerline-daemon ]; then
@@ -111,10 +112,27 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 if ( uname -r | grep -iq 'microsoft' ) ; then
     LOCAL_IP=$(cat < /etc/resolv.conf | grep nameserver | awk '{print $2}')
     export DISPLAY="$LOCAL_IP:0.0"
+    export LIBGL_ALWAYS_INDIRECT=1
     export XDG_SESSION_TYPE="x11"
     export DOCKER_HOST="tcp://$LOCAL_IP:2375"
 
+    # message-bus(dbus)
+    if ! ( service dbus status ); then
+        sudo service dbus start
+    fi
+
+    # zfs-fuse
     if [[ -o login ]]; then
-        sudo service dbus start ; sudo service x11-common start
+        sudo service zfs-fuse start
+    fi
+
+    # cron
+    if ! ( service cron status ); then
+        sudo service cron start
+    fi
+
+    # pulseaudio
+    if ! ( pulseaudio --check ); then
+        pulseaudio -D
     fi
 fi

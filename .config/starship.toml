@@ -10,7 +10,7 @@ error_symbol = "\u2A2F "
 use_symbol_for_status = true
 
 [golang]
-symbol = "\uE527 "
+symbol = "\uE627 "
 
 [git_status]
 conflicted = "\u26A0 "

@@ -63,6 +63,7 @@ Pillow = "*"
 Pygments = "*"
 PySoundFile = "*"
 PyYAML = "*"
+hatch = "*"
 
 [requires]
 python_version = "3.8.0"

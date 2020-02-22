@@ -34,6 +34,9 @@ endfunction
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+hook_add = '''
+    let g:lightline = {'colorscheme': 'wombat'}
+'''
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
@@ -56,11 +59,18 @@ function! s:denite_my_settings() abort
 endfunction
 '''
 
+# 補完
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depend = ['roxma/nvim-yarp', 'roxma/vim-hug-neovim-rpc']
-hook_add = 'let g:deoplete#enable_at_startup = 1'
+hook_source = '''
+    let g:deoplete#enable_at_startup = 1
+    let g:deoplete#enable_ignore_case = 1
+    let g:deoplete#enable_smart_case = 1
+'''
+on_i = 1
 
+# ZShell
 [[plugins]]
 repo = 'zchee/deoplete-zsh'
 
@@ -79,8 +89,12 @@ repo = 'tpope/vim-rhubarb'
 [[plugins]]
 repo = 'powerline/powerline'
 
+# LSP Manager
 [[plugins]]
 repo = 'neoclide/coc.nvim'
 merge = 0
 rev = 'release'
-# vim:ft=toml
+
+# TOML
+[[plugins]]
+repo = 'cespare/vim-toml'

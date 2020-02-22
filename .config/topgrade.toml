@@ -1,7 +1,9 @@
 # Additional git repositories to pull
 git_repos = [
-    "~/",
-    "~/.config/something"
+    "~/Dotfiles",
+    "~/.zprezto",
+    "~/.goenv",
+    "~/.rbenv"
 ]
 
 # Don't pull the predefined git repos
@@ -23,10 +25,10 @@ git_repos = [
 #remote_topgrades = ["toothless", "pi", "parnas"]
 
 # Arguments to pass SSH when upgrading remote systems
-#ssh_arguments = "-o ConnectTimeout=2"
+ssh_arguments = "-o ConnectTimeout=2"
 
 # Arguments to pass Git when pulling Repositories
-#git_arguments = "--rebase --autostash"
+git_arguments = "--rebase --autostash"
 
 # Arguments to pass tmux when pulling Repositories
 #tmux_arguments = "-S /var/tmux.sock"
@@ -37,15 +39,18 @@ git_repos = [
 # Manually select Windows updates
 # accept_all_windows_updates = false
 
+# Cleanup temporary or old files
+cleanup = true
+
 # Do not set the terminal title
 #set_title = false
 # Commands to run before anything
-#[pre_commands]
-#"Emacs Snapshot" = "rm -rf ~/.emacs.d/elpa.bak && cp -rl ~/.emacs.d/elpa ~/.emacs.d/elpa.bak"
+[pre_commands]
+"NeoVim Snapshot" = "rm -rf ~/.local/bin/nvim.bak && cp -rl ~/.local/bin/nvim ~/.local/bin/nvim.bak"
+"Update NodeJS by N" = "n lts; npm --version"
 
 # Custom commands
-#[commands]
-#"Python Environment" = "~/dev/.env/bin/pip install -i https://pypi.python.org/simple -U --upgrade-strategy eager jupyter"
-
-# Cleanup temporary or old files
-#cleanup = true
+[commands]
+"Update pip" = "python -m pip install -i https://pypi.python.org/simple -U --upgrade-strategy eager pip"
+"Python envs" = "pipenv update --dev --clear; pipenv install --dev --system"
+"NPM" = "npm install npm -g; npm update; npm doctor; npm dedupe; npm audit fix"
