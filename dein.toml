@@ -98,3 +98,7 @@ rev = 'release'
 # TOML
 [[plugins]]
 repo = 'cespare/vim-toml'
+
+# Async Lint Engine
+[[plugins]]
+repo = 'w0rp/ale'
