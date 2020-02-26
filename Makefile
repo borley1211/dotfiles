@@ -35,79 +35,86 @@ UPDATES		:= $(sort $(wildcard $(UPDATESDIR)/??*.$(SUFFIX)))
 
 #--Define Functions--#
 
+# DEFINE FUNCTIONS
+# - ON WINDOWS
 ifeq ($(OS),Windows_NT)
+
 define set_config_home
 $(subst .config/,AppData/Local/,$1)
 endef
+
+define mkdir_safety
+	cmd /C "setlocal enableextensions & md $(subst /,\,$1) & endlocal"
+
+endef
+
+define mk_symlink
+	cmd /C mklink $(subst /,\,$2) $(subst /,\,$1)
+
+endef
+
+define run
+	powershell -NoLogo $1
+
+endef
+
+define rm_recursive
+	cmd /C "del $(subst /,\,$1)"
+
+endef
+
+define deploy_on_win
+	cmd /C mklink $(subst /,\,$2) $(subst /,\,$1)
+
+endef
+
+define clean_on_win
+	cmd /C "del $(subst /,\,$1)"
+
+endef
+
 else
+# - ON LINUX
+
 define set_config_home
 $1
 endef
-endif
 
-#--
-
-ifeq ($(OS),Windows_NT)
 define mkdir_safety
-cmd /C "setlocal enableextensions & md $(subst /,\,$1) & endlocal"
+	mkdir -p $1
 
 endef
-else
-define mkdir_safety
-mkdir -p $1
 
-endef
-endif
-
-#--
-
-ifeq ($(OS),Windows_NT)
 define mk_symlink
-cmd /C mklink $(subst /,\,$2) $(subst /,\,$1)
+	ln -sfv $1 $2
 
 endef
-else
-define mk_symlink
-ln -sfv $1 $2
 
-endef
-endif
-
-#--
-
-ifeq ($(OS),Windows_NT)
 define run
-powershell -NoLogo $1
+	bash $1
 
 endef
-else
-define run
-bash $1
+
+define rm_recursive
+	rm -vrf $1
 
 endef
+
+define deploy_on_win
+
+endef
+
+define clean_on_win
+
+endef
+
 endif
 
-#--
-
-ifeq ($(OS),Windows_NT)
-define rm_recursive
-cmd /C "del $(subst /,\,$1)"
-
-endef
-else
-define rm_recursive
-rm -vrf $1
-
-endef
-endif
-
-#--
-
+# - ON EACH OS
 define _list
-echo $1
+	echo $1
 
 endef
-
 
 ##--Setup all tasks--##
 
@@ -115,15 +122,17 @@ DEPLOY	= $(foreach val,$(CONFIGDIRS),\
 	$(call mkdir_safety,$(HOME)/$(call set_config_home,$(val))))\
 	$(foreach val,$(DOTFILES),\
 	$(call mk_symlink,$(realpath $(val)),$(HOME)/$(call set_config_home,$(val)))) \
-	$(call mk_symlink,$(realpath .config/starship.toml),$(HOME)/.config/starship.toml)
+	$(call deploy_on_win,$(realpath .config/starship.toml),$(HOME)/.config/starship.toml) \
+	$(call deploy_on_win,$(realpath .config/topgrade.toml),$(HOME)/AppData/Roaming/topgrade.toml)
 
 SYSINIT := $(foreach val,$(SYSINITSCRIPTS),$(call run,$(abspath $(val))))
 INIT	:= $(foreach val,$(MAININITSCRIPTS),$(call run,$(abspath $(val))))
 INIT_LAZY	:= $(foreach val,$(LAZYINITSCRIPTS),$(call run,$(abspath $(val))))
 
-CLEAN	= -$(foreach val,$(DOTFILES),\
+CLEAN	= $(foreach val,$(DOTFILES),\
 	$(call rm_recursive,$(HOME)/$(call set_config_home,$(val)))) \
-	-$(call rm_recursive,$(HOME)/.config/starship.toml)
+	$(call clean_on_win,$(HOME)/.config/starship.toml) \
+	$(call clean_on_win,$(HOME)/AppData/Roaming/topgrade.toml)
 
 UPDATE	:= $(foreach val,$(UPDATES),$(call run,$(abspath $(val))))
 
@@ -164,9 +173,9 @@ self-update: ## Fetch changes for this repo
 	git submodule update
 	git submodule foreach git pull origin master
 
-update: ## Update all local objects
-	@echo "==> Start to apply UPDATES for all pkgs, plugins, envs, managers, or more..."
-	@$(UPDATE)
+update: ## Update all local objects(now DEPRECATED)
+	@echo "==> Start to apply UPDATES for all pkgs, plugins, envs, managers, or more...(DEPRECATED)"
+	@#$(UPDATE)
 
 install: update deploy init ## Run make update, deploy, init
 
@@ -175,8 +184,7 @@ clean: ## Remove the dot files and this repo
 	@$(CLEAN)
 
 purge: clean ## Run 'clean' and remove self
-	-$(call rm_recursive,$(DOTPATH))
-
+	$(call rm_recursive,$(DOTPATH))
 
 help: ## Self-documented Makefile
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
