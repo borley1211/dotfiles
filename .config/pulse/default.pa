@@ -47,7 +47,7 @@ load-module module-switch-on-connect
 #load-module module-alsa-source source_name=input device="front"
 #load-module module-oss device="/dev/dsp" sink_name=output source_name=input
 #load-module module-oss-mmap device="/dev/dsp" sink_name=output source_name=input
-load-module module-null-sink sink_name=virtual
+load-module module-null-sink sink_name=remote
 #load-module module-pipe-sink
 
 ### Automatically load driver modules depending on the hardware available
@@ -67,11 +67,15 @@ load-module module-jackdbus-detect channels=2
 
 ### Automatically load driver modules for Bluetooth hardware
 .ifexists module-bluetooth-policy.so
-#load-module module-bluetooth-policy
+.nofail
+load-module module-bluetooth-policy
+.fail
 .endif
 
 .ifexists module-bluetooth-discover.so
-#load-module module-bluetooth-discover
+.nofail
+load-module module-bluetooth-discover
+.fail
 .endif
 
 ### Load several protocols
@@ -124,7 +128,9 @@ load-module module-intended-roles
 ### If autoexit on idle is enabled we want to make sure we only quit
 ### when no local session needs us anymore.
 .ifexists module-console-kit.so
-#load-module module-console-kit
+.nofail
+load-module module-console-kit
+.fail
 .endif
 .ifexists module-systemd-login.so
 load-module module-systemd-login
@@ -148,5 +154,5 @@ load-module module-x11-publish
 .endif
 
 ### Make some devices default
-#set-default-sink output
-#set-default-source input
+set-default-sink remote
+#set-default-source remote.monitor

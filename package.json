@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "npm": "^6.13.7"
+    "npm": "^6.14.0"
   },
   "name": "borley",
   "version": "1.0.0",

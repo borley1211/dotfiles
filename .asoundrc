@@ -1,87 +1,13 @@
 pcm.!default {
-    type asym
-    playback.pcm "dmixpci"
-    capture.pcm "dsnooper"
-    hint.description "Default Device for user"
-}
-
-pcm.dmixpci {
-    type dmix
-    ipc_key 1024
-    ipc_perm 0666
-    slave {
-        pcm "hw:0,0"
-        period_time 0
-        period_size 1024
-        buffer_size 8192
-        channels 2
-        rate 48000
-    }
-    bindings {
-        0 0
-        1 1
-    }
-    hint.description "Mixer for Default PCM"
-}
-
-pcm.dmixloop {
-    type dmix
-    ipc_key 2048
-    ipc_perm 0666
-    slave {
-        pcm "hw:Loopback,1"
-        period_time 0
-        period_size 1024
-        buffer_size 8192
-        channels 2
-        rate 48000
-    }
-    bindings {
-        0 0
-        1 1
-    }
-    hint.description "Snooper for Loopback"
-}
-
-pcm.dsnooper {
-    type dsnoop
-    ipc_key 4096 
-    ipc_perm 0666 
-    slave {
-        pcm "hw:0,1"
-        period_time 0
-        period_size 1024
-        buffer_size 8192
-        channels 2
-        rate 48000
-    }
-    bindings {
-        0 0
-        1 1
-    }
-    hint.description "Snooper for Default PCM/2"
-}
-
-pcm.speaker {
-    type asym
-    playback.pcm "dmixpci"
-    capture.pcm "null"
-    hint.description "Output Device (with Null Input)"
-}
-
-pcm.monitor {
     type plug
-    slave.pcm "dmixloop"
-    hint.description "Monitor for Default Device"
+    slave { pcm "pulse" }
 }
 
-pcm.array {
-    type asym
-    playback.pcm "null"
-    capture.pcm "dsnooper"
-    hint.description "Input Device (with Dummy Output)"
+pcm.pulse {
+    type pulse
 }
 
-defaults.pcm.rate_converter="speexrate"
-defaults.pcm.rate=48000
-defaults.pcm.format=S32_LE
+ctl.mixer0 {
+    type hw
+    card 0
+}

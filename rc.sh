@@ -115,24 +115,25 @@ if ( uname -r | grep -iq 'microsoft' ) ; then
     export LIBGL_ALWAYS_INDIRECT=1
     export XDG_SESSION_TYPE="x11"
     export DOCKER_HOST="tcp://$LOCAL_IP:2375"
+    export HTCACHECLEAN_PATH="$TMPDIR/http"
+    #export PULSE_SERVER="$LOCAL_IP:9697"
 
-    # message-bus(dbus)
-    if ! ( service dbus status ); then
-        sudo service dbus start
-    fi
+    # Services (init.d)
+    SERVICES=( dbus cron x11-common apache-htcacheclean )
+    for name in $SERVICES; do
+        if ! ( service $name status ); then
+            sudo service $name start
+        fi
+    done
 
     # zfs-fuse
     if [[ -o login ]]; then
         sudo service zfs-fuse start
     fi
 
-    # cron
-    if ! ( service cron status ); then
-        sudo service cron start
-    fi
-
     # pulseaudio
-    if ! ( pulseaudio --check ); then
+    if ( pulseaudio --check ); then
         pulseaudio -D
     fi
+
 fi
