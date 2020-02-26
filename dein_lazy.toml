@@ -9,4 +9,5 @@ on_cmd = 'Dein'
 # PowerShell
 [[plugins]]
 repo = 'PProvost/vim-ps1'
+on_ft = ['ps1', 'psm']
 
