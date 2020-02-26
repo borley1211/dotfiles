@@ -123,7 +123,6 @@ INIT_LAZY	:= $(foreach val,$(LAZYINITSCRIPTS),$(call run,$(abspath $(val))))
 
 CLEAN	= -$(foreach val,$(DOTFILES),\
 	$(call rm_recursive,$(HOME)/$(call set_config_home,$(val)))) \
-	-$(call rm_recursive,$(DOTPATH)) \
 	-$(call rm_recursive,$(HOME)/.config/starship.toml)
 
 UPDATE	:= $(foreach val,$(UPDATES),$(call run,$(abspath $(val))))
@@ -174,6 +173,10 @@ install: update deploy init ## Run make update, deploy, init
 clean: ## Remove the dot files and this repo
 	@echo '==> Remove dotfiles in your home directory...'
 	@$(CLEAN)
+
+purge: clean ## Run 'clean' and remove self
+	-$(call rm_recursive,$(DOTPATH))
+
 
 help: ## Self-documented Makefile
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
