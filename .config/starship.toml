@@ -20,7 +20,7 @@ suffix = " "
 style = "magenta"
 
 [git_branch]
-symbol = "\uF407 "
+#symbol = "\uF407 "
 
 [jobs]
 symbol = "\u271C"
@@ -30,7 +30,7 @@ symbol = "\uE738 "
 style = "red"
 
 [nodejs]
-symbol = "\uE718 "
+#symbol = "\uE718 "
 
 [package]
 symbol = "\uF06B "
