@@ -52,7 +52,6 @@ scipy = "*"
 shellingham = "*"
 six = "*"
 sounddevice = "*"
-soundmeter = "*"
 stft = "*"
 CacheControl = "*"
 Cython = "*"
@@ -66,7 +65,7 @@ PyYAML = "*"
 hatch = "*"
 
 [requires]
-python_version = "3.8.0"
+python_version = "3.8"
 
 [pipenv]
 allow_prereleases = true
