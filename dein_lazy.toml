@@ -5,3 +5,8 @@ on_ft = 'python'
 [[plugins]]
 repo = 'haya14busa/dein-command.vim'
 on_cmd = 'Dein'
+
+# PowerShell
+[[plugins]]
+repo = 'PProvost/vim-ps1'
+

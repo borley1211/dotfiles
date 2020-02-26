@@ -98,3 +98,4 @@ rev = 'release'
 # TOML
 [[plugins]]
 repo = 'cespare/vim-toml'
+
