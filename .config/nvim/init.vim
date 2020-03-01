@@ -9,6 +9,17 @@ set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis,cp932   " 読込時の文字コ�
 set fileformats=unix,dos,mac    " 改行コードの自動判別(左側優先)
 set ambiwidth=double    " 絵文字等が崩れる問題を解決
 
+"[Python]
+if has('win32')
+    let s:pythonpath = trim(system('which.exe python.exe'))
+else
+    let s:pythonpath = trim(system('which python'))
+endif
+if has('PYENV_ROOT')
+    let s:pythonpath = $PYENV_ROOT.'shims/python'
+endif
+let g:python_host_prog = s:pythonpath
+let g:python3_host_prog = s:pythonpath
 
 "[dein]
 let s:deinrc = expand('$DOTPATH/deinrc.vim')
@@ -114,11 +125,6 @@ nnoremap <Up>   gk
 "[カラースキーマ]
 let g:molokai_original=1
 colorscheme molokai
-
-
-"[Python(pyenv)]
-let g:python3_host_prog = $PYENV_ROOT.'/shims/python'
-
 
 "[coc.nvim]
 set updatetime=300

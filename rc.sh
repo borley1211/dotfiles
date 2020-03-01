@@ -2,15 +2,15 @@
 function pathadd() {
     _new_path="$*"
 
-	if [ 0 -eq $# ]; then
+    if [ 0 -eq $# ]; then
         echo "  Usage : $ reenv <PATH_TO_ADD> [, ...]"
-	else
-	    for _p in ${_new_path}; do
-	        if [ -d "${_p}" ]; then
-	            export PATH="${PATH}:${_p}"
-	        fi
-	    done
-	fi
+    else
+        for _p in ${_new_path}; do
+            if [ -d "${_p}" ]; then
+                export PATH="${PATH}:${_p}"
+            fi
+        done
+    fi
 }
 alias pathadd=pathadd
 
@@ -109,8 +109,8 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 [ -d "${HOME}/.rbenv" ] && eval "$(rbenv init -)"
 
 ##[WSL]
-if ( uname -r | grep -iq 'microsoft' ) ; then
-    LOCAL_IP=$(cat < /etc/resolv.conf | grep nameserver | awk '{print $2}')
+if (uname -r | grep -iq 'microsoft'); then
+    LOCAL_IP=$(cat </etc/resolv.conf | grep nameserver | awk '{print $2}')
     export DISPLAY="$LOCAL_IP:0.0"
     export LIBGL_ALWAYS_INDIRECT=1
     export XDG_SESSION_TYPE="x11"
@@ -119,9 +119,9 @@ if ( uname -r | grep -iq 'microsoft' ) ; then
     #export PULSE_SERVER="$LOCAL_IP:9697"
 
     # Services (init.d)
-    SERVICES=( dbus cron x11-common apache-htcacheclean )
+    SERVICES=(dbus cron x11-common apache-htcacheclean)
     for name in $SERVICES; do
-        if ! ( service $name status ); then
+        if ! (service $name status); then
             sudo service $name start
         fi
     done
@@ -132,7 +132,7 @@ if ( uname -r | grep -iq 'microsoft' ) ; then
     fi
 
     # pulseaudio
-    if ( pulseaudio --check ); then
+    if (pulseaudio --check); then
         pulseaudio -D
     fi
 

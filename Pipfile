@@ -27,6 +27,7 @@ vim-vint = "*"
 yapf = "*"
 python-language-server = {extras = ["all"],version = "*"}
 jupyterlab-templates = "*"
+pynvim = "*"
 
 [packages]
 certifi = "*"

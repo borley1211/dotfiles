@@ -120,10 +120,12 @@ endef
 
 DEPLOY	= $(foreach val,$(CONFIGDIRS),\
 	$(call mkdir_safety,$(HOME)/$(call set_config_home,$(val))))\
+	$(call mkdir_safety,$(HOME)/.config/efm-langserver) \
 	$(foreach val,$(DOTFILES),\
 	$(call mk_symlink,$(realpath $(val)),$(HOME)/$(call set_config_home,$(val)))) \
 	$(call deploy_on_win,$(realpath .config/starship.toml),$(HOME)/.config/starship.toml) \
-	$(call deploy_on_win,$(realpath .config/topgrade.toml),$(HOME)/AppData/Roaming/topgrade.toml)
+	$(call deploy_on_win,$(realpath .config/topgrade.toml),$(HOME)/AppData/Roaming/topgrade.toml) \
+	$(call deploy_on_win,$(realpath .config/efm-langserver/config.yaml),$(HOME)/.config/efm-langserver/config.yaml)
 
 SYSINIT := $(foreach val,$(SYSINITSCRIPTS),$(call run,$(abspath $(val))))
 INIT	:= $(foreach val,$(MAININITSCRIPTS),$(call run,$(abspath $(val))))

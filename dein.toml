@@ -3,14 +3,22 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
-build = 'make'
+#build = 'make'
+hook_post_update = '''
+if has('win32')
+    let cmd = 'tools\\update-dll-mingw'
+elseif has('win32unix') " for Cygwin
+    let cmd = 'make -f make_cygwin.mak'
+elseif executable('gmake')
+    let cmd = 'gmake'
+else
+    let cmd = 'make'
+endif
+let g:dein#plugin.build = cmd
+'''
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]]
-repo = 'scrooloose/nerdtree'
-hook_add = 'nnoremap :nerd :NERDTreeToggle'
 
 [[plugins]]
 repo = 'tomasr/molokai'
@@ -45,6 +53,7 @@ repo = 'Yggdroot/indentLine'
 repo = 'Shougo/deol.nvim'
 
 [[plugins]]
+if = 0
 repo = 'Shougo/denite.nvim'
 hook_add = '''
 " Define mappings
@@ -62,13 +71,27 @@ endfunction
 # 補完
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-depend = ['roxma/nvim-yarp', 'roxma/vim-hug-neovim-rpc']
+depends = ['roxma/nvim-yarp', 'roxma/vim-hug-neovim-rpc']
 hook_source = '''
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#enable_ignore_case = 1
     let g:deoplete#enable_smart_case = 1
 '''
 on_i = 1
+
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+
+[[plugins]]
+repo = 'ncm2/ncm2'
+hook_source = '''
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
+'''
+if = 0
 
 # ZShell
 [[plugins]]
@@ -102,3 +125,22 @@ repo = 'cespare/vim-toml'
 # Async Lint Engine
 [[plugins]]
 repo = 'w0rp/ale'
+
+# Syntax Highlighting Tool
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
+
+# LanguageClient
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = '''
+if has('win32')
+    let cmd = 'pwsh.exe -ExecutionPolicy bypass -File install.ps1'
+else
+    let cmd = 'bash install.sh'
+endif
+let g:dein#plugin.build = cmd
+'''
+if = 0
+

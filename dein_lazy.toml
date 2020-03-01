@@ -11,3 +11,10 @@ on_cmd = 'Dein'
 repo = 'PProvost/vim-ps1'
 on_ft = ['ps1', 'psm']
 
+# LSP for PowerShell
+[[plugins]]
+repo = 'corbob/vim-powershell'
+depends = 'autozimu/LanguageClient-neovim'
+build = 'pwsh build.ps1'
+rev = 'dev'
+if = 0 # "has('win32')"
