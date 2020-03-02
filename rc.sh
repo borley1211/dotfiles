@@ -1,25 +1,61 @@
 #!${SHELL}
-function pathadd() {
-    _new_path="$*"
-
-    if [ 0 -eq $# ]; then
-        echo "  Usage : $ reenv <PATH_TO_ADD> [, ...]"
-    else
-        for _p in ${_new_path}; do
-            if [ -d "${_p}" ]; then
-                export PATH="${PATH}:${_p}"
-            fi
-        done
-    fi
+function pathappend() {
+    pathremove $1
+    export PATH="$PATH:$1"
 }
-alias pathadd=pathadd
+function pathprepend() {
+    pathremove $1
+    export PATH="$1:$PATH"
+}
+function pathremove() { export PATH=$(echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' | sed 's/:$//i'); }
+
+function pathmgr() {
+    subcmd=$1
+    args=${@:2}
+
+    if (($# < 1)); then
+        echo "  Usage : $ pathmgr COMMAND[a(append), p(prepend), r(remove), s(show)] PATH[, ...]"
+    else
+        case $subcmd in
+        a | append)
+            for p in ${args[@]}; do
+                pathappend $p
+            done
+            ;;
+        p | prepend)
+            for p in ${args[@]}; do
+                pathprepend $p
+            done
+            ;;
+        r | remove)
+            for p in ${args[@]}; do
+                pathremove $p
+            done
+            ;;
+        s | show)
+            echo $PATH
+            ;;
+        *)
+            echo "COMMAND: a(append), p(prepend), r(remove), s(show)"
+            return 1
+            ;;
+        esac
+    fi
+    return 0
+}
+#alias pathmgr=pathmgr
 
 #[Local Binaries]
-pathadd ~/.local/bin
+pathappend ~/.local/bin
+
+#[Ignore NPM in 'WIN_HOME']
+pathmgr remove $NODE_ROOT 
+pathmgr remove $(dirname "$NODE_ROOT")
 
 #[n and npm]
 export N_PREFIX="${HOME}/n"
 export PATH="$N_PREFIX/bin:${PATH}"
+#pathappend "$N_PREFIX/bin"
 
 ##[Encoding]
 export LANG=ja_JP.UTF-8
@@ -132,8 +168,8 @@ if (uname -r | grep -iq 'microsoft'); then
     fi
 
     # pulseaudio
-    if (pulseaudio --check); then
-        pulseaudio -D
-    fi
+    #if ( pulseaudio --check ); then
+    #    pulseaudio -D
+    #fi
 
 fi
