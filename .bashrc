@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -116,8 +117,6 @@ if ! shopt -oq posix; then
     fi
 fi
 
-export N_PREFIX="$HOME/n"
-[[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin" # Added by n-install (see http://git.io/n-install-repo).
 source "${DOTPATH:-${HOME}/Dotfiles}/rc.sh"
 
-eval "$(/usr/bin/starship init bash)"
+eval "$(~/scoop/apps/starship/current/starship.exe init bash)"

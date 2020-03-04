@@ -13,7 +13,7 @@ endif
 ## paths
 MAININITDIR	:= etc/init/main
 SYSINITDIR	:= etc/init/system
-LAZYINITDIR := etc/init/lazy
+LAZYINITDIR	:= etc/init/lazy
 
 ## get items
 SYSINITSCRIPTS	:= $(sort $(wildcard $(SYSINITDIR)/??*.$(SUFFIX)))
@@ -44,32 +44,32 @@ $(subst .config/,AppData/Local/,$1)
 endef
 
 define mkdir_safety
-	cmd /C "setlocal enableextensions & md $(subst /,\,$1) & endlocal"
+cmd /C "setlocal enableextensions & md $(subst /,\,$1) & endlocal"
 
 endef
 
 define mk_symlink
-	cmd /C mklink $(subst /,\,$2) $(subst /,\,$1)
+cmd /C mklink $(subst /,\,$2) $(subst /,\,$1)
 
 endef
 
 define run
-	powershell -NoLogo $1
+powershell -NoLogo $1
 
 endef
 
 define rm_recursive
-	cmd /C "del $(subst /,\,$1)"
+cmd /C "del $(subst /,\,$1)"
 
 endef
 
 define deploy_on_win
-	cmd /C mklink $(subst /,\,$2) $(subst /,\,$1)
+cmd /C mklink $(subst /,\,$2) $(subst /,\,$1)
 
 endef
 
 define clean_on_win
-	cmd /C "del $(subst /,\,$1)"
+cmd /C "del $(subst /,\,$1)"
 
 endef
 
@@ -81,22 +81,22 @@ $1
 endef
 
 define mkdir_safety
-	mkdir -p $1
+mkdir -p $1
 
 endef
 
 define mk_symlink
-	ln -sfv $1 $2
+ln -sfv $1 $2
 
 endef
 
 define run
-	bash $1
+bash $1
 
 endef
 
 define rm_recursive
-	rm -vrf $1
+rm -vrf $1
 
 endef
 
@@ -112,7 +112,7 @@ endif
 
 # - ON EACH OS
 define _list
-	echo $1
+echo $1
 
 endef
 
