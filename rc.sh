@@ -96,9 +96,8 @@ export VISUAL=${EDITOR}
 export NVIM_COC_LOGFILE="coc.log"
 
 #[XDG envs]
-export XDG_RUNTIME_DIR=${HOME}
-export XDG_CONFIG_DIR=${HOME}/.config
-export XDG_CONFIG_HOME=$XDG_CONFIG_DIR
+export XDG_RUNTIME_DIR=${HOME}:${XDG_RUNTIME_DIR}
+export XDG_CONFIG_HOME=${HOME}/.config
 
 #[Powerline]
 if [ -e powerline-daemon ]; then
@@ -126,11 +125,13 @@ export DOTPATH="${HOME}/Dotfiles"
 alias dotutil="make -C ${DOTPATH}"
 
 ##[goenv]
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
-eval "$(goenv init -)"
-export PATH="$GOROOT/bin:$PATH"
-export PATH="$PATH:$GOPATH/bin"
+if [ -e "${HOME}/.goenv" ]; then
+    export GOENV_ROOT="$HOME/.goenv"
+    export PATH="$GOENV_ROOT/bin:$PATH"
+    eval "$(goenv init -)"
+    export PATH="$GOROOT/bin:$PATH"
+    export PATH="$PATH:$GOPATH/bin"
+fi
 
 ##[fzf]
 [ -f "${HOME}/.fzf.${SHELL}" ] && . ~/.fzf.${SHELL}
