@@ -26,7 +26,7 @@ DOTPATH		:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES	:= $(wildcard .??*) $(wildcard .config/??*.??*)
 CONFIGDIRS	:= $(filter-out .config/%.toml,$(wildcard .config/??*))
 CANDIDATES	:= $(CANDIDATES) $(foreach DIR, $(CONFIGDIRS), $(wildcard $(DIR)/??*)) package.json $(wildcard .jupyter/??*.??*) Pipfile
-EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode
+EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode .Xresources-regolith
 DOTFILES	:= $(sort $(filter-out $(EXCLUSIONS), $(CANDIDATES)))
 
 ## UPDATES
@@ -48,6 +48,7 @@ cmd /C "setlocal enableextensions & md $(subst /,\,$1) & endlocal"
 
 endef
 
+#uutils ln -sfv $1 $2
 define mk_symlink
 cmd /C mklink $(subst /,\,$2) $(subst /,\,$1)
 
