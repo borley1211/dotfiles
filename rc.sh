@@ -57,14 +57,14 @@ export LANG=ja_JP.UTF-8
 export PIP_DEFAULT_TIMEOUT=1200
 
 if [ -e "${HOME}/.pyenv" ]; then
-    export PYENV_ROOT="${HOME}/.pyenv"
-    export PATH="${PYENV_ROOT}/bin:${PATH}"
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-    export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"
+export PYENV_ROOT="${HOME}/.pyenv"
+export PATH="${PYENV_ROOT}/bin:${PATH}"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"
 fi
 
-eval $(python -m pip completion --$(basename ${SHELL:-zsh}))
+eval "$(python -m pip completion --$(basename ${SHELL:-zsh}))"
 
 export PIPENV_VENV_IN_PROJECT=1
 if python -m pipenv >/dev/null 2>&1; then
@@ -172,3 +172,4 @@ if [ uname -r | grep -i 'microsoft' ]; then
     LOCAL_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
     export DISPLAY="$LOCAL_IP":0
 fi
+

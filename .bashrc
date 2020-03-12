@@ -122,4 +122,3 @@ source "${DOTPATH:-${HOME}/Dotfiles}/rc.sh"
 eval "$(starship init bash)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-[[ -s /home/borley/.autojump/etc/profile.d/autojump.sh ]] && source /home/borley/.autojump/etc/profile.d/autojump.sh
