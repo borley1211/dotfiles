@@ -33,13 +33,13 @@ style = "red"
 #symbol = "\uE718 "
 
 [package]
-symbol = "\uF06B "
+#symbol = "\uF06B "
 
 [python]
-symbol = "\uE73C "
+#symbol = "\uE73C "
 
 [ruby]
-symbol = "\uE739 "
+#symbol = "\uE739 "
 
 [rust]
 symbol = "\uE6A8 "
@@ -49,6 +49,6 @@ disabled = false
 format = "%T"
 
 [battery]
-full_symbol = "🔋"
+#full_symbol = "🔋"
 charging_symbol = "⚡"
-discharging_symbol = "💨"
+#discharging_symbol = "💨"

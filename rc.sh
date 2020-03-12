@@ -17,28 +17,28 @@ function pathmgr() {
         echo "  Usage : $ pathmgr COMMAND[a(append), p(prepend), r(remove), s(show)] PATH[, ...]"
     else
         case $subcmd in
-        a | append)
-            for p in ${args[@]}; do
-                pathappend $p
-            done
+            a | append)
+                for p in ${args[@]}; do
+                    pathappend $p
+                done
             ;;
-        p | prepend)
-            for p in ${args[@]}; do
-                pathprepend $p
-            done
+            p | prepend)
+                for p in ${args[@]}; do
+                    pathprepend $p
+                done
             ;;
-        r | remove)
-            for p in ${args[@]}; do
-                pathremove $p
-            done
-            ;;
-        s | show)
-            echo $PATH
-            ;;
-        *)
-            echo "COMMAND: a(append), p(prepend), r(remove), s(show)"
-            return 1
-            ;;
+            r | remove)
+                for p in ${args[@]}; do
+                    pathremove $p
+                done
+                ;;
+            s | show)
+                echo $PATH
+                ;;
+            *)
+                echo "COMMAND: a(append), p(prepend), r(remove), s(show)"
+                return 1
+                ;;
         esac
     fi
     return 0
@@ -48,10 +48,6 @@ function pathmgr() {
 #[Local Binaries]
 pathappend ~/.local/bin
 
-#[Ignore NPM in 'WIN_HOME']
-pathmgr remove $NODE_ROOT 
-pathmgr remove $(dirname "$NODE_ROOT")
-
 #[n and npm]
 export N_PREFIX="${HOME}/n"
 export PATH="$N_PREFIX/bin:${PATH}"
@@ -60,23 +56,23 @@ export PATH="$N_PREFIX/bin:${PATH}"
 ##[Encoding]
 export LANG=ja_JP.UTF-8
 #export LC_ALL=${LANG}
-export VTE_CJK_WIDTH=2
+#export VTE_CJK_WIDTH=2
 
 #[tmp]
-export TMPDIR=/tmp
+#export TMPDIR=/tmp
 
 ##[Python]
 export PIP_DEFAULT_TIMEOUT=1200
 
 if [ -e "${HOME}/.pyenv" ]; then
-    export PYENV_ROOT="${HOME}/.pyenv"
-    export PATH="${PYENV_ROOT}/bin:${PATH}"
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-    export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"
+export PYENV_ROOT="${HOME}/.pyenv"
+export PATH="${PYENV_ROOT}/bin:${PATH}"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"
 fi
 
-eval "$(python -m pip completion --$(basename ${SHELL}))"
+eval "$(python -m pip completion --$(basename ${SHELL:-zsh}))"
 
 export PIPENV_VENV_IN_PROJECT=1
 if python -m pipenv >/dev/null 2>&1; then
@@ -84,7 +80,7 @@ if python -m pipenv >/dev/null 2>&1; then
     export PIPENV_CACHE_DIR=$TMPDIR
     export PIPENV_TIMEOUT=1200
     export PIPENV_INSTALL_TIMEOUT=$PIPENV_TIMEOUT
-    export PIPENV_SKIP_LOCK=1
+    #export PIPENV_SKIP_LOCK=1
 fi
 
 #[RustUp]
@@ -96,8 +92,8 @@ export VISUAL=${EDITOR}
 export NVIM_COC_LOGFILE="coc.log"
 
 #[XDG envs]
-export XDG_RUNTIME_DIR=${HOME}:${XDG_RUNTIME_DIR}
-export XDG_CONFIG_HOME=${HOME}/.config
+#export XDG_RUNTIME_DIR=${HOME}
+#export XDG_CONFIG_HOME=${HOME}/.config
 
 #[Powerline]
 if [ -e powerline-daemon ]; then
@@ -139,7 +135,7 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
 ##[Qt]
-export QT_QPA_PLATFORMTHEME=qt5ct
+#export QT_QPA_PLATFORMTHEME=qt5ct
 
 ##[rbenv]
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -155,6 +151,10 @@ if (uname -r | grep -iq 'microsoft'); then
     export HTCACHECLEAN_PATH="$TMPDIR/http"
     #export PULSE_SERVER="$LOCAL_IP:9697"
 
+    #[Ignore NPM in 'WIN_HOME']
+    pathmgr remove $NODE_ROOT 
+    pathmgr remove $(dirname "$NODE_ROOT")
+
     # Services (init.d)
     SERVICES=(dbus cron x11-common apache-htcacheclean)
     for name in $SERVICES; do
@@ -167,10 +167,5 @@ if (uname -r | grep -iq 'microsoft'); then
     if [[ -o login ]]; then
         sudo service zfs-fuse start
     fi
-
-    # pulseaudio
-    #if ( pulseaudio --check ); then
-    #    pulseaudio -D
-    #fi
-
 fi
+

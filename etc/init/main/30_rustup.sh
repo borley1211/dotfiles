@@ -5,7 +5,7 @@ install_rustup() {
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     source ~/.cargo/env
 
-    COMPLETIONSPATH="~/.local/share/bash-completion/completions"
+    COMPLETIONSPATH="${HOME}/.local/share/bash-completion/completions"
     mkdir -p ${COMPLETIONSPATH}
     rustup completions bash >${COMPLETIONSPATH}/rustup
     rustup completions bash cargo >${COMPLETIONSPATH}/cargo

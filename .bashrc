@@ -119,4 +119,6 @@ fi
 
 source "${DOTPATH:-${HOME}/Dotfiles}/rc.sh"
 
-eval "$(~/scoop/apps/starship/current/starship.exe init bash)"
+eval "$(starship init bash)"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -18,5 +18,5 @@ install_neovim() {
     fi
 }
 
-logexec install_neovim
+#logexec install_neovim
 exit 0
