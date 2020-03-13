@@ -16,8 +16,8 @@ init_prezto() {
 }
 
 init_zinit() {
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
     init_zshrc
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
     echo 'source "$DOTPATH/zinitrc.zsh"' >> "$HOME/.zshrc"
     echo '' >> "$HOME/.zshrc"
 }
