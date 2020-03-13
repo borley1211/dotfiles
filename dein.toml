@@ -144,3 +144,6 @@ let g:dein#plugin.build = cmd
 '''
 if = 0
 
+# Vim emoji
+[[plugins]]
+repo = 'junegunn/vim-emoji'

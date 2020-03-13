@@ -1,6 +1,10 @@
 #!/bin/zsh
 source "${DOTPATH:-${HOME}/Dotfiles}/rc.sh"
 
-##[zfunc]
+# - zcompfunc
 fpath=(${HOME}/.zfunc $fpath)
 #autoload -Uz compinit; compinit
+
+# - STARSHIP
+[[ -f starship ]] && eval $( starship init zsh )
+

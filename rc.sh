@@ -1,4 +1,3 @@
-#!${SHELL}
 function pathappend() {
     pathremove $1
     export PATH="$PATH:$1"
@@ -13,7 +12,7 @@ function pathmgr() {
     subcmd=$1
     args=${@:2}
 
-    if (($# < 1)); then
+    if ( ($# < 1) ) ; then
         echo "  Usage : $ pathmgr COMMAND[a(append), p(prepend), r(remove), s(show)] PATH[, ...]"
     else
         case $subcmd in
@@ -45,23 +44,23 @@ function pathmgr() {
 }
 #alias pathmgr=pathmgr
 
-#[Local Binaries]
+# - Local Binaries
 pathappend ~/.local/bin
 
-#[n and npm]
+# - n and npm
 export N_PREFIX="${HOME}/n"
 export PATH="$N_PREFIX/bin:${PATH}"
 #pathappend "$N_PREFIX/bin"
 
-##[Encoding]
+# - Encoding
 export LANG=ja_JP.UTF-8
 #export LC_ALL=${LANG}
 #export VTE_CJK_WIDTH=2
 
-#[tmp]
+# - tmp
 #export TMPDIR=/tmp
 
-##[Python]
+# - Python
 export PIP_DEFAULT_TIMEOUT=1200
 
 if [ -e "${HOME}/.pyenv" ]; then
@@ -72,7 +71,7 @@ eval "$(pyenv virtualenv-init -)"
 export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"
 fi
 
-eval "$(python -m pip completion --$(basename ${SHELL:-zsh}))"
+eval $(python -m pip completion --$(basename ${SHELL:-zsh}))
 
 export PIPENV_VENV_IN_PROJECT=1
 if python -m pipenv >/dev/null 2>&1; then
@@ -83,19 +82,19 @@ if python -m pipenv >/dev/null 2>&1; then
     #export PIPENV_SKIP_LOCK=1
 fi
 
-#[RustUp]
+# - RustUp
 [ -f "${HOME}/.cargo/env" ] && . ~/.cargo/env
 
-#[NeoVim]
+# - NeoVim
 export EDITOR="nvim"
 export VISUAL=${EDITOR}
 export NVIM_COC_LOGFILE="coc.log"
 
-#[XDG envs]
+# - XDG envs
 #export XDG_RUNTIME_DIR=${HOME}
 #export XDG_CONFIG_HOME=${HOME}/.config
 
-#[Powerline]
+# - Powerline
 if [ -e powerline-daemon ]; then
     powerline-daemon -q
 
@@ -113,14 +112,14 @@ if [ -e powerline-daemon ]; then
     done
 fi
 
-##[LLVM]
+# - LLVM
 export LLVM_CONFIG="$(ls -dr1 $(find /usr/bin -path '*llvm-config*') | head -n 1)"
 
-##[Dotfiles]
+# - Dotfiles
 export DOTPATH="${HOME}/Dotfiles"
 alias dotutil="make -C ${DOTPATH}"
 
-##[goenv]
+# - goenv
 if [ -e "${HOME}/.goenv" ]; then
     export GOENV_ROOT="$HOME/.goenv"
     export PATH="$GOENV_ROOT/bin:$PATH"
@@ -129,19 +128,19 @@ if [ -e "${HOME}/.goenv" ]; then
     export PATH="$PATH:$GOPATH/bin"
 fi
 
-##[fzf]
+# - fzf
 [ -f "${HOME}/.fzf.${SHELL}" ] && . ~/.fzf.${SHELL}
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
-##[Qt]
+# - Qt
 #export QT_QPA_PLATFORMTHEME=qt5ct
 
-##[rbenv]
+# - rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 [ -d "${HOME}/.rbenv" ] && eval "$(rbenv init -)"
 
-##[WSL]
+# - WSL
 if (uname -r | grep -iq 'microsoft'); then
     LOCAL_IP=$(cat </etc/resolv.conf | grep nameserver | awk '{print $2}')
     export DISPLAY="$LOCAL_IP:0.0"

@@ -5,7 +5,7 @@ add_newline = true
 symbol = "\uF270 "
 
 [character]
-symbol = "\u300B "
+symbol = "\u2192 "
 error_symbol = "\u2A2F "
 use_symbol_for_status = true
 
@@ -20,7 +20,7 @@ suffix = " "
 style = "magenta"
 
 [git_branch]
-#symbol = "\uF407 "
+symbol = "\uF402 "
 
 [jobs]
 symbol = "\u271C"
@@ -33,10 +33,10 @@ style = "red"
 #symbol = "\uE718 "
 
 [package]
-#symbol = "\uF06B "
+symbol = "\uF06B "
 
 [python]
-#symbol = "\uE73C "
+symbol = "\uE73C "
 
 [ruby]
 #symbol = "\uE739 "
