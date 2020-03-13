@@ -1,18 +1,23 @@
 # Zinit config
 
-zinit ice blockf
-zinit light zsh-users/zsh-completions
+typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
+zinit wait lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma/fast-syntax-highlighting \
+ blockf \
+    zsh-users/zsh-completions \
+ atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
 
-zinit light zsh-users/zsh-autosuggestions
-zinit light zdharma/fast-syntax-highlighting
-zinit light zsh-users/zsh-history-substring-search
+zinit ice from"gh-r" as"program"; zinit load junegunn/fzf-bin
 
+#zinit ice pick"async.zsh" src"pure.zsh"; zinit light sindresorhus/pure
+
+zinit load zdharma/history-search-multi-word
 
 zinit light mollifier/anyframe
 
-zinit light b4b4r07/emoji-cli
 zinit light b4b4r07/enhancd
-zinit light b4b4r07/zsh-gomi
 
-zinit light wting/autojump
+zinit ice wait"!0"; zinit load wting/autojump
 

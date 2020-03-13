@@ -3,8 +3,31 @@ source "${DOTPATH:-${HOME}/Dotfiles}/rc.sh"
 
 # - zcompfunc
 fpath=(${HOME}/.zfunc $fpath)
-#autoload -Uz compinit; compinit
 
 # - STARSHIP
-[[ -f starship ]] && eval $( starship init zsh )
+eval $( starship init zsh )
 
+# - PATHの重複をなくす
+typeset -U path cdpath fpath manpath
+
+# - 予測入力の有効化
+autoload predict-on
+zle -N predict-on
+zle -N predict-off
+
+# - ヒストリーサイズ設定
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=1000000
+
+# - ヒストリの一覧を読みやすい形に変更
+HISTTIMEFORMAT="[%Y/%M/%D %H:%M:%S] "
+
+# - "|,:"を単語の一部とみなさない
+WORDCHARS="$WORDCHARS|:"
+
+# - 入力途中の履歴補完を有効化する
+autoload history-search-end
+
+# - 曖昧な補完で、自動的に選択肢をリストアップ
+setopt AUTO_LIST

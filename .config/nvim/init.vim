@@ -7,7 +7,7 @@ scriptencoding utf-8
 set fileencoding=utf-8  " 保存時の文字コード
 set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis,cp932   " 読込時の文字コードの自動判別(左側優先)
 set fileformats=unix,dos,mac    " 改行コードの自動判別(左側優先)
-set ambiwidth=double    " 絵文字等が崩れる問題を解決
+"set ambiwidth=double    " 絵文字等が崩れる問題を解決
 
 "[Python]
 if has('win32')
