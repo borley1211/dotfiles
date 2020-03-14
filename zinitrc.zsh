@@ -11,9 +11,7 @@ zinit wait lucid for \
 
 zinit ice from"gh-r" as"program"; zinit load junegunn/fzf-bin
 
-#zinit ice pick"async.zsh" src"pure.zsh"; zinit light sindresorhus/pure
-
-zinit load zdharma/history-search-multi-word
+zinit ice wait"!0"; zinit load zdharma/history-search-multi-word
 
 zinit light mollifier/anyframe
 
