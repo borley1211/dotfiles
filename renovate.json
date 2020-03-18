@@ -3,7 +3,7 @@
     "config:base"
   ],
   "timezone": "Asia/Tokyo",
-  "schedule": ["everyday"],
+  "schedule": ["before 2pm"],
   "labels": ["renovate"],
   "patch": { "automerge": true },
   "lockFileMaintenance": {
