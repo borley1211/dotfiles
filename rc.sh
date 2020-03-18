@@ -42,7 +42,6 @@ function pathmgr() {
     fi
     return 0
 }
-#alias pathmgr=pathmgr
 
 # - Local Binaries
 pathappend ~/.local/bin
@@ -50,25 +49,19 @@ pathappend ~/.local/bin
 # - n and npm
 export N_PREFIX="${HOME}/n"
 export PATH="$N_PREFIX/bin:${PATH}"
-#pathappend "$N_PREFIX/bin"
 
 # - Encoding
 export LANG=ja_JP.UTF-8
-#export LC_ALL=${LANG}
-#export VTE_CJK_WIDTH=2
-
-# - tmp
-#export TMPDIR=/tmp
 
 # - Python
 export PIP_DEFAULT_TIMEOUT=1200
 
 if [ -e "${HOME}/.pyenv" ]; then
-export PYENV_ROOT="${HOME}/.pyenv"
-export PATH="${PYENV_ROOT}/bin:${PATH}"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"
+    export PYENV_ROOT="${HOME}/.pyenv"
+    export PATH="${PYENV_ROOT}/bin:${PATH}"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+    export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"
 fi
 
 eval $(python -m pip completion --$(basename ${SHELL:-zsh}))
@@ -89,10 +82,6 @@ fi
 export EDITOR="nvim"
 export VISUAL=${EDITOR}
 export NVIM_COC_LOGFILE="coc.log"
-
-# - XDG envs
-#export XDG_RUNTIME_DIR=${HOME}
-#export XDG_CONFIG_HOME=${HOME}/.config
 
 # - Powerline
 if [ -e powerline-daemon ]; then
@@ -168,3 +157,6 @@ if (uname -r | grep -iq 'microsoft'); then
     fi
 fi
 
+# - dot (dotfiles manager)
+export DOT_REPO="https://github.com/borley1211/dotfiles"
+export DOT_DIR="$DOTPATH"

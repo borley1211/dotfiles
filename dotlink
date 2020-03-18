@@ -1,0 +1,67 @@
+# vim: ft=conf
+###############################################################################
+#                         _       _    __ _ _                                 #
+#                      __| | ___ | |_ / _(_) | ___  ___                       #
+#                     / _` |/ _ \| __| |_| | |/ _ \/ __|                      #
+#                    | (_| | (_) | |_|  _| | |  __/\__ \                      #
+#                     \__,_|\___/ \__|_| |_|_|\___||___/                      #
+#                                                                             #
+###############################################################################
+# This file contains dotfiles linksets.
+# You can comment out by adding "#" at the beginning of the line.
+# And an empty line is ignored by dot.
+#
+# Format:
+# <dotfile>,<linkto>
+#
+# the script automatically add directory information to the file path.
+# So, you should write like below:
+#     .vimrc,.vimrc
+#
+# You can load from outside of the dotfiles directory:
+#     ~/Dropbox/.netrc,.netrc
+#
+# You can easily copy the existing file to the dotfiles repository
+# and add new link list by
+#     dot add [-m "some comment"] original_file dotfiles_path
+# or, just
+#     dot add original_file
+# In the second example, the script automatically completes the second
+# arguments and confirm whether or not to execute that command.
+#
+#------------------------------------------------------------------------------
+.asoundrc,.asoundrc
+.bash_aliases,.bash_aliases
+.bashrc,.bashrc
+.gitconfig,.gitconfig
+.latexmkrc,.latexmkrc
+.vimrc,.vimrc
+.zaliases,.zaliases
+.zshrc.local,.zshrc.local
+.config/starship.toml,.config/starship.toml
+.config/topgrade.toml,.config/topgrade.toml
+.config/efm-langserver/config.yaml,.config/efm-langserver/config.yaml
+.config/pulse/client.conf,.config/pulse/client.conf
+.config/pulse/daemon.conf,.config/pulse/daemon.conf
+.config/pulse/default.pa,.config/pulse/default.pa
+.config/pulse/system.pa,.config/pulse/system.pa
+.config/nvim/coc-settings.json,.config/nvim/coc-settings.json
+.config/nvim/init.vim,.config/nvim/init.vim
+.config/lilyterm/default.conf,.config/lilyterm/default.conf
+.config/regolith/i3,.config/regolith/i3
+.config/regolith/i3xrocks,.config/regolith/i3xrocks
+.config/dconf/user,.config/dconf/user
+.config/fontconfig/conf.d/50-noto-emoji.conf,.config/fontconfig/conf.d/50-noto-emoji.conf
+.config/pavucontrol.ini,.config/pavucontrol.ini
+.config/discoverrc,.config/discoverrc
+.config/appimagelauncher.cfg,.config/appimagelauncher.cfg
+.config/user-dirs.dirs,.config/user-dirs.dirs
+.config/ranger,.config/ranger
+package.json,package.json
+Pipfile,Pipfile
+.config/ranger/bookmarks,.config/ranger/bookmarks
+.config/ranger/history,.config/ranger/history
+.config/ranger/tagged,.config/ranger/tagged
+.profile,.profile
+.pam_environment,.pam_environment
+.inputrc,.inputrc

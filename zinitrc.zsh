@@ -1,6 +1,6 @@
 # Zinit config
 
-typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
+typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 zinit wait lucid for \
  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
     zdharma/fast-syntax-highlighting \
@@ -18,4 +18,6 @@ zinit light mollifier/anyframe
 zinit light b4b4r07/enhancd
 
 zinit ice wait"!0"; zinit load wting/autojump
+
+zinit light ssh0/dot
 

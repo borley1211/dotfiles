@@ -24,7 +24,7 @@ init_zinit() {
 
 init_zshrc() {
     if [[ -f "$HOME/.zshrc" ]]; then
-        echo '' >> "$HOME/.zshrc"
+        : > "$HOME/.zshrc"  # 初期化
         echo 'source "$HOME/.zshrc.local"' >> "$HOME/.zshrc"
         echo 'source "$HOME/.zaliases"' >> "$HOME/.zshrc"
         echo '' >> "$HOME/.zshrc"

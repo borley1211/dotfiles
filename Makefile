@@ -23,10 +23,10 @@ LAZYINITSCRIPTS	:= $(sort $(wildcard $(LAZYINITDIR)/??*.$(SUFFIX)))
 # DOTFILES
 
 DOTPATH		:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
-CANDIDATES	:= $(wildcard .??*) $(wildcard .config/??*.??*)
-CONFIGDIRS	:= $(filter-out .config/%.toml,$(wildcard .config/??*))
+CANDIDATES	:= $(wildcard .??* .config/??*.??* .config/??*rc .config/??*/??*.??*)
+CONFIGDIRS	:= $(filter-out %rc %.toml %.ini %.cfg %.dirs, $(wildcard .config/??* .config/??*/??*.d))
 CANDIDATES	:= $(CANDIDATES) $(foreach DIR, $(CONFIGDIRS), $(wildcard $(DIR)/??*)) package.json $(wildcard .jupyter/??*.??*) Pipfile
-EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode .Xresources-regolith
+EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode .Xresources-regolith $(CONFIGDIRS)
 DOTFILES	:= $(sort $(filter-out $(EXCLUSIONS), $(CANDIDATES)))
 
 ## UPDATES
@@ -121,7 +121,6 @@ endef
 
 DEPLOY	= $(foreach val,$(CONFIGDIRS),\
 	$(call mkdir_safety,$(HOME)/$(call set_config_home,$(val))))\
-	$(call mkdir_safety,$(HOME)/.config/efm-langserver) \
 	$(foreach val,$(DOTFILES),\
 	$(call mk_symlink,$(realpath $(val)),$(HOME)/$(call set_config_home,$(val)))) \
 	$(call deploy_on_win,$(realpath .config/starship.toml),$(HOME)/.config/starship.toml) \
