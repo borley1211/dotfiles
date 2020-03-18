@@ -116,6 +116,7 @@ repo = 'powerline/powerline'
 [[plugins]]
 repo = 'neoclide/coc.nvim'
 merge = 0
+on_i = 1
 rev = 'release'
 
 # TOML
@@ -147,3 +148,7 @@ if = 0
 # Vim emoji
 [[plugins]]
 repo = 'junegunn/vim-emoji'
+
+# PostFix ext
+[[plugins]]
+repo = 'mattn/vim-sonictemplate'

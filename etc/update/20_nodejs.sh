@@ -6,7 +6,10 @@ update_node_and_npm() {
     n lts
     npm install npm
     npm install
+    npm update --depth=20
+    npm audit fix
+    npm dedupe
+    npm doctor
 }
 
-logexec update_node_and_npm
-exit 0
+logexec update_node_and_npm || exit
