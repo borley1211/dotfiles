@@ -56,7 +56,7 @@ export LANG=ja_JP.UTF-8
 # - Python
 export PIP_DEFAULT_TIMEOUT=1200
 
-if [ -e "${HOME}/.pyenv" ]; then
+if [ -e "${HOME}/.pyenv" ] ; then
     export PYENV_ROOT="${HOME}/.pyenv"
     export PATH="${PYENV_ROOT}/bin:${PATH}"
     eval "$(pyenv init -)"
@@ -84,7 +84,7 @@ export VISUAL=${EDITOR}
 export NVIM_COC_LOGFILE="coc.log"
 
 # - Powerline
-if [ -e powerline-daemon ]; then
+if [ -e powerline-daemon ] ; then
     powerline-daemon -q
 
     while read -r p; do
@@ -109,7 +109,7 @@ export DOTPATH="${HOME}/Dotfiles"
 alias dotutil="make -C ${DOTPATH}"
 
 # - goenv
-if [ -e "${HOME}/.goenv" ] && ! [ -e "${HOME}/.anyenv"]; then
+if [ -e "${HOME}/.goenv" ] && ! [ -e "${HOME}/.anyenv"] ; then
     export GOENV_ROOT="$HOME/.goenv"
     export PATH="$GOENV_ROOT/bin:$PATH"
     eval "$(goenv init -)"
