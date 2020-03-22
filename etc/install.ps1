@@ -11,19 +11,21 @@ function restart_shell {
 }
 
 function e_newline {
-    Write-Host ""
+    Write-Output ""
 }
 
 function e_header($text) {
-    Write-Host "${text}" -NoNewline
+    Write-Output "${text}"
 }
 
 function e_arrow {
-    Write-Host "➜ " -NoNewline
+    Write-Output "➜ "
 }
 
 function e_done {
-    Write-Host "✔...OK" -ForegroundColor "Green" -NoNewline
+    $tmp = $host.ui.RawUI.ForegroundColor
+    $host.ui.RawUI.ForegroundColor = "Green"
+    Write-Output "✔...OK"
 }
 
 function ink($color, $text) {
@@ -33,8 +35,11 @@ function ink($color, $text) {
         Write-Output "  black, white, red, green, yellow, blue, purple, cyan, gray"
         return 1
     }
-
-    Write-Host "${text}" -ForegroundColor "${color}" -NoNewline
+    
+    $tmp = $host.ui.RawUI.ForegroundColor
+    $host.ui.RawUI.ForegroundColor = "${color}"
+    Write-Output "${text}"
+    $host.ui.RawUI.ForegroundColor = "${tmp}"
 }
 
 function logging($mode, $text) {
