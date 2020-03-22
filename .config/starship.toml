@@ -33,10 +33,10 @@ style = "red"
 #symbol = "\uE718 "
 
 [package]
-#symbol = "\uF06B "
+symbol = "\uF06B "
 
 [python]
-#symbol = "\uE73C "
+symbol = "\uE73C "
 
 [ruby]
 #symbol = "\uE739 "
