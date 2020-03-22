@@ -11,13 +11,17 @@ zinit wait lucid for \
 
 zinit ice from"gh-r" as"program"; zinit load junegunn/fzf-bin
 
-zinit ice wait"!0"; zinit load zdharma/history-search-multi-word
+#zinit ice wait"!0"; zinit load zdharma/history-search-multi-word
 
 zinit light mollifier/anyframe
 
-zinit light b4b4r07/enhancd
+zinit ice as"plugin"; zinit light b4b4r07/enhancd
 
 zinit ice wait"!0"; zinit load wting/autojump
 
 zinit light ssh0/dot
+
+zinit light ress997/zsh-completions-anyenv
+
+zinit compinit
 

@@ -1,4 +1,3 @@
-#!/bin/bash
 source ${DOTPATH:-~/Dotfiles}/etc/install
 
 update_and_upgrade() {
@@ -7,4 +6,3 @@ update_and_upgrade() {
 }
 
 logexec update_and_upgrade
-exit 0

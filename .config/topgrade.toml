@@ -3,14 +3,15 @@ git_repos = [
     "~/Dotfiles",
     "~/.zprezto",
     "~/.goenv",
-    "~/.rbenv"
+    "~/.rbenv",
+    "~/pigweed",
 ]
 
 # Don't pull the predefined git repos
 # predefined_git_repos = false
 
 # Disable specific steps - same options as the command line flag
-disable = ["vim", "go"]
+disable = ["vim",]
 
 # Run specific steps - same options as the command line flag
 #only = ["system", "emacs"]

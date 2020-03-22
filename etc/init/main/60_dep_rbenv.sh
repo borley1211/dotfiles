@@ -1,4 +1,3 @@
-#!/bin/bash
 source ${DOTPATH:-~/Dotfiles}/etc/install
 
 resolve_deps_for_rbenv() {

@@ -160,3 +160,9 @@ fi
 # - dot (dotfiles manager)
 export DOT_REPO="https://github.com/borley1211/dotfiles"
 export DOT_DIR="$DOTPATH"
+
+# - anyenv
+if [ -e "$HOME/.anyenv" ]; then
+    pathprepend "$HOME/.anyenv/bin"
+    eval "$(anyenv init -)"
+fi

@@ -1,4 +1,3 @@
-#!/bin/bash
 source ${DOTPATH:-~/Dotfiles}/etc/install
 
 init_pyenv() {
@@ -24,4 +23,3 @@ init_pyenv() {
 }
 
 logexec init_pyenv
-exit 0

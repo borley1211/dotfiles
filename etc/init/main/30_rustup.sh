@@ -1,4 +1,3 @@
-#!/bin/bash
 source ${DOTPATH:-~/Dotfiles}/etc/install
 
 install_rustup() {
@@ -16,4 +15,3 @@ install_rustup() {
 }
 
 logexec install_rustup
-exit

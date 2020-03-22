@@ -1,4 +1,3 @@
-#!/bin/bash
 source ${DOTPATH:-~/Dotfiles}/etc/install
 
 install_neovim() {
@@ -18,5 +17,3 @@ install_neovim() {
     fi
 }
 
-#logexec install_neovim
-exit 0

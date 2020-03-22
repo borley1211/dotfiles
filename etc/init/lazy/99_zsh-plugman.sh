@@ -1,4 +1,3 @@
-#!/bin/bash
 source ${DOTPATH:-~/Dotfiles}/etc/install
 
 init_prezto() {
@@ -31,5 +30,4 @@ init_zshrc() {
     fi
 }
 
-#logexec init_prezto || exit
 logexec init_zinit || exit

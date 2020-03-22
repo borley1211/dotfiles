@@ -1,4 +1,3 @@
-#!/bin/bash
 source ${DOTPATH:-~/Dotfiles}/etc/install
 
 install_zsh() {
@@ -7,4 +6,3 @@ install_zsh() {
 }
 
 logexec install_zsh
-exit 0

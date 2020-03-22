@@ -1,4 +1,3 @@
-#!/bin/bash
 source ${DOTPATH:-~/Dotfiles}/etc/install
 
 init_fzf() {
@@ -11,4 +10,3 @@ init_fzf() {
 }
 
 logexec init_fzf
-exit 0
