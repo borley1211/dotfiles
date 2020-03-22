@@ -1,3 +1,4 @@
+#!/bin/bash
 source "${DOTPATH:-~/Dotfiles}/etc/install"
 
 function init_anyenv() {
