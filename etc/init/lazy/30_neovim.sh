@@ -1,7 +1,7 @@
 #!/bin/bash
 source ${DOTPATH:-~/Dotfiles}/etc/install
 
-install_neovim() {
+install_neovim_as_appimage() {
     if ! type "nvim" "nvim.appimage" &>/dev/null; then
         if is_linux; then
             mkdir -p "${HOME}/.local/bin"
@@ -18,3 +18,10 @@ install_neovim() {
     fi
 }
 
+install_neovim_from_ppa() {
+    sudo add-apt-repository ppa:neovim-ppa/stable -y
+    sudo apt upgrade -y
+    sudo aptitude-curses install neovim -y
+}
+
+install_neovim_from_ppa

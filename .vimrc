@@ -74,7 +74,7 @@ set backspace=indent,eol,start
 
 "[ターミナルカラー設定]
 "" 実行環境がWSLであるか判定
-if filereadable("/proc/sys/fs/binfmt_misc/WSLInterop")
+if filereadable('/proc/sys/fs/binfmt_misc/WSLInterop')
     set term=xterm-256color
 endif
 
@@ -91,7 +91,7 @@ inoremap ( ()<ESC>i
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
 "" 実行環境がWSLであるか判定
-if filereadable("/proc/sys/fs/binfmt_misc/WSLInterop")
+if filereadable('/proc/sys/fs/binfmt_misc/WSLInterop')
     nnoremap <silent>yy :.w !win32yank.exe -i<CR><CR>
     vnoremap <silent>y :w !win32yank.exe -i<CR><CR>
     nnoremap <silent>dd :.w !win32yank.exe -i<CR>dd
@@ -101,7 +101,7 @@ if filereadable("/proc/sys/fs/binfmt_misc/WSLInterop")
 endif
 
 "" ペースト時の自動インデント防止
-if &term =~ "xterm"
+if &term =~? 'xterm'
     let &t_SI .= "\e[?2004h"
     let &t_EI .= "\e[?2004l"
     let &pastetoggle = "\e[201~"
@@ -114,6 +114,3 @@ if &term =~ "xterm"
     inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 endif
 
-
-let g:molokai_original = 1
-colorscheme molokai
