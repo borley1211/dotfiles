@@ -175,4 +175,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " Set transparency
-set pumblend=10
+set termguicolors
+set pumblend=20
+set winblend=10
