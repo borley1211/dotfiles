@@ -2,6 +2,9 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'wsdjeg/dein-ui.vim'
+
+[[plugins]]
 repo = 'Shougo/vimproc.vim'
 #build = 'make'
 hook_post_update = '''
@@ -165,17 +168,13 @@ let g:airline_mode_map = {
     \ 'R'  : 'R',
     \ 'c'  : 'C',
     \ 'v'  : 'V',
-    \ 'V'  : 'V',
-    \ '' : 'V',
     \ 's'  : 'S',
-    \ 'S'  : 'S',
-    \ '' : 'S',
     \ }
 
 " パワーラインでかっこよく
 let g:airline_powerline_fonts = 1
 " カラーテーマ指定してかっこよく
-let g:airline_theme = 'badwolf'
+"let g:airline_theme = 'badwolf'
 " タブバーをかっこよく
 let g:airline#extensions#tabline#enabled = 1
 

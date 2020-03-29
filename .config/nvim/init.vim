@@ -22,8 +22,44 @@ let g:python_host_prog = s:pythonpath
 let g:python3_host_prog = s:pythonpath
 
 "[dein]
-let s:deinrc = expand('$DOTPATH/deinrc.vim')
-exe 'source' s:deinrc
+if &compatible
+    set nocompatible               " Be iMproved
+endif
+
+" Required:
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+
+" Required:
+if dein#load_state('$HOME/.cache/dein')
+    call dein#begin('$HOME/.cache/dein')
+
+    " Let dein manage dein
+    " Required:
+    call dein#add('$HOME/.cache/dein/repos/github.com/Shougo/dein.vim')
+
+    " Load TOML
+    call dein#load_toml($DOTPATH.'/dein.toml')
+    call dein#load_toml($DOTPATH.'/dein_lazy.toml', {'lazy': 1})
+
+    " Required:
+    call dein#end()
+    call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+    call dein#install()
+endif
+"End dein Scripts-------------------------
+
+"[Transparency]
+set termguicolors
+set pumblend=20
+set winblend=10
 
 
 "[ステータス表示]
@@ -123,8 +159,8 @@ nnoremap <Up>   gk
 
 
 "[カラースキーマ]
-let g:molokai_original=1
-colorscheme molokai
+"let g:molokai_original=1
+"colorscheme molokai
 
 "[coc.nvim]
 set updatetime=300
