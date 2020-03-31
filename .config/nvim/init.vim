@@ -23,19 +23,19 @@ let g:python3_host_prog = s:pythonpath
 
 "[dein]
 if &compatible
-    set nocompatible               " Be iMproved
+    set nocompatible    " Be iMproved
 endif
 
 " Required:
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('$HOME/.cache/dein')
-    call dein#begin('$HOME/.cache/dein')
+if dein#load_state('~/.cache/dein')
+    call dein#begin('~/.cache/dein')
 
     " Let dein manage dein
     " Required:
-    call dein#add('$HOME/.cache/dein/repos/github.com/Shougo/dein.vim')
+    call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
     " Load TOML
     call dein#load_toml($DOTPATH.'/dein.toml')
@@ -58,8 +58,8 @@ endif
 
 "[Transparency]
 set termguicolors
-set pumblend=20
-set winblend=10
+"set pumblend=20
+"set winblend=10
 
 
 "[ステータス表示]
@@ -167,3 +167,6 @@ set updatetime=300
 set shortmess+=c
 set signcolumn=yes
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+"[for dein-ui.vim]
+set modifiable

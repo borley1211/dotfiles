@@ -5,6 +5,7 @@ git_repos = [
     "~/.goenv",
     "~/.rbenv",
     "~/pigweed",
+    "~/.themes/elementary-x"
 ]
 
 # Don't pull the predefined git repos
