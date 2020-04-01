@@ -1,5 +1,5 @@
 [core]
-	autocrlf = false
+	autocrlf = input
 [user]
 	name = borley1211
 	email = km.isetan@gmail.com
@@ -9,6 +9,7 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
-	required = true
-[core]
-	autocrlf = input
+    required = true
+[url "github:"]
+    InsteadOf = https://github.com/
+    InsteadOf = git@github.com:
