@@ -58,8 +58,8 @@ is_at_least() {
         return $?
     fi
 
-    atleast="$(echo $1 | sed -e 's/\.//g')"
-    version="$(echo ${BASH_VERSION:-0.0.0} | sed -e 's/^\([0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}\).*/\1/' | sed -e 's/\.//g')"
+    atleast="${1//\.//}"
+    version="$(echo "${BASH_VERSION:-0.0.0}" | sed -e 's/^\([0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}\).*/\1/' | sed -e 's/\.//g')"
 
     # zero padding
     while [ ${#atleast} -ne 6 ]; do
@@ -178,11 +178,11 @@ e_success() {
 }
 
 e_failure() {
-    die "${1:-$FUNCNAME}"
+    die "${1:-${FUNCNAME[@]}}"
 }
 
 ink() {
-    if [ "$#" -eq 0 -o "$#" -gt 2 ]; then
+    if [ "$#" -eq 0 ] || [ "$#" -gt 2 ]; then
         echo "Usage: ink <color> <text>"
         echo "Colors:"
         echo "  black, white, red, green, yellow, blue, purple, cyan, gray"
@@ -213,11 +213,11 @@ ink() {
         esac
     fi
 
-    printf "${open}${color}${text}${close}"
+    printf "%s%s%s%s" "${open}" "${color}" "${text}" "${close}"
 }
 
 logging() {
-    if [ "$#" -eq 0 -o "$#" -gt 2 ]; then
+    if [ "$#" -eq 0 ] || [ "$#" -gt 2 ]; then
         echo "Usage: ink <fmt> <msg>"
         echo "Formatting Options:"
         echo "  TITLE, ERROR, WARN, INFO, SUCCESS"
@@ -364,9 +364,9 @@ echon() {
 # noecho is the same as echon
 noecho() {
     if [ "$(echo -n)" = "-n" ]; then
-        echo "${*:-> }\c"
+        echo "${*:-'>'}\c"
     else
-        echo -n "${@:-> }"
+        echo -n "${@:-'>'}"
     fi
 }
 
@@ -376,7 +376,7 @@ lower() {
     if [ $# -eq 0 ]; then
         cat <&0
     elif [ $# -eq 1 ]; then
-        if [ -f "$1" -a -r "$1" ]; then
+        if [ -f "$1" ] && [ -r "$1" ]; then
             cat "$1"
         else
             echo "$1"
@@ -392,7 +392,7 @@ upper() {
     if [ $# -eq 0 ]; then
         cat <&0
     elif [ $# -eq 1 ]; then
-        if [ -f "$1" -a -r "$1" ]; then
+        if [ -f "$1" ] && [ -r "$1" ]; then
             cat "$1"
         else
             echo "$1"
@@ -461,7 +461,7 @@ path_remove() {
 # logexec is a wrapper, it runs given (script||command) with simple logs
 logexec() {
     echo ""
-    e_arrow "RUNNING $@ ..."
+    e_arrow "RUNNING $* ..."
 
     "$@"
 
@@ -478,7 +478,7 @@ if [ -z "${DOTPATH:-}" ]; then
     export DOTPATH
 fi
 
-DOTFILES_GITHUB="https://github.com/borley1211/dotfiles"
+DOTFILES_GITHUB="git@github.com:borley1211/dotfiles"
 export DOTFILES_GITHUB
 
 # shellcheck disable=SC1078,SC1079,SC2016
