@@ -12,6 +12,7 @@ function init_anyenv() {
 
     anyenv install goenv
     anyenv install rbenv
+    anyenv install nodenv
 }
 
 logexec init_anyenv

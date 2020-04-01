@@ -47,7 +47,7 @@ load-module module-alsa-card
 #load-module module-alsa-source source_name=input device="front"
 #load-module module-oss device="/dev/dsp" sink_name=output source_name=input
 #load-module module-oss-mmap device="/dev/dsp" sink_name=output source_name=input
-load-module module-null-sink sink_name=remote
+#load-module module-null-sink sink_name=remote
 #load-module module-pipe-sink
 
 ### Automatically load driver modules depending on the hardware available

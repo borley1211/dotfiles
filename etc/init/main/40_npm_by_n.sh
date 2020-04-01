@@ -18,4 +18,4 @@ init_npm_by_n() {
     npm audit fix
 }
 
-logexec init_npm_by_n || exit
+#logexec init_npm_by_n || exit
