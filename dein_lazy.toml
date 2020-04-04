@@ -11,6 +11,10 @@ on_cmd = 'Dein'
 repo = 'PProvost/vim-ps1'
 on_ft = ['ps1', 'psm']
 
+# LSP by TabNine
+[[plugins]]
+repo = 'neoclide/coc-tabnine'
+
 # LSP for PowerShell
 [[plugins]]
 repo = 'corbob/vim-powershell'

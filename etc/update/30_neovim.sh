@@ -1,1 +1,0 @@
-/home/borley/Dotfiles/etc/init/lazy/30_neovim.sh

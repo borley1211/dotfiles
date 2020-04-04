@@ -1,0 +1,9 @@
+[submodule ".cache/dein/repos/github.com/Shougo/dein.vim"]
+	path = .cache/dein/repos/github.com/Shougo/dein.vim
+	url = https://github.com/Shougo/dein.vim.git
+[submodule ".themes/elementary-x"]
+	path = .themes/elementary-x
+	url = https://github.com/surajmandalcell/elementary-x.git
+[submodule ".icons/la-captaine"]
+	path = .icons/la-captaine
+	url = https://github.com/keeferrourke/la-capitaine-icon-theme.git

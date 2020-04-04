@@ -1,2 +1,5 @@
 */cookie
 /.vscode/*
+/.cache/
+/.themes/
+/.icons/
