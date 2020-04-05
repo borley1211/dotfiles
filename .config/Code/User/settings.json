@@ -23,7 +23,8 @@
     "*.java": "java",
     "*.sty": "latex",
     "*.toml": "toml",
-    ".gitignore": "ignore"
+    ".gitignore": "ignore",
+    "_pathific": "shellscript"
   },
   "workbench.settings.useSplitJSON": true,
   "[restructuredtext]": {
@@ -76,7 +77,7 @@
   },
   "terminal.integrated.cursorBlinking": true,
   "python.dataScience.magicCommandsAsComments": true,
-  "sync.forceUpload": true,
+  "sync.forceUpload": false,
   "python.dataScience.allowUnauthorizedRemoteConnection": true,
   "python.linting.flake8Enabled": true,
   "search.exclude": {
@@ -114,7 +115,7 @@
   "docker.containers.label": "ContainerName",
   "docker.images.label": "FullTag",
   "window.newWindowDimensions": "inherit",
-  "workbench.colorTheme": "FlatUI Dark",
+  "workbench.colorTheme": "Nord",
   "terminal.integrated.automationShell.windows": "pwsh.exe",
   "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7-preview\\pwsh.exe",
   "[xml]": {
@@ -307,7 +308,6 @@
   "[gitignore]": {},
   "shellformat.effectLanguages": [
     "shellscript",
-    "dockerfile",
     "dotenv",
     "hosts",
     "jvmoptions",
@@ -329,4 +329,14 @@
   "[ignore]": {
     "editor.defaultFormatter": "ryannaddy.vscode-format"
   },
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "[shellscript]": {
+    "editor.defaultFormatter": "shakram02.bash-beautify"
+  },
+  "todo-tree.tree.showScanModeButton": false,
+  "editor.matchBrackets": false,
+  "sync.quietSync": true,
+  "shellcheck.disableVersionCheck": true,
+  "bashBeautify.tabSize": 2,
 }

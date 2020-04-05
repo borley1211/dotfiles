@@ -23,7 +23,7 @@ let g:python3_host_prog = s:pythonpath
 
 "[dein]
 if &compatible
-    set nocompatible    " Be iMproved
+"    set nocompatible    " Be iMproved
 endif
 
 " Required:
@@ -61,7 +61,6 @@ set termguicolors
 "set pumblend=20
 "set winblend=10
 
-
 "[ステータス表示]
 set title titlelen=70
 let &titleold = getcwd()
@@ -70,11 +69,9 @@ set showcmd
 set wildmenu
 set modeline
 
-
 "[括弧/タグジャンプ]
 set showmatch
 "source $VIMRUNTIME/macros/matchit.vim   " Vimの「%」を拡張
-
 
 "[カーソル]
 set whichwrap=b,s,h,l,<,>,[,]
@@ -82,10 +79,9 @@ set cursorline
 set cursorcolumn
 set number
 
-
 "[検索設定]
 set incsearch
-set ignorecase
+"set ignorecase
 set smartcase
 set hlsearch
 nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>
