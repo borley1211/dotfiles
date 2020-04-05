@@ -69,3 +69,9 @@ Pipfile,Pipfile
 .icons/la-captaine,.icons/la-captaine
 .icons/la-captaine,.icons/la-captaine
 .themes/elementary-x,.themes/elementary-x
+.themes/Ant,.themes/Ant
+.themes/Nordic-Polar,.themes/Nordic-Polar
+.themes/Nordic,.themes/Nordic
+.themes/Juno,.themes/Juno
+.themes/Sweet,.themes/Sweet
+.nodenv/default-packages,$(nodenv root)/default-packages
