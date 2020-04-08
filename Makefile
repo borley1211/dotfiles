@@ -97,7 +97,7 @@ ln -sfvn $1 $2
 endef
 
 define run
-bash $1
+./etc/util/logexec $1
 
 endef
 

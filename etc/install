@@ -16,7 +16,7 @@ export PLATFORM
 _TAB_="$(printf "\t")"
 _SPACE_=' '
 _BLANK_="${_SPACE_}${_TAB_}"
-_IFS_="$IFS"
+#_IFS_="$IFS"
 
 vitalize() {
     return 0
@@ -35,7 +35,7 @@ is_superuser() {
 }
 
 can_use_sudo() {
-    [ -n is_superuser ]
+    [ -n "$(is_superuser)" ]
 }
 
 is_bash() {
@@ -346,7 +346,7 @@ is_number() {
     else
         echo "$1"
     fi | grep -E '^[0-9]+$' >/dev/null 2>&1
-    if [ $? -eq 0 ]; then
+    if $?; then
         return 0
     else
         return 1
@@ -430,7 +430,7 @@ is_empty() {
     else
         echo "$1"
     fi | grep -E "^[$_BLANK_]*$" >/dev/null 2>&1
-    if [ $? -eq 0 ]; then
+    if $?; then
         return 0
     else
         return 1
@@ -553,7 +553,7 @@ dotfiles_deploy() {
         exit 1
     fi
 
-    cd "$DOTPATH"
+    cd "$DOTPATH" || exit
 
     if is_debug; then
         :
