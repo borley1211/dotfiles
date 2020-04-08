@@ -177,6 +177,9 @@ init-lazy:## Setup environment settings (LAZY)
 init-system:## Setup environment settings (System - Wide)
 	@$(INIT_SYS)
 
+init-fake:## Test for init
+	@$(call run,./etc/util/do_nothing)
+
 init:init-pre init-lazy ## Setup HEAD and LAZY environment settings
 
 test:## Test dotfiles and init scripts (now DEPRECATED)

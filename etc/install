@@ -189,8 +189,8 @@ ink() {
         return 1
     fi
 
-    local open="\033["
-    local close="${open}0m"
+    local open="\\e["
+    local close="${open}m"
     local black="0;30m"
     local red="1;31m"
     local green="1;32m"
@@ -213,7 +213,7 @@ ink() {
         esac
     fi
 
-    printf "%s%s%s%s" "${open}" "${color}" "${text}" "${close}"
+    printf "\e[%-6s%s\e[m" "${color}" "${text}"
 }
 
 logging() {
