@@ -11,8 +11,6 @@ zinit wait lucid for \
 
 zinit ice from"gh-r" as"program"; zinit load junegunn/fzf-bin
 
-#zinit ice wait"!0"; zinit load zdharma/history-search-multi-word
-
 zinit light mollifier/anyframe
 
 zinit ice as"plugin"; zinit light b4b4r07/enhancd

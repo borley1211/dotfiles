@@ -65,6 +65,7 @@ Pygments = "*"
 PySoundFile = "*"
 PyYAML = "*"
 hatch = "*"
+youtube-dl = "*"
 
 [requires]
 python_version = "3.8"

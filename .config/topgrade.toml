@@ -1,11 +1,7 @@
 # Additional git repositories to pull
 git_repos = [
     "~/Dotfiles",
-    "~/.zprezto",
-    "~/.goenv",
-    "~/.rbenv",
     "~/pigweed",
-    "~/.themes/elementary-x"
 ]
 
 # Don't pull the predefined git repos
@@ -48,11 +44,11 @@ cleanup = true
 #set_title = false
 # Commands to run before anything
 [pre_commands]
-#"NeoVim Snapshot" = "rm -rf ~/.local/bin/nvim.bak && cp -rl ~/.local/bin/nvim ~/.local/bin/nvim.bak"
 #"Update NodeJS by N" = "n lts; npm --version"
 "Update pip" = "python -m pip install -U --upgrade-strategy eager pip"
 "pyenv" = "pyenv update; exit 0"
 "anyenv" = "anyenv update; exit 0"
+"nodenv version list" = 'which nodenv && git -C "$(nodenv root)"/plugins/node-build pull'
 
 # Custom commands
 [commands]
