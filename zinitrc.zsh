@@ -21,5 +21,7 @@ zinit light ssh0/dot
 
 zinit light ress997/zsh-completions-anyenv
 
+zinit load momo-lab/zsh-abbrev-alias
+
 zinit compinit
 

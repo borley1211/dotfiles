@@ -44,14 +44,14 @@ cleanup = true
 #set_title = false
 # Commands to run before anything
 [pre_commands]
-#"Update NodeJS by N" = "n lts; npm --version"
+"Update NodeJS by N Package" = "n lts && npm --version; exit 0"
 "Update pip" = "python -m pip install -U --upgrade-strategy eager pip"
 "pyenv" = "pyenv update; exit 0"
 "anyenv" = "anyenv update; exit 0"
-"nodenv version list" = 'which nodenv && git -C "$(nodenv root)"/plugins/node-build pull'
+#"nodenv version list" = 'which nodenv && git -C "$(nodenv root)"/plugins/node-build pull'
 
 # Custom commands
 [commands]
 "Python Core Packages" = "python -m pip install -U --upgrade-strategy eager pipenv poetry hatch setuptools certifi"
 "Python envs" = "pipenv update --dev --clear; pipenv install --dev --system"
-"NPM" = "npm install npm -g; npm update; npm doctor; npm dedupe; npm audit fix"
+"NPM (by N Package)" = "npm install npm -g; npm update; npm doctor; npm dedupe; npm audit fix"

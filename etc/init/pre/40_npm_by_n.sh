@@ -1,10 +1,11 @@
 #!/bin/bash
-echo "DEPRECATED"
-exit 0
+#echo "DEPRECATED"
+#exit 0
 
 # main script
+sudo apt install npm nodejs -y
 if ! type "n" >/dev/null; then
-    curl -L https://git.io/n-install | bash
+    sudo npm install n -g && sudo apt purge npm nodejs -y
 else
     log_info "It seems you've already installed n and npm. Exit."
 fi

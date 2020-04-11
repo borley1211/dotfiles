@@ -74,19 +74,12 @@ endfunction
 # 補完
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-depends = ['roxma/nvim-yarp', 'roxma/vim-hug-neovim-rpc']
 hook_source = '''
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_ignore_case = 1
+"let g:deoplete#enable_ignore_case = 1
 let g:deoplete#enable_smart_case = 1
 '''
 on_i = 1
-
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-
-[[plugins]]
-repo = 'Shougo/vim-hug-neovim-rpc'
 
 [[plugins]]
 repo = 'ncm2/ncm2'
