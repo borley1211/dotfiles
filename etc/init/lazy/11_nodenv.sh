@@ -1,12 +1,6 @@
 #!/bin/bash
-source "${DOTPATH}/etc/install"
-
-function init_nodejs () {
-    nodenv install nightly
-    nodenv rehash
-    nodenv global nightly
-    cd ~
-    npm install
-}
-
-logexec init_nodejs
+VERSION="12.16.2"
+nodenv install "$VERSION"
+nodenv rehash
+nodenv global "$VERSION"
+git clone https://github.com/nodenv/node-build-update-defs.git "$(nodenv root)"/plugins/node-build-update-defs
