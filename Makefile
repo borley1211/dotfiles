@@ -91,7 +91,7 @@ ln -sfv $1 $2
 
 endef
 
-define deploy_file
+define deploy_dir
 ln -sfvn $1 $2
 
 endef
