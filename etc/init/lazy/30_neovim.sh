@@ -1,6 +1,4 @@
 #!/bin/bash
-source ${DOTPATH:-~/Dotfiles}/etc/install
-
 install_neovim_as_appimage() {
     if ! type "nvim" "nvim.appimage" &>/dev/null; then
         if is_linux; then
