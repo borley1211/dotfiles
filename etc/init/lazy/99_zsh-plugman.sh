@@ -1,6 +1,4 @@
 #!/bin/bash
-source ${DOTPATH:-~/Dotfiles}/etc/install
-
 init_prezto() {
     if [ ! "$(command -v zsh)" == "1" ]; then # if zsh exists
         # echo "zsh exists!"
@@ -31,4 +29,4 @@ init_zshrc() {
     fi
 }
 
-logexec init_zinit || exit
+init_zinit
