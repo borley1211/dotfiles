@@ -1,7 +1,7 @@
 ##--Define Variables--##
 
 # SUFFIX_OF_SCRIPTS
-ifeq ($(OS), Windows_NT)
+ifeq ($(OS),Windows_NT)
 SUFFIX	:= ps1
 else
 SUFFIX	:= sh
@@ -19,11 +19,11 @@ LAZYINITSCRIPTS	:= $(sort $(wildcard $(LAZYINITDIR)/??*.$(SUFFIX)))
 
 # DOTFILES
 DOTPATH	:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
-CANDIDATES	:= $(wildcard .??* .config/??* .??* .config/??* rc .config/??*/??* .??* )
+CANDIDATES	:= $(wildcard .??* .config/??*.??* .config/??*rc .config/??*/??*.??* )
 CONFIGDIRS	:= $(filter-out %rc %.toml %.ini %.cfg %.dirs, $(wildcard .config/??* .config/??*/??*.d))
-CANDIDATES	:= $(CANDIDATES)$(foreach DIR, $(CONFIGDIRS), $(wildcard $(DIR)/??* )) package.json $(wildcard .jupyter/??*.??* ) Pipfile
+CANDIDATES	:= $(CANDIDATES) $(foreach DIR,$(CONFIGDIRS),$(wildcard $(DIR)/??*)) package.json $(wildcard .jupyter/??*.??* ) Pipfile
 EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode .Xresources-regolith $(CONFIGDIRS)
-DOTFILES	:= $(sort $(filter-out $(EXCLUSIONS), $(CANDIDATES)))
+DOTFILES	:= $(sort $(filter-out $(EXCLUSIONS),$(CANDIDATES)))
 
 # SUBMODULES
 SUBMODULES	= .cache/dein $(wildcard .themes/??* .icons/??*)
@@ -45,17 +45,17 @@ endef
 
 #uutils ln - sfv $1 $2
 define deploy_file
-cmd /C mklink $(subst /, \, $2)$(subst /, \, $1)
+cmd /C mklink $(subst /,\,$2)$(subst /,\,$1)
 
 endef
 
 define deploy_dir
-cmd /C mklink $(subst /, \, $2)$(subst /, \, $1)
+cmd /C mklink $(subst /,\,$2)$(subst /,\,$1)
 
 endef
 
 define run
-powershell - NoLogo $1
+powershell -NoLogo $1
 
 endef
 
@@ -65,7 +65,7 @@ cmd /C "del $(subst /,\,$1)"
 endef
 
 define deploy_on_win
-cmd /C mklink $(subst /, \, $2)$(subst /, \, $1)
+cmd /C mklink $(subst /,\,$2)$(subst /,\,$1)
 
 endef
 
@@ -158,7 +158,7 @@ credit:## Show credit
 	@echo ''
 
 list:## Show dot files in this repo
-	@$(foreach val, "--DOT FILES--"$(DOTFILES)"--CONFIG DIRECTORIES--"$(CONFIGDIRS), $(call _list, $(val)))
+	@$(foreach val, "--DOT FILES--"$(DOTFILES)"--CONFIG DIRECTORIES--"$(CONFIGDIRS), $(call _list,$(val)))
 
 deploy-file:## Create symlink to home directory (FILES)
 	@$(DEPLOY)
@@ -174,7 +174,7 @@ init-pre:## Setup environment settings (PRE)
 init-lazy:## Setup environment settings (LAZY)
 	@$(INIT_LAZY)
 
-init-system:## Setup environment settings (System - Wide)
+init-system:## Setup environment settings (System-Wide)
 	@$(INIT_SYS)
 
 init-fake:## Test for init
