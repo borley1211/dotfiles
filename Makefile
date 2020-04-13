@@ -125,9 +125,9 @@ endef
 ##--Setup all tasks--##
 
 DEPLOY	= $(foreach val, $(CONFIGDIRS), \
-	$(call mkdir_safety, $(HOME)/$(call set_config_home, $(val))))\
-	$(foreach val, $(DOTFILES), \
-	$(call deploy_file, $(realpath $(val)), $(HOME)/$(call set_config_home, $(val))))\
+	$(call mkdir_safety,$(HOME)/$(call set_config_home,$(val))))\
+	$(foreach val,$(DOTFILES), \
+	$(call deploy_file,$(realpath $(val)),$(HOME)/$(call set_config_home,$(val))))\
 	$(call deploy_on_win, $(realpath .config/starship.toml), $(HOME)/.config/starship.toml)\
 	$(call deploy_on_win, $(realpath .config/topgrade.toml), $(HOME)/AppData/Roaming/topgrade.toml)\
 	$(call deploy_on_win, $(realpath .config/efm-langserver/config.yaml), $(HOME)/.config/efm-langserver/config.yaml)
@@ -135,16 +135,16 @@ DEPLOY	= $(foreach val, $(CONFIGDIRS), \
 DEPLOY-MODULE	= $(foreach val, $(SUBMODULES), \
 	$(call deploy_dir, $(realpath $(val)), $(HOME)/$(val)))
 
-INIT_SYS	:= $(foreach val, $(SYSINITSCRIPTS), $(call run, $(abspath $(val))))
-INIT_PRE	:= $(foreach val, $(PREINITSCRIPTS), $(call run, $(abspath $(val))))
-INIT_LAZY	:= $(foreach val, $(LAZYINITSCRIPTS), $(call run, $(abspath $(val))))
+INIT_SYS	:= $(foreach val, $(SYSINITSCRIPTS),$(call run, $(abspath $(val))))
+INIT_PRE	:= $(foreach val, $(PREINITSCRIPTS),$(call run, $(abspath $(val))))
+INIT_LAZY	:= $(foreach val, $(LAZYINITSCRIPTS),$(call run, $(abspath $(val))))
 
 CLEAN	= $(foreach val, $(DOTFILES), \
-	$(call rm_recursive, $(HOME)/$(call set_config_home, $(val))))\
-	$(call clean_on_win, $(HOME)/.config/starship.toml)\
-	$(call clean_on_win, $(HOME)/AppData/Roaming/topgrade.toml)
+	$(call rm_recursive,$(HOME)/$(call set_config_home,$(val))))\
+	$(call clean_on_win,$(HOME)/.config/starship.toml)\
+	$(call clean_on_win,$(HOME)/AppData/Roaming/topgrade.toml)
 
-UPDATE	:= $(foreach val, $(UPDATES), $(call run, $(abspath $(val))))
+UPDATE	:= $(foreach val,$(UPDATES),$(call run,$(abspath $(val))))
 
 
 ##--MAIN--##
