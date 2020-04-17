@@ -4,7 +4,7 @@
 	name = borley1211
 	email = km.isetan@gmail.com
 [credential]
-	helper = manager
+	helper = substitute
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

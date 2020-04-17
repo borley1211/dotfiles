@@ -1,38 +1,43 @@
-function pathappend() {
-    pathremove $1
+pathappend() {
+    pathremove "$1"
     export PATH="$PATH:$1"
 }
-function pathprepend() {
-    pathremove $1
+
+pathprepend() {
+    pathremove "$1"
     export PATH="$1:$PATH"
 }
-function pathremove() { export PATH=$(echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' | sed 's/:$//i'); }
 
-function pathmgr() {
+pathremove() {
+    PATH="$(echo "$PATH" | awk -v RS=: -v ORS=: '$0 != "'"$1"'"' | sed 's/:$//i')";
+    export PATH
+}
+
+pathmgr() {
     subcmd=$1
-    args=${@:2}
+    args=(${@:2})
 
     if ( ($# < 1) ) ; then
         echo "  Usage : $ pathmgr COMMAND[a(append), p(prepend), r(remove), s(show)] PATH[, ...]"
     else
         case $subcmd in
             a | append)
-                for p in ${args[@]}; do
-                    pathappend $p
+                for p in "${args[@]}"; do
+                    pathappend "$p"
                 done
             ;;
             p | prepend)
-                for p in ${args[@]}; do
-                    pathprepend $p
+                for p in "${args[@]}"; do
+                    pathprepend "$p"
                 done
             ;;
             r | remove)
-                for p in ${args[@]}; do
-                    pathremove $p
+                for p in "${args[@]}"; do
+                    pathremove "$p"
                 done
                 ;;
             s | show)
-                echo $PATH
+                echo "$PATH"
                 ;;
             *)
                 echo "COMMAND: a(append), p(prepend), r(remove), s(show)"
@@ -93,9 +98,9 @@ if [ -e powerline-daemon ] ; then
 
     PWLIN_INIT="powerline/bindings/zsh/powerline.zsh"
 
-    for WKDIR in $PYPKGDIR; do
+    for WKDIR in "${PYPKGDIR[@]}"; do
         if [ -f "$WKDIR" ]; then
-            source ${WKDIR}/${PWLIN_INIT}
+            . "${WKDIR}/${PWLIN_INIT}"
             break
         fi
     done
@@ -106,19 +111,19 @@ export LLVM_CONFIG="$(ls -dr1 $(find /usr/bin -path '*llvm-config*') | head -n 1
 
 # - Dotfiles
 export DOTPATH="${HOME}/Dotfiles"
-alias dotutil="make -C ${DOTPATH}"
+alias dotutil="make -C ${DOTPATH:-~/Dotfiles}"
 
 # - goenv
-if [ -e "${HOME}/.goenv" ] && ! [ -e "${HOME}/.anyenv" ] ; then
-    export GOENV_ROOT="$HOME/.goenv"
-    export PATH="$GOENV_ROOT/bin:$PATH"
-    eval "$(goenv init -)"
-    export PATH="$GOROOT/bin:$PATH"
-    export PATH="$PATH:$GOPATH/bin"
-fi
+#if [ -e "${HOME}/.goenv" ] && ! [ -e "${HOME}/.anyenv" ] ; then
+#    export GOENV_ROOT="$HOME/.goenv"
+#    export PATH="$GOENV_ROOT/bin:$PATH"
+#    eval "$(goenv init -)"
+#    export PATH="$GOROOT/bin:$PATH"
+#    export PATH="$PATH:$GOPATH/bin"
+#fi
 
 # - fzf
-[ -f "${HOME}/.fzf.${SHELL}" ] && . ~/.fzf.${SHELL}
+[ -f "${HOME}/.fzf.${SHELL}" ] && . ~/.fzf."${SHELL}"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
@@ -167,4 +172,7 @@ export DOT_DIR="$DOTPATH"
 if [ -e "$HOME/.anyenv" ]; then
     pathprepend "$HOME/.anyenv/bin"
     eval "$(anyenv init -)"
+    if [ -e "$HOME/.anyenv/envs/goenv" ] ;then
+        pathprepend "$GOPATH/bin"
+    fi
 fi
