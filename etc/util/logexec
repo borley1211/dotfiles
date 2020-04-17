@@ -1,4 +1,4 @@
 #!/bin/bash
-source "${DOTPATH:-~/Dotfiles/etc/install}/etc/install"
+source "${DOTPATH:-$HOME/Dotfiles}/etc/install"
 
 logexec "$1"

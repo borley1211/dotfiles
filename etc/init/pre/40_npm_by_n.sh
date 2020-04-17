@@ -11,7 +11,7 @@ else
 fi
 export PATH="${HOME}/n/bin:${PATH}"
 cd ~ || exit
-n lts
+N_PREFIX="$HOME/n" n lts
 npm --version
 npm install npm -g
 npm update

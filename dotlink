@@ -75,3 +75,4 @@ Pipfile,Pipfile
 .themes/Juno,.themes/Juno
 .themes/Sweet,.themes/Sweet
 .nodenv/default-packages,$(nodenv root)/default-packages
+.sommelierrc,.sommelierrc
