@@ -1,9 +1,3 @@
-# Additional git repositories to pull
-git_repos = [
-    "~/Dotfiles",
-    "~/pigweed",
-]
-
 # Don't pull the predefined git repos
 # predefined_git_repos = false
 
@@ -25,9 +19,6 @@ disable = ["vim",]
 # Arguments to pass SSH when upgrading remote systems
 ssh_arguments = "-o ConnectTimeout=2"
 
-# Arguments to pass Git when pulling Repositories
-git_arguments = "--rebase --autostash"
-
 # Arguments to pass tmux when pulling Repositories
 #tmux_arguments = "-S /var/tmux.sock"
 
@@ -42,6 +33,17 @@ cleanup = true
 
 # Do not set the terminal title
 #set_title = false
+
+[git]
+# Additional git repositories to pull
+repos = [
+    "~/Dotfiles",
+    "~/pigweed",
+]
+
+# Arguments to pass Git when pulling Repositories
+arguments = "--rebase --autostash"
+
 # Commands to run before anything
 [pre_commands]
 "Update NodeJS by N Package" = "n lts && npm --version; exit 0"
@@ -52,6 +54,6 @@ cleanup = true
 
 # Custom commands
 [commands]
-"Python Core Packages" = "python -m pip install -U --upgrade-strategy eager pipenv poetry hatch setuptools certifi"
-"Python envs" = "pipenv update --dev --clear; pipenv install --dev --system"
+"Python Core Packages" = "python -m pip install -U --upgrade-strategy eager pipenv poetry hatch setuptools certifi johnnydep"
+"Python envs" = "pipenv update --dev --clear --pre; pipenv install --dev --deploy --pre"
 "NPM (by N Package)" = "npm install npm -g; npm update; npm doctor; npm dedupe; npm audit fix"

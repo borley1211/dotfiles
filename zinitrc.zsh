@@ -23,5 +23,5 @@ zinit light ress997/zsh-completions-anyenv
 
 zinit load momo-lab/zsh-abbrev-alias
 
-zinit compinit
+#zinit compinit
 

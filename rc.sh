@@ -49,14 +49,15 @@ pathmgr() {
 }
 
 # - Local Binaries
-pathappend ~/.local/bin
+pathappend "$HOME/.local/bin"
 
 # - n and npm
 export N_PREFIX="${HOME}/n"
 export PATH="$N_PREFIX/bin:${PATH}"
 
 # - Encoding
-export LANG=ja_JP.UTF-8
+export LANG="ja_JP.UTF-8"
+export LC_ALL="ja_JP.UTF-8"
 
 # - Python
 export PIP_DEFAULT_TIMEOUT=1200
@@ -81,7 +82,8 @@ if python -m pipenv >/dev/null 2>&1; then
 fi
 
 # - RustUp
-[ -f "${HOME}/.cargo/env" ] && . ~/.cargo/env
+#[ -f "${HOME}/.cargo/env" ] && . ~/.cargo/env
+[ -e "${HOME}/.cargo/" ] && pathprepend "$HOME/.cargo/bin"
 
 # - NeoVim
 export EDITOR="nvim"
@@ -142,19 +144,18 @@ if (uname -r | grep -iq 'microsoft'); then
     export DISPLAY="$LOCAL_IP:0.0"
     export LIBGL_ALWAYS_INDIRECT=1
     export XDG_SESSION_TYPE="x11"
+    export XDG_RUNTIME_DIR="$HOME"
     export DOCKER_HOST="tcp://$LOCAL_IP:2375"
-    export HTCACHECLEAN_PATH="$TMPDIR/http"
     #export PULSE_SERVER="$LOCAL_IP:9697"
 
     #[Ignore NPM in 'WIN_HOME']
-    pathmgr remove $NODE_ROOT 
-    pathmgr remove $(dirname "$NODE_ROOT")
+    #[ -n "${NODE_ROOT+x}" ] && ( pathmgr remove "$NODE_ROOT" )
 
     # Services (init.d)
-    SERVICES=(dbus cron x11-common apache-htcacheclean)
-    for name in $SERVICES; do
-        if ! (service $name status); then
-            sudo service $name start
+    SERVICES=(dbus cron x11-common)
+    for name in "${SERVICES[@]}"; do
+        if ! (service "$name" status); then
+            sudo service "$name" start
         fi
     done
 

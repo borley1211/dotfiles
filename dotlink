@@ -76,3 +76,4 @@ Pipfile,Pipfile
 .themes/Sweet,.themes/Sweet
 .nodenv/default-packages,$(nodenv root)/default-packages
 .sommelierrc,.sommelierrc
+pyproject.toml,pyproject.toml

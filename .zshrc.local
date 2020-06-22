@@ -1,4 +1,12 @@
 #!/bin/zsh
+autoload -Uz colors && colors
+autoload -Uz compinit
+autoload -Uz add-zsh-hook
+
+# for WSL
+setopt no_bg_nice
+unsetopt bg_nice
+
 source "${DOTPATH:-${HOME}/Dotfiles}/rc.sh"
 
 # - zcompfunc
