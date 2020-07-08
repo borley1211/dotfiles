@@ -109,7 +109,7 @@ if [ -e powerline-daemon ] ; then
 fi
 
 # - LLVM
-export LLVM_CONFIG="$(ls -dr1 $(find /usr/bin -path '*llvm-config*') | head -n 1)"
+export LLVM_CONFIG=$(ls -dr1 "$(find /usr/bin -path '*llvm-config*')" | head -n 1)
 
 # - Dotfiles
 export DOTPATH="${HOME}/Dotfiles"
@@ -176,4 +176,9 @@ if [ -e "$HOME/.anyenv" ]; then
     if [ -e "$HOME/.anyenv/envs/goenv" ] ;then
         pathprepend "$GOPATH/bin"
     fi
+fi
+
+# - Nix
+if [ -e "$HOME/.nix-profile" ]; then
+    . /home/borley/.nix-profile/etc/profile.d/nix.sh
 fi

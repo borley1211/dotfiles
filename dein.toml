@@ -109,7 +109,6 @@ repo = 'powerline/powerline'
 [[plugins]]
 repo = 'neoclide/coc.nvim'
 merge = 0
-on_i = 1
 rev = 'release'
 
 # TOML
