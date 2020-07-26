@@ -98,7 +98,7 @@ $dotfiles_logo = "
    \__,_|\___/ \__|_| |_|_|\___||___/ 
 
   *** WHAT IS INSIDE? ***
-  1. Download "$env:DOTFILES_GITHUB".git
+  1. Download "+"$DOTFILES_GITHUB"+".git
   2. Symlinking dot files to your home directory
   3. Execute all sh files within `etc/init/` (optional)
 
