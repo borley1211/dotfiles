@@ -88,9 +88,9 @@ if ("$env:DOTPATH" -eq $null) {
     [System.Environment]::SetEnvironmentVariable("DOTPATH", $env:DOTPATH, "User")
 }
 
-$env:DOTFILES_GITHUB = "https://github.com/borley1211/dotfiles"
+$DOTFILES_GITHUB = "https://github.com/borley1211/dotfiles"
 
-$dotfiles_logo = '
+$dotfiles_logo = "
       | |     | |  / _(_) |           
     __| | ___ | |_| |_ _| | ___  ___  
    / _` |/ _ \| __|  _| | |/ _ \/ __| 
@@ -103,12 +103,12 @@ $dotfiles_logo = '
   3. Execute all sh files within `etc/init/` (optional)
 
   See the README for documentation.
-  "$env:DOTFILES_GITHUB"
+  "+"$DOTFILES_GITHUB"+"
 
   Copyright (c) 2014 "BABAROT" aka @b4b4r07.
   Edited by @borley1211 in 2019.
   Licensed under the MIT.
-'
+"
 
 function dotfiles_download {
     if (!(Test-Path "$env:DOTPATH")) {
