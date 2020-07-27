@@ -63,7 +63,7 @@ function logging($mode, $text) {
     function timestamp {
         $date = Get-Date -UFormat "+%H:%M:%S"
         ink gray "["
-        ink purple "${date}"
+        ink blue "${date}"
         ink gray "] "
     }
 
