@@ -26,10 +26,14 @@ SUBMODULES	= .cache/dein $(wildcard .themes/??* .icons/??*)
 
 # for WIN
 WIN_HOME	:= /mnt/c/Users/kmise
+EXCLUSIONS_WIN	:= $(wildcard .config/??*.??* .config/??*/??* .config/??*/??*/??* .??*) %rc
+DOTFILES_WIN	:= $(sort $(filter-out $(EXCLUSIONS_WIN),$(DOTFILES)))
+DOTFILES_WIN_ONCONFIG	:= $(wildcard .config/??*.toml)
 
 #--Define Functions--#
 
 # DEFINE FUNCTIONS
+# - ON LINUX
 define mkdir_safety
 mkdir -p $1
 
@@ -55,7 +59,12 @@ rm -vrf $1
 
 endef
 
-# - ON EACH OS
+# - ON WINDOWS
+define set_config_home_win
+$(subst .config,AppData/Local,$1)
+endef
+
+# - ON EACH_OS
 define _list
 echo $1
 
@@ -71,10 +80,15 @@ DEPLOY	= $(foreach val, $(CONFIGDIRS), \
 DEPLOY-MODULE	= $(foreach val, $(SUBMODULES), \
 	$(call deploy_dir, $(realpath $(val)), $(HOME)/$(val)))
 
-DEPLOY_WIN	= $(foreach val, $(CONFIGDIRS), \
-	$(call mkdir_safety,$(WIN_HOME)/$(val)))\
-	$(foreach val,$(DOTFILES), \
-	$(call deploy_file,$(realpath $(WIN_HOME)/Dotfiles/$(val)),$(WIN_HOME)/$(val)))
+DEPLOY_WIN	= cd $(WIN_HOME)/Dotfiles\
+	$(foreach val, $(CONFIGDIRS), \
+	$(call mkdir_safety,$(WIN_HOME)/$(val)) \
+	$(call mkdir_safety,$(WIN_HOME)/$(call set_config_home_win,$(val))))\
+	$(foreach val,$(DOTFILES_WIN), \
+	$(call deploy_file,$(val),../$(call set_config_home_win,$(val))))\
+	$(foreach val,$(DOTFILES_WIN_ONCONFIG), \
+	$(call deploy_file,$(val),../$(val)))\
+	$(call deploy_file,$(WIN_HOME)/Dotfiles/powershell/profile.ps1,$(WIN_HOME)/OneDrive/ドキュメント/PowerShell/Microsoft.PowerShell_profile.ps1)
 
 INIT_SYS	:= $(foreach val, $(SYSINITSCRIPTS),$(call run, $(abspath $(val))))
 INIT_PRE	:= $(foreach val, $(PREINITSCRIPTS),$(call run, $(abspath $(val))))
