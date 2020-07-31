@@ -26,4 +26,9 @@ install_neovim_from_ppa() {
     sh ~/installer.sh ~/.cache/dein
 }
 
+install_dep_neovim() {
+    pip install neovim vim-vint
+}
+
 install_neovim_from_ppa
+install_dep_neovim

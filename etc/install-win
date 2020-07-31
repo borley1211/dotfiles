@@ -472,10 +472,10 @@ logexec() {
 
 # Dotfiles {{{1
 
-# Set DOTPATH as default variable
-if [ -z "${DOTPATH:-}" ]; then
-    DOTPATH=~/Dotfiles
-    export DOTPATH
+# Set DOTPATH_WIN as default variable
+if [ -z "${DOTPATH_WIN:-}" ]; then
+    DOTPATH_WIN=/mnt/c/Users/kmise/Dotfiles
+    export DOTPATH_WIN
 fi
 
 DOTFILES_GITHUB="git@github.com:borley1211/dotfiles"
@@ -503,8 +503,8 @@ dotfiles_logo='
 '
 
 dotfiles_download() {
-    if [ -d "$DOTPATH" ]; then
-        log_fail "$DOTPATH: already exists"
+    if [ -d "$DOTPATH_WIN" ]; then
+        log_fail "$DOTPATH_WIN: already exists"
         exit 1
     fi
 
@@ -518,7 +518,7 @@ dotfiles_download() {
             # --recursive equals to ...
             # git submodule init
             # git submodule update
-            git clone --recursive "$DOTFILES_GITHUB".git "$DOTPATH"
+            git clone --recursive "$DOTFILES_GITHUB".git "$DOTPATH_WIN"
 
         elif is_exists "curl" || is_exists "wget"; then
             # curl or wget
@@ -534,7 +534,7 @@ dotfiles_download() {
                 log_fail "dotfiles-master: not found"
                 exit 1
             fi
-            command mv -f dotfiles-master "$DOTPATH"
+            command mv -f dotfiles-master "$DOTPATH_WIN"
 
         else
             log_fail "curl or wget required"
@@ -548,17 +548,17 @@ dotfiles_deploy() {
     e_newline
     e_header "Deploying dotfiles..."
 
-    if [ ! -d $DOTPATH ]; then
-        log_fail "$DOTPATH: not found"
+    if [ ! -d $DOTPATH_WIN ]; then
+        log_fail "$DOTPATH_WIN: not found"
         exit 1
     fi
 
-    cd "$DOTPATH" || exit
+    cd "$DOTPATH_WIN" || exit
 
     if is_debug; then
         :
     else
-        make deploy
+        make deploy-win
     fi && e_newline && e_done "Deploy"
 }
 
@@ -592,9 +592,10 @@ dotfiles_install() {
         # ==> deploying
         dotfiles_deploy &&
 
-        # 3. Execute all sh files within etc/init/
+        # 3. Execute all sh files within etc/init/ (DO_NOTHING on WIN)
         # ==> initializing
-        dotfiles_initialize "$@"
+        :
+        #dotfiles_initialize "$@"
 }
 
 if echo "$-" | grep -q "i"; then

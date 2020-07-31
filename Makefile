@@ -1,11 +1,7 @@
 ##--Define Variables--##
 
 # SUFFIX_OF_SCRIPTS
-ifeq ($(OS),Windows_NT)
-SUFFIX	:= ps1
-else
 SUFFIX	:= sh
-endif
 
 # SCRIPTS
 ## paths
@@ -22,65 +18,18 @@ DOTPATH	:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES	:= $(wildcard .??* .config/??*.??* .config/??*rc .config/??*/??*.??* )
 CONFIGDIRS	:= $(filter-out %rc %.toml %.ini %.cfg %.dirs, $(wildcard .config/??* .config/??*/??*.d))
 CANDIDATES	:= $(CANDIDATES) $(foreach DIR,$(CONFIGDIRS),$(wildcard $(DIR)/??*)) package.json $(wildcard .jupyter/??*.??* ) Pipfile
-EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode .Xresources-regolith $(CONFIGDIRS)
+EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode .Xresources-regolith $(CONFIGDIRS) .themes .icons .venv
 DOTFILES	:= $(sort $(filter-out $(EXCLUSIONS),$(CANDIDATES)))
 
 # SUBMODULES
 SUBMODULES	= .cache/dein $(wildcard .themes/??* .icons/??*)
 
+# for WIN
+WIN_HOME	:= /mnt/c/Users/kmise
+
 #--Define Functions--#
 
 # DEFINE FUNCTIONS
-# - ON WINDOWS
-ifeq ($(OS), Windows_NT)
-
-define set_config_home
-$(subst .config/, AppData/Local/, $1)
-endef
-
-define mkdir_safety
-cmd /C "setlocal enableextensions & md $(subst /,\,$1) & endlocal"
-
-endef
-
-#uutils ln - sfv $1 $2
-define deploy_file
-cmd /C mklink $(subst /,\,$2)$(subst /,\,$1)
-
-endef
-
-define deploy_dir
-cmd /C mklink $(subst /,\,$2)$(subst /,\,$1)
-
-endef
-
-define run
-powershell -NoLogo $1
-
-endef
-
-define rm_recursive
-cmd /C "del $(subst /,\,$1)"
-
-endef
-
-define deploy_on_win
-cmd /C mklink $(subst /,\,$2)$(subst /,\,$1)
-
-endef
-
-define clean_on_win
-cmd /C "del $(subst /,\,$1)"
-
-endef
-
-else
-# - ON LINUX
-
-define set_config_home
-$1
-endef
-
 define mkdir_safety
 mkdir -p $1
 
@@ -106,16 +55,6 @@ rm -vrf $1
 
 endef
 
-define deploy_on_win
-
-endef
-
-define clean_on_win
-
-endef
-
-endif
-
 # - ON EACH OS
 define _list
 echo $1
@@ -125,24 +64,24 @@ endef
 ##--Setup all tasks--##
 
 DEPLOY	= $(foreach val, $(CONFIGDIRS), \
-	$(call mkdir_safety,$(HOME)/$(call set_config_home,$(val))))\
+	$(call mkdir_safety,$(HOME)/$(val)))\
 	$(foreach val,$(DOTFILES), \
-	$(call deploy_file,$(realpath $(val)),$(HOME)/$(call set_config_home,$(val))))\
-	$(call deploy_on_win, $(realpath .config/starship.toml), $(HOME)/.config/starship.toml)\
-	$(call deploy_on_win, $(realpath .config/topgrade.toml), $(HOME)/AppData/Roaming/topgrade.toml)\
-	$(call deploy_on_win, $(realpath .config/efm-langserver/config.yaml), $(HOME)/.config/efm-langserver/config.yaml)
+	$(call deploy_file,$(realpath $(val)),$(HOME)/$(val)))
 
 DEPLOY-MODULE	= $(foreach val, $(SUBMODULES), \
 	$(call deploy_dir, $(realpath $(val)), $(HOME)/$(val)))
+
+DEPLOY_WIN	= $(foreach val, $(CONFIGDIRS), \
+	$(call mkdir_safety,$(WIN_HOME)/$(val)))\
+	$(foreach val,$(DOTFILES), \
+	$(call deploy_file,$(realpath $(WIN_HOME)/Dotfiles/$(val)),$(WIN_HOME)/$(val)))
 
 INIT_SYS	:= $(foreach val, $(SYSINITSCRIPTS),$(call run, $(abspath $(val))))
 INIT_PRE	:= $(foreach val, $(PREINITSCRIPTS),$(call run, $(abspath $(val))))
 INIT_LAZY	:= $(foreach val, $(LAZYINITSCRIPTS),$(call run, $(abspath $(val))))
 
 CLEAN	= $(foreach val, $(DOTFILES), \
-	$(call rm_recursive,$(HOME)/$(call set_config_home,$(val))))\
-	$(call clean_on_win,$(HOME)/.config/starship.toml)\
-	$(call clean_on_win,$(HOME)/AppData/Roaming/topgrade.toml)
+	$(call rm_recursive,$(HOME)/$(val)))
 
 UPDATE	:= $(foreach val,$(UPDATES),$(call run,$(abspath $(val))))
 
@@ -168,6 +107,9 @@ deploy-submodule:## Create symlink to home directory (SUBMODULES)
 
 deploy:credit deploy-file deploy-submodule ## Create symlink to home directory
 
+deploy-win:## Create symlink to WIN_HOME directory
+	@$(DEPLOY_WIN)
+
 init-pre:## Setup environment settings (PRE)
 	@$(INIT_PRE)
 
@@ -189,7 +131,7 @@ test:## Test dotfiles and init scripts (now DEPRECATED)
 update:## Fetch changes for this repo
 	git pull origin master
 	git submodule init
-	git submodule update
+	git submodule update --remote
 	git submodule foreach git pull origin master
 
 install:update deploy init ## Run make update, deploy, init
