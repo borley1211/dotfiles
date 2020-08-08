@@ -478,7 +478,7 @@ if [ -z "${DOTPATH:-}" ]; then
     export DOTPATH
 fi
 
-DOTFILES_GITHUB="git@github.com:borley1211/dotfiles"
+DOTFILES_GITHUB="https://github.com/borley1211/dotfiles"
 export DOTFILES_GITHUB
 
 # shellcheck disable=SC1078,SC1079,SC2016
