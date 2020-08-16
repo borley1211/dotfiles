@@ -163,6 +163,9 @@ if (uname -r | grep -iq 'microsoft'); then
     if [[ -o login ]]; then
         sudo service zfs-fuse start
     fi
+
+    # alt to "gnome-open"
+    alias gnome-open="pwsh.exe Invoke-Item"
 fi
 
 # - dot (dotfiles manager)
