@@ -39,3 +39,19 @@ autoload history-search-end
 
 # - 曖昧な補完で、自動的に選択肢をリストアップ
 setopt AUTO_LIST
+
+
+##KEYBINDS##
+
+#function __zsh_input_ght() {
+#    # token入力
+#    TOKEN="$(cat ~/.gh_token)"
+#    BUFFER="${BUFFER}${TOKEN}"
+#}
+
+# functionをキーバインドで利用できるよう読み込ませる
+#zle -N __zsh_input_ght
+
+# キーバインドの設定
+#bindkey '^G' __zsh_input_ght
+

@@ -2,7 +2,7 @@
   "dependencies": {
     "bash-language-server": "^1.16.1",
     "neovim": "^4.9.0",
-    "npm": "^6.14.7",
+    "npm": "^6.14.8",
     "unified-language-server": "^0.3.0"
   },
   "name": "borley",

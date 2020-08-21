@@ -28,19 +28,14 @@ repo = 'tomasr/molokai'
 
 [[plugins]]
 repo = 'vim-syntastic/syntastic'
-hook_add = '''
-let g:syntastic_vim_checkers = ["vint"]
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=2
-let g:syntastic_mode_map = {'mode': 'passive'}
-augroup AutoSyntastic
-    autocmd!
-    autocmd InsertLeave,TextChanged * call s:syntastic() 
-augroup END
-function! s:syntastic()
-    w
-    SyntasticCheck
-endfunction
+hook_add='''
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 '''
 
 [[plugins]]
@@ -75,21 +70,12 @@ endfunction
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 hook_source = '''
-let g:deoplete#enable_at_startup = 1
-"let g:deoplete#enable_ignore_case = 1
-let g:deoplete#enable_smart_case = 1
+call deoplete#custom#option("enable_ignore_case", v:true)
+call deoplete#custom#option("enable_smart_case", v:true)
 '''
 on_i = 1
 
-[[plugins]]
-repo = 'ncm2/ncm2'
-hook_source = '''
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
-'''
-if = 0
-
-# ZShell
+# ZSH
 [[plugins]]
 repo = 'zchee/deoplete-zsh'
 
@@ -122,20 +108,6 @@ repo = 'w0rp/ale'
 # Syntax Highlighting Tool
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
-
-# LanguageClient
-[[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-rev = 'next'
-build = '''
-if has('win32')
-    let cmd = 'pwsh.exe -ExecutionPolicy bypass -File install.ps1'
-else
-    let cmd = 'bash install.sh'
-endif
-let g:dein#plugin.build = cmd
-'''
-if = 0
 
 # Vim emoji
 [[plugins]]
@@ -183,5 +155,5 @@ let g:airline#extensions#ale#warning_symbol = 'W:'
 '''
 
 # deoplete for python
-[[plugins]]
-repo = 'deoplete-plugins/deoplete-jedi'
+#[[plugins]]
+#repo = 'deoplete-plugins/deoplete-jedi'

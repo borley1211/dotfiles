@@ -2,7 +2,6 @@
 set encoding=utf-8
 scriptencoding utf-8
 
-
 "[ファイル入出力における文字コード設定]
 set fileencoding=utf-8  " 保存時の文字コード
 set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis,cp932   " 読込時の文字コードの自動判別(左側優先)
@@ -21,9 +20,9 @@ endif
 let g:python_host_prog = s:pythonpath
 let g:python3_host_prog = s:pythonpath
 
-"[dein]
+"[dein.vim]
 if &compatible
-"    set nocompatible    " Be iMproved
+"    set nocompatible    " Be improved
 endif
 
 " Required:
@@ -86,7 +85,6 @@ set smartcase
 set hlsearch
 nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>
 
-
 "[インデント/タブ]
 set expandtab
 set autoindent
@@ -96,20 +94,16 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set smarttab
-
 " show break-points
 set showbreak=↳
-
 " for linewrapping
 set textwidth=0
 set colorcolumn=89  " for PEP8
-
 
 "[マウス有効化]
 if has('mouse')
     set mouse=a
 endif
-
 
 "[ファイル処理]
 set confirm
@@ -119,10 +113,8 @@ set nowritebackup
 set noswapfile
 set hidden
 
-
 "[バックスペースキー有効化]
 set backspace=indent,eol,start
-
 
 "[カット/コピー/ペースト]
 inoremap { {}<Left>
@@ -131,7 +123,6 @@ inoremap ( ()<ESC>i
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
 set pastetoggle=<C-p>
-
 
 "[IME]
 set iminsert=0
@@ -152,7 +143,6 @@ set cmdheight=2
 " 矢印キーでなら行内を動けるように
 nnoremap <Down> gj
 nnoremap <Up>   gk
-
 
 "[カラースキーマ]
 "let g:molokai_original=1
