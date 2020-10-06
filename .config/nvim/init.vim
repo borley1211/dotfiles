@@ -53,6 +53,9 @@ syntax enable
 if dein#check_install()
     call dein#install()
 endif
+
+" To Check Updates
+let g:dein#install_github_api_token = 'd24542e472c1d76a837e8ae7fad8ace61b886e91'
 "End dein Scripts-------------------------
 
 "[Transparency]

@@ -54,6 +54,6 @@ arguments = "--rebase --autostash"
 
 # Custom commands
 [commands]
-"Python Core Packages" = "python -m pip install -U --upgrade-strategy eager pipenv poetry hatch setuptools certifi johnnydep"
+"Python Core Packages" = "python -m pip install -U --upgrade-strategy eager pipenv poetry hatch setuptools certifi johnnydep neovim vim-vint"
 #"Python envs" = "poetry update"
 "NPM (by N Package)" = "npm install npm -g; npm update; npm doctor; npm dedupe; npm audit fix"
