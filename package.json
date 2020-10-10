@@ -10,7 +10,7 @@
   "description": "my npm",
   "main": "index.js",
   "devDependencies": {
-    "mem": "6.1.1"
+    "mem": "8.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
