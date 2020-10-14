@@ -61,19 +61,6 @@ Pipfile,Pipfile
 .profile,.profile
 .pam_environment,.pam_environment
 .inputrc,.inputrc
-.config/Code/User/settings.json,.config/Code/User/settings.json
-.config/Code/User/syncLocalSettings.json,.config/Code/User/syncLocalSettings.json
 .config/dot/dotrc,.config/dot/dotrc
-.cache/dein,.cache/dein
-.themes/elementary-x,.themes/elementary-x
-.icons/la-captaine,.icons/la-captaine
-.icons/la-captaine,.icons/la-captaine
-.themes/elementary-x,.themes/elementary-x
-.themes/Ant,.themes/Ant
-.themes/Nordic-Polar,.themes/Nordic-Polar
-.themes/Nordic,.themes/Nordic
-.themes/Juno,.themes/Juno
-.themes/Sweet,.themes/Sweet
-.nodenv/default-packages,$(nodenv root)/default-packages
 .sommelierrc,.sommelierrc
 pyproject.toml,pyproject.toml

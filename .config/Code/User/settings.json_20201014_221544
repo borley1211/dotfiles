@@ -1,0 +1,342 @@
+{
+  "sync.gist": "473011b2f780ea8fb4af707fef88dbfe",
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "files.autoSave": "afterDelay",
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "latex-workshop.intellisense.package.enabled": true,
+  "latex-workshop.intellisense.unimathsymbols.enabled": true,
+  "git.alwaysShowStagedChangesResourceGroup": true,
+  "python.autoComplete.addBrackets": true,
+  "files.associations": {
+    "*.json": "jsonc",
+    "*.csh": "shellscript",
+    "prompt_starship_setup": "shellscript",
+    "deinrc": "viml",
+    ".zaliases": "shellscript",
+    "*.java": "java",
+    "*.sty": "latex",
+    "*.toml": "toml",
+    ".gitignore": "ignore",
+    "_pathific": "shellscript"
+  },
+  "workbench.settings.useSplitJSON": true,
+  "[restructuredtext]": {
+    "editor.defaultFormatter": "lextudio.restructuredtext",
+    "editor.tabSize": 3
+  },
+  "editor.formatOnSave": true,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "markdown.extension.katex.macros": {
+    "\\symbfit#1": "\\boldsymbol{#1}"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "python.formatting.autopep8Args": [
+    "--aggressive"
+  ],
+  "python.linting.flake8Args": [
+    "--ignore=W293,W504,E501,F403,E731",
+    "--max-line-length=88"
+  ],
+  "python.linting.mypyEnabled": true,
+  "python.linting.enabled": true,
+  "python.diagnostics.sourceMapsEnabled": false,
+  "python.globalModuleInstallation": true,
+  "terminal.integrated.shell.linux": "/bin/zsh",
+  "files.watcherExclude": {
+    "**/.git/**": true,
+    "**/.git/objects/**": false,
+    "**/.git/subtree-cache/**": false,
+    "**/.venv/**": true
+  },
+  "editor.wordWrap": "bounded",
+  "[latex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop"
+  },
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorStyle": "block",
+  "workbench.editor.highlightModifiedTabs": true,
+  "python.insidersChannel": "off",
+  "markdown.extension.tableFormatter.normalizeIndentation": true,
+  "files.exclude": {
+    "**/.mypy_cache": true
+  },
+  "terminal.integrated.cursorBlinking": true,
+  "python.dataScience.magicCommandsAsComments": true,
+  "sync.forceUpload": false,
+  "python.dataScience.allowUnauthorizedRemoteConnection": true,
+  "python.linting.flake8Enabled": true,
+  "search.exclude": {
+    "**/.venv": true
+  },
+  "editor.fontSize": 18,
+  "terminal.integrated.fontSize": 20,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.tabCompletion": "onlySnippets",
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
+  "editor.suggest.shareSuggestSelections": true,
+  "editor.suggestSelection": "first",
+  "python.jediEnabled": false,
+  "editor.fontFamily": "\"Cica\", monospace",
+  "prettier.tabWidth": 4,
+  "[toml]": {
+    "editor.defaultFormatter": "iceyer.toml-formatter"
+  },
+  "sync.autoUpload": true,
+  "terminal.external.linuxExec": "gnome-terminal",
+  "window.zoomLevel": 0,
+  "markdownlint.config": {
+    "MD025": false,
+    "MD030": false
+  },
+  "pandocMarkdownPreview.extraPandocArguments": "--filter pandoc-crossref --filter pandoc-citeproc --biblatex -s",
+  "pandoc.pdfOptString": "--filter pandoc-crossref --filter pandoc-citeproc --pdf-engine=xelatex --stand-alone --self-contained",
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "terminal.external.windowsExec": "",
+  "docker.containers.label": "ContainerName",
+  "docker.images.label": "FullTag",
+  "window.newWindowDimensions": "inherit",
+  "workbench.colorTheme": "Nord",
+  "terminal.integrated.automationShell.windows": "pwsh.exe",
+  "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7-preview\\pwsh.exe",
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+  "xmlTools.enableXmlTreeViewCursorSync": true,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "python.pythonPath": "C:\\Users\\kmise\\AppData\\Local\\Programs\\Python\\3.8\\python.exe",
+  "python.formatting.provider": "black",
+  "terminal.integrated.rendererType": "dom",
+  "path-intellisense.extensionOnImport": true,
+  "git.path": "~\\scoop\\shims\\git.exe",
+  "java.codeGeneration.generateComments": true,
+  "deepcode.api.cloudBackend": "https://www.deepcode.ai/",
+  "vs-kubernetes": {
+    "vs-kubernetes.helm-path": "C:\\Users\\kmise\\.vs-kubernetes\\tools\\helm\\windows-amd64\\helm.exe",
+    "vs-kubernetes.draft-path": "C:\\Users\\kmise\\.vs-kubernetes\\tools\\draft\\windows-amd64\\draft.exe",
+    "vs-kubernetes.kubectl-path": "C:\\Users\\kmise\\.vs-kubernetes\\tools\\kubectl\\kubectl.exe",
+    "vs-kubernetes.minikube-path": "C:\\Users\\kmise\\.vs-kubernetes\\tools\\minikube\\windows-amd64\\minikube.exe",
+    "vs-kubernetes.minikube-path.windows": "C:\\Users\\kmise\\.vs-kubernetes\\tools\\minikube\\windows-amd64\\minikube.exe"
+  },
+  "cloudcode.autoDependencies": "on",
+  "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?　、。「」【】『』（）！？てにをはがのともへでや",
+  "latex-workshop.latex.tools": [
+    // latexmk を利用した xelatex によるビルドコマンド
+    {
+      "name": "Latexmk (XeLaTeX)",
+      "command": "latexmk",
+      "args": [
+        "-f",
+        "-gg",
+        "-pv",
+        "-xelatex",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    },
+    // latexmk を利用した uplatex によるビルドコマンド
+    {
+      "name": "Latexmk (upLaTeX)",
+      "command": "latexmk",
+      "args": [
+        "-f",
+        "-gg",
+        "-pv",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    },
+    // latexmk を利用した platex によるビルドコマンド
+    // 古い LaTeX のテンプレートを使いまわしている (ドキュメントクラスが jreport や jsreport ) 場合のため
+    {
+      "name": "Latexmk (pLaTeX)",
+      "command": "latexmk",
+      "args": [
+        "-f",
+        "-gg",
+        "-pv",
+        "-latex='platex'",
+        "-latexoption='-kanji=utf8 -no-guess-input-env'",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    },
+    // latexmk を利用した lualatex によるビルドコマンド
+    {
+      "name": "Latexmk (LuaLaTeX)",
+      "command": "latexmk",
+      "args": [
+        "-f",
+        "-gg",
+        "-pv",
+        "-lualatex",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    }
+  ],
+  // latex-workshop.latex.recipes: Recipe の定義
+  "latex-workshop.latex.recipes": [
+    // XeLaTeX で書かれた文書のビルドレシピ
+    {
+      "name": "XeLaTeX",
+      "tools": [
+        "Latexmk (XeLaTeX)"
+      ]
+    },
+    // LaTeX(upLaTeX) で書かれた文書のビルドレシピ
+    {
+      "name": "upLaTeX",
+      "tools": [
+        "Latexmk (upLaTeX)"
+      ]
+    },
+    // LaTeX(pLaTeX) で書かれた文書のビルドレシピ
+    {
+      "name": "pLaTeX",
+      "tools": [
+        "Latexmk (pLaTeX)"
+      ]
+    },
+    // LuaLaTeX で書かれた文書のビルドレシピ
+    {
+      "name": "LuaLaTeX",
+      "tools": [
+        "Latexmk (LuaLaTeX)"
+      ]
+    }
+  ],
+  // latex-workshop.latex.magic.args: マジックコメント付きの LaTeX ドキュメントをビルドする設定
+  // '%!TEX' で始まる行はマジックコメントと呼ばれ、LaTeX のビルド時にビルドプログラムに解釈され、
+  // プログラムの挙動を制御する事ができる。
+  // 参考リンク: https://blog.miz-ar.info/2016/11/magic-comments-in-tex/
+  "latex-workshop.latex.magic.args": [
+    "-f",
+    "-gg",
+    "-pv",
+    "-synctex=1",
+    "-interaction=nonstopmode",
+    "-file-line-error",
+    "%DOC%"
+  ],
+  // latex-workshop.latex.clean.fileTypes: クリーンアップ時に削除されるファイルの拡張子
+  // LaTeX 文書はビルド時に一時ファイルとしていくつかのファイルを生成するが、最終的に必要となるのは
+  // PDF ファイルのみである場合などが多い。また、LaTeX のビルド時に失敗した場合、失敗時に生成された
+  // 一時ファイルの影響で、修正後のビルドに失敗してしまう事がよくある。そのため、一時的なファイルを
+  // 削除する機能 (クリーンアップ) が LaTeX Workshop には備わっている。
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.idx",
+    "*.ind",
+    "*.lof",
+    "*.lot",
+    "*.out",
+    "*.toc",
+    "*.acn",
+    "*.acr",
+    "*.alg",
+    "*.glg",
+    "*.glo",
+    "*.gls",
+    "*.ist",
+    "*.fls",
+    "*.log",
+    "*.fdb_latexmk",
+    "*.synctex.gz",
+    "_minted*",
+    "*.nav",
+    "*.snm",
+    "*.vrb"
+  ],
+  // latex-workshop.view.pdf.viewer: PDF ビューアの開き方
+  // VSCode 自体には PDF ファイルを閲覧する機能が備わっていないが、
+  // LaTeX Workshop にはその機能が備わっている。
+  // "tab" オプションを指定すると、今開いているエディタを左右に分割し、右側に生成されたPDFを表示するようにしてくれる
+  // この PDF ビュアーは LaTeX のビルドによって更新されると同期して内容を更新してくれる。
+  "latex-workshop.view.pdf.viewer": "tab",
+  // latex-workshop.latex.autoClean.run: ビルド失敗時に一時ファイルのクリーンアップを行うかどうか
+  // 上記説明にもあったように、ビルド失敗時に生成された一時ファイルが悪影響を及ぼす事があるため、自動で
+  // クリーンアップがかかるようにしておく。
+  "latex-workshop.latex.autoClean.run": "onFailed",
+  // latex-workshop.latex.autoBuild.run: .tex ファイルの保存時に自動的にビルドを行うかどうか
+  // LaTeX ファイルは .tex ファイルを変更後にビルドしないと、PDF ファイル上に変更結果が反映されないため、
+  // .tex ファイルの保存と同時に自動的にビルドを実行する設定があるが、文書が大きくなるに連れてビルドにも
+  // 時間がかかってしまい、ビルドプログラムの負荷がエディタに影響するため、無効化しておく。
+  "latex-workshop.latex.autoBuild.run": "never",
+  "latex-workshop.chktex.enabled": true,
+  "latex-workshop.intellisense.update.aggressive.enabled": true,
+  "latex-workshop.latex.clean.subfolder.enabled": true,
+  "latex-workshop.showContextMenu": true,
+  "latex-workshop.view.autoFocus.enabled": true,
+  "latex-workshop.synctex.afterBuild.enabled": true,
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "editor.accessibilityPageSize": 12,
+  "editor.semanticHighlighting.enabled": true,
+  "editor.smoothScrolling": true,
+  "editor.minimap.scale": 2,
+  "[gitignore]": {},
+  "shellformat.effectLanguages": [
+    "shellscript",
+    "dotenv",
+    "hosts",
+    "jvmoptions",
+    "ignore",
+    "properties",
+    "spring-boot-properties",
+    "azcli"
+  ],
+  "debug.console.fontSize": 16,
+  "vim.easymotionMarkerFontSize": "16",
+  "kite.showWelcomeNotificationOnStartup": false,
+  "accessToken": "EHIZLRBGCPWDDAWZC0YCE4D2PSAQUYQR9SSRHOY6AQJX9MIZB2TCN3RS4BCAKJIM",
+  "cSpell.userWords": [
+    "Cica",
+    "antialiasing",
+    "cleartype",
+    "commandline"
+  ],
+  "[ignore]": {
+    "editor.defaultFormatter": "ryannaddy.vscode-format"
+  },
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "[shellscript]": {
+    "editor.defaultFormatter": "shakram02.bash-beautify"
+  },
+  "todo-tree.tree.showScanModeButton": false,
+  "editor.matchBrackets": false,
+  "sync.quietSync": true,
+  "shellcheck.disableVersionCheck": true,
+  "bashBeautify.tabSize": 2,
+}

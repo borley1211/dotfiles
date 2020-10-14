@@ -15,8 +15,6 @@ symbol = "\uE627 "
 [git_status]
 conflicted = "\u26A0 "
 renamed = "\u270E "
-prefix = "at:"
-suffix = " "
 style = "magenta"
 
 [git_branch]
@@ -46,7 +44,7 @@ symbol = "\uE6A8 "
 
 [time]
 disabled = false
-format = "%T"
+time_format = "%T"
 
 [battery]
 #full_symbol = "🔋"
