@@ -55,7 +55,7 @@ if dein#check_install()
 endif
 
 " To Check Updates
-let g:dein#install_github_api_token = 'd24542e472c1d76a837e8ae7fad8ace61b886e91'
+let g:dein#install_github_api_token = readfile($DOTPATH.'/.sec/.gh_api_token')
 "End dein Scripts-------------------------
 
 "[Transparency]
