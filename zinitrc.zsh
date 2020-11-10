@@ -9,6 +9,8 @@ zinit wait lucid for \
  atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
 
+zinit ice from"gh-r" as"program"; zinit load junegunn/fzf
+
 zinit pack for fzf
 
 zinit light mollifier/anyframe
