@@ -28,7 +28,7 @@ pygments = "^2.6.1"
 PySoundFile = "^0.9.0"
 PyYAML = "^5.3.1"
 hatch = "^0.23.0"
-youtube-dl = "^2020.6.16"
+youtube-dl = "^2021.0.0"
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
