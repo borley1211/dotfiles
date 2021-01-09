@@ -1,17 +1,19 @@
 # Zinit config
 
+
 typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
-zinit wait lucid for \
- atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma/fast-syntax-highlighting \
- blockf \
-    zsh-users/zsh-completions \
- atload"!_zsh_autosuggest_start" \
-    zsh-users/zsh-autosuggestions
+
+
+zinit light zsh-users/zsh-autosuggestions
+
+zinit light zdharma/fast-syntax-highlighting
+
+zinit light zdharma/history-search-multi-word
+
+
+zinit light lukechilds/zsh-better-npm-completion
 
 zinit ice from"gh-r" as"program"; zinit load junegunn/fzf
-
-zinit pack for fzf
 
 zinit light mollifier/anyframe
 
@@ -25,5 +27,5 @@ zinit light ress997/zsh-completions-anyenv
 
 zinit load momo-lab/zsh-abbrev-alias
 
-#zinit compinit
+zinit cdclear -q
 
