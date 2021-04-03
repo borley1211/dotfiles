@@ -64,3 +64,4 @@ Pipfile,Pipfile
 .config/dot/dotrc,.config/dot/dotrc
 .sommelierrc,.sommelierrc
 pyproject.toml,pyproject.toml
+.cargo/config,.cargo/config
