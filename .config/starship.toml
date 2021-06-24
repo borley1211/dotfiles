@@ -5,9 +5,8 @@ add_newline = true
 symbol = "\uF270 "
 
 [character]
-symbol = "\u2192 "
+#format = "\u2192 "
 error_symbol = "\u2A2F "
-use_symbol_for_status = true
 
 [golang]
 symbol = "\uE627 "

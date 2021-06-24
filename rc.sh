@@ -9,30 +9,30 @@ pathprepend() {
 }
 
 pathremove() {
-    PATH="$(echo "$PATH" | awk -v RS=: -v ORS=: '$0 != "'"$1"'"' | sed 's/:$//i')";
+    PATH="$(echo "$PATH" | awk -v RS=: -v ORS=: '$0 != "'"$1"'"' | sed 's/:$//i')"
     export PATH
 }
 
 pathmgr() {
-    subcmd=$1
-    args=(${@:2})
+    subcmd="$1"
+    paths=("${@:2}")
 
     if ( ($# < 1) ) ; then
         echo "  Usage : $ pathmgr COMMAND[a(append), p(prepend), r(remove), s(show)] PATH[, ...]"
     else
         case $subcmd in
             a | append)
-                for p in "${args[@]}"; do
+                for p in "${paths[@]}"; do
                     pathappend "$p"
                 done
             ;;
             p | prepend)
-                for p in "${args[@]}"; do
+                for p in "${paths[@]}"; do
                     pathprepend "$p"
                 done
             ;;
             r | remove)
-                for p in "${args[@]}"; do
+                for p in "${paths[@]}"; do
                     pathremove "$p"
                 done
                 ;;
@@ -65,7 +65,7 @@ export PIP_DEFAULT_TIMEOUT=1200
 if [ -e "${HOME}/.pyenv" ] ; then
     export PYENV_ROOT="${HOME}/.pyenv"
     export PATH="${PYENV_ROOT}/bin:${PATH}"
-    eval "$(pyenv init -)"
+    eval "$(pyenv init --path)"
     eval "$(pyenv virtualenv-init -)"
     export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"
 fi
