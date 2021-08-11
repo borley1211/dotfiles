@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "bash-language-server": "^1.17.0",
+    "bash-language-server": "^2.0.0",
     "depcheck": "^1.4.1",
     "neovim": "^4.10.0",
     "npm": "^7.18.1",
