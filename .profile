@@ -28,3 +28,5 @@ fi
 
 export PATH="$HOME/.cargo/bin:$PATH"
 if [ -e /home/borley/.nix-profile/etc/profile.d/nix.sh ]; then . /home/borley/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

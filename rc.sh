@@ -153,15 +153,15 @@ if (uname -r | grep -iq 'microsoft'); then
 
     # Services (init.d)
     SERVICES=(dbus cron x11-common)
-    for name in "${SERVICES[@]}"; do
-        if ! (service "$name" status); then
-            sudo service "$name" start
+	for name in "${SERVICES[@]}"; do
+        if ! (service "$name" status > /dev/null); then
+            sudo service "$name" start > /dev/null
         fi
     done
 
     # zfs-fuse
-    if [[ -o login ]]; then
-        sudo service zfs-fuse start
+    if ! (ps -C zfs-fuse > /dev/null); then
+        sudo service zfs-fuse start > /dev/null
     fi
 
     # alt to "gnome-open"
@@ -185,3 +185,7 @@ fi
 if [ -e "$HOME/.nix-profile" ]; then
     . /home/borley/.nix-profile/etc/profile.d/nix.sh
 fi
+
+# - Volta
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

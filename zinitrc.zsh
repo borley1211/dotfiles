@@ -27,5 +27,5 @@ zinit light ress997/zsh-completions-anyenv
 
 zinit load momo-lab/zsh-abbrev-alias
 
-zinit cdclear -q ; zinit compinit
+zinit cdclear -q > /dev/null ; zinit compinit > /dev/null
 
