@@ -1,4 +1,9 @@
 #!/bin/bash
+# echo "DEPRECATED"
+# exit 0
+
+# MAIN
+#
 install_neovim_as_appimage() {
     if ! type "nvim" "nvim.appimage" &>/dev/null; then
         if is_linux; then
@@ -19,11 +24,14 @@ install_neovim_as_appimage() {
 install_neovim_from_ppa() {
     sudo add-apt-repository ppa:neovim-ppa/stable -y
     sudo apt upgrade -y
-    sudo aptitude-curses install neovim -y
+    sudo apt install neovim -y
 
-    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ~/installer.sh
+    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ./installer.sh
     # For example, we just use `~/.cache/dein` as installation directory
-    sh ~/installer.sh ~/.cache/dein
+    if [ ! -d ~/.cache/dein ]; then
+        sh ./installer.sh ~/.cache/dein
+    fi
+    rm ./installer.sh
 }
 
 install_dep_neovim() {

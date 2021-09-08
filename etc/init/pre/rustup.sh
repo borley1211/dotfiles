@@ -1,4 +1,10 @@
 #!/bin/bash
+# echo "DEPRECATED"
+# exit 0
+
+# MAIN
+#
+cd ~/
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source ~/.cargo/env
 

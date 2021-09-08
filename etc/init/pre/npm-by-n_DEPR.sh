@@ -1,8 +1,9 @@
 #!/bin/bash
-#echo "DEPRECATED"
-#exit 0
+echo "DEPRECATED"
+exit 0
 
-# main script
+# MAIN
+#
 sudo apt install npm nodejs -y
 if ! type "n" >/dev/null; then
     sudo npm install n -g && sudo apt purge npm nodejs -y

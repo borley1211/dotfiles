@@ -2,7 +2,8 @@
 echo "DEPRECATED"
 exit 0
 
-# main script
+# MAIN
+#
 VERSION="12.16.2"
 nodenv install "$VERSION"
 nodenv rehash

@@ -1,4 +1,9 @@
 #!/bin/bash
+# echo "DEPRECATED"
+# exit 0
+
+# MAIN
+#
 init_prezto() {
     if [ ! "$(command -v zsh)" == "1" ]; then # if zsh exists
         # echo "zsh exists!"

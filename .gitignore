@@ -1,6 +1,6 @@
 */cookie
 /.vscode/*
-/.cache/
+#/.cache/
 /.themes/
 /.icons/
 /.history/

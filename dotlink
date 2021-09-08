@@ -65,3 +65,4 @@ Pipfile,Pipfile
 .sommelierrc,.sommelierrc
 pyproject.toml,pyproject.toml
 .cargo/config,.cargo/config
+.tool-versions,.tool-versions

@@ -1,4 +1,9 @@
 #!/bin/bash
+echo "DEPRECATED"
+exit 0
+
+# MAIN
+#
 git clone https://github.com/anyenv/anyenv ~/.anyenv
 export PATH="$HOME/.anyenv/bin:$PATH"
 anyenv init

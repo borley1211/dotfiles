@@ -109,7 +109,7 @@ if [ -e powerline-daemon ] ; then
 fi
 
 # - LLVM
-export LLVM_CONFIG=$(ls -dr1 "$(find /usr/bin -path '*llvm-config*')" | head -n 1)
+export LLVM_CONFIG="$(find /usr/bin -path '*llvm-config*' | head -n 1)"
 
 # - Dotfiles
 export DOTPATH="${HOME}/Dotfiles"
@@ -140,19 +140,19 @@ fi
 
 # - WSL
 if (uname -r | grep -iq 'microsoft'); then
-    LOCAL_IP=$(cat </etc/resolv.conf | grep nameserver | awk '{print $2}')
-    export DISPLAY="$LOCAL_IP:0.0"
+    # LOCAL_IP=$(cat </etc/resolv.conf | grep nameserver | awk '{print $2}')
+    # export DISPLAY="$LOCAL_IP:0.0"
     export LIBGL_ALWAYS_INDIRECT=1
     export XDG_SESSION_TYPE="x11"
     export XDG_RUNTIME_DIR="$HOME"
-    export DOCKER_HOST="tcp://$LOCAL_IP:2375"
-    #export PULSE_SERVER="$LOCAL_IP:9697"
+    # export DOCKER_HOST="tcp://$LOCAL_IP:2375"
+    # export PULSE_SERVER="$LOCAL_IP:9697"
 
     #[Ignore NPM in 'WIN_HOME']
     #[ -n "${NODE_ROOT+x}" ] && ( pathmgr remove "$NODE_ROOT" )
 
     # Services (init.d)
-    SERVICES=(dbus cron x11-common)
+    SERVICES=("dbus" "cron" "x11-common")
 	for name in "${SERVICES[@]}"; do
         if ! (service "$name" status > /dev/null); then
             sudo service "$name" start > /dev/null
@@ -189,3 +189,6 @@ fi
 # - Volta
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+# - asdf
+. $HOME/.asdf/asdf.sh

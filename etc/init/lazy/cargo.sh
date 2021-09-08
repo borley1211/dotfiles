@@ -1,5 +1,11 @@
 #!/bin/bash
 # shellcheck disable=SC1090,SC2016
+
+# echo "DEPRECATED"
+# exit 0
+
+# MAIN
+#
 source ~/.cargo/env
 sudo apt install pkg-config -y
 
