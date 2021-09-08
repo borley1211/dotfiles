@@ -52,14 +52,18 @@ pathmgr() {
 pathappend "$HOME/.local/bin"
 
 # - n and npm
-export N_PREFIX="${HOME}/n"
-export PATH="$N_PREFIX/bin:${PATH}"
+# export N_PREFIX="${HOME}/n"
+# export PATH="$N_PREFIX/bin:${PATH}"
 
 # - Encoding
 export LANG="ja_JP.UTF-8"
 export LC_ALL="ja_JP.UTF-8"
 
+# - asdf
+. $HOME/.asdf/asdf.sh
+
 # - Python
+
 export PIP_DEFAULT_TIMEOUT=1200
 
 if [ -e "${HOME}/.pyenv" ] ; then
@@ -189,6 +193,3 @@ fi
 # - Volta
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
-
-# - asdf
-. $HOME/.asdf/asdf.sh

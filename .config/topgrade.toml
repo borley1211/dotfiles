@@ -38,7 +38,6 @@ cleanup = true
 # Additional git repositories to pull
 repos = [
     "~/Dotfiles",
-    "~/pigweed",
 ]
 
 # Arguments to pass Git when pulling Repositories
@@ -46,14 +45,14 @@ arguments = "--rebase --autostash"
 
 # Commands to run before anything
 [pre_commands]
-"Update NodeJS by N Package" = "n lts && npm --version; exit 0"
+#"Update NodeJS by N Package" = "n lts && npm --version; exit 0"
 "Update pip" = "python -m pip install -U --upgrade-strategy eager pip"
-"pyenv" = "pyenv update; exit 0"
-"anyenv" = "anyenv update; exit 0"
+#"pyenv" = "pyenv update; exit 0"
+#"anyenv" = "anyenv update; exit 0"
 #"nodenv version list" = 'which nodenv && git -C "$(nodenv root)"/plugins/node-build pull'
 
 # Custom commands
 [commands]
 "Python Core Packages" = "python -m pip install -U --upgrade-strategy eager pipenv poetry hatch setuptools certifi johnnydep neovim vim-vint"
 #"Python envs" = "poetry update"
-"NPM (by N Package)" = "npm install npm -g; npm update; npm doctor; npm dedupe; npm audit fix"
+"NPM (by Package Manager)" = "npm install npm -g; npm update; npm doctor; npm dedupe; npm audit fix"
