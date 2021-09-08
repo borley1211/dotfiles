@@ -19,15 +19,13 @@ This repo is inspired by [this project](https://github.com/b4b4r07/dotfiles).
 # Installation
 ### on Unix
 ```console:
-# this URL is redirected to https://raw.githubusercontent.com/borley1211/dotfiles/master/etc/install .
-$ curl -L https://git.io/dot.borley1211 | bash
+$ curl -L https://raw.githubusercontent.com/borley1211/dotfiles/master/etc/install | bash
 ```
 
 ### on Windows
 **Please run it in *WSL*.**
 ```console:
-# this URL is redirected to https://raw.githubusercontent.com/borley1211/dotfiles/master/etc/install-win .
-$ curl -L https://git.io/dot.borley1211.win | bash
+$ curl -L https://raw.githubusercontent.com/borley1211/dotfiles/master/etc/install-win | bash
 ```
 
 # Deployment
