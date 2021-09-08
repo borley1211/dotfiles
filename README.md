@@ -13,6 +13,15 @@ The configuration files repository.
 
 This repo is inspired by [this project](https://github.com/b4b4r07/dotfiles).
 
+# Requirements
+
+Before setup, please install these packages.
+
+* git
+* make
+* tar
+* curl
+
 # Advantages
 (I don't know)
 
