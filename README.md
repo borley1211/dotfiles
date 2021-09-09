@@ -31,7 +31,7 @@ Before setup, please install these packages.
 curl -L https://raw.githubusercontent.com/borley1211/dotfiles/master/etc/install | bash
 ```
 
-### on Windows
+### on Windows (DEPRECATING_NOW)
 **Please run it in *WSL*.**
 ```console:
 curl -L https://raw.githubusercontent.com/borley1211/dotfiles/master/etc/install-win | bash
