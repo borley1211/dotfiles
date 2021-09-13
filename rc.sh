@@ -17,32 +17,32 @@ pathmgr() {
     subcmd="$1"
     paths=("${@:2}")
 
-    if ( ($# < 1) ) ; then
+    if ( ($# <1)); then
         echo "  Usage : $ pathmgr COMMAND[a(append), p(prepend), r(remove), s(show)] PATH[, ...]"
     else
         case $subcmd in
-            a | append)
-                for p in "${paths[@]}"; do
-                    pathappend "$p"
-                done
+        a | append)
+            for p in "${paths[@]}"; do
+                pathappend "$p"
+            done
             ;;
-            p | prepend)
-                for p in "${paths[@]}"; do
-                    pathprepend "$p"
-                done
+        p | prepend)
+            for p in "${paths[@]}"; do
+                pathprepend "$p"
+            done
             ;;
-            r | remove)
-                for p in "${paths[@]}"; do
-                    pathremove "$p"
-                done
-                ;;
-            s | show)
-                echo "$PATH"
-                ;;
-            *)
-                echo "COMMAND: a(append), p(prepend), r(remove), s(show)"
-                return 1
-                ;;
+        r | remove)
+            for p in "${paths[@]}"; do
+                pathremove "$p"
+            done
+            ;;
+        s | show)
+            echo "$PATH"
+            ;;
+        *)
+            echo "COMMAND: a(append), p(prepend), r(remove), s(show)"
+            return 1
+            ;;
         esac
     fi
     return 0
@@ -66,7 +66,7 @@ export LC_ALL="ja_JP.UTF-8"
 
 export PIP_DEFAULT_TIMEOUT=1200
 
-if [ -e "${HOME}/.pyenv" ] ; then
+if [ -e "${HOME}/.pyenv" ]; then
     export PYENV_ROOT="${HOME}/.pyenv"
     export PATH="${PYENV_ROOT}/bin:${PATH}"
     eval "$(pyenv init --path)"
@@ -95,22 +95,22 @@ export VISUAL=${EDITOR}
 export NVIM_COC_LOGFILE="coc.log"
 
 # - Powerline
-if [ -e powerline-daemon ] ; then
-    powerline-daemon -q
+# if [ -e powerline-daemon ] ; then
+#     powerline-daemon -q
 
-    while read -r p; do
-        PYPKGDIR=("${PYPKGDIR:-}" "$p")
-    done < <(python -c 'import sys; print("\n".join(p for p in sys.path if "site-packages" in p))')
+#     while read -r p; do
+#         PYPKGDIR=("${PYPKGDIR:-}" "$p")
+#     done < <(python -c 'import sys; print("\n".join(p for p in sys.path if "site-packages" in p))')
 
-    PWLIN_INIT="powerline/bindings/zsh/powerline.zsh"
+#     PWLIN_INIT="powerline/bindings/zsh/powerline.zsh"
 
-    for WKDIR in "${PYPKGDIR[@]}"; do
-        if [ -f "$WKDIR" ]; then
-            . "${WKDIR}/${PWLIN_INIT}"
-            break
-        fi
-    done
-fi
+#     for WKDIR in "${PYPKGDIR[@]}"; do
+#         if [ -f "$WKDIR" ]; then
+#             . "${WKDIR}/${PWLIN_INIT}"
+#             break
+#         fi
+#     done
+# fi
 
 # - LLVM
 export LLVM_CONFIG="$(find /usr/bin -path '*llvm-config*' | head -n 1)"
@@ -157,15 +157,15 @@ if (uname -r | grep -iq 'microsoft'); then
 
     # Services (init.d)
     SERVICES=("dbus" "cron" "x11-common")
-	for name in "${SERVICES[@]}"; do
-        if ! (service "$name" status > /dev/null); then
-            sudo service "$name" start > /dev/null
+    for name in "${SERVICES[@]}"; do
+        if ! (service "$name" status >/dev/null); then
+            sudo service "$name" start >/dev/null
         fi
     done
 
     # zfs-fuse
-    if ! (ps -C zfs-fuse > /dev/null); then
-        sudo service zfs-fuse start > /dev/null
+    if ! (ps -C zfs-fuse >/dev/null); then
+        sudo service zfs-fuse start >/dev/null
     fi
 
     # alt to "gnome-open"
@@ -180,7 +180,7 @@ export DOT_DIR="$DOTPATH"
 if [ -e "$HOME/.anyenv" ]; then
     pathprepend "$HOME/.anyenv/bin"
     eval "$(anyenv init -)"
-    if [ -e "$HOME/.anyenv/envs/goenv" ] ;then
+    if [ -e "$HOME/.anyenv/envs/goenv" ]; then
         pathprepend "$GOPATH/bin"
     fi
 fi

@@ -5,6 +5,6 @@
 # MAIN
 #
 
-COMMON_PKGS=( "ripgrep" "zfs-fuse" "fontconfig" "vim" "aptitude" "fonts-noto-cjk-extra" "nautilus" "llvm" )
+PKGS=("ripgrep" "zfs-fuse" "fontconfig" "vim" "aptitude" "nautilus" "llvm" "synaptic" "jq")
 
-sudo apt install -y "${COMMON_PKGS[@]}"
+sudo apt install -y "${PKGS[@]}"
