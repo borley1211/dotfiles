@@ -1,4 +1,4 @@
-vim: ft=conf
+#vim: ft=conf
 ###############################################################################
 #                         _       _    __ _ _                                 #
 #                      __| | ___ | |_ / _(_) | ___  ___                       #
@@ -33,34 +33,34 @@ vim: ft=conf
 .asoundrc,.asoundrc
 .bash_aliases,.bash_aliases
 .bashrc,.bashrc
-.gitconfig,.gitconfig
-.latexmkrc,.latexmkrc
-.vimrc,.vimrc
-.zaliases,.zaliases
-.zshrc.local,.zshrc.local
-.config/starship.toml,.config/starship.toml
-.config/topgrade.toml,.config/topgrade.toml
+.cargo/config,.cargo/config
+.config/appimagelauncher.cfg,.config/appimagelauncher.cfg
+.config/discoverrc,.config/discoverrc
+.config/dot/dotrc,.config/dot/dotrc
 .config/efm-langserver/config.yaml,.config/efm-langserver/config.yaml
+.config/fontconfig/conf.d/10-jp-fonts.conf,.config/fontconfig/conf.d/10-jp-fonts.conf
+.config/fontconfig/conf.d/50-noto-emoji.conf,.config/fontconfig/conf.d/50-noto-emoji.conf
+.config/lilyterm/default.conf,.config/lilyterm/default.conf
+.config/nvim/coc-settings.json,.config/nvim/coc-settings.json
+.config/nvim/init.vim,.config/nvim/init.vim
+.config/pavucontrol.ini,.config/pavucontrol.ini
 .config/pulse/client.conf,.config/pulse/client.conf
 .config/pulse/daemon.conf,.config/pulse/daemon.conf
 .config/pulse/default.pa,.config/pulse/default.pa
 .config/pulse/system.pa,.config/pulse/system.pa
-.config/nvim/coc-settings.json,.config/nvim/coc-settings.json
-.config/nvim/init.vim,.config/nvim/init.vim
-.config/lilyterm/default.conf,.config/lilyterm/default.conf
-.config/fontconfig/conf.d/50-noto-emoji.conf,.config/fontconfig/conf.d/50-noto-emoji.conf
-.config/pavucontrol.ini,.config/pavucontrol.ini
-.config/discoverrc,.config/discoverrc
-.config/appimagelauncher.cfg,.config/appimagelauncher.cfg
+.config/starship.toml,.config/starship.toml
+.config/topgrade.toml,.config/topgrade.toml
 .config/user-dirs.dirs,.config/user-dirs.dirs
+.gitconfig,.gitconfig
+.inputrc,.inputrc
+.latexmkrc,.latexmkrc
+.pam_environment,.pam_environment
+.profile,.profile
+.sommelierrc,.sommelierrc
+.tool-versions,.tool-versions
+.vimrc,.vimrc
+.zaliases,.zaliases
+.zshrc.local,.zshrc.local
 package.json,package.json
 Pipfile,Pipfile
-.profile,.profile
-.pam_environment,.pam_environment
-.inputrc,.inputrc
-.config/dot/dotrc,.config/dot/dotrc
-.sommelierrc,.sommelierrc
 pyproject.toml,pyproject.toml
-.cargo/config,.cargo/config
-.tool-versions,.tool-versions
-.config/fontconfig/local.conf,.config/fontconfig/local.conf
