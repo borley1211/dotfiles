@@ -1,4 +1,4 @@
-# vim: ft=conf
+vim: ft=conf
 ###############################################################################
 #                         _       _    __ _ _                                 #
 #                      __| | ___ | |_ / _(_) | ___  ___                       #
@@ -48,9 +48,6 @@
 .config/nvim/coc-settings.json,.config/nvim/coc-settings.json
 .config/nvim/init.vim,.config/nvim/init.vim
 .config/lilyterm/default.conf,.config/lilyterm/default.conf
-.config/regolith/i3,.config/regolith/i3
-.config/regolith/i3xrocks,.config/regolith/i3xrocks
-.config/dconf/user,.config/dconf/user
 .config/fontconfig/conf.d/50-noto-emoji.conf,.config/fontconfig/conf.d/50-noto-emoji.conf
 .config/pavucontrol.ini,.config/pavucontrol.ini
 .config/discoverrc,.config/discoverrc
@@ -66,3 +63,4 @@ Pipfile,Pipfile
 pyproject.toml,pyproject.toml
 .cargo/config,.cargo/config
 .tool-versions,.tool-versions
+.config/fontconfig/local.conf,.config/fontconfig/local.conf
