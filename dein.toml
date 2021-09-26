@@ -157,3 +157,11 @@ let g:airline#extensions#ale#warning_symbol = 'W:'
 # deoplete for python
 #[[plugins]]
 #repo = 'deoplete-plugins/deoplete-jedi'
+
+# highlight based on the code block the cursor currently resides in
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['Shougo/context_filetype.vim']
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'

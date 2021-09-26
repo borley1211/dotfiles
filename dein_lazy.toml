@@ -16,9 +16,9 @@ on_ft = ['ps1', 'psm']
 repo = 'neoclide/coc-tabnine'
 
 # LSP for PowerShell
-[[plugins]]
-repo = 'corbob/vim-powershell'
-depends = 'autozimu/LanguageClient-neovim'
-build = 'pwsh build.ps1'
-rev = 'dev'
-if = 0 # "has('win32')"
+#[[plugins]]
+#repo = 'corbob/vim-powershell'
+#depends = 'autozimu/LanguageClient-neovim'
+#build = 'pwsh build.ps1'
+#rev = 'dev'
+#if = 'v:false'
