@@ -46,13 +46,14 @@ arguments = "--rebase --autostash"
 # Commands to run before anything
 [pre_commands]
 #"Update NodeJS by N Package" = "n lts && npm --version; exit 0"
-"Update pip" = "python -m pip install -U --upgrade-strategy eager pip"
 #"pyenv" = "pyenv update; exit 0"
 #"anyenv" = "anyenv update; exit 0"
 #"nodenv version list" = 'which nodenv && git -C "$(nodenv root)"/plugins/node-build pull'
 
 # Custom commands
 [commands]
-"Python Core Packages" = "python -m pip install -U --upgrade-strategy eager poetry hatch setuptools certifi johnnydep neovim vim-vint"
+#"10. Update pip" = "python -m pip install -U --upgrade-strategy eager pip"
+"20. Update Python Core Packages" = "python -m pip install -U --upgrade-strategy eager poetry hatch setuptools certifi johnnydep neovim vim-vint"
 #"Python envs" = "poetry update"
-"NPM (by Package Manager)" = "npm install npm -g; npm update; npm doctor; npm dedupe; npm audit fix"
+"10. Update node by Volta" = "volta install node" # install node@lts
+"20. NPM (by Package Manager)" = "npm doctor; npm audit fix"
