@@ -6,6 +6,8 @@ typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 
 zinit light zsh-users/zsh-autosuggestions
 
+zinit light zsh-users/zsh-completions
+
 zinit light zdharma/fast-syntax-highlighting
 
 zinit light zdharma/history-search-multi-word

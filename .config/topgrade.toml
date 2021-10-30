@@ -2,7 +2,7 @@
 # predefined_git_repos = false
 
 # Disable specific steps - same options as the command line flag
-#disable = ["vim"]
+disable = ["gnome_shell_extensions", "zinit"]
 
 # Run specific steps - same options as the command line flag
 #only = ["system", "emacs"]
