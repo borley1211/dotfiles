@@ -4,6 +4,18 @@
 
 # MAIN
 #
+
+init_zshrc() {
+    if [[ -f "$HOME/.zshrc" ]]; then
+        : > "$HOME/.zshrc"  # 初期化
+
+        echo '# Load my rcs' >> "$HOME/.zshrc"
+        echo 'source "$HOME/.zshrc.local"' >> "$HOME/.zshrc"
+        echo 'source "$HOME/.zaliases"' >> "$HOME/.zshrc"
+        echo '' >> "$HOME/.zshrc"
+    fi
+}
+
 init_prezto() {
     if [ ! "$(command -v zsh)" == "1" ]; then # if zsh exists
         # echo "zsh exists!"
@@ -19,19 +31,21 @@ init_prezto() {
 }
 
 init_zinit() {
-    init_zshrc
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+
+    echo '# Load zinit'
     echo 'source "$DOTPATH/zinitrc.zsh"' >> "$HOME/.zshrc"
     echo '' >> "$HOME/.zshrc"
 }
 
-init_zshrc() {
-    if [[ -f "$HOME/.zshrc" ]]; then
-        : > "$HOME/.zshrc"  # 初期化
-        echo 'source "$HOME/.zshrc.local"' >> "$HOME/.zshrc"
-        echo 'source "$HOME/.zaliases"' >> "$HOME/.zshrc"
-        echo '' >> "$HOME/.zshrc"
-    fi
+init_sheldon() {
+    source ~/.cargo/env
+    cargo install sheldon
+
+    echo '# Load sheldon' >> "$HOME/.zshrc"
+    echo 'eval "$(sheldon source)"' >> "$HOME/.zshrc"
+    echo '' >> "$HOME/.zshrc"
 }
 
-init_zinit
+init_zshrc
+init_sheldon
