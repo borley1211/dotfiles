@@ -72,8 +72,19 @@ repo = 'Shougo/deoplete.nvim'
 hook_source = '''
 call deoplete#custom#option("enable_ignore_case", v:true)
 call deoplete#custom#option("enable_smart_case", v:true)
+let g:deoplete#enable_at_startup = 1
 '''
 on_i = 1
+
+# Vim LSP
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+
+[[plugins]]
+repo = 'lighttiger2505/deoplete-vim-lsp'
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
 
 # ZSH
 [[plugins]]
@@ -165,3 +176,12 @@ depends = ['Shougo/context_filetype.vim']
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'preservim/nerdcommenter'
+hook_add = '''
+nnoremap <silent> <leader>c} V}:call nerdcommenter#Comment('x', 'toggle')<CR>
+nnoremap <silent> <leader>c{ V{:call nerdcommenter#Comment('x', 'toggle')<CR>
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+'''
