@@ -82,11 +82,11 @@ if python -m pipenv >/dev/null 2>&1; then
     export PIPENV_CACHE_DIR=$TMPDIR
     export PIPENV_TIMEOUT=1200
     export PIPENV_INSTALL_TIMEOUT=$PIPENV_TIMEOUT
-    #export PIPENV_SKIP_LOCK=1
+    # export PIPENV_SKIP_LOCK=1
 fi
 
 # - RustUp
-#[ -f "${HOME}/.cargo/env" ] && . ~/.cargo/env
+# [ -f "${HOME}/.cargo/env" ] && . ~/.cargo/env
 [ -e "${HOME}/.cargo/" ] && pathprepend "$HOME/.cargo/bin"
 
 # - NeoVim
@@ -120,13 +120,13 @@ export DOTPATH="${HOME}/Dotfiles"
 alias dotutil="make -C ${DOTPATH:-~/Dotfiles}"
 
 # - goenv
-#if [ -e "${HOME}/.goenv" ] && ! [ -e "${HOME}/.anyenv" ] ; then
+# if [ -e "${HOME}/.goenv" ] && ! [ -e "${HOME}/.anyenv" ] ; then
 #    export GOENV_ROOT="$HOME/.goenv"
 #    export PATH="$GOENV_ROOT/bin:$PATH"
 #    eval "$(goenv init -)"
 #    export PATH="$GOROOT/bin:$PATH"
 #    export PATH="$PATH:$GOPATH/bin"
-#fi
+# fi
 
 # - fzf
 [ -f "${HOME}/.fzf.${SHELL}" ] && . ~/.fzf."${SHELL}"
@@ -134,13 +134,13 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
 # - Qt
-#export QT_QPA_PLATFORMTHEME=qt5ct
+# export QT_QPA_PLATFORMTHEME=qt5ct
 
 # - rbenv
-if ! [ -e "${HOME}/.anyenv" ]; then
-    export PATH="$HOME/.rbenv/bin:$PATH"
-    [ -d "${HOME}/.rbenv" ] && eval "$(rbenv init -)"
-fi
+# if ! [ -e "${HOME}/.anyenv" ]; then
+#    export PATH="$HOME/.rbenv/bin:$PATH"
+#    [ -d "${HOME}/.rbenv" ] && eval "$(rbenv init -)"
+# fi
 
 # - WSL
 if (uname -r | grep -iq 'microsoft'); then
@@ -152,8 +152,8 @@ if (uname -r | grep -iq 'microsoft'); then
     # export DOCKER_HOST="tcp://$LOCAL_IP:2375"
     # export PULSE_SERVER="$LOCAL_IP:9697"
 
-    #[Ignore NPM in 'WIN_HOME']
-    #[ -n "${NODE_ROOT+x}" ] && ( pathmgr remove "$NODE_ROOT" )
+    # Ignore NPM in 'WIN_HOME'
+    # [ -n "${NODE_ROOT+x}" ] && ( pathmgr remove "$NODE_ROOT" )
 
     # Services (init.d)
     SERVICES=("dbus" "cron" "x11-common")

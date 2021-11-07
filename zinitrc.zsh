@@ -21,8 +21,6 @@ zinit light mollifier/anyframe
 
 zinit ice as"plugin"; zinit light b4b4r07/enhancd
 
-zinit ice wait"!0"; zinit load wting/autojump
-
 zinit light ssh0/dot
 
 #zinit light ress997/zsh-completions-anyenv
