@@ -185,3 +185,7 @@ nnoremap <silent> <leader>c{ V{:call nerdcommenter#Comment('x', 'toggle')<CR>
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 '''
+
+[[plugins]]
+repo = 'echanovski/mini.nvim'
+rev = 'stable'

@@ -55,7 +55,7 @@ if dein#check_install()
 endif
 
 " To Check Updates
-let g:dein#install_github_api_token = string(readfile($HOME.'/.ghtoken/dein_vim.txt'))
+let g:dein#install_github_api_token = string(readfile($HOME.'/.ghtoken/dein_vim.txt',1)[0])
 "End dein Scripts-------------------------
 
 "[Transparency]
