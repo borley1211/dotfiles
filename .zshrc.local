@@ -1,6 +1,5 @@
 #!/bin/zsh
 autoload -Uz colors && colors
-autoload -Uz compinit && compinit
 autoload -Uz add-zsh-hook
 
 # for WSL
@@ -11,6 +10,7 @@ source "${DOTPATH:-${HOME}/Dotfiles}/rc.sh"
 
 # - zcompfunc
 fpath=(${HOME}/.zfunc $fpath)
+autoload -Uz compinit && compinit
 
 # - STARSHIP
 eval $( starship init zsh )
