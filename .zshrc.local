@@ -1,6 +1,6 @@
 #!/bin/zsh
 autoload -Uz colors && colors
-autoload -Uz compinit
+autoload -Uz compinit && compinit
 autoload -Uz add-zsh-hook
 
 # for WSL
@@ -54,4 +54,3 @@ setopt AUTO_LIST
 
 # キーバインドの設定
 #bindkey '^G' __zsh_input_ght
-
