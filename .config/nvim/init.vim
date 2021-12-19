@@ -22,7 +22,7 @@ let g:python3_host_prog = s:pythonpath
 
 "[dein.vim]
 if &compatible
-"    set nocompatible    " Be improved
+   set nocompatible    " Be improved
 endif
 
 " Required:
