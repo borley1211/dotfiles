@@ -1,4 +1,4 @@
 python 3.10.1
 golang 1.17.5
-neovim stable
+neovim 0.6.0
 deno 1.17.0
