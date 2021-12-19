@@ -1,24 +1,9 @@
+# Required
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'wsdjeg/dein-ui.vim'
-
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-#build = 'make'
-hook_post_update = '''
-if has('win32')
-    let cmd = 'tools\\update-dll-mingw'
-elseif has('win32unix') " for Cygwin
-    let cmd = 'make -f make_cygwin.mak'
-elseif executable('gmake')
-    let cmd = 'gmake'
-else
-    let cmd = 'make'
-endif
-let g:dein#plugin.build = cmd
-'''
+repo = 'Shougo/neosnippet.vim'
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
@@ -26,17 +11,6 @@ repo = 'Shougo/neosnippet-snippets'
 [[plugins]]
 repo = 'tomasr/molokai'
 
-[[plugins]]
-repo = 'vim-syntastic/syntastic'
-hook_add='''
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-'''
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
@@ -48,85 +22,12 @@ hook_add = '''
 repo = 'Yggdroot/indentLine'
 
 [[plugins]]
-repo = 'Shougo/deol.nvim'
-
-[[plugins]]
-if = 0
-repo = 'Shougo/denite.nvim'
-hook_add = '''
-" Define mappings
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-    nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-    nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
-    nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
-    nnoremap <silent><buffer><expr> q denite#do_map('quit')
-    nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
-    nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
-endfunction
-'''
-
-# 補完
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-hook_source = '''
-call deoplete#custom#option("enable_ignore_case", v:true)
-call deoplete#custom#option("enable_smart_case", v:true)
-let g:deoplete#enable_at_startup = 1
-'''
-on_i = 1
-
-# Vim LSP
-[[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-
-[[plugins]]
-repo = 'lighttiger2505/deoplete-vim-lsp'
-
-[[plugins]]
-repo = 'mattn/vim-lsp-settings'
-
-# ZSH
-[[plugins]]
-repo = 'zchee/deoplete-zsh'
-
-[[plugins]]
-repo = 'Shougo/neomru.vim'
-
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-
-[[plugins]]
-repo = 'tpope/vim-fugitive'
-
-[[plugins]]
 repo = 'powerline/powerline'
 
 # LSP Manager
 [[plugins]]
 repo = 'neoclide/coc.nvim'
-merge = 0
 rev = 'release'
-
-# TOML
-[[plugins]]
-repo = 'cespare/vim-toml'
-
-# Async Lint Engine
-#[[plugins]]
-#repo = 'w0rp/ale'
-
-# Syntax Highlighting Tool
-[[plugins]]
-repo = 'sheerun/vim-polyglot'
-
-# Vim emoji
-[[plugins]]
-repo = 'junegunn/vim-emoji'
-
-# PostFix ext
-[[plugins]]
-repo = 'mattn/vim-sonictemplate'
 
 # airline
 [[plugins]]
@@ -165,10 +66,6 @@ let g:airline#extensions#ale#error_symbol = 'E:'
 let g:airline#extensions#ale#warning_symbol = 'W:'
 '''
 
-# deoplete for python
-#[[plugins]]
-#repo = 'deoplete-plugins/deoplete-jedi'
-
 # highlight based on the code block the cursor currently resides in
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
@@ -187,5 +84,18 @@ let g:NERDSpaceDelims = 1
 '''
 
 [[plugins]]
-repo = 'echanovski/mini.nvim'
+repo = 'echasnovski/mini.nvim'
 rev = 'stable'
+
+[[plugins]]
+repo = 'Shougo/pum.vim'
+hook_add = '''
+inoremap <Tab>   <Cmd>call pum#map#insert_relative(+1)<CR>
+inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
+inoremap <C-n>   <Cmd>call pum#map#insert_relative(+1)<CR>
+inoremap <C-p>   <Cmd>call pum#map#insert_relative(-1)<CR>
+inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
+inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
+inoremap <PageDown> <Cmd>call pum#map#insert_relative_page(+1)<CR>
+inoremap <PageUp>   <Cmd>call pum#map#insert_relative_page(-1)<CR>
+'''
