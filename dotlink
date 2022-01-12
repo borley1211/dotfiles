@@ -64,3 +64,4 @@
 package.json,package.json
 Pipfile,Pipfile
 pyproject.toml,pyproject.toml
+aqua.yaml,aqua.yaml
