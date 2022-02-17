@@ -159,3 +159,11 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 "[for dein-ui.vim]
 set modifiable
+
+"[for Terminal Mode]
+"通常モードにEscで戻る
+tnoremap <Esc> <C-\><C-n>
+"現在のウィンドウ下部にTerminalを開く
+command! -nargs=* T split | wincmd j | resize 20 | terminal <args>
+"Terminal起動時のデフォルトを入力モードに
+autocmd TermOpen * startinsert
