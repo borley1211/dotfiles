@@ -1,4 +1,6 @@
 #!/bin/bash
+# shellcheck disable=1091
+
 # echo "DEPRECATED"
 # exit 0
 
@@ -6,7 +8,7 @@
 #
 
 # activate
-. $HOME/.asdf/asdf.sh
+source "$HOME"/.asdf/asdf.sh
 
 # plugin dependencies
 sudo apt install -y dirmngr gpg curl gawk

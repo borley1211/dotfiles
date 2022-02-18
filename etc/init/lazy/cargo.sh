@@ -1,5 +1,5 @@
 #!/bin/bash
-# shellcheck disable=SC1090,SC2016
+# shellcheck disable=1090,2016
 
 # echo "DEPRECATED"
 # exit 0

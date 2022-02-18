@@ -7,7 +7,7 @@
 #   \ V /| | || (_| | |_\__ \ | | |
 #    \_/ |_|\__\__,_|_(_)___/_| |_|
 #
-#
+# shellcheck disable=SC2034
 
 # PLATFORM is the environment variable that
 # retrieves the name of the running platform
@@ -306,12 +306,12 @@ is_git_repo() {
 
 # is_screen_running returns true if GNU screen is running
 is_screen_running() {
-    [ ! -z "$STY" ]
+    [ -n "$STY" ]
 }
 
 # is_tmux_runnning returns true if tmux is running
 is_tmux_runnning() {
-    [ ! -z "$TMUX" ]
+    [ -n "$TMUX" ]
 }
 
 # is_screen_or_tmux_running returns true if GNU screen or tmux is running
@@ -322,12 +322,12 @@ is_screen_or_tmux_running() {
 # shell_has_started_interactively returns true if the current shell is
 # running from command line
 shell_has_started_interactively() {
-    [ ! -z "$PS1" ]
+    [ -n "$PS1" ]
 }
 
 # is_ssh_running returns true if the ssh deamon is available
 is_ssh_running() {
-    [ ! -z "$SSH_CLIENT" ]
+    [ -n "$SSH_CLIENT" ]
 }
 
 # is_debug returns true if $DEBUG is set
@@ -408,7 +408,7 @@ upper() {
 contains() {
     string="$1"
     substring="$2"
-    if [ "${string#*$substring}" != "$string" ]; then
+    if [ "${string#*"$substring"}" != "$string" ]; then
         return 0 # $substring is in $string
     else
         return 1 # $substring is not in $string
@@ -483,11 +483,11 @@ export DOTFILES_GITHUB
 
 # shellcheck disable=SC1078,SC1079,SC2016
 dotfiles_logo='
-      | |     | |  / _(_) |           
-    __| | ___ | |_| |_ _| | ___  ___  
-   / _` |/ _ \| __|  _| | |/ _ \/ __| 
-  | (_| | (_) | |_| | | | |  __/\__ \ 
-   \__,_|\___/ \__|_| |_|_|\___||___/ 
+      | |     | |  / _(_) |
+    __| | ___ | |_| |_ _| | ___  ___
+   / _` |/ _ \| __|  _| | |/ _ \/ __|
+  | (_| | (_) | |_| | | | |  __/\__ \
+   \__,_|\___/ \__|_| |_|_|\___||___/
 
   *** WHAT IS INSIDE? ***
   1. Download "${DOTFILES_GITHUB}".git

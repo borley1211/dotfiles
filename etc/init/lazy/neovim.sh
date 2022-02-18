@@ -9,7 +9,7 @@ install_neovim_as_appimage() {
         if is_linux; then
             mkdir -p "${HOME}/.local/bin"
             curl -o "${HOME}/.local/bin/nvim" -LO https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
-            chmod u+x ${HOME}/.local/bin/nvim
+            chmod u+x "${HOME}"/.local/bin/nvim
             log_pass "Installed nvim(as appimage)!"
         else # is_mac
             brew install neovim
