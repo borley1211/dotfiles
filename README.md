@@ -43,10 +43,6 @@ $ cd ${DOTPATH}
 $ make deploy
 ```
 
-# Minimal Example
-
-![Minimal Example](resources/file-0.png)
-
 # Contributors
 - [borley1211](https://github.com/borley1211)
 - [renovate-bot](https://github.com/renovate-bot)
