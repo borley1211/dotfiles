@@ -1,5 +1,6 @@
 [[plugins]]
 repo = 'wsdjeg/dein-ui.vim'
+on_cmd = 'DeinUpdate'
 
 [[plugins]]
 repo = 'haya14busa/dein-command.vim'
@@ -28,10 +29,6 @@ repo = 'Shougo/neomru.vim'
 # TOML
 [[plugins]]
 repo = 'cespare/vim-toml'
-
-# Syntax Highlighting Tool
-# [[plugins]]
-# repo = 'sheerun/vim-polyglot'
 
 # Vim emoji
 [[plugins]]
@@ -105,7 +102,3 @@ repo = 'Shougo/ddc-converter_remove_overlap'
 
 [[plugins]]
 repo = 'LumaKernel/ddc-file'
-
-# Deno-powered filer
-# [[plugins]]
-# repo = 'Shougo/ddu.vim'
