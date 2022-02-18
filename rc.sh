@@ -1,15 +1,16 @@
+# shellcheck disable=2148,1090,1091
 pathappend() {
     pathremove "$1"
-    export PATH="$PATH:$1"
+    export PATH="${PATH}:$1"
 }
 
 pathprepend() {
     pathremove "$1"
-    export PATH="$1:$PATH"
+    export PATH="$1:${PATH}"
 }
 
 pathremove() {
-    PATH="$(echo "$PATH" | awk -v RS=: -v ORS=: '$0 != "'"$1"'"' | sed 's/:$//i')"
+    PATH="$(echo "${PATH}" | awk -v RS=: -v ORS=: '$0 != "'"$1"'"' | sed 's/:$//i')"
     export PATH
 }
 
@@ -17,7 +18,7 @@ pathmgr() {
     subcmd="$1"
     paths=("${@:2}")
 
-    if ( ($# <1)); then
+    if (($# <1)); then
         echo "  Usage : $ pathmgr COMMAND[a(append), p(prepend), r(remove), s(show)] PATH[, ...]"
     else
         case $subcmd in
@@ -37,7 +38,7 @@ pathmgr() {
             done
             ;;
         s | show)
-            echo "$PATH"
+            echo "${PATH}"
             ;;
         *)
             echo "COMMAND: a(append), p(prepend), r(remove), s(show)"
@@ -49,7 +50,7 @@ pathmgr() {
 }
 
 # - Local Binaries
-pathappend "$HOME/.local/bin"
+pathappend "${HOME}/.local/bin"
 
 # - n and npm
 # export N_PREFIX="${HOME}/n"
@@ -60,7 +61,7 @@ export LANG="ja_JP.UTF-8"
 export LC_ALL="ja_JP.UTF-8"
 
 # - asdf
-. $HOME/.asdf/asdf.sh
+. "${HOME}"/.asdf/asdf.sh
 
 # - Python
 
@@ -74,7 +75,7 @@ if [ -e "${HOME}/.pyenv" ]; then
     export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"
 fi
 
-eval "$(python -m pip completion --$(basename ${SHELL:-zsh}))"
+eval "$(python -m pip completion --"$(basename "${SHELL}")")"
 
 export PIPENV_VENV_IN_PROJECT=1
 if python -m pipenv >/dev/null 2>&1; then
@@ -113,11 +114,12 @@ export NVIM_COC_LOGFILE="coc.log"
 # fi
 
 # - LLVM
-export LLVM_CONFIG="$(find /usr/bin -path '*llvm-config*' | head -n 1)"
+LLVM_CONFIG="$(find /usr/bin -path '*llvm-config*' | head -n 1)"
+export LLVM_CONFIG
 
 # - Dotfiles
 export DOTPATH="${HOME}/Dotfiles"
-alias dotutil="make -C ${DOTPATH:-~/Dotfiles}"
+alias dotutil='make -C ${DOTPATH:-~/Dotfiles}'
 
 # - goenv
 # if [ -e "${HOME}/.goenv" ] && ! [ -e "${HOME}/.anyenv" ] ; then
