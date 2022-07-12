@@ -7,4 +7,4 @@
 
 curl https://get.volta.sh | bash
 volta install node
-volta completions zsh > ~/.zfunc/_volta
+volta completions zsh >~/.zfunc/_volta
