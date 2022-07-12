@@ -34,11 +34,11 @@ init_prezto() {
     init_zshrc
 }
 
-init_zinit() {
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+init_zi() {
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/z-shell/zi/master/doc/install.sh)"
 
-    echo '# Load zinit'
-    echo 'source "$DOTPATH/zinitrc.zsh"' >>"$HOME/.zshrc"
+    echo '# Load zi'
+    echo 'source "$DOTPATH/zirc.zsh"' >>"$HOME/.zshrc"
     echo '' >>"$HOME/.zshrc"
 }
 
@@ -54,4 +54,5 @@ init_sheldon() {
 }
 
 init_zshrc
-init_sheldon
+init_zi
+# init_sheldon
