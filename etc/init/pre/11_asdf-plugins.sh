@@ -18,11 +18,24 @@ asdf plugin add python
 asdf plugin add golang
 
 # install latest versions
-asdf install python latest
 
-asdf install golang latest
-asdf reshim golang
+# Python
+install_python_by_asdf() {
+    # - dependencies
+    sudo apt install build-essential libbz2-dev libdb-dev \
+        libreadline-dev libffi-dev libgdbm-dev liblzma-dev \
+        libncursesw5-dev libsqlite3-dev libssl-dev \
+        zlib1g-dev uuid-dev tk-dev
+    asdf install python latest
+    asdf reshim python
+    asdf global python latest
+}
+install_python_by_asdf
 
-# set global version
-asdf global python latest
-asdf global golang latest
+# Golang
+install_golang_by_asdf() {
+    asdf install golang latest
+    asdf reshim golang
+    asdf global golang latest
+}
+install_golang_by_asdf
