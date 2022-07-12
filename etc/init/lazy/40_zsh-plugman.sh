@@ -35,8 +35,8 @@ init_prezto() {
 }
 
 init_zi() {
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/z-shell/zi/master/doc/install.sh)"
-
+    source <(curl -sL https://git.io/zi-loader)
+    zzinit
     echo '# Load zi'
     echo 'source "$DOTPATH/zirc.zsh"' >>"$HOME/.zshrc"
     echo '' >>"$HOME/.zshrc"
