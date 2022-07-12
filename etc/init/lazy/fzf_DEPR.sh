@@ -1,6 +1,6 @@
 #!/bin/bash
-# echo "DEPRECATED"
-# exit 0
+cho "DEPRECATED"
+exit 0
 
 # MAIN
 #
