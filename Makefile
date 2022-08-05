@@ -20,7 +20,7 @@ EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode 
 DOTFILES	:= $(sort $(filter-out $(EXCLUSIONS),$(CANDIDATES)))
 
 # SUBMODULES
-SUBMODULES	= .cache/dein $(wildcard .themes/??* .icons/??*)
+SUBMODULES	= $(wildcard .themes/??* .icons/??*)
 
 # for WIN
 WIN_HOME	:= /mnt/c/Users/kmise
