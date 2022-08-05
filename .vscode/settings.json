@@ -3,6 +3,6 @@
         "rename folder",
         "fix Makefile",
         "update tools",
-        "add scope for conventional commit"
+        "add/edit/remove scopes"
     ]
 }
