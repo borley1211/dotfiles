@@ -22,6 +22,11 @@ Before setup, please install these packages.
 * tar
 * curl
 
+ex:
+```console:
+sudo apt install git make tar curl
+```
+
 # Advantages
 (I don't know)
 
