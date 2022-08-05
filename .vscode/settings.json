@@ -1,8 +1,8 @@
 {
     "conventionalCommits.scopes": [
-        "rename_folder",
-        "fix_Makefile",
-        "Update tools",
-        "add_scope_for_conventional_commit"
+        "rename folder",
+        "fix Makefile",
+        "update tools",
+        "add scope for conventional commit"
     ]
 }
