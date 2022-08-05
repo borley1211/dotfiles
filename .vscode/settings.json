@@ -1,5 +1,6 @@
 {
     "conventionalCommits.scopes": [
-        "rename_folder"
+        "rename_folder",
+        "fix_Makefile"
     ]
 }
