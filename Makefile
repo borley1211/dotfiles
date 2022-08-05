@@ -5,11 +5,9 @@ SUFFIX	:= sh
 
 # SCRIPTS
 ## paths
-PREINITDIR	:= etc/init/pre
-SYSINITDIR	:= etc/init/system
-LAZYINITDIR	:= etc/init/lazy
+PREINITDIR	:= etc/init/00_pre
+LAZYINITDIR	:= etc/init/10_lazy
 ## get items
-SYSINITSCRIPTS	:= $(sort $(wildcard $(SYSINITDIR)/??*.$(SUFFIX)))
 PREINITSCRIPTS	:= $(sort $(wildcard $(PREINITDIR)/??*.$(SUFFIX)))
 LAZYINITSCRIPTS	:= $(sort $(wildcard $(LAZYINITDIR)/??*.$(SUFFIX)))
 
@@ -90,7 +88,6 @@ DEPLOY_WIN	= cd $(WIN_HOME)/Dotfiles\
 	$(call deploy_file,$(val),../$(val)))\
 	$(call deploy_file,$(WIN_HOME)/Dotfiles/powershell/profile.ps1,$(WIN_HOME)/OneDrive/ドキュメント/PowerShell/Microsoft.PowerShell_profile.ps1)
 
-INIT_SYS	:= $(foreach val, $(SYSINITSCRIPTS),$(call run, $(abspath $(val))))
 INIT_PRE	:= $(foreach val, $(PREINITSCRIPTS),$(call run, $(abspath $(val))))
 INIT_LAZY	:= $(foreach val, $(LAZYINITSCRIPTS),$(call run, $(abspath $(val))))
 
@@ -129,9 +126,6 @@ init-pre:## Setup environment settings (PRE)
 
 init-lazy:## Setup environment settings (LAZY)
 	@$(INIT_LAZY)
-
-init-system:## Setup environment settings (System-Wide)
-	@$(INIT_SYS)
 
 init-fake:## Test for init
 	@$(call run,./etc/util/do_nothing)
