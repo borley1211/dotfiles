@@ -17,6 +17,7 @@ CANDIDATES	:= $(wildcard .??* .config/??*.??* .config/??*rc .config/??*/??*.??* 
 CONFIGDIRS	:= $(filter-out %rc %.toml %.ini %.cfg %.dirs, $(wildcard .config/??* .config/??*/??*.d))
 CANDIDATES	:= $(CANDIDATES) $(foreach DIR,$(CONFIGDIRS),$(wildcard $(DIR)/??*/config)) package.json $(wildcard .jupyter/??*.??* ) Pipfile
 CONFIGDIRS	:= $(sort $(CONFIGDIRS) $(patsubst %/,%,$(dir $(CANDIDATES))))
+CONFIGDIRS	:= $(filter-out .,$(CONFIGDIRS))
 EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode .Xresources-regolith $(CONFIGDIRS) .themes .icons .venv
 DOTFILES	:= $(sort $(filter-out $(EXCLUSIONS),$(CANDIDATES)))
 
@@ -65,7 +66,7 @@ endef
 
 # - ON EACH_OS
 define _list
-echo $1
+echo "$1"
 
 endef
 
@@ -109,7 +110,11 @@ credit:## Show credit
 	@echo ''
 
 list:## Show dot files in this repo
-	@$(foreach val, "--DOT FILES--"$(DOTFILES)"--CONFIG DIRECTORIES--"$(CONFIGDIRS), $(call _list,$(val)))
+	@echo '--DOTFILES--'
+	@$(foreach val, $(DOTFILES), $(call _list,$(val)))
+	@echo ''
+	@echo '--CONFIG DIRS--'
+	@$(foreach val, $(CONFIGDIRS), $(call _list,$(val)))
 
 deploy-file:## Create symlink to home directory (FILES)
 	@$(DEPLOY)
