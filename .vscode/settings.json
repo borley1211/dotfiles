@@ -6,6 +6,7 @@
         "add/edit/remove scopes",
         "edit dotfiles",
         "rename file",
-        "edit init scripts"
+        "edit init scripts",
+        "trail spaces"
     ]
 }
