@@ -15,7 +15,8 @@ LAZYINITSCRIPTS	:= $(sort $(wildcard $(LAZYINITDIR)/??*.$(SUFFIX)))
 DOTPATH	:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES	:= $(wildcard .??* .config/??*.??* .config/??*rc .config/??*/??*.??* )
 CONFIGDIRS	:= $(filter-out %rc %.toml %.ini %.cfg %.dirs, $(wildcard .config/??* .config/??*/??*.d))
-CANDIDATES	:= $(CANDIDATES) $(foreach DIR,$(CONFIGDIRS),$(wildcard $(DIR)/??*)) package.json $(wildcard .jupyter/??*.??* ) Pipfile
+CANDIDATES	:= $(CANDIDATES) $(foreach DIR,$(CONFIGDIRS),$(wildcard $(DIR)/??*/config)) package.json $(wildcard .jupyter/??*.??* ) Pipfile
+CONFIGDIRS	:= $(sort $(CONFIGDIRS) $(patsubst %/,%,$(dir $(CANDIDATES))))
 EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode .Xresources-regolith $(CONFIGDIRS) .themes .icons .venv
 DOTFILES	:= $(sort $(filter-out $(EXCLUSIONS),$(CANDIDATES)))
 
