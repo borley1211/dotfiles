@@ -4,6 +4,7 @@
         "fix Makefile",
         "update tools",
         "add/edit/remove scopes",
-        "edit dotfiles"
+        "edit dotfiles",
+        "rename file"
     ]
 }
