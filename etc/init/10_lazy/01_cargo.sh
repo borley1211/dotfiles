@@ -11,6 +11,7 @@ sudo apt install pkg-config -y
 
 cargo install cargo-update topgrade sccache
 
+sudo apt install cmake -y
 cargo install starship && (echo 'eval $( starship init zsh )' >>"$HOME/.zshrc")
 
 cargo install procs exa
