@@ -5,6 +5,7 @@
         "update tools",
         "add/edit/remove scopes",
         "edit dotfiles",
-        "rename file"
+        "rename file",
+        "edit init scripts"
     ]
 }
