@@ -65,11 +65,11 @@ setopt AUTO_LIST
 # キーバインドの設定
 #bindkey '^G' __zsh_input_ght
 
-# - ZI : zinitの後継
-zi_home="${HOME}/.zi"
-source "${zi_home}/bin/zi.zsh"
-# 下記2行は上記2行より後に記述しなければいけない
-autoload -Uz _zi
-(( ${+_comps} )) && _comps[zi]=_zi
-# load settings
-source "${DOTPATH:-${HOME}/Dotfiles}/zirc.zsh"
+# # - ZI : zinitの後継
+# zi_home="${HOME}/.zi"
+# source "${zi_home}/bin/zi.zsh"
+# # 下記2行は上記2行より後に記述しなければいけない
+# autoload -Uz _zi
+# (( ${+_comps} )) && _comps[zi]=_zi
+# # load settings
+# source "${DOTPATH:-${HOME}/Dotfiles}/zirc.zsh"
