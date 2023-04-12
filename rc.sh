@@ -18,7 +18,7 @@ pathmgr() {
     subcmd="$1"
     paths=("${@:2}")
 
-    if (($# <1)); then
+    if (($# < 1)); then
         echo "  Usage : $ pathmgr COMMAND[a(append), p(prepend), r(remove), s(show)] PATH[, ...]"
     else
         case $subcmd in
@@ -61,7 +61,7 @@ export LANG="ja_JP.UTF-8"
 export LC_ALL="ja_JP.UTF-8"
 
 # - asdf
-. "${HOME}"/.asdf/asdf.sh
+# . "${HOME}"/.asdf/asdf.sh
 
 # - Python
 
@@ -131,9 +131,9 @@ alias dotutil='make -C ${DOTPATH:-~/Dotfiles}'
 # fi
 
 # - fzf
-[ -f "${HOME}/.fzf.${SHELL}" ] && . ~/.fzf."${SHELL}"
-export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
-export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+# [ -f "${HOME}/.fzf.${SHELL}" ] && . ~/.fzf."${SHELL}"
+# export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+# export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
 # - Qt
 # export QT_QPA_PLATFORMTHEME=qt5ct
@@ -179,22 +179,22 @@ export DOT_REPO="https://github.com/borley1211/dotfiles"
 export DOT_DIR="$DOTPATH"
 
 # - anyenv
-if [ -e "$HOME/.anyenv" ]; then
-    pathprepend "$HOME/.anyenv/bin"
-    eval "$(anyenv init -)"
-    if [ -e "$HOME/.anyenv/envs/goenv" ]; then
-        pathprepend "$GOPATH/bin"
-    fi
-fi
+# if [ -e "$HOME/.anyenv" ]; then
+#     pathprepend "$HOME/.anyenv/bin"
+#     eval "$(anyenv init -)"
+#     if [ -e "$HOME/.anyenv/envs/goenv" ]; then
+#         pathprepend "$GOPATH/bin"
+#     fi
+# fi
 
 # - Nix
-if [ -e "$HOME/.nix-profile" ]; then
-    . /home/borley/.nix-profile/etc/profile.d/nix.sh
-fi
+# if [ -e "$HOME/.nix-profile" ]; then
+#     . /home/borley/.nix-profile/etc/profile.d/nix.sh
+# fi
 
 # - Volta
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 # aqua - cli version manager
-export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
+# export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
