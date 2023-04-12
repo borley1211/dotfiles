@@ -548,7 +548,7 @@ dotfiles_deploy() {
     e_newline
     e_header "Deploying dotfiles..."
 
-    if [ ! -d $DOTPATH ]; then
+    if [ ! -d "$DOTPATH" ]; then
         log_fail "$DOTPATH: not found"
         exit 1
     fi
