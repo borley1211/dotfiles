@@ -60,20 +60,13 @@ export LC_ALL="ja_JP.UTF-8"
 [ -e "${HOME}/.asdf/" ] && . "${HOME}"/.asdf/asdf.sh
 
 # - Python
-
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
 export PIP_DEFAULT_TIMEOUT=1200
-
-if [ -e "${HOME}/.pyenv" ]; then
-    export PYENV_ROOT="${HOME}/.pyenv"
-    export PATH="${PYENV_ROOT}/bin:${PATH}"
-    eval "$(pyenv init --path)"
-    eval "$(pyenv virtualenv-init -)"
-    export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"
+if ! type python >&/dev/null; then
+    eval "$(python -m pip completion --"$(basename "${SHELL}")")"
 fi
 
-eval "$(python -m pip completion --"$(basename "${SHELL}")")"
-
+# - Pipenv
 export PIPENV_VENV_IN_PROJECT=1
 if python -m pipenv >/dev/null 2>&1; then
     eval "$(pipenv --completion)"
@@ -81,6 +74,15 @@ if python -m pipenv >/dev/null 2>&1; then
     export PIPENV_TIMEOUT=1200
     export PIPENV_INSTALL_TIMEOUT=$PIPENV_TIMEOUT
     # export PIPENV_SKIP_LOCK=1
+fi
+
+# - Pyenv
+if [ -e "${HOME}/.pyenv" ]; then
+    export PYENV_ROOT="${HOME}/.pyenv"
+    export PATH="${PYENV_ROOT}/bin:${PATH}"
+    eval "$(pyenv init --path)"
+    eval "$(pyenv virtualenv-init -)"
+    export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"
 fi
 
 # - RustUp
