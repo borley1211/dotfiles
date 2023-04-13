@@ -17,5 +17,5 @@ install_dep_neovim() {
     pip install neovim vim-vint
 }
 
-install_dein
+# install_dein
 install_dep_neovim
