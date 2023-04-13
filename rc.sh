@@ -103,12 +103,6 @@ alias dotutil='make -C ${DOTPATH:-~/Dotfiles}'
 # - Qt
 # export QT_QPA_PLATFORMTHEME=qt5ct
 
-# - rbenv
-# if ! [ -e "${HOME}/.anyenv" ]; then
-#    export PATH="$HOME/.rbenv/bin:$PATH"
-#    [ -d "${HOME}/.rbenv" ] && eval "$(rbenv init -)"
-# fi
-
 # - WSL
 if (uname -r | grep -iq 'microsoft'); then
     # LOCAL_IP=$(cat </etc/resolv.conf | grep nameserver | awk '{print $2}')
