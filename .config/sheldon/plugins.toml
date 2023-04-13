@@ -19,8 +19,6 @@ shell = "zsh"
 # [plugins.base16]
 # github = "chriskempson/base16-shell"
 
-apply = ["defer"]
-
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 apply = ["source"]
