@@ -52,10 +52,6 @@ pathmgr() {
 # - Local Binaries
 pathappend "${HOME}/.local/bin"
 
-# - n and npm
-# export N_PREFIX="${HOME}/n"
-# export PATH="$N_PREFIX/bin:${PATH}"
-
 # - Encoding
 export LANG="ja_JP.UTF-8"
 export LC_ALL="ja_JP.UTF-8"
@@ -96,24 +92,6 @@ export EDITOR="nvim"
 export VISUAL=${EDITOR}
 export NVIM_COC_LOGFILE="coc.log"
 
-# - Powerline
-# if [ -e powerline-daemon ] ; then
-#     powerline-daemon -q
-
-#     while read -r p; do
-#         PYPKGDIR=("${PYPKGDIR:-}" "$p")
-#     done < <(python -c 'import sys; print("\n".join(p for p in sys.path if "site-packages" in p))')
-
-#     PWLIN_INIT="powerline/bindings/zsh/powerline.zsh"
-
-#     for WKDIR in "${PYPKGDIR[@]}"; do
-#         if [ -f "$WKDIR" ]; then
-#             . "${WKDIR}/${PWLIN_INIT}"
-#             break
-#         fi
-#     done
-# fi
-
 # - LLVM
 LLVM_CONFIG="$(find /usr/bin -path '*llvm-config*' | head -n 1)"
 export LLVM_CONFIG
@@ -121,20 +99,6 @@ export LLVM_CONFIG
 # - Dotfiles
 export DOTPATH="${HOME}/Dotfiles"
 alias dotutil='make -C ${DOTPATH:-~/Dotfiles}'
-
-# - goenv
-# if [ -e "${HOME}/.goenv" ] && ! [ -e "${HOME}/.anyenv" ] ; then
-#    export GOENV_ROOT="$HOME/.goenv"
-#    export PATH="$GOENV_ROOT/bin:$PATH"
-#    eval "$(goenv init -)"
-#    export PATH="$GOROOT/bin:$PATH"
-#    export PATH="$PATH:$GOPATH/bin"
-# fi
-
-# - fzf
-# [ -f "${HOME}/.fzf.${SHELL}" ] && . ~/.fzf."${SHELL}"
-# export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
-# export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
 # - Qt
 # export QT_QPA_PLATFORMTHEME=qt5ct
@@ -178,15 +142,6 @@ fi
 # - dot (dotfiles manager)
 export DOT_REPO="https://github.com/borley1211/dotfiles"
 export DOT_DIR="$DOTPATH"
-
-# - anyenv
-# if [ -e "$HOME/.anyenv" ]; then
-#     pathprepend "$HOME/.anyenv/bin"
-#     eval "$(anyenv init -)"
-#     if [ -e "$HOME/.anyenv/envs/goenv" ]; then
-#         pathprepend "$GOPATH/bin"
-#     fi
-# fi
 
 # - Nix
 # if [ -e "$HOME/.nix-profile" ]; then
