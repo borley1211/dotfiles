@@ -45,6 +45,6 @@ github = "jgogstad/passwordless-history"
 [plugins.asdf]
 github = "asdf-vm/asdf"
 
-[plugins.zsh-better-npm-completion]
-github = "lukechilds/zsh-better-npm-completion"
+# [plugins.zsh-better-npm-completion]
+# github = "lukechilds/zsh-better-npm-completion"
 
