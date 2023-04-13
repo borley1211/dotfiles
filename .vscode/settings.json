@@ -8,6 +8,7 @@
         "rename file",
         "edit init scripts",
         "trail spaces",
-        "split files"
+        "split files",
+        "add dotfiles"
     ]
 }
