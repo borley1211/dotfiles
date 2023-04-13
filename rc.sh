@@ -57,7 +57,7 @@ export LANG="ja_JP.UTF-8"
 export LC_ALL="ja_JP.UTF-8"
 
 # - asdf
-# . "${HOME}"/.asdf/asdf.sh
+[ -e "${HOME}/.asdf/" ] && . "${HOME}"/.asdf/asdf.sh
 
 # - Python
 
@@ -146,5 +146,8 @@ export DOT_DIR="$DOTPATH"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
-# aqua - cli version manager
+# - aqua : cli version manager
 # export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
+
+# - Sheldon : zsh plugin manager
+eval "$(sheldon source)"
