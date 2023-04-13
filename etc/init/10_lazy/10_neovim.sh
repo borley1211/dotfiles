@@ -26,17 +26,6 @@ install_neovim_from_ppa() {
     sudo apt upgrade -y
     sudo apt install neovim -y
 
-    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh >./installer.sh
-    # For example, we just use `~/.cache/dein` as installation directory
-    if [ ! -d ~/.cache/dein ]; then
-        sh ./installer.sh ~/.cache/dein
-    fi
-    rm ./installer.sh
-}
-
-install_dep_neovim() {
-    pip install neovim vim-vint
 }
 
 install_neovim_from_ppa
-install_dep_neovim
