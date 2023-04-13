@@ -10,9 +10,43 @@
 #
 # See the documentation for more https://github.com/rossmacarthur/sheldon#readme
 
+shell = "zsh"
+
 [plugins]
 
 # For example:
 #
 # [plugins.base16]
 # github = "chriskempson/base16-shell"
+
+apply = ["defer"]
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+apply = ["source"]
+
+[templates]
+defer = ""
+
+[plugins.compinit]
+inline = 'autoload -Uz compinit && zsh-defer compinit'
+
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
+
+[plugins.zsh-syntax-highlighting-filetypes]
+github = "trapd00r/zsh-syntax-highlighting-filetypes"
+
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+
+# mask secret for history
+[plugins.passwordless-history]
+github = "jgogstad/passwordless-history"
+
+[plugins.asdf]
+github = "asdf-vm/asdf"
+
+[plugins.zsh-better-npm-completion]
+github = "lukechilds/zsh-better-npm-completion"
+
