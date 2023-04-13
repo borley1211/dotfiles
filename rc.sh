@@ -65,6 +65,7 @@ export LC_ALL="ja_JP.UTF-8"
 
 # - Python
 
+export PATH=/usr/local/opt/python/libexec/bin:$PATH
 export PIP_DEFAULT_TIMEOUT=1200
 
 if [ -e "${HOME}/.pyenv" ]; then
