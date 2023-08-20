@@ -1,6 +1,10 @@
 # Zinit config
 
+# - PRE
 typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
+typeset -A ZI
+ZI[BIN_DIR]="${HOME}/.zi/bin"
+source "${ZI[BIN_DIR]}/zi.zsh"
 
 # - COMPLETIONS
 
