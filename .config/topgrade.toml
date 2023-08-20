@@ -1,3 +1,4 @@
+[misc]
 # Don't pull the predefined git repos
 # predefined_git_repos = false
 
