@@ -9,6 +9,7 @@
         "edit init scripts",
         "trail spaces",
         "split files",
-        "add dotfiles"
+        "add dotfiles",
+        "deactivate feature"
     ]
 }
