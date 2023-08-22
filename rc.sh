@@ -60,11 +60,11 @@ export LC_ALL="ja_JP.UTF-8"
 [ -e "${HOME}/.asdf/" ] && . "${HOME}"/.asdf/asdf.sh
 
 # - Python
-export PATH=/usr/local/opt/python/libexec/bin:$PATH
-export PIP_DEFAULT_TIMEOUT=1200
-if ! type python >&/dev/null; then
-    eval "$(python -m pip completion --"$(basename "${SHELL}")")"
-fi
+# export PATH=/usr/local/opt/python/libexec/bin:$PATH
+# export PIP_DEFAULT_TIMEOUT=1200
+# if ! type python >&/dev/null; then
+#     eval "$(python -m pip completion --"$(basename "${SHELL}")")"
+# fi
 
 # - Pipenv
 export PIPENV_VENV_IN_PROJECT=1
