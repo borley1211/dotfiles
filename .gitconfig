@@ -3,8 +3,6 @@
 [user]
 	name = borley1211
 	email = km.isetan@gmail.com
-#[credential]
-#	helper = substitute
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -13,8 +11,6 @@
 [init]
 	defaultBranch = main
 [credential "https://github.com"]
-	helper = 
-	helper = !/home/borley1211/.local/share/aquaproj-aqua/pkgs/github_release/github.com/cli/cli/v2.7.0/gh_2.7.0_linux_amd64.tar.gz/gh_2.7.0_linux_amd64/bin/gh auth git-credential
+	helper = !gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
-	helper = !/home/borley1211/.local/share/aquaproj-aqua/pkgs/github_release/github.com/cli/cli/v2.7.0/gh_2.7.0_linux_amd64.tar.gz/gh_2.7.0_linux_amd64/bin/gh auth git-credential
+	helper = !gh auth git-credential
