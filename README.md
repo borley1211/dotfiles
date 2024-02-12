@@ -36,7 +36,7 @@ sudo apt install git make tar curl
 curl -L https://raw.githubusercontent.com/borley1211/dotfiles/master/etc/install | bash
 ```
 
-### on Windows (DEPRECATING_NOW)
+### on Windows (DEPRECATED_NOW)
 **Please run it in *WSL*.**
 ```console:
 curl -L https://raw.githubusercontent.com/borley1211/dotfiles/master/etc/install-win | bash
