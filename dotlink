@@ -65,3 +65,4 @@ package.json,package.json
 Pipfile,Pipfile
 pyproject.toml,pyproject.toml
 aqua.yaml,aqua.yaml
+.config/lvim/config.lua,.config/lvim/config.lua
