@@ -10,6 +10,7 @@
         "trail spaces",
         "split files",
         "add dotfiles",
-        "deactivate feature"
+        "deactivate feature",
+        "add tools"
     ]
 }
