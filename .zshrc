@@ -3,7 +3,7 @@
 
 # load_my_rcs
 set -o allexport
-source "$DOTPATH/.env"
+source "$HOME/.env"
 set +o allexport
 
 source "$HOME/.zshrc.local"
