@@ -1,9 +1,11 @@
-# shellcheck disable=SC2139
+# shellcheck disable=SC2139,SC2148
 alias relogin="exec $SHELL -l"
 alias reshell="exec $SHELL"
 
-alias inodecheck='echo "==== `pwd` ====" ; for i in `ls -A1` ; do echo -n "## $i ### " ; echo "(`find ./$i -type f | wc -l`)" ; done | sort -nr'
+function gogh() {
+    bash -c "$(curl -fsSL https://git.io/vQgMr)"
+}
+##test
+# gogh
 
-alias gogh='bash -c "$(wget -qO- https://git.io/vQgMr)"'
-
-alias edit=$EDITOR
+alias edit="$EDITOR"
