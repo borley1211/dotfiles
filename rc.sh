@@ -1,15 +1,15 @@
 # shellcheck disable=2148,1090,1091
-pathappend() {
-    pathremove "$1"
+_pathappend() {
+    _pathremove "$1"
     export PATH="${PATH}:$1"
 }
 
-pathprepend() {
-    pathremove "$1"
+_pathprepend() {
+    _pathremove "$1"
     export PATH="$1:${PATH}"
 }
 
-pathremove() {
+_pathremove() {
     PATH="$(echo "${PATH}" | awk -v RS=: -v ORS=: '$0 != "'"$1"'"' | sed 's/:$//i')"
     export PATH
 }
@@ -24,17 +24,17 @@ pathmgr() {
         case $subcmd in
         a | append)
             for p in "${paths[@]}"; do
-                pathappend "$p"
+                _pathappend "$p"
             done
             ;;
         p | prepend)
             for p in "${paths[@]}"; do
-                pathprepend "$p"
+                _pathprepend "$p"
             done
             ;;
         r | remove)
             for p in "${paths[@]}"; do
-                pathremove "$p"
+                _pathremove "$p"
             done
             ;;
         s | show)
@@ -50,7 +50,7 @@ pathmgr() {
 }
 
 # - Local Binaries
-pathappend "${HOME}/.local/bin"
+_pathappend "${HOME}/.local/bin"
 
 # - asdf
 [ -e "${HOME}/.asdf/" ] && . "${HOME}"/.asdf/asdf.sh
@@ -83,7 +83,7 @@ fi
 
 # - RustUp
 # [ -f "${HOME}/.cargo/env" ] && . ~/.cargo/env
-[ -e "${HOME}/.cargo/" ] && pathprepend "$HOME/.cargo/bin"
+[ -e "${HOME}/.cargo/" ] && _pathprepend "$HOME/.cargo/bin"
 
 # - NeoVim
 export NVIM_COC_LOGFILE="coc.log"
@@ -142,8 +142,8 @@ export DOT_DIR="$DOTPATH"
 # export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
 
 # - Volta
-VOLTA_HOME="$HOME/.volta"
-PATH="$VOLTA_HOME/bin:$PATH"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 
 # - Sheldon : zsh plugin manager
 eval "$(sheldon source)"
