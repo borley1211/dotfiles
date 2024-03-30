@@ -26,29 +26,29 @@ symbol = "\uF402 "
 symbol = "\u271C"
 
 [java]
-symbol = "\uE738 "
-style = "red"
+#symbol = "\uE738 "
+#style = "red"
 
 [nodejs]
 #symbol = "\uE718 "
 
 [package]
-symbol = "\uF06B "
+#symbol = "\uF06B "
 
 [python]
-symbol = "\uE73C "
+#symbol = "\uE73C "
 
 [ruby]
 #symbol = "\uE739 "
 
 [rust]
-symbol = "\uE6A8 "
+#symbol = "\uE6A8 "
 
 [time]
 disabled = false
 time_format = "%T"
 
 [battery]
-#full_symbol = "🔋"
+full_symbol = "🔋"
 charging_symbol = "⚡"
 #discharging_symbol = "💨"
