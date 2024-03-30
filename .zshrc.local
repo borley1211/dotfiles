@@ -6,8 +6,6 @@ autoload -Uz add-zsh-hook
 setopt no_bg_nice
 unsetopt bg_nice
 
-source "${DOTPATH:-${HOME}/Dotfiles}/rc.sh"
-
 # - zcompfunc
 fpath=(${HOME}/.zfunc $fpath)
 autoload -Uz compinit && compinit
@@ -51,4 +49,8 @@ setopt AUTO_LIST
 ##KEYBINDS##
 
 ##KEBINDS_END##
+
+
+# - シェル共通設定の読み込み
+source "${DOTPATH:-${HOME}/Dotfiles}/rc.sh"
 

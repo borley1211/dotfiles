@@ -52,10 +52,6 @@ pathmgr() {
 # - Local Binaries
 pathappend "${HOME}/.local/bin"
 
-# - Encoding
-export LANG="ja_JP.UTF-8"
-export LC_ALL="ja_JP.UTF-8"
-
 # - asdf
 [ -e "${HOME}/.asdf/" ] && . "${HOME}"/.asdf/asdf.sh
 
@@ -90,8 +86,6 @@ fi
 [ -e "${HOME}/.cargo/" ] && pathprepend "$HOME/.cargo/bin"
 
 # - NeoVim
-export EDITOR="nvim"
-export VISUAL=${EDITOR}
 export NVIM_COC_LOGFILE="coc.log"
 
 # - LLVM
@@ -144,12 +138,19 @@ export DOT_DIR="$DOTPATH"
 #     . /home/borley/.nix-profile/etc/profile.d/nix.sh
 # fi
 
-# - Volta
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
 # - aqua : cli version manager
 # export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
 
+# - Volta
+VOLTA_HOME="$HOME/.volta"
+PATH="$VOLTA_HOME/bin:$PATH"
+
 # - Sheldon : zsh plugin manager
 eval "$(sheldon source)"
+
+# - PNPM
+export PNPM_HOME="/Users/borley1211/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
