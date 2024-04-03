@@ -3,13 +3,14 @@
 [[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh"
 
 
-# load_my_rcs
+# load_my_config
 source "${DOTPATH:-${HOME}/Dotfiles}/rc.sh"
 source "${DOTPATH:-${HOME}/Dotfiles}/setenv.sh"
 source "$HOME/.zshrc.local"
 source "$HOME/.zaliases"
 source "$DOTPATH/zirc.zsh"
-# load_my_rcs end
+# load_my_config end
+
 
 # homebrew
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
@@ -38,5 +39,11 @@ autoload -Uz _zi
 zicompinit # <- https://wiki.zshell.dev/docs/guides/commands
 # zi end
 
+# broot - cli file manager
+source "${HOME}/.config/broot/launcher/bash/br"
+# broot end
+
 # CodeWhisperer post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh"
+
+source /Users/borley1211/.config/broot/launcher/bash/br

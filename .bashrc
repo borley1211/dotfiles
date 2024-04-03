@@ -125,14 +125,22 @@ if ! shopt -oq posix; then
         . /etc/bash_completion
     fi
 fi
-
 # default_configuration end
 
+# load_my_config
 source "${DOTPATH:-${HOME}/Dotfiles}/rc.sh"
+# load_my_config end
 
+# starship
 eval "$(starship init bash)"
-
+# starship end
+# fzf
 [ -f "${HOME}/.fzf.bash" ] && source "${HOME}/.fzf.bash"
+# fzf end
+
+# broot - cli file manager
+source "${HOME}/.config/broot/launcher/bash/br"
+# broot end
 
 # CodeWhisperer post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/codewhisperer/shell/bashrc.post.bash" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/bashrc.post.bash"
