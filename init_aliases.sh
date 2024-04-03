@@ -1,6 +1,6 @@
-# shellcheck disable=SC2139,SC2148
-alias relogin="exec $SHELL -l"
-alias reshell="exec $SHELL"
+# shellcheck disable=SC2148
+alias relogin='exec $SHELL -l'
+alias reshell='exec $SHELL'
 
 function gogh() {
     bash -c "$(curl -fsSL https://git.io/vQgMr)"
@@ -8,4 +8,4 @@ function gogh() {
 ##test
 # gogh
 
-alias edit="$EDITOR"
+alias edit='$EDITOR'

@@ -1,2 +1,3 @@
 #!/bin/bash
-eval "$(cat ${DOTPATH:-~/Dotfiles}/init_aliases.sh)"
+# shellcheck source=/dev/null
+source "${DOTPATH}/init_aliases.sh"

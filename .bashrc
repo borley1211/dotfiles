@@ -1,6 +1,10 @@
+#!/usr/bin/bash
+# shellcheck disable=SC1091
+
 # CodeWhisperer pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/codewhisperer/shell/bashrc.pre.bash" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/bashrc.pre.bash"
-#!/usr/bin/bash
+
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -77,7 +81,11 @@ esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    if test -r "${HOME}/.dircolors"; then
+        eval "$(dircolors -b "${HOME}/.dircolors")"
+    else
+        eval "$(dircolors -b)"
+    fi
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
@@ -104,8 +112,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f "${HOME}/.bash_aliases" ]; then
+    . "${HOME}/.bash_aliases"
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -123,8 +131,7 @@ source "${DOTPATH:-${HOME}/Dotfiles}/rc.sh"
 
 eval "$(starship init bash)"
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-. "$HOME/.cargo/env"
+[ -f "${HOME}/.fzf.bash" ] && source "${HOME}/.fzf.bash"
 
 
 # CodeWhisperer post block. Keep at the bottom of this file.

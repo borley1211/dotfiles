@@ -1,4 +1,7 @@
-# shellcheck disable=2148,1090,1091
+#!/usr/bin/env bash
+
+# shellcheck disable=SC1091
+
 _pathappend() {
     _pathremove "$1"
     export PATH="${PATH}:$1"
@@ -82,7 +85,7 @@ if [ -e "${HOME}/.pyenv" ]; then
 fi
 
 # - RustUp
-# [ -f "${HOME}/.cargo/env" ] && . ~/.cargo/env
+[ -f "${HOME}/.cargo/env" ] && . "$HOME/.cargo/env"
 [ -e "${HOME}/.cargo/" ] && _pathprepend "$HOME/.cargo/bin"
 
 # - NeoVim
@@ -149,7 +152,7 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 eval "$(sheldon source)"
 
 # - PNPM
-export PNPM_HOME="/Users/borley1211/.local/share/pnpm"
+export PNPM_HOME="${HOME}/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
