@@ -12,6 +12,7 @@
         "add dotfiles",
         "deactivate feature",
         "add tools",
-        "edit README"
+        "edit README",
+        "remove tools"
     ]
 }
