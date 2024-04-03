@@ -33,7 +33,6 @@
 .asoundrc,.asoundrc
 .bash_aliases,.bash_aliases
 .bashrc,.bashrc
-.cargo/config,.cargo/config
 .config/appimagelauncher.cfg,.config/appimagelauncher.cfg
 .config/discoverrc,.config/discoverrc
 .config/dot/dotrc,.config/dot/dotrc
@@ -68,3 +67,4 @@ aqua.yaml,aqua.yaml
 .config/lvim/config.lua,.config/lvim/config.lua
 .zshrc,.zshrc
 .env,.env
+.config/shellcheckrc,.config/shellcheckrc
