@@ -1,11 +1,10 @@
 # CodeWhisperer pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh"
 
-# load_my_rcs
-set -o allexport
-source "$HOME/.env"
-set +o allexport
 
+# load_my_rcs
+source "${DOTPATH:-${HOME}/Dotfiles}/rc.sh"
+source "${DOTPATH:-${HOME}/Dotfiles}/setenv.sh"
 source "$HOME/.zshrc.local"
 source "$HOME/.zaliases"
 source "$DOTPATH/zirc.zsh"
@@ -16,7 +15,7 @@ FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 # homebrew end
 
 # python
-export PATH=/opt/homebrew/opt/python@3.11/libexec/bin:"$PATH"
+export PATH=/opt/homebrew/opt/python@3.11/libexec/bin:"${PATH}"
 # python end
 
 # starship
@@ -31,7 +30,7 @@ if [[ ! -f $HOME/.zi/bin/zi.zsh ]]; then
     print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
     print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
-source "$HOME/.zi/bin/zi.zsh"
+source "{$HOME}/.zi/bin/zi.zsh"
 autoload -Uz _zi
 (( ${+_comps} )) && _comps[zi]=_zi
 # examples here -> https://wiki.zshell.dev/ecosystem/category/-annexes

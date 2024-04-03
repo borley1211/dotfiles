@@ -45,12 +45,6 @@ bindkey "^N" history-beginning-search-forward-end
 # - 曖昧な補完で、自動的に選択肢をリストアップ
 setopt AUTO_LIST
 
-
 ##KEYBINDS##
 
 ##KEBINDS_END##
-
-
-# - シェル共通設定の読み込み
-source "${DOTPATH:-${HOME}/Dotfiles}/rc.sh"
-
