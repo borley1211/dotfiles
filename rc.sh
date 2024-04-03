@@ -1,6 +1,4 @@
-#!/usr/bin/env bash
-
-# shellcheck disable=SC1091
+# shellcheck disable=SC1091,SC2148
 
 _pathappend() {
     _pathremove "$1"
@@ -154,6 +152,6 @@ eval "$(sheldon source)"
 # - PNPM
 export PNPM_HOME="${HOME}/.local/share/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
 esac

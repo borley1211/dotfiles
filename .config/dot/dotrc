@@ -1,4 +1,6 @@
 #!/bin/bash
+# shellcheck disable=SC2034
+
 # This is config file for dot.
 # If you want to know all the description, see README.
 #==============================================================================
