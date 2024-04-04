@@ -13,7 +13,8 @@
         "deactivate feature",
         "add tools",
         "edit README",
-        "remove tools"
+        "remove tools",
+        "IDE settings"
     ],
     "workbench.colorCustomizations": {
         "activityBar.background": "#0B351D",
