@@ -14,5 +14,10 @@
         "add tools",
         "edit README",
         "remove tools"
-    ]
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#0B351D",
+        "titleBar.activeBackground": "#104A28",
+        "titleBar.activeForeground": "#F4FDF8"
+    }
 }
