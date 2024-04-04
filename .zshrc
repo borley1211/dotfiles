@@ -6,8 +6,8 @@
 # load_my_config
 source "${DOTPATH:-${HOME}/Dotfiles}/rc.sh"
 source "${DOTPATH:-${HOME}/Dotfiles}/setenv.sh"
-source "$HOME/.zshrc.local"
-source "$HOME/.zaliases"
+source "${HOME}/.zshrc.local"
+source "${HOME}/.zaliases"
 source "$DOTPATH/zirc.zsh"
 # load_my_config end
 
@@ -25,10 +25,10 @@ eval "$(starship init zsh)"
 # starship end
 
 # zi
-if [[ ! -f $HOME/.zi/bin/zi.zsh ]]; then
+if [[ ! -f "${HOME}/.zi/bin/zi.zsh" ]]; then
   print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
-  command mkdir -p "$HOME/.zi" && command chmod go-rwX "$HOME/.zi"
-  command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "$HOME/.zi/bin" && \
+  command mkdir -p "${HOME}/.zi" && command chmod go-rwX "${HOME}/.zi"
+  command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "${HOME}/.zi/bin" && \
     print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
     print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
