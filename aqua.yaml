@@ -5,4 +5,4 @@ registries:
 - type: standard
   ref: v4.78.0 # renovate: depName=aquaproj/aqua-registry
 packages:
-- name: mitsuhiko/rye@0.16.0
+- name: mitsuhiko/rye@0.34.0
