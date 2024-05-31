@@ -1,5 +1,6 @@
 [core]
 	autocrlf = input
+	excludesfile = ~/.gitignore_global
 [user]
 	name = borley1211
 	email = km.isetan@gmail.com
