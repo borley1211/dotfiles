@@ -57,7 +57,7 @@ repos = [
 # Custom commands
 [commands]
 #"10. Update pip" = "python -m pip install -U --upgrade-strategy eager pip"
-"20. Update Python Core Packages" = "python -m pip install -U --upgrade-strategy eager poetry hatch setuptools certifi johnnydep neovim vim-vint"
+"20. Update Python Core Packages" = "python -m pip install --upgrade setuptools"
 #"Python envs" = "poetry update"
 "10. Update nodejs by Volta" = "volta install node" # install node@lts
 "20. Update npm globally" = "npm install -g npm"
