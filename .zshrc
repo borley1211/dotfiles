@@ -1,7 +1,6 @@
+# Amazon Q pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 #!/bin/zsh
-# CodeWhisperer pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh"
-
 
 # load_my_config
 source "${DOTPATH:-${HOME}/Dotfiles}/rc.sh"
@@ -15,10 +14,6 @@ source "$DOTPATH/zirc.zsh"
 # homebrew
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 # homebrew end
-
-# python
-export PATH=/opt/homebrew/opt/python@3.11/libexec/bin:"${PATH}"
-# python end
 
 # starship
 eval "$(starship init zsh)"
@@ -43,7 +38,5 @@ zicompinit # <- https://wiki.zshell.dev/docs/guides/commands
 source "${HOME}/.config/broot/launcher/bash/br"
 # broot end
 
-# CodeWhisperer post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh"
-
-source /Users/borley1211/.config/broot/launcher/bash/br
+# Amazon Q post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
