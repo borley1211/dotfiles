@@ -1,16 +1,10 @@
 {
-  "dependencies": {
-    "bash-language-server": "latest",
-    "depcheck": "latest",
-    "neovim": "latest",
-    "npm": "latest",
-    "npm-check-updates": "latest"
-  },
   "name": "borley",
   "version": "1.0.0",
   "description": "my npm",
   "private": "true",
   "main": "index.js",
+  "dependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,13 +19,18 @@
   },
   "homepage": "https://github.com/borley1211/dotfiles#readme",
   "devDependencies": {
-    "commitizen": "^4.3.0",
-    "cz-conventional-changelog": "^3.3.0"
+    "bash-language-server": "latest",
+    "depcheck": "latest",
+    "neovim": "latest",
+    "npm": "latest",
+    "npm-check-updates": "latest",
+    "commitizen": "latest",
+    "cz-conventional-changelog": "latest"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "packageManager": "pnpm@9.0.0-alpha.0+sha256.73ada1a82ae5a62c3da44e4841e56d471a5f52a48590b212ea04466923689e3b"
+  "packageManager": "pnpm@9.1.4+sha512.9df9cf27c91715646c7d675d1c9c8e41f6fce88246f1318c1aa6a1ed1aeb3c4f032fcdf4ba63cc69c4fe6d634279176b5358727d8f2cc1e65b65f43ce2f8bfb0"
 }
