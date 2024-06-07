@@ -8,16 +8,16 @@ source "${DOTPATH:-${HOME}/Dotfiles}/setenv.sh"
 source "${HOME}/.zshrc.local"
 source "${HOME}/.zaliases"
 source "$DOTPATH/zirc.zsh"
-# load_my_config end
 
 
-# homebrew
+# Homebrew
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-# homebrew end
 
-# starship
+# Homebrew: Python
+# export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
+
+# Starship
 eval "$(starship init zsh)"
-# starship end
 
 # zi
 if [[ ! -f "${HOME}/.zi/bin/zi.zsh" ]]; then
@@ -32,11 +32,9 @@ autoload -Uz _zi
 (( ${+_comps} )) && _comps[zi]=_zi
 # examples here -> https://wiki.zshell.dev/ecosystem/category/-annexes
 zicompinit # <- https://wiki.zshell.dev/docs/guides/commands
-# zi end
 
 # broot - cli file manager
 source "${HOME}/.config/broot/launcher/bash/br"
-# broot end
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"

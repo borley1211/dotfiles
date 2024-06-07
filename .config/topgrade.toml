@@ -57,13 +57,14 @@ repos = [
 # Custom commands
 [commands]
 #"10. Update pip" = "python -m pip install -U --upgrade-strategy eager pip"
-"20. Update Python Core Packages" = "python -m pip install --upgrade setuptools"
+#"20. Python Core Packages" = "python3 -m pip install --upgrade setuptools"
+#"40. Vim/Neovim Libraries in Python" = "python3 -m pip install --upgrade neovim vim-vint"
 #"Python envs" = "poetry update"
-"10. Update nodejs by Volta" = "volta install node" # install node@lts
-"20. Update npm globally" = "npm install -g npm"
-"20. Update pnpm globally" = "pnpm install -g pnpm"
+"10. NodeJS by Volta" = "volta install node" # install node@lts
+"20. NPM globally" = "npm install -g npm"
+"20. PNPM globally" = "pnpm install -g pnpm"
 #"30. Check nodejs pkgs" = "npm doctor; npm audit fix"
-"30. Check nodejs pkgs via PNPM" = "pnpm doctor; pnpm audit fix"
+"30. Check NodeJS Packages via PNPM" = "pnpm doctor; pnpm audit fix"
 
 [linux]
 # Arch Package Manager to use. Allowed values: autodetect, trizen, paru, yay, pacman.
