@@ -68,3 +68,4 @@ aqua.yaml,aqua.yaml
 .zshrc,.zshrc
 .env,.env
 .config/shellcheckrc,.config/shellcheckrc
+Brewfile,Brewfile
