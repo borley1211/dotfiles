@@ -15,5 +15,10 @@
         "edit README",
         "remove tools",
         "IDE settings"
-    ]
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#0B351D",
+        "titleBar.activeBackground": "#104A28",
+        "titleBar.activeForeground": "#F4FDF8"
+    }
 }
