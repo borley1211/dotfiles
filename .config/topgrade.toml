@@ -3,7 +3,7 @@
 # predefined_git_repos = false
 
 # Disable specific steps - same options as the command line flag
-disable = ["gnome_shell_extensions"]
+disable = ["gnome_shell_extensions", "asdf", "containers"]
 
 # Run specific steps - same options as the command line flag
 #only = ["system", "emacs"]
