@@ -15,3 +15,7 @@
 	helper = !gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = !gh auth git-credential
+[safe]
+	directory = /Applications/Adobe Illustrator 2024/Presets.localized/ja_JP/スクリプト/ai_scripts---chihh_i
+	directory = /Applications/Adobe Illustrator 2024/Presets.localized/ja_JP/スクリプト/control_handles_with_numerical_values---gau
+	directory = /Applications/Adobe Illustrator 2024/Presets.localized/ja_JP/スクリプト/rounding-color-values---gau
