@@ -42,9 +42,6 @@ github = "zsh-users/zsh-completions"
 [plugins.passwordless-history]
 github = "jgogstad/passwordless-history"
 
-[plugins.asdf]
-github = "asdf-vm/asdf"
-
 [plugins.url-highlighter]
 github = "ascii-soup/zsh-url-highlighter"
 
