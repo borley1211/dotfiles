@@ -16,10 +16,5 @@
         "remove tools",
         "IDE settings"
     ],
-    "makefile.configureOnOpen": true,
-    "workbench.colorCustomizations": {
-        "activityBar.background": "#0B351D",
-        "titleBar.activeBackground": "#104A28",
-        "titleBar.activeForeground": "#F4FDF8"
-    }
+    "makefile.configureOnOpen": true
 }
