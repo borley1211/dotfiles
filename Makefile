@@ -13,13 +13,28 @@ LAZYINITSCRIPTS	:= $(sort $(wildcard $(LAZYINITDIR)/??*.$(SUFFIX)))
 
 # DOTFILES
 DOTPATH	:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
-CANDIDATES	:= $(wildcard .??* .config/??*.??* .config/??*rc .config/??*/??*.??* )
-CONFIGDIRS	:= $(filter-out %rc %.toml %.ini %.cfg %.dirs, $(wildcard .config/??* .config/??*/??*.d))
-CANDIDATES	:= $(CANDIDATES) $(foreach DIR,$(CONFIGDIRS),$(wildcard $(DIR)/??*/config)) package.json $(wildcard .jupyter/??*.??* ) Pipfile aqua.yaml
-CONFIGDIRS	:= $(sort $(CONFIGDIRS) $(patsubst %/,%,$(dir $(CANDIDATES))))
-CONFIGDIRS	:= $(filter-out .,$(CONFIGDIRS))
-EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode .Xresources-regolith $(CONFIGDIRS) .themes .icons .venv
+
+# Recursively find all files under .config, and combine with other specified files.
+# This ensures all nested configuration files are included.
+# It excludes directories starting with '_' from the search.
+CANDIDATES := $(wildcard .??*) \
+              $(shell find .config -path '*/_*' -prune -o -type f -print) \
+              package.json \
+              Pipfile \
+              aqua.yaml \
+              $(wildcard .jupyter/??*.??*)
+
+# Define files and directories to exclude from symlinking.
+EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode .Xresources-regolith .themes .icons .venv .gemini .jj
+# Filter the candidates to get the final list of files to symlink.
 DOTFILES	:= $(sort $(filter-out $(EXCLUSIONS),$(CANDIDATES)))
+# Additionally, filter out any .DS_Store files that might be in subdirectories.
+DOTFILES	:= $(filter-out %/.DS_Store, $(DOTFILES))
+
+# From the list of files, determine the unique parent directories that need to be created in the HOME directory.
+# This ensures that `ln` command will not fail due to missing directories.
+CONFIGDIRS	:= $(sort $(patsubst %/,%,$(dir $(DOTFILES))))
+CONFIGDIRS	:= $(filter-out ./,$(CONFIGDIRS))
 
 # SUBMODULES
 SUBMODULES	= $(wildcard .themes/??* .icons/??*)
@@ -109,7 +124,7 @@ credit:## Show credit
 	@echo 'Copyright (c) 2013-2015 BABAROT, 2019- BORLEY All Rights Reserved.'
 	@echo ''
 
-list:## Show dot files in this repo
+list:## Show dotfiles in this repo
 	@echo '--DOTFILES--'
 	@$(foreach val, $(DOTFILES), $(call _list,$(val)))
 	@echo ''
@@ -119,10 +134,11 @@ list:## Show dot files in this repo
 deploy-file:## Create symlink to home directory (FILES)
 	@$(DEPLOY)
 
-deploy-submodule:## Create symlink to home directory (SUBMODULES)
+deploy-module:## Create symlink to home directory (SUBMODULES)
 	@$(DEPLOY-MODULE)
 
-deploy:credit deploy-file deploy-submodule ## Create symlink to home directory
+deploy:## Create symlink to home directory
+	credit deploy-file deploy-submodule
 
 deploy-win:## Create symlink to WIN_HOME directory
 	@$(DEPLOY_WIN)
@@ -136,11 +152,12 @@ init-lazy:## Setup environment settings (LAZY)
 init-fake:## Test for init
 	@$(call run,./etc/util/do_nothing)
 
-init:init-pre init-lazy ## Setup HEAD and LAZY environment settings
+init:## Setup HEAD and LAZY environment settings
+	init-pre init-lazy
 
-test:## Test dotfiles and init scripts (now DEPRECATED)
-	@#DOTPATH = $(DOTPATH)bash $(DOTPATH)/etc/test/test.sh
-	@echo "test is inactive temporarily"
+# test:## Test dotfiles and init scripts (now DEPRECATED)
+# 	@#DOTPATH = $(DOTPATH)bash $(DOTPATH)/etc/test/test.sh
+# 	@echo "test is inactive temporarily"
 
 update:## Fetch changes for this repo
 	git pull origin master
@@ -154,8 +171,16 @@ clean:## Remove the dot files
 	@echo '==> Remove dotfiles in your home directory...'
 	@$(CLEAN)
 
-purge:clean ## Run 'clean' and remove self
+purge:## Run 'clean' and remove self
+	clean
 	$(call rm_recursive, $(DOTPATH))
 
-help:credit ## Self - documented Makefile
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST)\ | sort \ | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+# debug-dotpath:
+# 	@echo "DOTPATH is: $(DOTPATH)"
+
+help:## Print about this
+	@$(MAKE) credit
+	@echo 'Usage: make [target]'
+	@echo
+	@echo 'Available targets:'
+	@grep -E '^[a-zA-Z0-9_-]+:##' $(MAKEFILE_LIST) | sort | sed -e 's/\([^:]*\):##\(.*\)/    \x1b[36m\1:\x1b[0m\t\2/' | expand -t 28
