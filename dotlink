@@ -69,3 +69,4 @@ aqua.yaml,aqua.yaml
 .env,.env
 .config/shellcheckrc,.config/shellcheckrc
 Brewfile,Brewfile
+.gemini/settings.json,.gemini/settings.json
