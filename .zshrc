@@ -11,7 +11,7 @@ source "$DOTPATH/zirc.zsh"
 
 
 # Homebrew
-FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+eval "$(brew shellenv)"
 
 # Homebrew: Python
 # export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
@@ -38,6 +38,10 @@ eval "$(sheldon source)"
 
 # broot - cli file manager
 source "${HOME}/.config/broot/launcher/bash/br"
+
+# zsh post block (completion)
+autoload -Uz compinit
+compinit
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
