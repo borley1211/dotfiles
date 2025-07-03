@@ -120,9 +120,11 @@ UPDATE	:= $(foreach val,$(UPDATES),$(call run,$(abspath $(val))))
 
 all:
 
+
 credit:## Show credit
 	@echo 'Copyright (c) 2013-2015 BABAROT, 2019- BORLEY All Rights Reserved.'
 	@echo ''
+
 
 list:## Show dotfiles in this repo
 	@echo '--DOTFILES--'
@@ -131,33 +133,42 @@ list:## Show dotfiles in this repo
 	@echo '--CONFIG DIRS--'
 	@$(foreach val, $(CONFIGDIRS), $(call _list,$(val)))
 
+
 deploy-file:## Create symlink to home directory (FILES)
 	@$(DEPLOY)
+
 
 deploy-module:## Create symlink to home directory (SUBMODULES)
 	@$(DEPLOY-MODULE)
 
+
 deploy:## Create symlink to home directory
-	credit deploy-file deploy-submodule
+	@$(MAKE) credit deploy-file deploy-module 
+
 
 deploy-win:## Create symlink to WIN_HOME directory
 	@$(DEPLOY_WIN)
 
+
 init-pre:## Setup environment settings (PRE)
 	@$(INIT_PRE)
+
 
 init-lazy:## Setup environment settings (LAZY)
 	@$(INIT_LAZY)
 
+
 init-fake:## Test for init
 	@$(call run,./etc/util/do_nothing)
 
+
 init:## Setup HEAD and LAZY environment settings
-	init-pre init-lazy
+	@$(MAKE) init-pre init-lazy
 
 # test:## Test dotfiles and init scripts (now DEPRECATED)
 # 	@#DOTPATH = $(DOTPATH)bash $(DOTPATH)/etc/test/test.sh
 # 	@echo "test is inactive temporarily"
+
 
 update:## Fetch changes for this repo
 	git pull origin master
@@ -165,18 +176,23 @@ update:## Fetch changes for this repo
 	git submodule update --remote
 	git submodule foreach git pull origin master
 
-install:update deploy init ## Run make update, deploy, init
+
+install:## Run make update, deploy, init
+	@$(MAKE) update deploy init
+
 
 clean:## Remove the dot files
 	@echo '==> Remove dotfiles in your home directory...'
 	@$(CLEAN)
 
+
 purge:## Run 'clean' and remove self
-	clean
+	@$(MAKE) clean
 	$(call rm_recursive, $(DOTPATH))
 
 # debug-dotpath:
 # 	@echo "DOTPATH is: $(DOTPATH)"
+
 
 help:## Print about this
 	@$(MAKE) credit
