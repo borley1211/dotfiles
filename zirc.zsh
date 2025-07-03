@@ -41,8 +41,9 @@ zi light joshskidmore/zsh-fzf-history-search
 
 # - OTHERS
 # interactive-cd
+export ENHANCD_COMMAND="ecd"
 zi ice as"plugin"
-zi light b4b4r07/enhancd
+zi light babarot/enhancd
 # dotofiles manager
 zi light ssh0/dot
 # 略語登録/展開
