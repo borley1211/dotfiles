@@ -70,3 +70,4 @@ aqua.yaml,aqua.yaml
 .config/shellcheckrc,.config/shellcheckrc
 Brewfile,Brewfile
 .gemini/settings.json,.gemini/settings.json
+.config/ghostty/config,.config/ghostty/config
