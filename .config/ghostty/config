@@ -1,0 +1,2 @@
+# enable quick terminal
+keybind = "global:ctrl+option+t=toggle_quick_terminal"
