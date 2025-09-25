@@ -64,7 +64,7 @@ brew "jpegoptim"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Utility for creating and opening lzh archives
-brew "lha"
+brew "lhasa"
 # Library for encoding and decoding .avif files
 brew "libavif"
 # Clone of ls with colorful output, file type icons, and more
