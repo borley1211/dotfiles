@@ -35,8 +35,9 @@ eval "$(starship init zsh)"
 
 # zinit
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+[ ! -d "$ZINIT_HOME" ] && mkdir -p "$(dirname "$ZINIT_HOME")"
+[ ! -d "$ZINIT_HOME"/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+# shellcheck disable=SC1091
 source "${ZINIT_HOME}/zinit.zsh"
 ## load my config
 source "${DOTPATH}/zinitrc.zsh"
@@ -44,8 +45,8 @@ source "${DOTPATH}/zinitrc.zsh"
 # sheldon - zsh pkg manager
 eval "$(sheldon source)"
 
-# broot - cli file manager
-source "${HOME}/.config/broot/launcher/bash/br"
+# # broot - cli file manager
+# source "${HOME}/.config/broot/launcher/bash/br"
 
 # zsh post block (completion)
 autoload -Uz compinit
