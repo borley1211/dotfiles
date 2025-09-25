@@ -1,2 +1,3 @@
-# enable quick terminal
+# quick terminal
+quick-terminal-size = 80%
 keybind = "global:ctrl+option+t=toggle_quick_terminal"
