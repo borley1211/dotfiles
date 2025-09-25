@@ -63,7 +63,7 @@ brew "jj"
 brew "jpegoptim"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Utility for creating and opening lzh archives
+# LHA implementation to decompress .lzh and .lzs archives
 brew "lhasa"
 # Library for encoding and decoding .avif files
 brew "libavif"
@@ -239,7 +239,7 @@ cask "zoom"
 vscode "aaron-bond.better-comments"
 vscode "acidic9.p5js-snippets"
 vscode "adobe.extendscript-debug"
-vscode "amazonwebservices.codewhisperer-for-command-line-companion"
+vscode "amazonwebservices.amazon-q-vscode"
 vscode "anderseandersen.html-class-suggestions"
 vscode "antfu.browse-lite"
 vscode "astro-build.astro-vscode"
