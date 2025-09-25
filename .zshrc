@@ -7,7 +7,7 @@ source "${DOTPATH:-${HOME}/Dotfiles}/rc.sh"
 source "${DOTPATH:-${HOME}/Dotfiles}/setenv.sh"
 source "${HOME}/.zshrc.local"
 source "${HOME}/.zaliases"
-source "$DOTPATH/zirc.zsh"
+# source "$DOTPATH/zirc.zsh"
 
 
 # Homebrew
@@ -30,8 +30,16 @@ eval "$(starship init zsh)"
 # source "${HOME}/.zi/bin/zi.zsh"
 # autoload -Uz _zi
 # (( ${+_comps} )) && _comps[zi]=_zi
-# examples here -> https://wiki.zshell.dev/ecosystem/category/-annexes
-# zicompinit # <- https://wiki.zshell.dev/docs/guides/commands
+# # examples here -> https://wiki.zshell.dev/ecosystem/category/-annexes
+# zi compinit # <- https://wiki.zshell.dev/docs/guides/commands
+
+# zinit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+## load my config
+source "${DOTPATH}/zinitrc.zsh"
 
 # sheldon - zsh pkg manager
 eval "$(sheldon source)"

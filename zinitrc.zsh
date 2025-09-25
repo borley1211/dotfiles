@@ -2,14 +2,9 @@
 
 typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 
-
-zinit light zsh-users/zsh-autosuggestions
-
-zinit light zsh-users/zsh-completions
-
-zinit light zdharma/fast-syntax-highlighting
-
-zinit light zdharma/history-search-multi-word
+zinit wait lucid light-mode for \
+  blockf atpull'zinit creinstall -q .' \
+      zsh-users/zsh-completions
 
 
 zinit light lukechilds/zsh-better-npm-completion
