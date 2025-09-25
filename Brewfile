@@ -214,8 +214,6 @@ cask "steam"
 cask "tailscale-app"
 # TinyPNG client
 cask "tinypng4mac"
-# Quick Look generator for Markdown files
-cask "toland-qlmarkdown"
 # Menu bar pomodoro timer
 cask "tomatobar"
 # Font manager application
