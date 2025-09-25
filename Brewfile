@@ -25,8 +25,6 @@ brew "deno"
 brew "difftastic"
 # C implementation of Markdown
 brew "discount"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.13"
 # Command-line tool (and API) for diffing Excel Workbooks
 brew "excel-compare"
 # Read, write, modify, and display EXIF data on the command-line
@@ -60,6 +58,8 @@ brew "gum"
 # Advanced HTML-to-text converter
 brew "html2text"
 # Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
+# Git-compatible distributed version control system
 brew "jj"
 # Utility to optimize JPEG files
 brew "jpegoptim"
@@ -149,7 +149,6 @@ cask "discord"
 cask "dropbox"
 # Collaborative team software
 cask "figma"
-# Font with programming ligatures
 cask "font-plemol-jp-nf"
 # Font manager
 cask "fontbase"
@@ -189,6 +188,8 @@ cask "microsoft-teams"
 cask "neardrop"
 # App to write, plan, collaborate, and get organised
 cask "notion"
+# Calendar for professionals and teams
+cask "notion-calendar"
 # Email client integrated with Notion workspace
 cask "notion-mail"
 # Calculator and converter application
@@ -263,7 +264,6 @@ vscode "donjayamanne.githistory"
 vscode "dotjoshjohnson.xml"
 vscode "dprint.dprint"
 vscode "dsznajder.es7-react-js-snippets"
-vscode "eamodio.gitlens"
 vscode "ecmel.vscode-html-css"
 vscode "esbenp.prettier-vscode"
 vscode "exiasr.hadolint"
@@ -276,6 +276,7 @@ vscode "formulahendry.auto-complete-tag"
 vscode "formulahendry.auto-rename-tag"
 vscode "formulahendry.code-runner"
 vscode "foxundermoon.shell-format"
+vscode "frenco.vscode-notion"
 vscode "gencer.html-slim-scss-css-class-completion"
 vscode "ghaschel.vscode-angular-html"
 vscode "github.codespaces"
