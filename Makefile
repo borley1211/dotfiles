@@ -25,7 +25,7 @@ CANDIDATES := $(wildcard .??*) \
               $(wildcard .jupyter/??*.??*)
 
 # Define files and directories to exclude from symlinking.
-EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode .Xresources-regolith .themes .icons .venv .gemini .jj
+EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode .Xresources-regolith .themes .icons .venv .gemini .jj _deprecated
 # Filter the candidates to get the final list of files to symlink.
 DOTFILES	:= $(sort $(filter-out $(EXCLUSIONS),$(CANDIDATES)))
 # Additionally, filter out any .DS_Store files that might be in subdirectories.
@@ -143,7 +143,7 @@ deploy-module:## Create symlink to home directory (SUBMODULES)
 
 
 deploy:## Create symlink to home directory
-	@$(MAKE) credit deploy-file deploy-module 
+	@$(MAKE) credit deploy-file deploy-module
 
 
 deploy-win:## Create symlink to WIN_HOME directory
