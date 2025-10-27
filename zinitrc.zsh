@@ -6,6 +6,7 @@ zinit wait lucid light-mode for \
   blockf atpull'zinit creinstall -q .' \
       zsh-users/zsh-completions
 
+zinit light hlissner/zsh-autopair
 
 zinit light lukechilds/zsh-better-npm-completion
 
