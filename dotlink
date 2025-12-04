@@ -72,3 +72,4 @@ Brewfile,Brewfile
 .gemini/settings.json,.gemini/settings.json
 .config/ghostty/config,.config/ghostty/config
 .config/mise/config.toml,.config/mise/config.toml
+.config/pnpm/rc,.config/pnpm/rc
