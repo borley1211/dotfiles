@@ -1,4 +1,6 @@
-#!/usr/bin/bash# shellcheck disable=SC1091# ~/.bashrc: executed by bash(1) for non-login shells.
+#!/usr/bin/bash
+# shellcheck disable=SC1091
+# ~/.bashrc: executed by bash(1) for non-login shells.
 # Kiro CLI pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/bashrc.pre.bash" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/bashrc.pre.bash"
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
