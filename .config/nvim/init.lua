@@ -1,4 +1,4 @@
---[[ 
+--[[
 
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
@@ -83,7 +83,7 @@ I hope you enjoy your Neovim journey,
 
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
---[[ 
+--[[
 
 =====================================================================
 =============== 続きを読む前にこちらをお読みください ================
@@ -1448,8 +1448,8 @@ require("lazy").setup({
 			},
 			indent = { enable = true, disable = { "ruby" } },
 		},
-		--There are additional nvim-treesitter modules that you can use to interact
-		--with nvim-treesitter. You should go explore a few and see what interests you:
+		-- There are additional nvim-treesitter modules that you can use to interact
+		-- with nvim-treesitter. You should go explore a few and see what interests you:
 		--
 		--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
 		--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
