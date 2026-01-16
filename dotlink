@@ -73,3 +73,6 @@ Brewfile,Brewfile
 .config/ghostty/config,.config/ghostty/config
 .config/mise/config.toml,.config/mise/config.toml
 .config/pnpm/rc,.config/pnpm/rc
+.config/nix/darwin/configulation.nix,.config/nix/darwin/configulation.nix
+.config/nix/darwin/flake.nix,.config/nix/darwin/flake.nix
+.config/nix/darwin/flake.lock,.config/nix/darwin/flake.lock
