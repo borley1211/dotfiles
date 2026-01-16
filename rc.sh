@@ -86,7 +86,7 @@ fi
 [ -f "${HOME}/.cargo/env" ] && . "$HOME/.cargo/env"
 [ -e "${HOME}/.cargo/" ] && _pathprepend "$HOME/.cargo/bin"
 
-# - NeoVim
+# - Neovim
 export NVIM_COC_LOGFILE="coc.log"
 
 # - LLVM
@@ -147,7 +147,9 @@ export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 # - Sheldon : zsh plugin manager
-eval "$(sheldon source)"
+if builtin command -v sheldon > /dev/null; then
+  eval "$(sheldon source)"
+fi
 
 # - PNPM
 export PNPM_HOME="${HOME}/.local/share/pnpm"
