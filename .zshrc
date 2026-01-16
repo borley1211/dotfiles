@@ -11,8 +11,7 @@ source "${HOME}/.zaliases"
 
 
 # Homebrew
-eval "$(brew shellenv)"
-
+eval "$(/opt/homebrew/bin/brew shellenv)"
 # Homebrew: Python
 # export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
 
