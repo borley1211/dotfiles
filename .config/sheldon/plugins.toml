@@ -45,3 +45,6 @@ github = "jgogstad/passwordless-history"
 [plugins.url-highlighter]
 github = "ascii-soup/zsh-url-highlighter"
 
+[plugins.zsh-autopair]
+github = "hlissner/zsh-autopair"
+
