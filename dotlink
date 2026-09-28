@@ -74,5 +74,5 @@ Brewfile,Brewfile
 .config/mise/config.toml,.config/mise/config.toml
 .config/pnpm/rc,.config/pnpm/rc
 .config/nix/darwin/configulation.nix,.config/nix/darwin/configulation.nix
-.config/nix/darwin/flake.nix,.config/nix/darwin/flake.nix
-.config/nix/darwin/flake.lock,.config/nix/darwin/flake.lock
+.config/nix/flake.nix,.config/nix/flake.nix
+.config/nix/flake.lock,.config/nix/flake.lock

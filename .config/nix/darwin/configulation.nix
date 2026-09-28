@@ -1,33 +1,28 @@
-{ pkgs, lib, inputs, ... }:
-# inputs.self, inputs.nix-darwin, inputs.nixpkgs にここからアクセスできる
-{ pkgs, lib, ... }:
-{
+{pkgs, ...}: {
+
+  # nix自体の設定
+  nix = {
+    optimise.automatic = true;
+    settings = {
+      experimental-features = "nix-command flakes";
+      max-jobs = 8;
+    };
+  };
+  services.nix-daemon.enable = true;
+
+  # システムの設定（nix-darwinが効いているかのテスト）
   system = {
-    stateVersion = 6;
-    # mac のユーザー名
-    # `whoami` で確認可能
-    primaryUser = "<ユーザー名>";
-  };
-
-  nixpkgs = {
-    config.allowUnfree = true;
-    hostPlatform = "aarch64-darwin";
-  };
-
-  homebrew = {
-    enable = true;
-    onActivation.cleanup = "none";
-    # `brew tap` で確認可能
-    taps = [ ];
-    # `brew list --formula` で確認可能
-    brews = [
-      "git"
-      "gnu-time"
-    ];
-    # `brew list --cask` で確認可能
-    casks = [
-      "claude"
-      "visual-studio-code"
-    ];
+    defaults = {
+      NSGlobalDomain.AppleShowAllExtensions = true;
+      finder = {
+        AppleShowAllFiles = true;
+        AppleShowAllExtensions = true;
+      };
+      dock = {
+        autohide = true;
+        show-recents = false;
+        orientation = "left";
+      };
+    };
   };
 }
