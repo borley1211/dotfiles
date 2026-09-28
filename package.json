@@ -18,10 +18,13 @@
   },
   "homepage": "https://github.com/borley1211/dotfiles#readme",
   "devDependencies": {
+    "@types/node": "^26.0.1",
     "bash-language-server": "latest",
     "neovim": "latest",
     "npm": "latest",
-    "npm-check-updates": "latest"
+    "npm-check-updates": "latest",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
   },
   "overrides": {
     "brace-expansion@<2.0.2": "^2.0.2",
@@ -50,5 +53,9 @@
         "onFail": "download"
       }
     ]
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "framer-api": "^0.1.17"
   }
 }
