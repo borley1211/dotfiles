@@ -24,7 +24,7 @@ zinit light zsh-users/zsh-syntax-highlighting
 
 zinit light trapd00r/zsh-syntax-highlighting-filetypes
 
-zinit light jgogstad/passwordless-history
+zinit light jgogstad/zsh-mask
 
 zinit ice pick"url/url-highlighter.zsh"; zinit light ascii-soup/zsh-url-highlighter
 
