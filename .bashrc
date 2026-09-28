@@ -1,8 +1,10 @@
 #!/usr/bin/bash
-# shellcheck disable=SC1091
-# ~/.bashrc: executed by bash(1) for non-login shells.
+
 # Kiro CLI pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/bashrc.pre.bash" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/bashrc.pre.bash"
+
+# shellcheck disable=SC1091
+# ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
@@ -139,6 +141,10 @@ eval "$(starship init bash)"
 # broot - cli file manager
 source "${HOME}/.config/broot/launcher/bash/br"
 # broot end
+
+
+export PATH="$PATH:$HOME/.local/bin"
+
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/bashrc.post.bash" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/bashrc.post.bash"
