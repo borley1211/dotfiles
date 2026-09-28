@@ -1,3 +1,18 @@
+# appearance
+background-opacity = 0.75
+background-blur = true
+
+# font
+font-family = "Google Sans Code Regular"
+font-style = "Medium"
+font-variation = "wght=600"
+font-variation = "wdth=100"
+
+font-family = "PlemolJP Console NF"
+
+font-feature = -dlig
+
+
 # quick terminal
 quick-terminal-size = 80%
 keybind = "global:ctrl+option+t=toggle_quick_terminal"

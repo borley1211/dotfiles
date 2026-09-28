@@ -1,6 +1,8 @@
-# Amazon Q pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 #!/bin/zsh
+
+# Kiro CLI pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
+
 
 # load_my_config
 source "${DOTPATH:-${HOME}/Dotfiles}/rc.sh"
@@ -11,8 +13,7 @@ source "${HOME}/.zaliases"
 
 
 # Homebrew
-eval "$(brew shellenv)"
-
+eval "$(/opt/homebrew/bin/brew shellenv)"
 # Homebrew: Python
 # export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
 
@@ -52,5 +53,10 @@ eval "$(sheldon source)"
 autoload -Uz compinit
 compinit
 
-# Amazon Q post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+
+
+export PATH="$PATH:$HOME/.local/bin"
+
+
+# Kiro CLI post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
