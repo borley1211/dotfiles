@@ -43,9 +43,6 @@ source "${ZINIT_HOME}/zinit.zsh"
 ## load my config
 source "${DOTPATH}/zinitrc.zsh"
 
-# sheldon - zsh pkg manager
-eval "$(sheldon source)"
-
 # # broot - cli file manager
 # source "${HOME}/.config/broot/launcher/bash/br"
 

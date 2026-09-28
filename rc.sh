@@ -146,11 +146,6 @@ export DOT_DIR="$DOTPATH"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
-# - Sheldon : zsh plugin manager
-if builtin command -v sheldon > /dev/null; then
-  eval "$(sheldon source)"
-fi
-
 # - PNPM
 export PNPM_HOME="${HOME}/.local/share/pnpm"
 case ":$PATH:" in

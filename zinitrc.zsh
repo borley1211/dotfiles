@@ -10,8 +10,6 @@ zinit light hlissner/zsh-autopair
 
 zinit light lukechilds/zsh-better-npm-completion
 
-zinit ice from"gh-r" as"program"; zinit load junegunn/fzf
-
 zinit light mollifier/anyframe
 
 export ENHANCD_COMMAND="ecd"; zinit load babarot/enhancd
@@ -22,5 +20,13 @@ zinit light ssh0/dot
 
 zinit load momo-lab/zsh-abbrev-alias
 
-zinit cdclear -q > /dev/null ; zinit compinit > /dev/null
+zinit light zsh-users/zsh-syntax-highlighting
+
+zinit light trapd00r/zsh-syntax-highlighting-filetypes
+
+zinit light jgogstad/passwordless-history
+
+zinit ice pick"url/url-highlighter.zsh"; zinit light ascii-soup/zsh-url-highlighter
+
+zinit cdclear -q > /dev/null
 
