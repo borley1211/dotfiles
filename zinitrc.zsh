@@ -14,8 +14,7 @@ zinit ice from"gh-r" as"program"; zinit load junegunn/fzf
 
 zinit light mollifier/anyframe
 
-export ENHANCD_COMMAND="ecd"
-zinit ice as"plugin"; zinit light babarot/enhancd
+export ENHANCD_COMMAND="ecd"; zinit load babarot/enhancd
 
 zinit light ssh0/dot
 
