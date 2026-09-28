@@ -1,3 +1,5 @@
+# プラグイン管理は .config/sheldon/plugins.toml に移した。このファイルは source しない。
+
 # Zinit config
 
 typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
