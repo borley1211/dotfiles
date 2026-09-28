@@ -48,11 +48,11 @@ init_sheldon() {
 
     {
         echo '# Load sheldon'
-        echo 'eval "$(sheldon source)"'
+        echo 'eval "$(sheldon --quiet source)"'
         echo ''
     } >>"$HOME/.zshrc"
 }
 
 init_zshrc
-init_zi
-# init_sheldon
+# init_zi
+init_sheldon

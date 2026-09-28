@@ -12,44 +12,58 @@
 
 shell = "zsh"
 
-[plugins]
+# https://sheldon.cli.rs/Examples.html
+# zsh-defer の定義より前のプラグインでは使わない。
+[templates]
+defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
 
-# For example:
-#
-# [plugins.base16]
-# github = "chriskempson/base16-shell"
+[plugins]
 
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
-apply = ["source"]
-
-[templates]
-defer = ""
-
-[plugins.compinit]
-inline = 'autoload -Uz compinit && zsh-defer compinit'
-
-[plugins.zsh-autosuggestions]
-github = "zsh-users/zsh-autosuggestions"
-
-[plugins.zsh-syntax-highlighting]
-github = "zsh-users/zsh-syntax-highlighting"
-
-# trapd00r/zsh-syntax-highlighting-filetypes は 2019-03 以降の更新なし
-# [plugins.zsh-syntax-highlighting-filetypes]
-# github = "trapd00r/zsh-syntax-highlighting-filetypes"
 
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
 
-# mask secret for history
-[plugins.zsh-mask]
-github = "jgogstad/zsh-mask"
+# fpath に載ったあと、compdef するプラグインの前。最初の Tab に間に合わせるため遅延しない。
+[plugins.compinit]
+inline = "autoload -Uz compinit && compinit"
 
-# ascii-soup/zsh-url-highlighter は 2016-04 以降の更新なし
-# [plugins.url-highlighter]
-# github = "ascii-soup/zsh-url-highlighter"
+[plugins.zsh-better-npm-completion]
+github = "lukechilds/zsh-better-npm-completion"
+
+[plugins.enhancd]
+github = "babarot/enhancd"
+
+[plugins.enhancd.hooks]
+pre = "export ENHANCD_COMMAND=ecd ENHANCD_FILTER=fzf"
 
 [plugins.zsh-autopair]
 github = "hlissner/zsh-autopair"
 
+[plugins.dot]
+github = "ssh0/dot"
+
+[plugins.zsh-mask]
+github = "jgogstad/zsh-mask"
+
+# 上流は関数を定義するだけでハイライター登録をしない。
+# 登録してから zsh-syntax-highlighting を遅延ロードする。
+[plugins.url-highlighter]
+github = "ascii-soup/zsh-url-highlighter"
+use = ["url/url-highlighter.zsh"]
+
+[plugins.url-highlighter.hooks]
+pre = "typeset -gA ZSH_HIGHLIGHT_STYLES"
+post = """
+function _zsh_highlight_highlighter_url_paint() { _zsh_highlight_url_highlighter \"$@\"; }
+function _zsh_highlight_highlighter_url_predicate() { _zsh_highlight_url_highlighter_predicate \"$@\"; }
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main url)
+"""
+
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
+apply = ["defer"]
+
+# trapd00r/zsh-syntax-highlighting-filetypes は読み込まない。
+# zinit の関数スコープで配列が消え、キー入力のたびにハイライトが失敗していた。
