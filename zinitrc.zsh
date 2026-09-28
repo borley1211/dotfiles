@@ -17,7 +17,10 @@ zinit light ssh0/dot
 
 zinit light zsh-users/zsh-syntax-highlighting
 
-zinit light trapd00r/zsh-syntax-highlighting-filetypes
+# trapd00r/zsh-syntax-highlighting-filetypes は zinit の関数スコープで
+# typeset -a した配列が消え、self-insert のラップだけ残る。
+# キー入力のたびに _zsh_highlight-zle-buffer が失敗するため読み込まない。
+# zinit light trapd00r/zsh-syntax-highlighting-filetypes
 
 zinit light jgogstad/zsh-mask
 
