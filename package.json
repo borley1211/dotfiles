@@ -56,6 +56,6 @@
   },
   "dependencies": {
     "dotenv": "^17.4.2",
-    "framer-api": "^0.1.17"
+    "framer-api": "^5.0.0"
   }
 }
