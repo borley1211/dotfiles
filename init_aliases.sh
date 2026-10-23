@@ -1,6 +1,6 @@
 # shellcheck disable=SC2148
 alias relogin='exec $SHELL -l'
-alias reshell='exec $SHELL'
+alias reshell='hash -r'
 
 function gogh() {
     bash -c "$(curl -fsSL https://git.io/vQgMr)"
