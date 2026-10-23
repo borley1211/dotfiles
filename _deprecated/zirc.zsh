@@ -18,7 +18,7 @@ zi light ascii-soup/zsh-url-highlighter
 # - HISTORY
 zi light jimhester/per-directory-history
 #  mask secret for history
-zi light jgogstad/passwordless-history
+zi light jgogstad/zsh-mask
 
 # - COMPLETIONS
 # default completions

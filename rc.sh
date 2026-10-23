@@ -142,17 +142,12 @@ export DOT_DIR="$DOTPATH"
 # - aqua : cli version manager
 # export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
 
-# - Volta
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
-# - Sheldon : zsh plugin manager
-if builtin command -v sheldon > /dev/null; then
-  eval "$(sheldon source)"
-fi
-
 # - PNPM
 export PNPM_HOME="${HOME}/.local/share/pnpm"
+case ":$PATH:" in
+*":$PNPM_HOME/bin:"*) ;;
+*) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
 case ":$PATH:" in
 *":$PNPM_HOME:"*) ;;
 *) export PATH="$PNPM_HOME:$PATH" ;;

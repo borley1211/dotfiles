@@ -8,7 +8,6 @@ unsetopt bg_nice
 
 # - zcompfunc
 fpath=(${HOME}/.zfunc $fpath)
-autoload -Uz compinit && compinit
 
 # - PATHの重複をなくす
 typeset -U path cdpath fpath manpath

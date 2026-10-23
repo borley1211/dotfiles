@@ -14,6 +14,11 @@ source "${HOME}/.zaliases"
 
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
+export PATH=/opt/homebrew/bin:$PATH
+export PATH=/opt/homebrew/sbin:$PATH
+if [ -n "$PNPM_HOME" ]; then
+  export PATH="$PNPM_HOME/bin:$PATH"
+fi
 # Homebrew: Python
 # export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
 
@@ -34,24 +39,12 @@ eval "$(starship init zsh)"
 # # examples here -> https://wiki.zshell.dev/ecosystem/category/-annexes
 # zi compinit # <- https://wiki.zshell.dev/docs/guides/commands
 
-# zinit
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d "$ZINIT_HOME" ] && mkdir -p "$(dirname "$ZINIT_HOME")"
-[ ! -d "$ZINIT_HOME"/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-# shellcheck disable=SC1091
-source "${ZINIT_HOME}/zinit.zsh"
-## load my config
-source "${DOTPATH}/zinitrc.zsh"
-
-# sheldon - zsh pkg manager
-eval "$(sheldon source)"
+# sheldon. compinit は plugins.toml の inline（zsh-completions の直後、1 回だけ）。
+# --quiet はロック確認のログをプロンプトの上に出さない。毎起動 source する。
+eval "$(sheldon --quiet source)"
 
 # # broot - cli file manager
 # source "${HOME}/.config/broot/launcher/bash/br"
-
-# zsh post block (completion)
-autoload -Uz compinit
-compinit
 
 
 
