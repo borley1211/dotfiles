@@ -14,6 +14,11 @@ source "${HOME}/.zaliases"
 
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
+export PATH=/opt/homebrew/bin:$PATH
+export PATH=/opt/homebrew/sbin:$PATH
+if [ -n "$PNPM_HOME" ]; then
+  export PATH="$PNPM_HOME/bin:$PATH"
+fi
 # Homebrew: Python
 # export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
 

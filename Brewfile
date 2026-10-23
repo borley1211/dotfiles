@@ -117,8 +117,8 @@ brew "topgrade"
 brew "vhs"
 # Simple terminal image viewer written in Rust
 brew "viu"
-# JavaScript toolchain manager for reproducible environments
-brew "volta"
+# Node.js runtime
+brew "node"
 # Terminal navigator
 brew "walk"
 # UNIX shell (command interpreter)

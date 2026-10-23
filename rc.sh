@@ -142,10 +142,6 @@ export DOT_DIR="$DOTPATH"
 # - aqua : cli version manager
 # export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
 
-# - Volta
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
 # - PNPM
 export PNPM_HOME="${HOME}/.local/share/pnpm"
 case ":$PATH:" in
