@@ -35,7 +35,7 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "packageManager": "pnpm@10.12.4+sha512.5ea8b0deed94ed68691c9bad4c955492705c5eeb8a87ef86bc62c74a26b037b08ff9570f108b2e4dbd1dd1a9186fea925e527f141c648e85af45631074680184",
+  "packageManager": "pnpm@12.14.0",
   "engines": {
     "node": ">=24",
     "pnpm": ">=10"
@@ -44,7 +44,7 @@
     "runtime": [
       {
         "name": "node",
-        "version": "^24.4.0",
+        "version": ">=24.4.0",
         "onFail": "download"
       },
       {
