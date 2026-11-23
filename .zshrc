@@ -29,8 +29,8 @@ eval "$(starship init zsh)"
 # --quiet はロック確認のログをプロンプトの上に出さない。毎起動 source する。
 eval "$(sheldon --quiet source)"
 
-# # broot - cli file manager
-# source "${HOME}/.config/broot/launcher/bash/br"
+# broot - cli file manager（br 関数）
+[ -f "${HOME}/.config/broot/launcher/bash/br" ] && source "${HOME}/.config/broot/launcher/bash/br"
 
 
 export PATH="$PATH:$HOME/.local/bin"
@@ -38,5 +38,3 @@ export PATH="$PATH:$HOME/.local/bin"
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
-
-source /Users/borley1211/.config/broot/launcher/bash/br
