@@ -148,3 +148,5 @@ export PATH="$PATH:$HOME/.local/bin"
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/bashrc.post.bash" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/bashrc.post.bash"
+
+source /Users/borley1211/.config/broot/launcher/bash/br

@@ -53,39 +53,6 @@ pathmgr() {
 # - Local Binaries
 _pathappend "${HOME}/.local/bin"
 
-# - asdf
-[ -e "${HOME}/.asdf/" ] && . "${HOME}"/.asdf/asdf.sh
-
-# - Python
-# export PATH=/usr/local/opt/python/libexec/bin:$PATH
-# export PIP_DEFAULT_TIMEOUT=1200
-# if ! type python >&/dev/null; then
-#     eval "$(python -m pip completion --"$(basename "${SHELL}")")"
-# fi
-
-# - Pipenv
-export PIPENV_VENV_IN_PROJECT=1
-if python -m pipenv >/dev/null 2>&1; then
-    eval "$(pipenv --completion)"
-    export PIPENV_CACHE_DIR=$TMPDIR
-    export PIPENV_TIMEOUT=1200
-    export PIPENV_INSTALL_TIMEOUT=$PIPENV_TIMEOUT
-    # export PIPENV_SKIP_LOCK=1
-fi
-
-# - Pyenv
-if [ -e "${HOME}/.pyenv" ]; then
-    export PYENV_ROOT="${HOME}/.pyenv"
-    export PATH="${PYENV_ROOT}/bin:${PATH}"
-    eval "$(pyenv init --path)"
-    eval "$(pyenv virtualenv-init -)"
-    export PIPENV_PYTHON="${PYENV_ROOT}/shims/python"
-fi
-
-# - RustUp
-[ -f "${HOME}/.cargo/env" ] && . "$HOME/.cargo/env"
-[ -e "${HOME}/.cargo/" ] && _pathprepend "$HOME/.cargo/bin"
-
 # - Neovim
 export NVIM_COC_LOGFILE="coc.log"
 
@@ -134,21 +101,3 @@ fi
 export DOT_REPO="https://github.com/borley1211/dotfiles"
 export DOT_DIR="$DOTPATH"
 
-# - Nix
-# if [ -e "$HOME/.nix-profile" ]; then
-#     . /home/borley/.nix-profile/etc/profile.d/nix.sh
-# fi
-
-# - aqua : cli version manager
-# export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
-
-# - PNPM
-export PNPM_HOME="${HOME}/.local/share/pnpm"
-case ":$PATH:" in
-*":$PNPM_HOME/bin:"*) ;;
-*) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
-case ":$PATH:" in
-*":$PNPM_HOME:"*) ;;
-*) export PATH="$PNPM_HOME:$PATH" ;;
-esac
