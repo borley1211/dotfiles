@@ -20,9 +20,8 @@ DOTPATH	:= $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES := $(wildcard .??*) \
               $(shell find .config -path '*/_*' -prune -o -type f -print) \
               package.json \
-              Pipfile \
-              aqua.yaml \
               $(wildcard .jupyter/??*.??*)
+# (退避) mise 移行で不要: Pipfile aqua.yaml
 
 # Define files and directories to exclude from symlinking.
 EXCLUSIONS	:= .DS_Store .git .gitmodules .gitignore .travis.yml .config .vscode .Xresources-regolith .themes .icons .venv .gemini .jj _deprecated

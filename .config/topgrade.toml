@@ -20,7 +20,7 @@ cleanup = true
 # "20. Python Core Packages" = "python3 -m pip install --upgrade setuptools"
 # "40. Vim/Neovim Libraries in Python" = "python3 -m pip install --upgrade neovim vim-vint"
 # "Python envs" = "poetry update"
-"20. PNPM globally" = "pnpm update -g"
+# "20. PNPM globally" = "pnpm update -g"
 # "30. Check NodeJS Packages via PNPM" = "pnpm doctor; pnpm audit signatures"
 
 
